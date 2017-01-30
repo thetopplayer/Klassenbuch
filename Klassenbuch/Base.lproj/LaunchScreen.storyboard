@@ -1,27 +1,64 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="New-Wh-Vim">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="EHf-IW-A2E">
+        <scene sceneID="MNP-5v-7EP">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController id="New-Wh-Vim" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
-                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                        <viewControllerLayoutGuide type="top" id="hAk-1Y-LxT"/>
+                        <viewControllerLayoutGuide type="bottom" id="OH7-li-Dkq"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleToFill" id="VW6-Op-FZ2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Das Klassenbuch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYa-IT-BnF">
+                                <rect key="frame" x="73" y="468.5" width="228" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GYa-IT-BnF" secondAttribute="height" multiplier="72:7" id="GgZ-xm-fp3"/>
+                                    <constraint firstAttribute="width" constant="228" id="hoj-G3-Oj7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="27"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ZüriLogoWeiss" translatesAutoresizingMaskIntoConstraints="NO" id="6k0-43-5fi">
+                                <rect key="frame" x="27" y="221" width="321" height="196"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="196" id="cL8-2p-eGn"/>
+                                    <constraint firstAttribute="width" constant="321" id="tFL-Q9-S6s"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.17254901959999999" green="0.21960784310000001" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="GYa-IT-BnF" firstAttribute="centerX" secondItem="VW6-Op-FZ2" secondAttribute="centerX" id="4oM-67-il4"/>
+                            <constraint firstItem="GYa-IT-BnF" firstAttribute="width" secondItem="GYa-IT-BnF" secondAttribute="height" multiplier="72:7" id="A5F-NL-glT"/>
+                            <constraint firstItem="6k0-43-5fi" firstAttribute="centerY" secondItem="VW6-Op-FZ2" secondAttribute="centerY" constant="-14.5" id="Fad-pL-XUa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6k0-43-5fi" secondAttribute="trailing" constant="11" id="ZOh-Rg-Fe4"/>
+                            <constraint firstItem="GYa-IT-BnF" firstAttribute="top" secondItem="6k0-43-5fi" secondAttribute="bottom" constant="51.5" id="a3j-cF-AQ1"/>
+                            <constraint firstItem="6k0-43-5fi" firstAttribute="leading" secondItem="VW6-Op-FZ2" secondAttribute="leadingMargin" constant="11" id="ifc-ww-Sbb"/>
+                            <constraint firstItem="6k0-43-5fi" firstAttribute="centerX" secondItem="VW6-Op-FZ2" secondAttribute="centerX" id="jee-Pz-KXD"/>
+                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fWd-pd-PCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="734" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ZüriLogoWeiss" width="177" height="208"/>
+    </resources>
 </document>

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,10 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+
+       
+        FIRApp.configure()
+        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().enableAutoToolbar = false
+
+               // Override point for customization after application launch.
         return true
     }
-
+ 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -41,6 +50,85 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+       
+        // Setup the Quick 3D Touch Actions
+        
+        //Hausaufgaben Quick Action
+        
+        if shortcutItem.type == "Hausaufgaben" {
+            
+            if FIRAuth.auth()?.currentUser != nil {
+                
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let initialViewController1 = storyboard.instantiateViewController(withIdentifier: "AddHomeworkNC") as! UINavigationController
+                self.window?.rootViewController = initialViewController1
+                self.window?.makeKeyAndVisible()
+            
 
+            } else {
+                
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginNavigationVC") as! UINavigationController
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+            }}
+
+        
+        // Test Quick Action
+        
+        if shortcutItem.type == "Test" {
+        
+            if FIRAuth.auth()?.currentUser != nil{
+        
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "AddTestNC") as! UINavigationController
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+        
+            } else {
+
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginNavigationVC") as! UINavigationController
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+            }}
+
+
+        // Absenz Quick Action
+        
+        if shortcutItem.type == "Absenz" {
+            
+            if FIRAuth.auth()?.currentUser != nil{
+
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "AddAbsenzenNC") as! UINavigationController
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+           
+            
+            } else {
+            
+            
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginNavigationVC") as! UINavigationController
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+
+            }
+        }
+    }
 }
+            
+
+        
+        
+
+
 
