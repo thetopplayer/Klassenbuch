@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class Login: UIViewController {
+class Login: UIViewController, UITextFieldDelegate {
 
     // Outlets
     
@@ -30,6 +30,9 @@ class Login: UIViewController {
         
         self.ApplyMotionEffectsforViewDidLoad()
         
+        // TextFieldDelegates
+        LoginEmailTextField.delegate = self
+        LoginPasswordTextField.delegate = self
         
         // Hide Navigation Bar
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -48,7 +51,17 @@ class Login: UIViewController {
         }
     }
 
+    // Next Button Klicked Textfield new First Responder
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == LoginEmailTextField{
+        LoginPasswordTextField.becomeFirstResponder()
+        } else {
+
+        LoginPasswordTextField.resignFirstResponder()
+        }
+        return true
+    }
     
     
     // Login Function

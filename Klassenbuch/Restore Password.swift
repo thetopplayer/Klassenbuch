@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class Restore_Password: UIViewController {
+class Restore_Password: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var Form: UIImageView!
@@ -31,13 +31,28 @@ class Restore_Password: UIViewController {
         //Hide Keyboard
         self.hideKeyboardWhenTappedAround()
 
-        
+        // TextFieldDelegates
+        RestorePasswordTextField.delegate = self
+
            }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
        
     }
+    
+    
+    // Next Button Klicked Textfield new First Responder
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == RestorePasswordTextField{
+            
+            RestorePasswordTextField.resignFirstResponder()
+        }
+        return true
+    }
+
+    
     
     @IBAction func restorePassword(sender: AnyObject)
     {

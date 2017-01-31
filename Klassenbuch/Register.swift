@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class Register: UIViewController {
+class Register: UIViewController, UITextFieldDelegate {
 
     //Outlets
     
@@ -40,6 +40,9 @@ class Register: UIViewController {
         // Parallax Effect
         self.ApplyMotionEffectsforViewDidLoad()
         
+        // TextFieldDelegates
+        RegisterEmailTextField.delegate = self
+        RegisterPasswordTextField.delegate = self
         
         //Hide Navigation Bar Controller
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -58,6 +61,17 @@ class Register: UIViewController {
         
     }
     
+    // Next Button Klicked Textfield new First Responder
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == RegisterEmailTextField{
+            RegisterPasswordTextField.becomeFirstResponder()
+        } else {
+            
+            RegisterPasswordTextField.resignFirstResponder()
+        }
+        return true
+    }
 
     
     //Dismiss ViewAction

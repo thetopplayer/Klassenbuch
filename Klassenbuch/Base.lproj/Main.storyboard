@@ -383,16 +383,16 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Zp-dM-kAL">
-                                <rect key="frame" x="119.33333333333331" y="536" width="175.33333333333337" height="30"/>
+                                <rect key="frame" x="100" y="536" width="214.33333333333331" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keinen Account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEM-02-NhQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="114.33333333333333" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Noch keinen Account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEM-02-NhQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="153.33333333333334" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcI-KQ-ERQ">
-                                        <rect key="frame" x="114.33333333333333" y="0.0" width="61.000000000000043" height="30"/>
+                                        <rect key="frame" x="153.33333333333331" y="0.0" width="60.999999999999972" height="30"/>
                                         <state key="normal" title=" Register">
                                             <color key="titleColor" red="0.17254901960784313" green="0.2196078431372549" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
