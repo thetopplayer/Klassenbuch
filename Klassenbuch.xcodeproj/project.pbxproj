@@ -337,11 +337,13 @@
 					};
 					37FCAE861DFD51C000789BFF = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 37FCAE721DFD51C000789BFF;
 					};
 					37FCAE911DFD51C000789BFF = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 37FCAE721DFD51C000789BFF;
 					};

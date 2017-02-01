@@ -119,4 +119,12 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
         
     }
    
+    @IBAction func SaveButtonclicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelButtonclicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+
+    }
 }

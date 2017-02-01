@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        
 
-       
         FIRApp.configure()
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().enableAutoToolbar = false
@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        self.window?.rootViewController?.dismiss(animated: false, completion: nil)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -50,6 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    
+    
+    /*
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
        
         // Setup the Quick 3D Touch Actions
@@ -124,6 +129,109 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+
+
+
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+       
+        if FIRAuth.auth()?.currentUser != nil{
+
+        
+        if shortcutItem.type == "Hausaufgaben" {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let addHAVC = sb.instantiateViewController(withIdentifier: "AddHomeworkNC") as! UINavigationController
+            let root = UIApplication.shared.keyWindow?.rootViewController
+            
+            root?.present(addHAVC, animated: false, completion: { () -> Void in
+                completionHandler(true)
+            })
+            
+            
+        }
+        }else {}
+    }
+
+
+
+*/
+
+    enum ShortcutIdentifier: String
+    {
+        case First
+        
+        case Second
+        
+        init?(fullType: String)
+        {
+        
+            guard let last = fullType.components(separatedBy:".").last else {return nil}
+        
+            self.init(rawValue: last)
+        }
+        
+        var type: String
+            
+            {
+                return Bundle.main.bundleIdentifier! + ".\(self.rawValue)"
+    
+        }
+
+    }
+    
+    
+    func handleShortcutItem(shortcutItem: UIApplicationShortcutItem) -> Bool
+    {
+        
+        
+        var handled = false
+        
+        guard ShortcutIdentifier(fullType: shortcutItem.type) != nil else {return false}
+        guard let shortcutType = shortcutItem.type as String? else {return false}
+        
+        switch (shortcutType)
+        {
+        
+        case ShortcutIdentifier.First.type:
+            handled = true
+            
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navVC = storyboard.instantiateViewController(withIdentifier: "AddHomeworkNC") as! UINavigationController
+            self.window?.rootViewController?.present(navVC, animated: true, completion: nil)
+
+  
+            break
+        case ShortcutIdentifier.Second.type:
+            handled = true
+            
+            
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let navVC = storyboard.instantiateViewController(withIdentifier: "AddTestNC") as! UINavigationController
+        self.window?.rootViewController?.present(navVC, animated: true, completion: nil)
+
+    
+            break
+        default:
+            break
+        }
+
+        
+        return handled
+
+        
+    }
+    
+    
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+       
+        let handledShortcutItem = self.handleShortcutItem(shortcutItem: shortcutItem)
+        completionHandler(handledShortcutItem)
+    }
+    
+
+
+
 }
             
 
