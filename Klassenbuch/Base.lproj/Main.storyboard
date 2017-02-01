@@ -60,7 +60,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4s-au-rEd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3410.4000000000001" y="-320.68965517241384"/>
+            <point key="canvasLocation" x="3126" y="-524"/>
         </scene>
         <!--Add Hausaufgaben TC-->
         <scene sceneID="LUg-V7-wb8">
@@ -169,7 +169,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZG-dr-H79" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="mXI-xG-fya" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4959.1999999999998" y="-322.48875562218893"/>
+            <point key="canvasLocation" x="4600" y="-524"/>
         </scene>
         <!--Tests TC-->
         <scene sceneID="yD2-7R-6zK">
@@ -221,7 +221,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D1o-yf-sh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3410.4000000000001" y="355.7721139430285"/>
+            <point key="canvasLocation" x="2980" y="355"/>
         </scene>
         <!--Absenzen TC-->
         <scene sceneID="RVN-vd-kju">
@@ -273,7 +273,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FwN-0K-AcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4315.9420289855079" y="1083.4239130434783"/>
+            <point key="canvasLocation" x="2980" y="1190"/>
         </scene>
         <!--Information TC-->
         <scene sceneID="jK0-VN-v9E">
@@ -308,7 +308,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Share" footerTitle="Teile diese App mit deinen Freunden." id="HIe-qV-0Tj">
+                            <tableViewSection headerTitle="Teilen" footerTitle="Teile diese App mit deinen Freunden." id="HIe-qV-0Tj">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nSu-aH-klS">
                                         <rect key="frame" x="0.0" y="262.5" width="414" height="44"/>
@@ -319,7 +319,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xiv-TO-XYL">
                                                     <rect key="frame" x="8" y="6" width="72" height="30"/>
-                                                    <state key="normal" title="Share App">
+                                                    <state key="normal" title="App Teilen">
                                                         <color key="titleColor" red="0.17254901959999999" green="0.21960784310000001" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
@@ -358,7 +358,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cQ5-n4-qeM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3410" y="1782"/>
+            <point key="canvasLocation" x="2980" y="2121"/>
         </scene>
         <!--Login VC-->
         <scene sceneID="TgO-lg-79e">
@@ -428,7 +428,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVi-3g-y5l">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passwort" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVi-3g-y5l">
                                 <rect key="frame" x="112" y="407" width="51" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Mk3-3P-9ov"/>
@@ -486,6 +486,17 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZY-mZ-jRL">
+                                <rect key="frame" x="270" y="425" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="jM4-wm-CIu"/>
+                                    <constraint firstAttribute="width" constant="30" id="xKL-gr-mzr"/>
+                                </constraints>
+                                <state key="normal" title="H" image="Eye"/>
+                                <connections>
+                                    <action selector="EyeTapped:" destination="hvi-oh-JNg" eventType="touchUpInside" id="Rdo-qS-14s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -499,7 +510,9 @@
                             <constraint firstItem="FGa-el-7zl" firstAttribute="centerX" secondItem="dH0-ZF-OR7" secondAttribute="centerX" id="FtF-As-GiS"/>
                             <constraint firstItem="FGa-el-7zl" firstAttribute="top" secondItem="RPR-mF-phq" secondAttribute="bottom" constant="-209" id="HUJ-el-Cvl"/>
                             <constraint firstItem="44d-4E-hQ1" firstAttribute="centerX" secondItem="dH0-ZF-OR7" secondAttribute="centerX" id="I0Y-7O-71j"/>
+                            <constraint firstItem="fZY-mZ-jRL" firstAttribute="top" secondItem="TDw-Zt-KyG" secondAttribute="bottom" constant="-32" id="Jfp-h6-fQg"/>
                             <constraint firstItem="RPR-mF-phq" firstAttribute="top" secondItem="rY6-lz-SHV" secondAttribute="bottom" constant="-21" id="ONp-1S-sLl"/>
+                            <constraint firstItem="fZY-mZ-jRL" firstAttribute="trailing" secondItem="TDw-Zt-KyG" secondAttribute="trailing" constant="-7" id="PJf-Ws-Ujl"/>
                             <constraint firstItem="44d-4E-hQ1" firstAttribute="centerX" secondItem="dH0-ZF-OR7" secondAttribute="centerX" id="Pct-ww-CaF"/>
                             <constraint firstItem="ZKU-3k-cIO" firstAttribute="centerX" secondItem="dH0-ZF-OR7" secondAttribute="centerX" id="TuW-k9-G7P"/>
                             <constraint firstItem="FGa-el-7zl" firstAttribute="centerY" secondItem="dH0-ZF-OR7" secondAttribute="centerY" id="VG1-r6-GZ1"/>
@@ -516,6 +529,7 @@
                     <connections>
                         <outlet property="BackgroundImage" destination="FXB-yL-0Sh" id="pLg-ni-3bc"/>
                         <outlet property="EmailLabel" destination="rY6-lz-SHV" id="PGe-eJ-3Xs"/>
+                        <outlet property="EyeButton" destination="fZY-mZ-jRL" id="HqF-S9-cHf"/>
                         <outlet property="Form" destination="FGa-el-7zl" id="d70-ke-dCM"/>
                         <outlet property="LoginButton" destination="44d-4E-hQ1" id="s9O-e2-9Td"/>
                         <outlet property="LoginEmailTextField" destination="RPR-mF-phq" id="Ky0-NF-k0Z"/>
@@ -585,7 +599,7 @@
                                     <action selector="RegisterUser:" destination="rt2-kD-bi4" eventType="touchUpInside" id="fCv-jv-duE"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUo-gn-08G">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passwort" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUo-gn-08G">
                                 <rect key="frame" x="112" y="407" width="48" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="Zk3-n0-iDL"/>
@@ -595,8 +609,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xj4-BD-niY">
-                                <rect key="frame" x="20" y="20" width="128" height="22"/>
-                                <state key="normal" title=" Back to Login" image="Back Chevron">
+                                <rect key="frame" x="20" y="20" width="58" height="22"/>
+                                <state key="normal" title="Login" image="Back Chevron">
                                     <color key="titleColor" red="0.13333333333333333" green="0.1803921568627451" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -622,10 +636,10 @@
                                 </state>
                             </button>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="srp-PA-b5S">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="582" width="414" height="154"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="Ckd-nJ-62B">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="154"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dvB-bw-SCd">
@@ -641,8 +655,17 @@
                                         </visualEffectView>
                                     </subviews>
                                 </view>
-                                <blurEffect style="light"/>
+                                <vibrancyEffect>
+                                    <blurEffect style="light"/>
+                                </vibrancyEffect>
                             </visualEffectView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOl-eQ-8li" userLabel="Eye">
+                                <rect key="frame" x="273" y="428" width="28" height="22"/>
+                                <state key="normal" image="Eye"/>
+                                <connections>
+                                    <action selector="EyeTapped:" destination="rt2-kD-bi4" eventType="touchUpInside" id="VGE-wV-g2a"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -650,6 +673,7 @@
                             <constraint firstItem="Y2N-VO-bac" firstAttribute="centerX" secondItem="XcD-pf-DM9" secondAttribute="centerX" id="7Mu-Ig-TOC"/>
                             <constraint firstItem="xa9-F7-CNh" firstAttribute="centerX" secondItem="XcD-pf-DM9" secondAttribute="centerX" id="94U-CG-MQL"/>
                             <constraint firstItem="CUo-gn-08G" firstAttribute="top" secondItem="atl-g8-FDG" secondAttribute="bottom" constant="8" id="DOq-yD-C1I"/>
+                            <constraint firstItem="sOl-eQ-8li" firstAttribute="leading" secondItem="Gpt-5u-7gf" secondAttribute="trailing" constant="-34" id="EL9-yJ-qgH"/>
                             <constraint firstItem="LKA-Ta-GMh" firstAttribute="centerX" secondItem="XcD-pf-DM9" secondAttribute="centerX" id="HLV-b9-w5E"/>
                             <constraint firstItem="Gpt-5u-7gf" firstAttribute="top" secondItem="atl-g8-FDG" secondAttribute="bottom" constant="8" id="HbW-W9-hOK"/>
                             <constraint firstAttribute="trailing" secondItem="39M-p9-T8o" secondAttribute="trailing" id="HeE-NE-FoF"/>
@@ -666,6 +690,7 @@
                             <constraint firstItem="atl-g8-FDG" firstAttribute="centerX" secondItem="XcD-pf-DM9" secondAttribute="centerX" id="iJH-kJ-nzJ"/>
                             <constraint firstItem="SUj-60-evf" firstAttribute="top" secondItem="39M-p9-T8o" secondAttribute="bottom" id="l5S-vv-OUe"/>
                             <constraint firstItem="Gpt-5u-7gf" firstAttribute="centerX" secondItem="XcD-pf-DM9" secondAttribute="centerX" id="nP9-2u-PlG"/>
+                            <constraint firstItem="sOl-eQ-8li" firstAttribute="top" secondItem="Gpt-5u-7gf" secondAttribute="bottom" constant="-29" id="rZH-J6-Soy"/>
                             <constraint firstItem="LKA-Ta-GMh" firstAttribute="top" secondItem="Gpt-5u-7gf" secondAttribute="bottom" constant="15" id="taF-ts-BB5"/>
                             <constraint firstItem="39M-p9-T8o" firstAttribute="leading" secondItem="XcD-pf-DM9" secondAttribute="leading" id="uIO-Df-2Gx"/>
                             <constraint firstItem="Gpt-5u-7gf" firstAttribute="top" secondItem="CUo-gn-08G" secondAttribute="bottom" constant="-21" id="veK-Cx-1O0"/>
@@ -675,6 +700,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="EmailLabel" destination="xDD-EC-y3d" id="O85-MA-BL7"/>
+                        <outlet property="EyeButton" destination="sOl-eQ-8li" id="aBz-ci-Sy8"/>
                         <outlet property="Form" destination="Y2N-VO-bac" id="yRX-GE-62U"/>
                         <outlet property="InformationView" destination="IbT-fr-X4a" id="av1-lJ-eJn"/>
                         <outlet property="PasswordLabel" destination="CUo-gn-08G" id="Aci-gU-uJv"/>
@@ -749,7 +775,7 @@
                 </view>
                 <exit id="kh4-xB-W3w" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-904" y="1099"/>
+            <point key="canvasLocation" x="-904.34782608695662" y="1098.913043478261"/>
         </scene>
         <!--Manager-->
         <scene sceneID="EVZ-wr-yEQ">
@@ -797,7 +823,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pNx-1J-23c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2471.1999999999998" y="-320.68965517241384"/>
+            <point key="canvasLocation" x="2460" y="-524"/>
         </scene>
         <!--Tests NC-->
         <scene sceneID="mbs-eY-x8a">
@@ -845,7 +871,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="feQ-Fl-ZvS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3376.811594202899" y="1083.4239130434783"/>
+            <point key="canvasLocation" x="2460" y="1190"/>
         </scene>
         <!--Informationen NC-->
         <scene sceneID="AW2-s4-tR6">
@@ -869,7 +895,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xnl-wH-ysL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2471" y="1782"/>
+            <point key="canvasLocation" x="2460" y="2121"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="srK-bl-ZWZ">
@@ -888,7 +914,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l5v-Jy-Ru3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4186.3999999999996" y="-321.58920539730138"/>
+            <point key="canvasLocation" x="3883" y="-524"/>
         </scene>
         <!--Add Tests TC-->
         <scene sceneID="PAn-Cl-tDU">
@@ -995,7 +1021,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I52-EG-tvE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="xRC-y7-O52" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4959.1999999999998" y="355.7721139430285"/>
+            <point key="canvasLocation" x="4407" y="355"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vda-4X-JeV">
@@ -1014,7 +1040,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7SS-m3-Jzt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4186.3999999999996" y="355.7721139430285"/>
+            <point key="canvasLocation" x="3883" y="355"/>
         </scene>
         <!--Add Absenzen TC-->
         <scene sceneID="IcL-O5-SzM">
@@ -1192,7 +1218,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mWN-Xk-eod" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="tC4-RR-2Oq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5863.768115942029" y="1083.4239130434783"/>
+            <point key="canvasLocation" x="4407" y="1190"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bpz-j5-b1h">
@@ -1211,7 +1237,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dSr-W4-ghG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5092.753623188406" y="1083.4239130434783"/>
+            <point key="canvasLocation" x="3883" y="1190"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qKn-2Y-Ein">
@@ -1247,8 +1273,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vew-px-O49">
-                                <rect key="frame" x="20" y="20" width="123" height="22"/>
-                                <state key="normal" title="Back to Login" image="Back Chevron">
+                                <rect key="frame" x="20" y="20" width="58" height="22"/>
+                                <state key="normal" title="Login" image="Back Chevron">
                                     <color key="titleColor" red="0.17254901959999999" green="0.21960784310000001" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -1341,7 +1367,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cw-ou-aOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="9cx-p5-Tgx" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-904" y="1781"/>
+            <point key="canvasLocation" x="-904" y="1886"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a7A-Vk-ecw">
@@ -1359,7 +1385,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3u-Ja-sav" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2352" y="355"/>
+            <point key="canvasLocation" x="-2633" y="355"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Puv-lG-Egj">
@@ -1377,7 +1403,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8v-e9-g3v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1646" y="1781"/>
+            <point key="canvasLocation" x="-1655" y="1886"/>
         </scene>
     </scenes>
     <resources>
@@ -1388,6 +1414,7 @@
         <image name="Contacts Filled" width="25" height="25"/>
         <image name="Exam" width="21" height="25"/>
         <image name="Exam Filled" width="21" height="25"/>
+        <image name="Eye" width="28" height="15"/>
         <image name="Home" width="25" height="25"/>
         <image name="Home Filled" width="25" height="25"/>
         <image name="Info" width="25" height="25"/>

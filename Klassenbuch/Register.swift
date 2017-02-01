@@ -24,6 +24,7 @@ class Register: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var RegisterButton: UIButton!
     @IBOutlet weak var EmailLabel: UIButton!
     @IBOutlet weak var Form: UIImageView!
+    @IBOutlet weak var EyeButton: UIButton!
     
 
     
@@ -31,7 +32,8 @@ class Register: UIViewController, UITextFieldDelegate {
     // Variables
     
     var effect:UIVisualEffect!
-    
+    var iconClick: Bool!
+
     
     
     override func viewDidLoad() {
@@ -49,6 +51,11 @@ class Register: UIViewController, UITextFieldDelegate {
         
         // Dismiss Keyboard
         self.hideKeyboardWhenTappedAround()
+        
+        // Eye EyeButton
+        
+        iconClick = true
+        RegisterPasswordTextField.isSecureTextEntry = true
         
         // Visual Effect
         effect = VisualEffect.effect
@@ -69,10 +76,66 @@ class Register: UIViewController, UITextFieldDelegate {
         } else {
             
             RegisterPasswordTextField.resignFirstResponder()
+            RegisterPasswordTextField.isSecureTextEntry = true
         }
         return true
     }
 
+    //Showing and Hiding the Eye Button
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == RegisterPasswordTextField {
+            
+            EyeButton.isHidden = false
+            
+        }else {
+            
+            EyeButton.isHidden = true
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == RegisterPasswordTextField{
+            EyeButton.setImage(UIImage(named: "Eye"), for: UIControlState.normal)
+            RegisterPasswordTextField.isSecureTextEntry = true
+          
+        }
+    }
+
+    
+    // PasswordEyeButton Tapped Once
+    
+    @IBAction func EyeTapped(_ sender: Any) {
+        if EyeButton.tag == 0
+        {
+            (sender as AnyObject).setImage(UIImage(named: "Eye Selected"), for: UIControlState.normal)
+            
+            EyeButton.tag=1
+        }
+        else
+        {
+            (sender as AnyObject).setImage(UIImage(named: "Eye"), for: UIControlState.normal)
+            EyeButton.tag=0
+        }
+        
+        
+        if(iconClick == true) {
+            
+            RegisterPasswordTextField.isSecureTextEntry = false
+            
+            iconClick = false
+        } else {
+            RegisterPasswordTextField.isSecureTextEntry = true
+            iconClick = true
+        }
+
+        
+        
+    }
+    
+    
+    
+    
     
     //Dismiss ViewAction
     
@@ -192,6 +255,8 @@ class Register: UIViewController, UITextFieldDelegate {
         applyMotionEffect(toView: EmailLabel, magnitude: -10)
         applyMotionEffect(toView: PasswordLabel, magnitude: -10)
         applyMotionEffect(toView: RegisterButton, magnitude: -10)
+        applyMotionEffect(toView: EyeButton, magnitude: -10)
+        
         
     }
 

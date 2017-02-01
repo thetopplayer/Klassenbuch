@@ -21,9 +21,17 @@ class Login: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var EmailLabel: UILabel!
     @IBOutlet weak var PasswordLabel: UILabel!
     @IBOutlet weak var LoginButton: UIButton!
-    
-
+    @IBOutlet weak var EyeButton: UIButton!
     @IBOutlet weak var Form: UIImageView!
+    
+    // Variables
+    var iconClick: Bool!
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,6 +48,11 @@ class Login: UIViewController, UITextFieldDelegate {
         
         //Hide Keyboard
         self.hideKeyboardWhenTappedAround()
+        
+        // Eye EyeButton
+        
+        iconClick = true
+        LoginPasswordTextField.isSecureTextEntry = true
         
         // Keeped Users logged in
         FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
@@ -60,10 +73,63 @@ class Login: UIViewController, UITextFieldDelegate {
         } else {
 
         LoginPasswordTextField.resignFirstResponder()
+        LoginPasswordTextField.isSecureTextEntry = true
         }
         return true
     }
     
+    //Showing and Hiding the Eye Button
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == LoginPasswordTextField {
+        
+            EyeButton.isHidden = false
+            
+        }else {
+        
+             EyeButton.isHidden = true
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == LoginPasswordTextField{
+        EyeButton.setImage(UIImage(named: "Eye"), for: UIControlState.normal)
+        LoginPasswordTextField.isSecureTextEntry = true
+        }
+    }
+    
+    
+    // PasswordEyeButton Tapped Once
+    
+    @IBAction func EyeTapped(_ sender: Any) {
+
+        if EyeButton.tag == 0
+        {
+            (sender as AnyObject).setImage(UIImage(named: "Eye Selected"), for: UIControlState.normal)
+
+                        EyeButton.tag=1
+        }
+        else
+        {
+            (sender as AnyObject).setImage(UIImage(named: "Eye"), for: UIControlState.normal)
+            EyeButton.tag=0
+        }
+
+        
+        if(iconClick == true) {
+            
+            LoginPasswordTextField.isSecureTextEntry = false
+            
+            iconClick = false
+        } else {
+            LoginPasswordTextField.isSecureTextEntry = true
+            iconClick = true
+        }
+
+    }
+    
+    
+
     
     // Login Function
     
@@ -153,6 +219,7 @@ class Login: UIViewController, UITextFieldDelegate {
         applyMotionEffect(toView: EmailLabel, magnitude: -10)
         applyMotionEffect(toView: PasswordLabel, magnitude: -10)
         applyMotionEffect(toView: LoginButton, magnitude: -10)
+        applyMotionEffect(toView: EyeButton, magnitude: -10)
         
     }
 

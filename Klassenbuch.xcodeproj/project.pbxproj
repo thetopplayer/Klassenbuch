@@ -334,6 +334,11 @@
 						DevelopmentTeam = 84KDHR3ETX;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 					37FCAE861DFD51C000789BFF = {
 						CreatedOnToolsVersion = 8.1;
