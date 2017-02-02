@@ -13,6 +13,9 @@ class Hausaufgaben: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.EmptyHausaufgaben()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +37,21 @@ class Hausaufgaben: UITableViewController {
         return 0
     }
 
+    
+    // Func for EmptyState
+    
+    func EmptyHausaufgaben () {
+    
+        if tableView.visibleCells.count == 0 {
+            
+        tableView.backgroundView = UIImageView(image: UIImage(named: "EmptyHomework"))
+         tableView.separatorStyle = .none
+        
+  
+        } else{}
+   
+    }
+    
     
     // UIBarButtons Functions
     

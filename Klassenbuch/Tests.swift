@@ -12,7 +12,8 @@ class Tests: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.EmptyTest()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +35,20 @@ class Tests: UITableViewController {
         return 0
     }
 
+    // Func for EmptyState
+    
+    func EmptyTest () {
+        
+        if tableView.visibleCells.count == 0 {
+            
+            tableView.backgroundView = UIImageView(image: UIImage(named: "EmptyTest"))
+            tableView.separatorStyle = .none
+            
+            
+        } else{}
+        
+    }
+    
     // UIBarButtons Functions
     
     @IBAction func cancelTests (_ segue:UIStoryboardSegue) {

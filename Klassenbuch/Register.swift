@@ -39,6 +39,14 @@ class Register: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        // Left Swipe
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        
+        view.addGestureRecognizer(edgePan)
+        
+        
         // Parallax Effect
         self.ApplyMotionEffectsforViewDidLoad()
         
@@ -135,7 +143,15 @@ class Register: UIViewController, UITextFieldDelegate {
     
     
     
+    //Fund for Left Swipe
     
+    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        
+        if recognizer.state == .recognized {
+           self.dismiss(animated: true, completion: nil)
+        
+        }
+    }
     
     //Dismiss ViewAction
     

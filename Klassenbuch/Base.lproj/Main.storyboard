@@ -273,7 +273,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FwN-0K-AcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2980" y="1190"/>
+            <point key="canvasLocation" x="3125" y="1189"/>
         </scene>
         <!--Information TC-->
         <scene sceneID="jK0-VN-v9E">
@@ -287,10 +287,10 @@
                             <tableViewSection headerTitle="Klassen Name" id="we5-Wp-gWh">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="X0h-gN-8bu">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X0h-gN-8bu" id="QhB-7k-5RM">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -299,10 +299,10 @@
                             <tableViewSection headerTitle="Mitglieder" id="w2R-kb-vK0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pii-k5-Qd4">
-                                        <rect key="frame" x="0.0" y="155.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="157" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pii-k5-Qd4" id="nVY-ts-Xv3">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -311,10 +311,10 @@
                             <tableViewSection headerTitle="Teilen" footerTitle="Teile diese App mit deinen Freunden." id="HIe-qV-0Tj">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nSu-aH-klS">
-                                        <rect key="frame" x="0.0" y="262.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="265" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nSu-aH-klS" id="6lK-Yw-tYO">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xiv-TO-XYL">
@@ -617,6 +617,13 @@
                                     <segue destination="kh4-xB-W3w" kind="unwind" unwindAction="cancelRegistration:" id="KKp-VB-s0Q"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOl-eQ-8li" userLabel="Eye">
+                                <rect key="frame" x="273" y="428" width="28" height="22"/>
+                                <state key="normal" image="Eye"/>
+                                <connections>
+                                    <action selector="EyeTapped:" destination="rt2-kD-bi4" eventType="touchUpInside" id="VGE-wV-g2a"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ZüriLogo" translatesAutoresizingMaskIntoConstraints="NO" id="xa9-F7-CNh">
                                 <rect key="frame" x="119" y="269" width="177" height="61"/>
                                 <constraints>
@@ -636,17 +643,17 @@
                                 </state>
                             </button>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="srp-PA-b5S">
-                                <rect key="frame" x="0.0" y="582" width="414" height="154"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="Ckd-nJ-62B">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="154"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dvB-bw-SCd">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                            <rect key="frame" x="0.0" y="-582" width="414" height="1318"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="Iem-vr-E00">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="1318"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                             <vibrancyEffect>
@@ -655,17 +662,8 @@
                                         </visualEffectView>
                                     </subviews>
                                 </view>
-                                <vibrancyEffect>
-                                    <blurEffect style="light"/>
-                                </vibrancyEffect>
+                                <blurEffect style="light"/>
                             </visualEffectView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOl-eQ-8li" userLabel="Eye">
-                                <rect key="frame" x="273" y="428" width="28" height="22"/>
-                                <state key="normal" image="Eye"/>
-                                <connections>
-                                    <action selector="EyeTapped:" destination="rt2-kD-bi4" eventType="touchUpInside" id="VGE-wV-g2a"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -847,7 +845,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xw-by-YfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2460" y="355.7721139430285"/>
+            <point key="canvasLocation" x="2326" y="355"/>
         </scene>
         <!--Absenzen NC-->
         <scene sceneID="oCT-UR-eUA">
@@ -1040,7 +1038,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7SS-m3-Jzt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3883" y="355"/>
+            <point key="canvasLocation" x="3765" y="355"/>
         </scene>
         <!--Add Absenzen TC-->
         <scene sceneID="IcL-O5-SzM">
@@ -1237,7 +1235,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dSr-W4-ghG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3883" y="1190"/>
+            <point key="canvasLocation" x="3746" y="1189"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qKn-2Y-Ein">

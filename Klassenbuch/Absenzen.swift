@@ -12,7 +12,7 @@ class Absenzen: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+    self.EmptyAbsenzen()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +33,20 @@ class Absenzen: UITableViewController {
         return 0
     }
 
+    // Func for EmptyState
+    
+    func EmptyAbsenzen () {
+        
+        if tableView.visibleCells.count == 0 {
+            
+            tableView.backgroundView = UIImageView(image: UIImage(named: "EmptyAbsenzen"))
+            tableView.separatorStyle = .none
+            
+            
+        } else{}
+        
+    }
+    
     //UIBarButton Functions
     
     @IBAction func cancelAbsenzen (_ segue:UIStoryboardSegue) {
