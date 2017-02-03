@@ -128,4 +128,11 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
         // Dismiss the mail compose view controller.
         controller.dismiss(animated: true, completion: nil)
     }
+    
+    // UIBarButtons Functions
+    
+    @IBAction func cancelAppInfo (_ segue:UIStoryboardSegue) {
+        
+    }
+
 }

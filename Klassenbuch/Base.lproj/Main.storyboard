@@ -450,6 +450,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="m0H-oK-a8y" kind="showDetail" id="2yq-nz-Eoz"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0JV-qR-8Rc" style="IBUITableViewCellStyleDefault" id="7Kw-82-oiI">
                                         <rect key="frame" x="0.0" y="143.5" width="414" height="44"/>
@@ -515,6 +518,89 @@
                 <exit id="QwX-WA-WQ8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4599" y="2120"/>
+        </scene>
+        <!--App Info-->
+        <scene sceneID="I5o-ms-E4S">
+            <objects>
+                <tableViewController id="Ix3-Wd-Uni" customClass="AppInfo" customModule="Klassenbuch" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="0UQ-Wd-eDT">
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="App Informationen" id="Nd9-sV-YDg">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="165" id="KTY-mD-gOs">
+                                        <rect key="frame" x="0.0" y="56" width="414" height="165"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KTY-mD-gOs" id="4fC-jV-3ow">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="164"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOC-Om-J8F">
+                                                    <rect key="frame" x="8" y="8" width="398" height="140"/>
+                                                    <mutableString key="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</mutableString>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="SOC-Om-J8F" secondAttribute="trailing" constant="8" id="RJZ-jx-F2D"/>
+                                            <constraint firstItem="SOC-Om-J8F" firstAttribute="top" secondItem="KTY-mD-gOs" secondAttribute="top" constant="8" id="aaz-zB-9w8"/>
+                                            <constraint firstAttribute="bottom" secondItem="SOC-Om-J8F" secondAttribute="bottom" constant="17" id="pyr-Hg-92n"/>
+                                            <constraint firstItem="SOC-Om-J8F" firstAttribute="leading" secondItem="KTY-mD-gOs" secondAttribute="leading" constant="8" id="vQ0-Sw-eHB"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Version 1.0" id="sOA-Aw-Nii">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="175" id="Mne-f5-s2C">
+                                        <rect key="frame" x="0.0" y="278" width="414" height="175"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mne-f5-s2C" id="5Ql-Ek-MKg">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="174"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJx-jn-x9t">
+                                                    <rect key="frame" x="8" y="17" width="398" height="140"/>
+                                                    <mutableString key="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</mutableString>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="BJx-jn-x9t" firstAttribute="leading" secondItem="Mne-f5-s2C" secondAttribute="leading" constant="8" id="5dh-nD-T86"/>
+                                            <constraint firstAttribute="bottom" secondItem="BJx-jn-x9t" secondAttribute="bottom" constant="18" id="FGO-F0-hGj"/>
+                                            <constraint firstAttribute="trailing" secondItem="BJx-jn-x9t" secondAttribute="trailing" constant="8" id="Rgy-TF-dNb"/>
+                                            <constraint firstItem="BJx-jn-x9t" firstAttribute="top" secondItem="Mne-f5-s2C" secondAttribute="top" constant="17" id="dWh-RI-WYo"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Ix3-Wd-Uni" id="2yf-cO-s1E"/>
+                            <outlet property="delegate" destination="Ix3-Wd-Uni" id="gt9-ov-Jsh"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="App Info" id="93J-gD-ATk">
+                        <barButtonItem key="leftBarButtonItem" image="Back Chevron" id="ANd-mh-wNB">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="6iP-ag-AKd" kind="unwind" unwindAction="cancelAppInfo:" id="Aqb-Jm-Boh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IXh-qZ-TNI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6iP-ag-AKd" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="6185.507246376812" y="2119.5652173913045"/>
         </scene>
         <!--Login VC-->
         <scene sceneID="TgO-lg-79e">
@@ -1581,6 +1667,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gm3-xi-2HN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3883" y="2120"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aDD-Xa-cBc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m0H-oK-a8y" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="736"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Pqd-mn-VRo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.082352941176470587" green="0.16862745098039217" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ix3-Wd-Uni" kind="relationship" relationship="rootViewController" id="Bpl-aD-8eX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I5Y-FW-SGZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5435" y="2120"/>
         </scene>
     </scenes>
     <resources>
