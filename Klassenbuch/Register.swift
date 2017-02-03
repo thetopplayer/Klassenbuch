@@ -274,11 +274,5 @@ class Register: UIViewController, UITextFieldDelegate {
         applyMotionEffect(toView: EyeButton, magnitude: -10)
         
         
-    }
-
-
-
-
-
-    
+    }    
 }

@@ -27,13 +27,15 @@ class Login: UIViewController, UITextFieldDelegate {
     // Variables
     var iconClick: Bool!
     
-    
-    
-    
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Keep User Logged In
+        
+        self.KeepUserSigndIn()
+
         
         //Motion Setup
         
@@ -53,18 +55,9 @@ class Login: UIViewController, UITextFieldDelegate {
         
         iconClick = true
         LoginPasswordTextField.isSecureTextEntry = true
-        
-        // Keeped Users logged in
-        FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
-            if authuser != nil {
-                // User is signed in. Show home screen
-                self.performSegue(withIdentifier: "AppHomepageSegue", sender: self)
-            } else {
-                // No User is signed in. Show user the login screen
-            }
         }
-    }
 
+    
     // Next Button Klicked Textfield new First Responder
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -129,6 +122,23 @@ class Login: UIViewController, UITextFieldDelegate {
     }
     
     
+    // Keeped Users logged in
+    
+    func KeepUserSigndIn(){
+        FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
+            if authuser != nil {
+                // User is signed in. Show home screen
+                self.performSegue(withIdentifier: "AppHomepageSegue", sender: self)
+            } else {
+                // No User is signed in. Show user the login screen
+            }
+        }
+    }
+    
+    
+    
+    
+    
 
     
     // Login Function
@@ -165,7 +175,8 @@ class Login: UIViewController, UITextFieldDelegate {
                     self.present(alertController, animated: true, completion: nil)
     }  } } }
     
-   // Register Button pressed, Text is empty
+  
+    // Register Button pressed, Text is empty
     
     @IBAction func RegisteredPressed(_ sender: UIButton) {
     
@@ -175,7 +186,6 @@ class Login: UIViewController, UITextFieldDelegate {
 
     
 
-   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         

@@ -34,6 +34,12 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
         // TextFieldDelegates
         RestorePasswordTextField.delegate = self
 
+        // Left Swipe
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        
+        view.addGestureRecognizer(edgePan)
+        
            }
 
     override func didReceiveMemoryWarning() {
@@ -41,7 +47,15 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
        
     }
     
+    //Fund for Left Swipe
     
+    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        
+        if recognizer.state == .recognized {
+            self.dismiss(animated: true, completion: nil)
+            
+        }
+    }
     // Next Button Klicked Textfield new First Responder
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

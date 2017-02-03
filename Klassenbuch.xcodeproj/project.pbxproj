@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		37075C4E1E36A38200187480 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37075C4D1E36A38200187480 /* Media.xcassets */; };
+		3707B7661E44C92900BD150D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3707B7651E44C92900BD150D /* MessageUI.framework */; };
 		372B20921E2E8C62004BF666 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372B20911E2E8C62004BF666 /* AuthTextField.swift */; };
 		375534FB1E08490C000C0842 /* Absenzen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375534FA1E08490C000C0842 /* Absenzen.swift */; };
 		375534FD1E0849F5000C0842 /* Add Hausaufgaben.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375534FC1E0849F5000C0842 /* Add Hausaufgaben.swift */; };
 		375534FF1E084A3C000C0842 /* Add Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375534FE1E084A3C000C0842 /* Add Tests.swift */; };
 		375535011E084A4E000C0842 /* Add Absenzen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375535001E084A4E000C0842 /* Add Absenzen.swift */; };
+		376DDB3A1E44C0ED0064E2D2 /* Einstellungen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */; };
 		377FFC091E2FFFA2008EE114 /* NonEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377FFC081E2FFFA2008EE114 /* NonEditableTextField.swift */; };
 		37AD16E01E2D4438002F41D9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16DF1E2D4438002F41D9 /* Login.swift */; };
 		37AD16E21E2D4448002F41D9 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16E11E2D4448002F41D9 /* Register.swift */; };
@@ -56,11 +58,13 @@
 		2C6F60B5EE3259EBBA8850F6 /* Pods-KlassenbuchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KlassenbuchUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KlassenbuchUITests/Pods-KlassenbuchUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3644FF363637C9A7B024BAB8 /* Pods-Klassenbuch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Klassenbuch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Klassenbuch/Pods-Klassenbuch.debug.xcconfig"; sourceTree = "<group>"; };
 		37075C4D1E36A38200187480 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		3707B7651E44C92900BD150D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		372B20911E2E8C62004BF666 /* AuthTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		375534FA1E08490C000C0842 /* Absenzen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Absenzen.swift; sourceTree = "<group>"; };
 		375534FC1E0849F5000C0842 /* Add Hausaufgaben.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Add Hausaufgaben.swift"; sourceTree = "<group>"; };
 		375534FE1E084A3C000C0842 /* Add Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Add Tests.swift"; sourceTree = "<group>"; };
 		375535001E084A4E000C0842 /* Add Absenzen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Add Absenzen.swift"; sourceTree = "<group>"; };
+		376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Einstellungen.swift; sourceTree = "<group>"; };
 		377FFC081E2FFFA2008EE114 /* NonEditableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonEditableTextField.swift; sourceTree = "<group>"; };
 		37AD16DF1E2D4438002F41D9 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		37AD16E11E2D4448002F41D9 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3707B7661E44C92900BD150D /* MessageUI.framework in Frameworks */,
 				3E5C6F2EB73F2ECDEA81F287 /* Pods_Klassenbuch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				37FCAEAE1DFD556F00789BFF /* Informationen.swift */,
+				376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */,
 			);
 			name = Informationen;
 			sourceTree = "<group>";
@@ -235,6 +241,7 @@
 		A801B0C46304E64EE95DAECE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3707B7651E44C92900BD150D /* MessageUI.framework */,
 				D38845EA0770DFA88801FE1C /* Pods_Klassenbuch.framework */,
 				6F074CF7F67BDDC616A8F03C /* Pods_KlassenbuchTests.framework */,
 				B9A43E3B1147EC6AB62AA1BE /* Pods_KlassenbuchUITests.framework */,
@@ -541,6 +548,7 @@
 				377FFC091E2FFFA2008EE114 /* NonEditableTextField.swift in Sources */,
 				375535011E084A4E000C0842 /* Add Absenzen.swift in Sources */,
 				372B20921E2E8C62004BF666 /* AuthTextField.swift in Sources */,
+				376DDB3A1E44C0ED0064E2D2 /* Einstellungen.swift in Sources */,
 				37FCAE771DFD51C000789BFF /* AppDelegate.swift in Sources */,
 				375534FB1E08490C000C0842 /* Absenzen.swift in Sources */,
 				37AD16E01E2D4438002F41D9 /* Login.swift in Sources */,

@@ -15,15 +15,16 @@ class Informationen: UITableViewController {
    
     
     //Outlets
-    
-        
+  
     @IBOutlet weak var ConnectionState: UIBarButtonItem!
 
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ConnectionstateOnOff()
+        self.ConnectionstateOnOff()
         
             }
 
@@ -54,34 +55,7 @@ class Informationen: UITableViewController {
         })
 
     }
-    //Log User Out Function with ActionSheet
-    @IBAction func LogUserOut(_ sender: Any) {
-    
-        
-        let actionSheet = UIAlertController(title: "Wollen Sie sich wirklich abmelden?", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
-        
-        let logoutAction = UIAlertAction(title: "Abmelden", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
-            
-            try! FIRAuth.auth()!.signOut()
-            if let storyboard = self.storyboard {
-                let vc = storyboard.instantiateViewController(withIdentifier: "LoginNavigationVC") as! UINavigationController
-                self.present(vc, animated: false, completion: nil)
-
-            print("Logout Pressed")
-            }}
-        
-        let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
-            print("Cancel Pressed")
-        }
-        
-        actionSheet.addAction(logoutAction)
-        
-        actionSheet.addAction(cancelAction)
-        
-        self.present(actionSheet, animated: true, completion: nil)
-
-    }
-
+   
     
     // Activtiy Sheet Function
     @IBAction func ActivitySheet(_ sender: Any) {
@@ -99,12 +73,20 @@ class Informationen: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 
-        return 3
+        return 4
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
  
         return 1
+    }
+   
+    
+    // UIBarButtons Functions
+    
+    @IBAction func cancelSettings (_ segue:UIStoryboardSegue) {
+        
     }
 
     
