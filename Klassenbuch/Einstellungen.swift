@@ -82,11 +82,11 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
             } else {
                 self.showSendMailErrorAlert()
             }
+ }
+        if indexPath.section == 0 && indexPath.row == 3 {
 
-        
-        
+           self.gotoSettings()
         }
-       
     }
 
     func configuredMailComposeViewController() -> MFMailComposeViewController {
@@ -129,10 +129,42 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
         controller.dismiss(animated: true, completion: nil)
     }
     
-    // UIBarButtons Functions
+    // Cancel App Info
     
     @IBAction func cancelAppInfo (_ segue:UIStoryboardSegue) {
         
     }
 
-}
+    
+    
+    // Go to Acknowledgements Function in Settings
+    
+    func gotoSettings() {
+        
+
+        print("Settigstapped.")
+        
+        let alertController = UIAlertController(title: "Acknowledgements!", message: " Drücken Sie siehe Acknowledgements, falls sie die Lizenzen für die Softwares sehen wollen welche in diesem App gebraucht wurden.", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Siehe Acknowledgements", style: .default, handler: { (action: UIAlertAction!) in
+            
+            print("Send to Settings")
+            
+            // THIS IS WHERE THE MAGIC HAPPENS!!!!
+            
+            if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+                UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+            }
+    }))
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
+            print("RateUs.Cancel_Tapped")
+        }))
+        
+        present(alertController, animated: true, completion: nil)
+        
+    }
+
+        }
+
+

@@ -16,8 +16,7 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
     
     
     //Outlets
-    @IBOutlet var AppStoreView: UIView!
-  
+
     @IBOutlet weak var ConnectionState: UIBarButtonItem!
 
     // Variables
