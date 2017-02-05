@@ -73,6 +73,12 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selected Row = \(indexPath.description)")
         
+        
+        
+
+        
+        
+        
         if indexPath.section == 0 && indexPath.row == 2 {
             
             let mailComposeViewController = configuredMailComposeViewController()

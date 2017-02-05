@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		370542E81E4777C3006B8C7E /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370542E71E4777C3006B8C7E /* TutorialViewController.swift */; };
 		37075C4E1E36A38200187480 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37075C4D1E36A38200187480 /* Media.xcassets */; };
 		3707B7661E44C92900BD150D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3707B7651E44C92900BD150D /* MessageUI.framework */; };
 		3707B7681E44D70D00BD150D /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3707B7671E44D70D00BD150D /* AppInfo.swift */; };
@@ -59,6 +60,7 @@
 		21997162EECBA022236EFD7D /* Pods-KlassenbuchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KlassenbuchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KlassenbuchTests/Pods-KlassenbuchTests.release.xcconfig"; sourceTree = "<group>"; };
 		2C6F60B5EE3259EBBA8850F6 /* Pods-KlassenbuchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KlassenbuchUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KlassenbuchUITests/Pods-KlassenbuchUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3644FF363637C9A7B024BAB8 /* Pods-Klassenbuch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Klassenbuch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Klassenbuch/Pods-Klassenbuch.debug.xcconfig"; sourceTree = "<group>"; };
+		370542E71E4777C3006B8C7E /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		37075C4D1E36A38200187480 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		3707B7651E44C92900BD150D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		3707B7671E44D70D00BD150D /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				37FCAEB01DFD55D900789BFF /* Manager.swift */,
 				377FFC071E2FFF7D008EE114 /* Helpers */,
 				37FCAE7F1DFD51C000789BFF /* LaunchScreen.storyboard */,
+				370542E71E4777C3006B8C7E /* TutorialViewController.swift */,
 				37FCAE761DFD51C000789BFF /* AppDelegate.swift */,
 				37075C4D1E36A38200187480 /* Media.xcassets */,
 				37FE769E1E4723250056A196 /* Settings.bundle */,
@@ -554,6 +557,7 @@
 				37AD16E21E2D4448002F41D9 /* Register.swift in Sources */,
 				377FFC091E2FFFA2008EE114 /* NonEditableTextField.swift in Sources */,
 				375535011E084A4E000C0842 /* Add Absenzen.swift in Sources */,
+				370542E81E4777C3006B8C7E /* TutorialViewController.swift in Sources */,
 				372B20921E2E8C62004BF666 /* AuthTextField.swift in Sources */,
 				376DDB3A1E44C0ED0064E2D2 /* Einstellungen.swift in Sources */,
 				37FCAE771DFD51C000789BFF /* AppDelegate.swift in Sources */,
