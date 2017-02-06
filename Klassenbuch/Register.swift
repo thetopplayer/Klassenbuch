@@ -137,8 +137,7 @@ class Register: UIViewController, UITextFieldDelegate {
             iconClick = true
         }
 
-        
-        
+ 
     }
     
     
@@ -204,7 +203,7 @@ class Register: UIViewController, UITextFieldDelegate {
     
         if self.RegisterEmailTextField.text == "" || self.RegisterPasswordTextField.text == ""
         {
-            let alertController = UIAlertController(title: "Oops!", message: "Please enter an email and password.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Oops!", message: "Bitte geben Sie eine korrekte Email an und ein Password mit mindestens 6 Zeichen ein.", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
@@ -219,10 +218,15 @@ class Register: UIViewController, UITextFieldDelegate {
                 {
                     
                     
-                    let alert = UIAlertController(title: "Erfolgreich Registriert", message: "Sie werden nun automatisch eingeloggt", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Erfolgreich Registriert", message: "Sie werden nun eine Einführung für das Klassenbuch App erhalten", preferredStyle: .alert)
+                    
                     let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
-                        let viewControllerYouWantToPresent = self.storyboard?.instantiateViewController(withIdentifier: "LoginPage")
-                        self.present(viewControllerYouWantToPresent!, animated: true, completion: nil)
+                        
+                        
+                    self.gotoOnboarding()
+                    
+                    
+                    
                     }
                     alert.addAction(action)
                     self.present(alert, animated: true, completion: nil)
@@ -274,5 +278,41 @@ class Register: UIViewController, UITextFieldDelegate {
         applyMotionEffect(toView: EyeButton, magnitude: -10)
         
         
-    }    
+    }
+    
+    
+    
+    
+    // Keeped Users logged in
+    
+    func gotoOnboarding(){
+
+        // If Ok tapped check if user is sucessfully signed in
+
+        FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
+            
+            if authuser != nil {
+                
+                // There is a User
+                // Because the User registered He has to see the Onboarding
+                
+                self.performSegue(withIdentifier: "FirstOnboarding", sender: self)
+
+            
+            } else {
+                
+                // No User is signed in. Show Alert View Controller
+                
+                let failedAuthTest = UIAlertController(title: "Oops!", message: "Es lief etwas schief mit deiner Identifikation, bitte probiere es nochmals.", preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                failedAuthTest.addAction(defaultAction)
+                
+                self.present(failedAuthTest, animated: true, completion: nil)
+            
+            
+            }
+        }
+    }
+    
 }

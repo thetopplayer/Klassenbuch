@@ -628,10 +628,10 @@
         <!--Onboarding Page View Controller-->
         <scene sceneID="XEG-hU-b9R">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="OWP-w8-Rym" customClass="OnboardingPageViewController" customModule="Klassenbuch" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="OWP-w8-Rym" customClass="OnboardingPageViewController" customModule="Klassenbuch" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxo-pr-1en" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-965" y="-359"/>
+            <point key="canvasLocation" x="-149" y="1099"/>
         </scene>
         <!--Login VC-->
         <scene sceneID="TgO-lg-79e">
@@ -1669,7 +1669,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kpg-HY-DTc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2339" y="-1048"/>
+            <point key="canvasLocation" x="-3529" y="-408"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="PWx-Ap-BuI">
@@ -1706,7 +1706,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5yK-Ge-ZbS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1655" y="-1048"/>
+            <point key="canvasLocation" x="-2642" y="-408"/>
         </scene>
         <!--Onboarding 3-->
         <scene sceneID="iMH-Za-y4r">
@@ -1747,7 +1747,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sH9-uA-2s7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8aC-hU-71F" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-964" y="-1048"/>
+            <point key="canvasLocation" x="-1655" y="-408"/>
         </scene>
         <!--Onboarding Setup Controller-->
         <scene sceneID="Mge-Qk-rXc">
@@ -1787,11 +1787,12 @@
                     </view>
                     <connections>
                         <segue destination="ftF-5p-0bU" kind="presentation" identifier="SetupUpMadeHomePage" id="LOq-b4-yZ5"/>
+                        <segue destination="ot7-Kg-eJc" kind="presentation" identifier="AuthCheckFailed" id="XLU-jy-Fyw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5XG-qQ-Xog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-235" y="-1048"/>
+            <point key="canvasLocation" x="-817" y="-408"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a7A-Vk-ecw">
@@ -1809,7 +1810,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3u-Ja-sav" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2633" y="355"/>
+            <point key="canvasLocation" x="-2642" y="355"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Puv-lG-Egj">

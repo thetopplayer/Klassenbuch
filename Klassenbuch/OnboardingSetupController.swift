@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class OnboardingSetupController: UIViewController {
 
@@ -27,10 +28,27 @@ class OnboardingSetupController: UIViewController {
     // setup the NSUserdefaults
         
     // perform Segue to App Homescreen
-    
-        self.performSegue(withIdentifier: "SetupUpMadeHomePage", sender: self)
-    
+    self.Checkstatus()
+        
     }
    
+    
+    // Keeped Users logged in
+    
+    func Checkstatus(){
+       
+        FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
+            if authuser != nil {
+                // User is signed in. Show home screen
+                
+               self.performSegue(withIdentifier: "SetupUpMadeHomePage", sender: self)
+            
+            } else {
+               
+            self.performSegue(withIdentifier: "AuthCheckFailed", sender: self)
+            
+            }
+        }
+    }
 
 }
