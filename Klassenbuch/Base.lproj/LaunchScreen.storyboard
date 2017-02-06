@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="New-Wh-Vim">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="New-Wh-Vim">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Das Klassenbuch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYa-IT-BnF">
-                                <rect key="frame" x="73" y="468.5" width="228" height="22"/>
+                                <rect key="frame" x="73" y="469" width="228" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="GYa-IT-BnF" secondAttribute="height" multiplier="72:7" id="GgZ-xm-fp3"/>
                                     <constraint firstAttribute="width" constant="228" id="hoj-G3-Oj7"/>
@@ -40,16 +40,24 @@
                                     <constraint firstAttribute="width" constant="321" id="tFL-Q9-S6s"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbL-4d-45D">
+                                <rect key="frame" x="151.5" y="642" width="73" height="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.17254901959999999" green="0.21960784310000001" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="GYa-IT-BnF" firstAttribute="centerX" secondItem="VW6-Op-FZ2" secondAttribute="centerX" id="4oM-67-il4"/>
                             <constraint firstItem="GYa-IT-BnF" firstAttribute="width" secondItem="GYa-IT-BnF" secondAttribute="height" multiplier="72:7" id="A5F-NL-glT"/>
                             <constraint firstItem="6k0-43-5fi" firstAttribute="centerY" secondItem="VW6-Op-FZ2" secondAttribute="centerY" constant="-14.5" id="Fad-pL-XUa"/>
+                            <constraint firstItem="OH7-li-Dkq" firstAttribute="top" secondItem="NbL-4d-45D" secondAttribute="bottom" constant="8" id="TX1-sn-bZ8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6k0-43-5fi" secondAttribute="trailing" constant="11" id="ZOh-Rg-Fe4"/>
                             <constraint firstItem="GYa-IT-BnF" firstAttribute="top" secondItem="6k0-43-5fi" secondAttribute="bottom" constant="51.5" id="a3j-cF-AQ1"/>
                             <constraint firstItem="6k0-43-5fi" firstAttribute="leading" secondItem="VW6-Op-FZ2" secondAttribute="leadingMargin" constant="11" id="ifc-ww-Sbb"/>
                             <constraint firstItem="6k0-43-5fi" firstAttribute="centerX" secondItem="VW6-Op-FZ2" secondAttribute="centerX" id="jee-Pz-KXD"/>
+                            <constraint firstItem="NbL-4d-45D" firstAttribute="centerX" secondItem="VW6-Op-FZ2" secondAttribute="centerX" id="kBw-vv-dqT"/>
                         </constraints>
                     </view>
                 </viewController>

@@ -148,8 +148,8 @@ class Register: UIViewController, UITextFieldDelegate {
     func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         
         if recognizer.state == .recognized {
-           self.dismiss(animated: true, completion: nil)
-        
+            self.dismiss(animated: true, completion: nil)
+            
         }
     }
     

@@ -21,6 +21,14 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Left Swipe
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        
+        view.addGestureRecognizer(edgePan)
+        
+
+        
             }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +45,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 5
     }
 
     //Log User Out Function with ActionSheet
@@ -74,11 +82,6 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
         print("Selected Row = \(indexPath.description)")
         
         
-        
-
-        
-        
-        
         if indexPath.section == 0 && indexPath.row == 2 {
             
             let mailComposeViewController = configuredMailComposeViewController()
@@ -93,8 +96,33 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
 
            self.gotoSettings()
         }
+        
+        if indexPath.section == 0 && indexPath.row == 4 {
+            
+            self.gotoiBook()
+        }
+
     }
 
+    
+    // go to iBook
+    
+    func gotoiBook () {
+    
+    print("went to iBooks Store")
+    
+        if let iBook = URL(string: "https://itunes.apple.com/ch/book/im-schatten-das-licht/id1112971928?mt=11") {
+            UIApplication.shared.open(iBook, options: [:], completionHandler: nil)
+        }
+    }
+    
+    
+    
+    
+    
+    
+    // Mail Settings
+    
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
@@ -140,6 +168,12 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
     @IBAction func cancelAppInfo (_ segue:UIStoryboardSegue) {
         
     }
+    
+    // Cancel App Info
+    
+    @IBAction func cancelAppOnboarding (_ segue:UIStoryboardSegue) {
+        
+    }
 
     
     
@@ -147,13 +181,6 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
     
     func gotoSettings() {
         
-
-        print("Settigstapped.")
-        
-        let alertController = UIAlertController(title: "Acknowledgements!", message: " Drücken Sie siehe Acknowledgements, falls sie die Lizenzen für die Softwares sehen wollen welche in diesem App gebraucht wurden.", preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: "Siehe Acknowledgements", style: .default, handler: { (action: UIAlertAction!) in
-            
             print("Send to Settings")
             
             // THIS IS WHERE THE MAGIC HAPPENS!!!!
@@ -161,16 +188,16 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
             if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
                 UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
             }
-    }))
-        
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
-            print("RateUs.Cancel_Tapped")
-        }))
-        
-        present(alertController, animated: true, completion: nil)
-        
     }
-
+    
+    //Fund for Left Swipe
+    
+    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        
+        if recognizer.state == .recognized {
+            self.dismiss(animated: true, completion: nil)
+            
         }
-
+    }
+}
 
