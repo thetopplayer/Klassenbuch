@@ -91,6 +91,10 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
     @IBAction func cancelSettings (_ segue:UIStoryboardSegue) {
         
     }
+    
+    @IBAction func cancelKlassenSettings (_ segue:UIStoryboardSegue) {
+        
+    }
 
     
     
