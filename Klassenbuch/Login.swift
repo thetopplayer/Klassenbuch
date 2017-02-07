@@ -33,12 +33,10 @@ class Login: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         // Keep User Logged In
-        
         self.KeepUserSigndIn()
 
         
         //Motion Setup
-        
         self.ApplyMotionEffectsforViewDidLoad()
         
         // TextFieldDelegates
@@ -52,10 +50,10 @@ class Login: UIViewController, UITextFieldDelegate {
         self.hideKeyboardWhenTappedAround()
         
         // Eye EyeButton
-        
         iconClick = true
         LoginPasswordTextField.isSecureTextEntry = true
-        }
+       
+    }
 
     
     // Next Button Klicked Textfield new First Responder

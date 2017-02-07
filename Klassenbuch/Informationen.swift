@@ -76,7 +76,7 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 
-        return 4
+        return 3
         
     }
 
@@ -101,8 +101,6 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
     
     @IBAction func AppStoreReview(_ sender: Any) {
         
-
-        
             print("Rate Us row tapped.")
             
             let alertController = UIAlertController(title: "Bewerte die Klassenbuch App!", message: "\nAre you enjoying our app? Please rate us in the app store!\n\nElse if you know of ways we can make our app better, please send us feedback so we can improve the experience for you!\n\nThanks!\nThe App Team", preferredStyle: .alert)
@@ -120,7 +118,6 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
                     }
                 }
             }))
-            
         
             alertController.addAction(UIAlertAction(title: "Feedback", style: .default, handler: { (action: UIAlertAction!) in
                 
@@ -131,8 +128,6 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
                 } else {
                     self.showSendMailErrorAlert()
                 }
-
-                
                 print("RateUs.Feedback_Tapped")
             }))
         
@@ -141,7 +136,6 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
         }))
         
             present(alertController, animated: true, completion: nil)
-            
         }
 
 // Mail Compose for Feedback Functions
@@ -168,6 +162,7 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
         
         
     }
+    
     func mailComposeController(_ controller: MFMailComposeViewController,
                                didFinishWith result: MFMailComposeResult, error: Error?) {
         switch result.rawValue {

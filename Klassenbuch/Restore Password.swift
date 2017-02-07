@@ -50,12 +50,13 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
     //Fund for Left Swipe
     
     func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-        
+       
         if recognizer.state == .recognized {
             self.dismiss(animated: true, completion: nil)
             
         }
     }
+    
     // Next Button Klicked Textfield new First Responder
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
