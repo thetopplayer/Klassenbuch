@@ -20,6 +20,7 @@
 		375589721E48EB7200F41C0B /* OnboardingSetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375589711E48EB7200F41C0B /* OnboardingSetupController.swift */; };
 		376DDB3A1E44C0ED0064E2D2 /* Einstellungen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */; };
 		377FFC091E2FFFA2008EE114 /* NonEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377FFC081E2FFFA2008EE114 /* NonEditableTextField.swift */; };
+		3784FC241E4BC1E500941716 /* ExitPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784FC231E4BC1E500941716 /* ExitPreviewVC.swift */; };
 		37AD16E01E2D4438002F41D9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16DF1E2D4438002F41D9 /* Login.swift */; };
 		37AD16E21E2D4448002F41D9 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16E11E2D4448002F41D9 /* Register.swift */; };
 		37AD16E51E2D4696002F41D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37AD16E41E2D4696002F41D9 /* GoogleService-Info.plist */; };
@@ -75,6 +76,7 @@
 		375589711E48EB7200F41C0B /* OnboardingSetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSetupController.swift; sourceTree = "<group>"; };
 		376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Einstellungen.swift; sourceTree = "<group>"; };
 		377FFC081E2FFFA2008EE114 /* NonEditableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonEditableTextField.swift; sourceTree = "<group>"; };
+		3784FC231E4BC1E500941716 /* ExitPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExitPreviewVC.swift; sourceTree = "<group>"; };
 		37AD16DF1E2D4438002F41D9 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		37AD16E11E2D4448002F41D9 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		37AD16E41E2D4696002F41D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				370542E71E4777C3006B8C7E /* TutorialViewController.swift */,
 				3755896F1E48EA3C00F41C0B /* OnboardingPageViewController.swift */,
 				375589711E48EB7200F41C0B /* OnboardingSetupController.swift */,
+				3784FC231E4BC1E500941716 /* ExitPreviewVC.swift */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				37FCAEAF1DFD556F00789BFF /* Informationen.swift in Sources */,
 				375589701E48EA3C00F41C0B /* OnboardingPageViewController.swift in Sources */,
 				37BFF9911E09D14F00FDDFE6 /* Tests.swift in Sources */,
+				3784FC241E4BC1E500941716 /* ExitPreviewVC.swift in Sources */,
 				375534FF1E084A3C000C0842 /* Add Tests.swift in Sources */,
 				37FCAEB11DFD55D900789BFF /* Manager.swift in Sources */,
 				375534FD1E0849F5000C0842 /* Add Hausaufgaben.swift in Sources */,

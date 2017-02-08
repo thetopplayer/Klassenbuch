@@ -1700,15 +1700,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding3" translatesAutoresizingMaskIntoConstraints="NO" id="cwZ-xA-Ntj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding5" translatesAutoresizingMaskIntoConstraints="NO" id="cwZ-xA-Ntj">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23C-l9-L36">
-                                <rect key="frame" x="321" y="20" width="73" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Okay">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23C-l9-L36">
+                                <rect key="frame" x="381" y="23" width="24" height="24"/>
+                                <state key="normal" image="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="8aC-hU-71F" kind="unwind" unwindAction="cancelAppOnboarding:" id="L3C-c8-P7s"/>
@@ -1718,7 +1717,9 @@
                         <color key="backgroundColor" red="0.17254901960784313" green="0.2196078431372549" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="cwZ-xA-Ntj" firstAttribute="leading" secondItem="ROz-j6-V36" secondAttribute="leading" id="6Z8-gX-AU9"/>
+                            <constraint firstItem="23C-l9-L36" firstAttribute="top" secondItem="WBT-7f-4HN" secondAttribute="bottom" constant="3" id="9gd-an-qhU"/>
                             <constraint firstItem="cwZ-xA-Ntj" firstAttribute="top" secondItem="WBT-7f-4HN" secondAttribute="bottom" constant="-20" id="9pd-CA-16F"/>
+                            <constraint firstAttribute="trailing" secondItem="23C-l9-L36" secondAttribute="trailing" constant="9" id="Hje-F3-6g8"/>
                             <constraint firstItem="6Q8-jt-2sp" firstAttribute="top" secondItem="cwZ-xA-Ntj" secondAttribute="bottom" id="fmN-62-xff"/>
                             <constraint firstAttribute="trailing" secondItem="cwZ-xA-Ntj" secondAttribute="trailing" id="im0-KK-GMO"/>
                         </constraints>
@@ -1727,7 +1728,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sH9-uA-2s7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8aC-hU-71F" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-2157" y="-408"/>
+            <point key="canvasLocation" x="-2162.3188405797105" y="-408.42391304347831"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="S6b-PW-ISO">
@@ -1946,6 +1947,7 @@
         <image name="AppStore" width="24" height="24"/>
         <image name="Back Chevron" width="13" height="21"/>
         <image name="Background" width="414" height="736"/>
+        <image name="Cancel" width="24" height="24"/>
         <image name="ClassForm" width="250" height="183"/>
         <image name="Combined Shape" width="250" height="241"/>
         <image name="Contacts" width="25" height="25"/>
@@ -1963,6 +1965,7 @@
         <image name="Onboarding2" width="375" height="667"/>
         <image name="Onboarding3" width="375" height="667"/>
         <image name="Onboarding4" width="375" height="667"/>
+        <image name="Onboarding5" width="375" height="667"/>
         <image name="ZüriLogo" width="49" height="57"/>
         <image name="newShape" width="271" height="341"/>
     </resources>
