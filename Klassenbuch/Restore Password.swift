@@ -73,7 +73,7 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
     {
         if self.RestorePasswordTextField.text == ""
         {
-            let alertController = UIAlertController(title: "Oops!", message: "Please enter an email.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Oops!", message: "Bitte gib eine korrekte Email Adresse an.", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
@@ -95,7 +95,7 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
                 else
                 {
                     title = "Passwort Erfolgreich zurückgesetzt!"
-                    message = "Sie werden in Kürze eine Email erhalten mit Anweisungen wie Sie ihr Passwort erneuern können."
+                    message = "In Kürze wirst du eine Email erhalten mit Anweisungen wie du dein Passwort erneuern kannst."
                     self.RestorePasswordTextField.text = ""
                 }
                 

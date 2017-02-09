@@ -33,18 +33,14 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 5
     }
 
@@ -52,7 +48,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
 
     @IBAction func LogUserOut(_ sender: Any) {
         
-        let actionSheet = UIAlertController(title: "Wollen Sie sich wirklich abmelden?", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionSheet = UIAlertController(title: "Willst du dich wirklich abmelden?", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         
         let logoutAction = UIAlertAction(title: "Abmelden", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
             
@@ -129,14 +125,14 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
         
         mailComposerVC.setToRecipients(["klassenbuchteam@gmail.com"])
         mailComposerVC.setSubject("Klassenbuch App Feedback")
-        mailComposerVC.setMessageBody("Hi Team!\n\nHier ist mein Feedback für die Klassenbuch App..\n", isHTML: false)
+        mailComposerVC.setMessageBody("Hi Jérôme!\n\nHier ist mein Feedback für die Klassenbuch App..\n", isHTML: false)
         
         return mailComposerVC
     }
     
     func showSendMailErrorAlert() {
       
-        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: .alert)
+        let sendMailErrorAlert = UIAlertController(title: "Die Email konnte nicht gesendet werden", message: "Aus unerklärlichen Gründen konnte die Email nicht gesendet werden. Überprüfe deine Email Einstellungen und versuche es nochmals.", preferredStyle: .alert)
         
         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         sendMailErrorAlert.addAction(defaultAction)

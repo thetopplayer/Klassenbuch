@@ -64,7 +64,7 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
     @IBAction func ActivitySheet(_ sender: Any) {
 
         let shareText = "Sieh dir diese App an, ein mobiles Klassenbuch"
-        let shareURL = URL(string: "http://www.apple.com")
+        let shareURL = URL(string: "https://itunes.apple.com/us/app/calcfast/id876781417?mt=8")
        //  let image = UIImage(named: "Delivery@3x.png")
         let activityArray = [shareText, shareURL!/* , image!*/] as [Any]
         let activityViewController = UIActivityViewController(activityItems: activityArray , applicationActivities: nil)
@@ -103,11 +103,11 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
         
             print("Rate Us row tapped.")
             
-            let alertController = UIAlertController(title: "Bewerte die Klassenbuch App!", message: "\nAre you enjoying our app? Please rate us in the app store!\n\nElse if you know of ways we can make our app better, please send us feedback so we can improve the experience for you!\n\nThanks!\nThe App Team", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Bewerte die Klassenbuch App!", message: "\nGefällt dir die Klassenbuch App? Bitte schreibe eine Rezension im App Store!\n\nFalls dir die App nicht gefällt kannst du eine Email schreiben, ich bin immer erfreut über Feedbacks um die App zu verbessern!\n\nDankeschön!\nJérôme Hadorn", preferredStyle: .alert)
             
-            alertController.addAction(UIAlertAction(title: "Rate on iTunes", style: .default, handler: { (action: UIAlertAction!) in
+            alertController.addAction(UIAlertAction(title: "Bewerten", style: .default, handler: { (action: UIAlertAction!) in
                 print("RateUs.RateUs_Tapped")
-                print("Send to iTunes")
+                print("Send to App Store")
                 
                 if let path = URL(string: "https://itunes.apple.com/us/app/calcfast/id876781417?mt=8") {
                     UIApplication.shared.open(path) {
@@ -131,7 +131,7 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
                 print("RateUs.Feedback_Tapped")
             }))
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
+        alertController.addAction(UIAlertAction(title: "Abbrechen", style: .default, handler: { (action: UIAlertAction!) in
             print("RateUs.Cancel_Tapped")
         }))
         
@@ -146,14 +146,14 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
         
         mailComposerVC.setToRecipients(["klassenbuchteam@gmail.com"])
         mailComposerVC.setSubject("Klassenbuch App Feedback")
-        mailComposerVC.setMessageBody("Hi Team!\n\nHier ist mein Feedback für die Klassenbuch App..\n", isHTML: false)
+        mailComposerVC.setMessageBody("Hi Jérôme!\n\nHier ist mein Feedback für die Klassenbuch App..\n", isHTML: false)
         
         return mailComposerVC
     }
     
     func showSendMailErrorAlert() {
         
-        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: .alert)
+        let sendMailErrorAlert = UIAlertController(title: "Die Email konnte nicht gesendet werden", message: "Aus unerklärlichen Gründen konnte die Email nicht gesendet werden. Überprüfe deine Email Einstellungen und versuche es nochmals.", preferredStyle: .alert)
         
         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         sendMailErrorAlert.addAction(defaultAction)

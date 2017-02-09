@@ -145,7 +145,7 @@ class Login: UIViewController, UITextFieldDelegate {
     
         if self.LoginEmailTextField.text == "" || self.LoginPasswordTextField.text == ""
         {
-            let alertController = UIAlertController(title: "Oops!", message: "Please enter an email and password.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Oops!", message: "Bitte gib eine Email Adresse und ein Password ein.", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)

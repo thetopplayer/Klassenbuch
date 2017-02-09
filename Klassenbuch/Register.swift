@@ -203,7 +203,7 @@ class Register: UIViewController, UITextFieldDelegate {
     
         if self.RegisterEmailTextField.text == "" || self.RegisterPasswordTextField.text == ""
         {
-            let alertController = UIAlertController(title: "Oops!", message: "Bitte geben Sie eine korrekte Email an und ein Password mit mindestens 6 Zeichen ein.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Oops!", message: "Bitte gib eine korrekte Email an und ein Password mit mindestens 6 Zeichen.", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
@@ -218,7 +218,7 @@ class Register: UIViewController, UITextFieldDelegate {
                 {
                     
                     
-                    let alert = UIAlertController(title: "Erfolgreich Registriert", message: "Sie werden nun eine Einführung für das Klassenbuch App erhalten", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Erfolgreich Registriert", message: "Du wirst nun eine Einführung für das Klassenbuch App erhalten", preferredStyle: .alert)
                     
                     let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
                         
