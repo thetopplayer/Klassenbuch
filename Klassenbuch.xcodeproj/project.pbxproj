@@ -20,6 +20,7 @@
 		375589721E48EB7200F41C0B /* OnboardingSetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375589711E48EB7200F41C0B /* OnboardingSetupController.swift */; };
 		376DDB3A1E44C0ED0064E2D2 /* Einstellungen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */; };
 		377FFC091E2FFFA2008EE114 /* NonEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377FFC081E2FFFA2008EE114 /* NonEditableTextField.swift */; };
+		37A436DE1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A436DD1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift */; };
 		37AD16E01E2D4438002F41D9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16DF1E2D4438002F41D9 /* Login.swift */; };
 		37AD16E21E2D4448002F41D9 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16E11E2D4448002F41D9 /* Register.swift */; };
 		37AD16E51E2D4696002F41D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37AD16E41E2D4696002F41D9 /* GoogleService-Info.plist */; };
@@ -75,6 +76,7 @@
 		375589711E48EB7200F41C0B /* OnboardingSetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSetupController.swift; sourceTree = "<group>"; };
 		376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Einstellungen.swift; sourceTree = "<group>"; };
 		377FFC081E2FFFA2008EE114 /* NonEditableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonEditableTextField.swift; sourceTree = "<group>"; };
+		37A436DD1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPreSetupController.swift; sourceTree = "<group>"; };
 		37AD16DF1E2D4438002F41D9 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		37AD16E11E2D4448002F41D9 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		37AD16E41E2D4696002F41D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				370542E71E4777C3006B8C7E /* TutorialViewController.swift */,
 				3755896F1E48EA3C00F41C0B /* OnboardingPageViewController.swift */,
 				375589711E48EB7200F41C0B /* OnboardingSetupController.swift */,
+				37A436DD1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				37DC43381E3E3794009EAC4B /* Restore Password.swift in Sources */,
 				37FB38261E227EBA0075C106 /* Extensions.swift in Sources */,
 				37AD16E21E2D4448002F41D9 /* Register.swift in Sources */,
+				37A436DE1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift in Sources */,
 				377FFC091E2FFFA2008EE114 /* NonEditableTextField.swift in Sources */,
 				375535011E084A4E000C0842 /* Add Absenzen.swift in Sources */,
 				370542E81E4777C3006B8C7E /* TutorialViewController.swift in Sources */,
