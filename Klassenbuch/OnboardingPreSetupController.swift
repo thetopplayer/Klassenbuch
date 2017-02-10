@@ -20,7 +20,7 @@ class OnboardingPreSetupController: UIViewController {
         
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.Schliessen.isHidden = false
+          self.Schliessen.isHidden = false
         }
 
 
