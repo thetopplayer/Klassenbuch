@@ -10,7 +10,9 @@ import UIKit
 
 class OnboardingPreSetupController: UIViewController {
 
-
+    //Outlets
+    @IBOutlet weak var PhoneImage31: UIImageView!
+    
     @IBOutlet weak var Schliessen: UIImageView!
    
     

@@ -20,6 +20,11 @@
 		375589721E48EB7200F41C0B /* OnboardingSetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375589711E48EB7200F41C0B /* OnboardingSetupController.swift */; };
 		376DDB3A1E44C0ED0064E2D2 /* Einstellungen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */; };
 		377FFC091E2FFFA2008EE114 /* NonEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377FFC081E2FFFA2008EE114 /* NonEditableTextField.swift */; };
+		378465441E4F96EC0012CDBF /* Gif+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378465431E4F96EC0012CDBF /* Gif+Swift.swift */; };
+		378465461E4F975A0012CDBF /* OnboardingFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378465451E4F975A0012CDBF /* OnboardingFirst.swift */; };
+		3784654A1E4F979A0012CDBF /* OnboardingSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378465491E4F979A0012CDBF /* OnboardingSecond.swift */; };
+		3784654C1E4F97B00012CDBF /* OnboardingThrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784654B1E4F97B00012CDBF /* OnboardingThrid.swift */; };
+		3784654F1E4F992C0012CDBF /* giphy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3784654E1E4F992C0012CDBF /* giphy.gif */; };
 		37A436DE1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A436DD1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift */; };
 		37AD16E01E2D4438002F41D9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16DF1E2D4438002F41D9 /* Login.swift */; };
 		37AD16E21E2D4448002F41D9 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16E11E2D4448002F41D9 /* Register.swift */; };
@@ -76,6 +81,11 @@
 		375589711E48EB7200F41C0B /* OnboardingSetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSetupController.swift; sourceTree = "<group>"; };
 		376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Einstellungen.swift; sourceTree = "<group>"; };
 		377FFC081E2FFFA2008EE114 /* NonEditableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonEditableTextField.swift; sourceTree = "<group>"; };
+		378465431E4F96EC0012CDBF /* Gif+Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gif+Swift.swift"; sourceTree = "<group>"; };
+		378465451E4F975A0012CDBF /* OnboardingFirst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFirst.swift; sourceTree = "<group>"; };
+		378465491E4F979A0012CDBF /* OnboardingSecond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSecond.swift; sourceTree = "<group>"; };
+		3784654B1E4F97B00012CDBF /* OnboardingThrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingThrid.swift; sourceTree = "<group>"; };
+		3784654E1E4F992C0012CDBF /* giphy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy.gif; sourceTree = "<group>"; };
 		37A436DD1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPreSetupController.swift; sourceTree = "<group>"; };
 		37AD16DF1E2D4438002F41D9 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		37AD16E11E2D4448002F41D9 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
@@ -139,8 +149,8 @@
 			children = (
 				370542E71E4777C3006B8C7E /* TutorialViewController.swift */,
 				3755896F1E48EA3C00F41C0B /* OnboardingPageViewController.swift */,
-				375589711E48EB7200F41C0B /* OnboardingSetupController.swift */,
-				37A436DD1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift */,
+				378465411E4F96AD0012CDBF /* ViewControllers */,
+				378465421E4F96CE0012CDBF /* Gif */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -153,6 +163,35 @@
 				37FB38251E227EBA0075C106 /* Extensions.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		378465411E4F96AD0012CDBF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				378465451E4F975A0012CDBF /* OnboardingFirst.swift */,
+				378465491E4F979A0012CDBF /* OnboardingSecond.swift */,
+				3784654B1E4F97B00012CDBF /* OnboardingThrid.swift */,
+				37A436DD1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift */,
+				375589711E48EB7200F41C0B /* OnboardingSetupController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		378465421E4F96CE0012CDBF /* Gif */ = {
+			isa = PBXGroup;
+			children = (
+				378465431E4F96EC0012CDBF /* Gif+Swift.swift */,
+				3784654D1E4F98A20012CDBF /* Gifs */,
+			);
+			name = Gif;
+			sourceTree = "<group>";
+		};
+		3784654D1E4F98A20012CDBF /* Gifs */ = {
+			isa = PBXGroup;
+			children = (
+				3784654E1E4F992C0012CDBF /* giphy.gif */,
+			);
+			name = Gifs;
 			sourceTree = "<group>";
 		};
 		379BF99D1DFD5C1000BA382D /* Hausaufgaben */ = {
@@ -416,6 +455,7 @@
 				37FCAE811DFD51C000789BFF /* LaunchScreen.storyboard in Resources */,
 				37FE769F1E4723250056A196 /* Settings.bundle in Resources */,
 				37FCAE7C1DFD51C000789BFF /* Main.storyboard in Resources */,
+				3784654F1E4F992C0012CDBF /* giphy.gif in Resources */,
 				37075C4E1E36A38200187480 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,11 +606,13 @@
 			files = (
 				37FCAEAF1DFD556F00789BFF /* Informationen.swift in Sources */,
 				375589701E48EA3C00F41C0B /* OnboardingPageViewController.swift in Sources */,
+				378465441E4F96EC0012CDBF /* Gif+Swift.swift in Sources */,
 				37BFF9911E09D14F00FDDFE6 /* Tests.swift in Sources */,
 				375534FF1E084A3C000C0842 /* Add Tests.swift in Sources */,
 				37FCAEB11DFD55D900789BFF /* Manager.swift in Sources */,
 				375534FD1E0849F5000C0842 /* Add Hausaufgaben.swift in Sources */,
 				37DC43381E3E3794009EAC4B /* Restore Password.swift in Sources */,
+				3784654A1E4F979A0012CDBF /* OnboardingSecond.swift in Sources */,
 				37FB38261E227EBA0075C106 /* Extensions.swift in Sources */,
 				37AD16E21E2D4448002F41D9 /* Register.swift in Sources */,
 				37A436DE1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift in Sources */,
@@ -578,12 +620,14 @@
 				375535011E084A4E000C0842 /* Add Absenzen.swift in Sources */,
 				370542E81E4777C3006B8C7E /* TutorialViewController.swift in Sources */,
 				372B20921E2E8C62004BF666 /* AuthTextField.swift in Sources */,
+				378465461E4F975A0012CDBF /* OnboardingFirst.swift in Sources */,
 				376DDB3A1E44C0ED0064E2D2 /* Einstellungen.swift in Sources */,
 				37FCAE771DFD51C000789BFF /* AppDelegate.swift in Sources */,
 				3707B7681E44D70D00BD150D /* AppInfo.swift in Sources */,
 				375534FB1E08490C000C0842 /* Absenzen.swift in Sources */,
 				37AD16E01E2D4438002F41D9 /* Login.swift in Sources */,
 				375589721E48EB7200F41C0B /* OnboardingSetupController.swift in Sources */,
+				3784654C1E4F97B00012CDBF /* OnboardingThrid.swift in Sources */,
 				37FCAEA91DFD553900789BFF /* Hausaufgaben.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
