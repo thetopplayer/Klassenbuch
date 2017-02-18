@@ -20,19 +20,17 @@ class OnboardingPreSetupController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        //PhoneImage31.loadGif(name: "giphy")
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
           self.Schliessen.isHidden = false
         }
 
 
-        // Do any additional setup after loading the view.
-    }
+            }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+            }
     
 
 }

@@ -123,18 +123,18 @@ class Login: UIViewController, UITextFieldDelegate {
     // Keeped Users logged in
     
     func KeepUserSigndIn(){
+        
         FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
+          
             if authuser != nil {
-                // User is signed in. Show home screen
-                self.performSegue(withIdentifier: "AppHomepageSegue", sender: self)
-            } else {
+                    self.performSegue(withIdentifier: "HomePageSegue", sender: self)
+   
+                
+                } else {
                 // No User is signed in. Show user the login screen
             }
         }
     }
-    
-    
-    
     
     
 
@@ -158,11 +158,13 @@ class Login: UIViewController, UITextFieldDelegate {
                 
                 if error == nil
                 {
+
+                   self.performSegue(withIdentifier: "HomePageSegue", sender: self)
                     self.LoginEmailTextField.text = ""
                     self.LoginPasswordTextField.text = ""
-                    
-                 self.performSegue(withIdentifier: "AppHomepageSegue", sender: self)
+
                 }
+               
                 else
                 {
                     let alertController = UIAlertController(title: "Oops!", message: error?.localizedDescription, preferredStyle: .alert)
@@ -171,6 +173,8 @@ class Login: UIViewController, UITextFieldDelegate {
                     alertController.addAction(defaultAction)
                     
                     self.present(alertController, animated: true, completion: nil)
+                    
+             
     }  } } }
     
   
@@ -230,6 +234,7 @@ class Login: UIViewController, UITextFieldDelegate {
         applyMotionEffect(toView: EyeButton, magnitude: -10)
         
     }
-
-
+   
+    
+    
 }

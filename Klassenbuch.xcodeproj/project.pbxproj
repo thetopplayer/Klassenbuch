@@ -25,6 +25,7 @@
 		3784654A1E4F979A0012CDBF /* OnboardingSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378465491E4F979A0012CDBF /* OnboardingSecond.swift */; };
 		3784654C1E4F97B00012CDBF /* OnboardingThrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784654B1E4F97B00012CDBF /* OnboardingThrid.swift */; };
 		3784654F1E4F992C0012CDBF /* giphy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3784654E1E4F992C0012CDBF /* giphy.gif */; };
+		378465511E4F9F030012CDBF /* GifAnimation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 378465501E4F9F030012CDBF /* GifAnimation.gif */; };
 		37A436DE1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A436DD1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift */; };
 		37AD16E01E2D4438002F41D9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16DF1E2D4438002F41D9 /* Login.swift */; };
 		37AD16E21E2D4448002F41D9 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16E11E2D4448002F41D9 /* Register.swift */; };
@@ -86,6 +87,7 @@
 		378465491E4F979A0012CDBF /* OnboardingSecond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSecond.swift; sourceTree = "<group>"; };
 		3784654B1E4F97B00012CDBF /* OnboardingThrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingThrid.swift; sourceTree = "<group>"; };
 		3784654E1E4F992C0012CDBF /* giphy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy.gif; sourceTree = "<group>"; };
+		378465501E4F9F030012CDBF /* GifAnimation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GifAnimation.gif; sourceTree = "<group>"; };
 		37A436DD1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPreSetupController.swift; sourceTree = "<group>"; };
 		37AD16DF1E2D4438002F41D9 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		37AD16E11E2D4448002F41D9 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				3784654E1E4F992C0012CDBF /* giphy.gif */,
+				378465501E4F9F030012CDBF /* GifAnimation.gif */,
 			);
 			name = Gifs;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				37FE769F1E4723250056A196 /* Settings.bundle in Resources */,
 				37FCAE7C1DFD51C000789BFF /* Main.storyboard in Resources */,
 				3784654F1E4F992C0012CDBF /* giphy.gif in Resources */,
+				378465511E4F9F030012CDBF /* GifAnimation.gif in Resources */,
 				37075C4E1E36A38200187480 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

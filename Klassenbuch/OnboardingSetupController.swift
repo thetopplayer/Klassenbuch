@@ -81,7 +81,7 @@ class OnboardingSetupController: UIViewController, UITextFieldDelegate {
             
             if authuser != nil {
                 // User is signed in. Show home screen
-                
+                UserDefaults.standard.set(true, forKey: "launchedBefore") 
                self.performSegue(withIdentifier: "SetupUpMadeHomePage", sender: self)
             
             } else {

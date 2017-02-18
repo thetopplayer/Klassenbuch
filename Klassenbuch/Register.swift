@@ -282,9 +282,7 @@ class Register: UIViewController, UITextFieldDelegate {
     
     
     
-    
-    // Keeped Users logged in
-    
+        
     func gotoOnboarding(){
 
         // If Ok tapped check if user is sucessfully signed in

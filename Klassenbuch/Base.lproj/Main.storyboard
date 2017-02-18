@@ -57,6 +57,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="VT8-6b-a6a" kind="presentation" identifier="LoginOnboarding" id="Nzb-dA-Z4P"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4s-au-rEd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -397,10 +400,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Support" footerTitle="Version 1.0" id="56A-ql-qwH">
+                            <tableViewSection headerTitle="Hilfe &amp; Support" footerTitle="Version 1.0" id="56A-ql-qwH">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="7Si-hf-IVU" style="IBUITableViewCellStyleDefault" id="4zH-La-GVD">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4zH-La-GVD" id="8rx-rh-7it">
                                             <rect key="frame" x="0.0" y="0.0" width="381" height="43"/>
@@ -420,7 +423,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Ufb-Cr-gFH" style="IBUITableViewCellStyleDefault" id="qjZ-QX-3Ec">
-                                        <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="100" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qjZ-QX-3Ec" id="jYg-Rq-aPh">
                                             <rect key="frame" x="0.0" y="0.0" width="381" height="43"/>
@@ -440,7 +443,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0JV-qR-8Rc" style="IBUITableViewCellStyleDefault" id="7Kw-82-oiI">
-                                        <rect key="frame" x="0.0" y="143.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="144" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Kw-82-oiI" id="0cU-vY-Xsn">
                                             <rect key="frame" x="0.0" y="0.0" width="381" height="43"/>
@@ -457,7 +460,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="fMc-nr-0um" style="IBUITableViewCellStyleDefault" id="7SX-lW-tOG" userLabel="Acknowledgments">
-                                        <rect key="frame" x="0.0" y="187.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="188" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7SX-lW-tOG" id="yWv-ED-k2P">
                                             <rect key="frame" x="0.0" y="0.0" width="381" height="43"/>
@@ -474,7 +477,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="nS7-BO-XuS" style="IBUITableViewCellStyleDefault" id="7CN-vK-clj" userLabel="Acknowledgments">
-                                        <rect key="frame" x="0.0" y="231.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="232" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7CN-vK-clj" id="hNL-OM-S0P">
                                             <rect key="frame" x="0.0" y="0.0" width="381" height="43"/>
@@ -611,7 +614,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="OWP-w8-Rym" customClass="OnboardingPageViewController" customModule="Klassenbuch" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxo-pr-1en" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-149" y="1099"/>
+            <point key="canvasLocation" x="-330" y="1099"/>
         </scene>
         <!--Login VC-->
         <scene sceneID="TgO-lg-79e">
@@ -789,7 +792,8 @@
                         <outlet property="LoginPasswordTextField" destination="TDw-Zt-KyG" id="LQ0-Wc-Mbc"/>
                         <outlet property="PasswordLabel" destination="KVi-3g-y5l" id="YWi-dU-EO6"/>
                         <outlet property="ZüriBild" destination="ZKU-3k-cIO" id="uUG-yK-XmS"/>
-                        <segue destination="ftF-5p-0bU" kind="presentation" identifier="AppHomepageSegue" id="kIq-ro-bjr"/>
+                        <segue destination="OWP-w8-Rym" kind="presentation" identifier="FirstLaunchOnboarding" id="dsC-Nc-7LE"/>
+                        <segue destination="ftF-5p-0bU" kind="presentation" identifier="HomePageSegue" id="Rys-rZ-nx5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O95-iF-7Gu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1027,7 +1031,7 @@
                 </view>
                 <exit id="kh4-xB-W3w" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-904" y="1099"/>
+            <point key="canvasLocation" x="-1655" y="1099"/>
         </scene>
         <!--Manager-->
         <scene sceneID="EVZ-wr-yEQ">
@@ -1051,7 +1055,15 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ug-qR-2UH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="436" y="355.7721139430285"/>
+            <point key="canvasLocation" x="381" y="349"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="UJo-aP-m8r">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="VT8-6b-a6a" customClass="TutorialViewController" customModule="Klassenbuch" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="79S-wA-pmE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3883" y="-1257"/>
         </scene>
         <!--Hausaufgaben NC-->
         <scene sceneID="s75-wh-Q0a">
@@ -1507,7 +1519,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziv-2k-z5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1655" y="1099"/>
+            <point key="canvasLocation" x="-2758" y="1099"/>
         </scene>
         <!--Restore Password VC-->
         <scene sceneID="mrN-mG-atO">
@@ -1619,7 +1631,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cw-ou-aOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="9cx-p5-Tgx" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-904" y="1886"/>
+            <point key="canvasLocation" x="-1655" y="1778"/>
         </scene>
         <!--Onboarding 1-->
         <scene sceneID="QUd-NH-c5n">
@@ -1633,7 +1645,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Vl-x1-OHK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding1" translatesAutoresizingMaskIntoConstraints="NO" id="2Vl-x1-OHK">
                                 <rect key="frame" x="0.0" y="-20" width="414" height="756"/>
                             </imageView>
                         </subviews>
@@ -1660,7 +1672,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="sgp-3A-mWV" customClass="TutorialViewController" customModule="Klassenbuch" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQK-os-DCs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4599" y="2798"/>
+            <point key="canvasLocation" x="4599" y="2832"/>
         </scene>
         <!--Onboarding 2-->
         <scene sceneID="dzC-oc-6sO">
@@ -1891,7 +1903,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8v-e9-g3v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1655" y="1886"/>
+            <point key="canvasLocation" x="-2759" y="1778"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bAU-Tm-uVD">
@@ -1979,6 +1991,7 @@
         <image name="Info Filled" width="25" height="25"/>
         <image name="LogOut" width="25" height="25"/>
         <image name="Megafon" width="24" height="24"/>
+        <image name="Onboarding1" width="375" height="667"/>
         <image name="Onboarding2" width="375" height="667"/>
         <image name="Onboarding3" width="375" height="667"/>
         <image name="Onboarding4" width="375" height="667"/>
@@ -1988,6 +2001,7 @@
         <image name="newShape" width="271" height="341"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LOq-b4-yZ5"/>
+        <segue reference="Rys-rZ-nx5"/>
+        <segue reference="0bu-bW-EDb"/>
     </inferredMetricsTieBreakers>
 </document>

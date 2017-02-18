@@ -165,7 +165,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
         
     }
     
-    // Cancel App Info
+    // Cancel App Onboarding
     
     @IBAction func cancelAppOnboarding (_ segue:UIStoryboardSegue) {
         
