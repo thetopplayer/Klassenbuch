@@ -69,6 +69,9 @@ class OnboardingPageViewController: UIPageViewController, UIPageViewControllerDa
         return ViewControllerList[nextIndex]
         
     }
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 
 

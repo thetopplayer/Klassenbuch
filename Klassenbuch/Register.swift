@@ -16,15 +16,17 @@ class Register: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var RegisterEmailTextField: UITextField!
     @IBOutlet weak var RegisterPasswordTextField: UITextField!
+    @IBOutlet weak var RegisterPasswordTextField2: AuthTextField!
     @IBOutlet var       InformationView: UIView!
     @IBOutlet weak var VisualEffect: UIVisualEffectView!
     @IBOutlet weak var background: UIVisualEffectView!
     @IBOutlet weak var ZüriBild: UIImageView!
     @IBOutlet weak var PasswordLabel: UILabel!
     @IBOutlet weak var RegisterButton: UIButton!
-    @IBOutlet weak var EmailLabel: UIButton!
+    @IBOutlet weak var EmailLabel: UILabel!
     @IBOutlet weak var Form: UIImageView!
     @IBOutlet weak var EyeButton: UIButton!
+    @IBOutlet weak var EyeButton2: UIButton!
     
 
     
@@ -33,7 +35,7 @@ class Register: UIViewController, UITextFieldDelegate {
     
     var effect:UIVisualEffect!
     var iconClick: Bool!
-
+    var iconClick2: Bool!
     
     
     override func viewDidLoad() {
@@ -53,6 +55,7 @@ class Register: UIViewController, UITextFieldDelegate {
         // TextFieldDelegates
         RegisterEmailTextField.delegate = self
         RegisterPasswordTextField.delegate = self
+        RegisterPasswordTextField2.delegate = self
         
         //Hide Navigation Bar Controller
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -63,7 +66,10 @@ class Register: UIViewController, UITextFieldDelegate {
         // Eye EyeButton
         
         iconClick = true
+        iconClick2 = true
+     
         RegisterPasswordTextField.isSecureTextEntry = true
+        RegisterPasswordTextField2.isSecureTextEntry = true
         
         // Visual Effect
         effect = VisualEffect.effect
@@ -83,9 +89,17 @@ class Register: UIViewController, UITextFieldDelegate {
             RegisterPasswordTextField.becomeFirstResponder()
         } else {
             
-            RegisterPasswordTextField.resignFirstResponder()
+           
             RegisterPasswordTextField.isSecureTextEntry = true
-        }
+            RegisterPasswordTextField2.becomeFirstResponder()
+            
+        
+        if textField == RegisterPasswordTextField2{
+            RegisterPasswordTextField2.resignFirstResponder()
+              RegisterPasswordTextField2.isSecureTextEntry = true
+        }else{
+            }}
+    
         return true
     }
 
@@ -100,13 +114,25 @@ class Register: UIViewController, UITextFieldDelegate {
             
             EyeButton.isHidden = true
         }
+    
+        if textField == RegisterPasswordTextField2 {
+        
+            EyeButton2.isHidden = false
+        
+        }else{
+            
+           EyeButton2.isHidden = true
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == RegisterPasswordTextField{
             EyeButton.setImage(UIImage(named: "Eye"), for: UIControlState.normal)
             RegisterPasswordTextField.isSecureTextEntry = true
-          
+          }
+        if textField == RegisterPasswordTextField2{
+            EyeButton2.setImage(UIImage(named: "Eye"), for: UIControlState.normal)
+            RegisterPasswordTextField2.isSecureTextEntry = true
         }
     }
 
@@ -130,15 +156,48 @@ class Register: UIViewController, UITextFieldDelegate {
         if(iconClick == true) {
             
             RegisterPasswordTextField.isSecureTextEntry = false
+            RegisterPasswordTextField2.isSecureTextEntry = false
             
             iconClick = false
         } else {
             RegisterPasswordTextField.isSecureTextEntry = true
+            RegisterPasswordTextField2.isSecureTextEntry = true
             iconClick = true
         }
-
- 
     }
+
+    
+       
+    @IBAction func EyeTapped2(_ sender: Any) {
+        if EyeButton2.tag == 0
+        {
+            (sender as AnyObject).setImage(UIImage(named: "Eye Selected"), for: UIControlState.normal)
+            
+            EyeButton2.tag=1
+        }
+        else
+        {
+            (sender as AnyObject).setImage(UIImage(named: "Eye"), for: UIControlState.normal)
+            EyeButton2.tag=0
+        }
+        
+        
+        if(iconClick2 == true) {
+            
+            RegisterPasswordTextField.isSecureTextEntry = false
+            RegisterPasswordTextField2.isSecureTextEntry = false
+            
+            iconClick2 = false
+        } else {
+            RegisterPasswordTextField.isSecureTextEntry = true
+            RegisterPasswordTextField2.isSecureTextEntry = true
+            iconClick2 = true
+        }
+
+    
+    }
+    
+    
     
     
     
@@ -212,40 +271,57 @@ class Register: UIViewController, UITextFieldDelegate {
         }
         else
         {
-            FIRAuth.auth()?.createUser(withEmail: self.RegisterEmailTextField.text!, password: self.RegisterPasswordTextField.text!) { (user, error) in
-                
-                if error == nil
-                {
-                    
-                    
-                    let alert = UIAlertController(title: "Erfolgreich Registriert", message: "Du wirst nun eine Einführung für das Klassenbuch App erhalten", preferredStyle: .alert)
-                    
-                    let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
-                        
-                        
-                    self.gotoOnboarding()
-                    
-                    
-                    
-                    }
-                    alert.addAction(action)
-                    self.present(alert, animated: true, completion: nil)
-                    
+           
             
-                    self.RegisterEmailTextField.text = ""
-                    self.RegisterPasswordTextField.text = ""
+            if self.RegisterPasswordTextField.text == self.RegisterPasswordTextField2.text {
+            
+                FIRAuth.auth()?.createUser(withEmail: self.RegisterEmailTextField.text!, password: self.RegisterPasswordTextField.text!) { (user, error) in
                     
-                 }
-                else
-                {
-                    let alertController = UIAlertController(title: "Oops!", message: error?.localizedDescription, preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
+                    if error == nil
+                    {
+                        
+                        
+                        let alert = UIAlertController(title: "Erfolgreich Registriert", message: "Du wirst nun eine Einführung für das Klassenbuch App erhalten.", preferredStyle: .alert)
+                        
+                        let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
+                            
+                            
+                            self.gotoOnboarding()
+                            
+                            
+                            
+                        }
+                        alert.addAction(action)
+                        self.present(alert, animated: true, completion: nil)
+                        
+                        
+                        self.RegisterEmailTextField.text = ""
+                        self.RegisterPasswordTextField.text = ""
+                        
+                    }
+                    else
+                    {
+                        let alertController = UIAlertController(title: "Oops!", message: error?.localizedDescription, preferredStyle: .alert)
+                        
+                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(defaultAction)
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                    }
                 }
-            }
+
+            } else {
+            
+                let alertController = UIAlertController(title: "Oops!", message: "Die Passwörter die du eingegeben hast stimmen nicht überrein.", preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+                
+
+     
+                }
         }
     }
 

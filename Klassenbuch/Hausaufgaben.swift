@@ -78,7 +78,7 @@ class Hausaufgaben: UITableViewController {
             //User hat die App noch nicht gebraucht und bekommt einen Walkthrough
             
             
-            let alert = UIAlertController(title: "Du hast dich erfolgreich Angemeldet", message: "Du wirst nun eine Einführung für das Klassenbuch App erhalten", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Sieh dir die App an!", message: "Du wirst nun eine Einführung für das Klassenbuch App erhalten", preferredStyle: .alert)
             
             let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
                 

@@ -54,7 +54,19 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     }
     
    
-        
+    // Next Button Klicked Textfield new First Responder
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == HausaufgabenTextField{
+            SchulfachTextField.becomeFirstResponder()
+        } else {
+        }
+        return true
+    }
+    
+    
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

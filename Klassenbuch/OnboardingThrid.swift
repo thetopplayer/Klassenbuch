@@ -25,6 +25,8 @@ class OnboardingThrid: UIViewController {
         
     }
     
-
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
  
 }

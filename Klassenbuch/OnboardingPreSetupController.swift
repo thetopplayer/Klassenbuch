@@ -32,6 +32,8 @@ class OnboardingPreSetupController: UIViewController {
         super.didReceiveMemoryWarning()
             }
     
-
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 

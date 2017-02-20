@@ -24,6 +24,8 @@ class OnboardingSecond: UIViewController {
         super.didReceiveMemoryWarning()
           }
     
-
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 
 }

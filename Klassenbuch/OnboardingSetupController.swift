@@ -104,5 +104,11 @@ class OnboardingSetupController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
+   
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+
 }

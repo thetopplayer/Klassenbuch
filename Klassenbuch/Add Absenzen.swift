@@ -86,7 +86,18 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
     }
 
   
+    // Next Button Klicked Textfield new First Responder
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == AbsenzenPersons{
+            AbsenzenDatum.becomeFirstResponder()
+        } else {
+            
+            }
+        
+        return true
+    }
+
 
 
     //Array to have diffrent rows for sections

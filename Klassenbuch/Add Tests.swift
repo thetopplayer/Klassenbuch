@@ -52,6 +52,17 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
             SaveButton.isEnabled = true
         }
     }
+    
+    // Next Button Klicked Textfield new First Responder
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == TestTextField{
+            TestSchulfachTextField.becomeFirstResponder()
+        } else {
+        }
+        return true
+    }
+
 
     // MARK: - Table view data source
 
