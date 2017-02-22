@@ -33,7 +33,7 @@ class Register: UIViewController, UITextFieldDelegate {
     
     // Variables
     
-    var effect:UIVisualEffect!
+    var effect: UIVisualEffect!
     var iconClick: Bool!
     var iconClick2: Bool!
     
