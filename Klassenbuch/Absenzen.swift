@@ -53,8 +53,6 @@ class Absenzen: UITableViewController {
         
     }
     
-    @IBAction func saveAbsenzen (_ segue:UIStoryboardSegue) {
-        
-    }
+
 
 }

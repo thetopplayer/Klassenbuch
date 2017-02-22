@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
@@ -22,7 +23,8 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     //Variables
     var TestSubjectPicker = UIPickerView()
-    
+    var ref:FIRDatabaseReference?
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         TestSubjectPicker.delegate = self
@@ -35,7 +37,9 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         SaveButton.isEnabled = false
 
 
-    
+        //Database Refrence Property
+        ref = FIRDatabase.database().reference()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -128,6 +132,13 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
     }
  
+    @IBAction func Save(_ sender: Any) {
+        
+            ref?.child("TESTS").child("Tests").childByAutoId().setValue(["TText": TestTextField.text, "TFach": TestSchulfachTextField.text, "TDatum": TestDatum.text])
+
+        
+        self.dismiss(animated: true, completion: nil)
+}
         
     
     

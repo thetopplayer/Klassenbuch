@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
    
@@ -23,8 +24,11 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
     
     @IBOutlet weak var SaveButton: UIBarButtonItem!
 
-    var Absenzstatus: String?
     
+    //Variables
+    var Absenzstatus: String?
+    var ref:FIRDatabaseReference?
+
 
     
     override func viewDidLoad() {
@@ -53,6 +57,10 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
         bisPickerView.tag = 2
         bisStundenTextField.inputView = bisPickerView
 
+        //Database Refrence Property
+        ref = FIRDatabase.database().reference()
+
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -268,6 +276,17 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
    return nil
        }
    
+    @IBAction func Save(_ sender: Any) {
+        
+        
+        ref?.child("ABSENZEN").child("Absenzen").childByAutoId().setValue(["AText": AbsenzenPersons.text, "ADatum": AbsenzenDatum.text /*,"HDatum": DatumTextField.text*/])
+        
+        
+        
+        self.dismiss(animated: true, completion: nil)
+ 
+
+    }
 }
 
     

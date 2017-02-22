@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 
@@ -23,7 +24,7 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     // Variables
     
     var HWSubjectpicker = UIPickerView()
-
+    var ref:FIRDatabaseReference?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,30 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
         SchulfachTextField.inputView = HWSubjectpicker
         self.hideKeyboardWhenTappedAround()
         SaveButton.isEnabled = false
+        
+        
+        //Database Refrence Property
+        ref = FIRDatabase.database().reference()
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
     }
    
@@ -132,8 +157,34 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     }
    
     @IBAction func SaveButtonclicked(_ sender: Any) {
+        
+        
+        
+    ref?.child("HOMEWORK").child("Hausaufgabe").childByAutoId().setValue(["HText": HausaufgabenTextField.text, "HFach": SchulfachTextField.text, "HDatum": DatumTextField.text])
+        
+
+        
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    func postHomework(){
+    
+
+        
+        
+        
+        
+    
+    
+    
+    }
+    
+    
+    
+    
+    
+    
     
     @IBAction func cancelButtonclicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

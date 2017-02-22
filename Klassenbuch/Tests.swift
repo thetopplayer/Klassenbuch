@@ -55,8 +55,6 @@ class Tests: UITableViewController {
         
     }
     
-    @IBAction func saveTests (_ segue:UIStoryboardSegue) {
-        
-    }
+
 
 }

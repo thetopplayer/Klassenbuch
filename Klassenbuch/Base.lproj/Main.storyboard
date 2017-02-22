@@ -158,7 +158,6 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="SaveButtonclicked:" destination="Rnk-mw-eC2" id="S6n-qW-x0A"/>
-                                <segue destination="mXI-xG-fya" kind="unwind" identifier="saveHA" unwindAction="saveHausaufgaben:" id="aTA-0c-Nut"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1309,7 +1308,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="soq-XN-deX">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="xRC-y7-O52" kind="unwind" unwindAction="saveTests:" id="wcr-7P-ecr"/>
+                                <action selector="Save:" destination="leb-Lr-KaQ" id="WuJ-RK-GRS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1504,7 +1503,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="kyd-b2-5LK">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="tC4-RR-2Oq" kind="unwind" identifier="saveAZ" unwindAction="saveAbsenzen:" id="oM0-YY-WsF"/>
+                                <action selector="Save:" destination="IXb-bc-Twd" id="R4F-pQ-Oro"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

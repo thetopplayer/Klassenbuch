@@ -7,15 +7,38 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class Hausaufgaben: UITableViewController {
 
+    //Outlets
+    
+    
+    
+    
+    // Variables
+    
+    var ref: FIRDatabaseReference?
+    var databaseHandle: FIRDatabaseHandle?
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.EmptyHausaufgaben()
         self.FirstLoginOnboarding()
+       
+        // Set the Firebase refrence
+        ref = FIRDatabase.database().reference()
         
+        // Retrieve the Post and listen for Changes
+        databaseHandle = ref?.child("Hausaufgabe").observe(.childAdded, with: { (snapshot) in
+            
+            
+            // Take the Value from the Snapshot and added it to the postData array
+            
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +71,11 @@ class Hausaufgaben: UITableViewController {
          tableView.separatorStyle = .none
         
   
-        } else{}
+        } else{
+        
+        tableView.separatorStyle = .singleLine
+            
+        }
    
     }
     
