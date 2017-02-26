@@ -24,24 +24,29 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
     
     @IBOutlet weak var SaveButton: UIBarButtonItem!
 
+   
     
     //Variables
-    var Absenzstatus: String?
-    var ref:FIRDatabaseReference?
-
-
+    var Absenzstatus: String = ""
+    var Beginn: String = ""
+    var Ende: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
    
+        Beginn = vonStundenTextField.text!
+        Ende = bisStundenTextField.text!
+        
+       
+        Absenzstatus = "Ganzer Tag"
+        
         AbsenzenPersons.delegate = self
         AbsenzenDatum.delegate = self
         vonStundenTextField.delegate = self
         bisStundenTextField.delegate = self
         
         self.hideKeyboardWhenTappedAround()
-        // print(Absenzstatus as Any)
-        // Absenzstatus = "Ganzer Tag"
+
         
         SaveButton.isEnabled = false
         
@@ -51,6 +56,8 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
         vonPickerView.delegate = self
         vonPickerView.tag = 1
         vonStundenTextField.inputView = vonPickerView
+        vonStundenTextField.text = Beginn
+        
         
         let bisPickerView = UIPickerView()
         bisPickerView.delegate = self
@@ -67,6 +74,25 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
         super.didReceiveMemoryWarning()
 
     }
+    
+    //Variables
+    
+    
+   
+
+    
+    
+    var ref:FIRDatabaseReference?
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
     
     // Make SaveButton Appear
     
@@ -166,11 +192,13 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
         
         if GanzerTagSwitch.isOn {
             
+             Absenzstatus = "Ganzer Tag"
+            
             if (AbsenzenPersons.text?.isEmpty)! || (AbsenzenDatum.text?.isEmpty)!{
             
             SaveButton.isEnabled = false
 
-               Absenzstatus = "Ganzer Tag"
+         
        
                 
             }else {
@@ -178,21 +206,13 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
             }
         } else  {
             
+            
             if (vonStundenTextField.text?.isEmpty)! || (bisStundenTextField.text?.isEmpty)! {
                 
                 SaveButton.isEnabled = false
             }else{
                 
                 
-               /*
-                var vonZeit: String?
-                var bisZeit: String?
-                vonZeit = vonStundenTextField.text!
-                bisZeit = bisStundenTextField.text!
-                Absenzstatus = "\(vonZeit)-\(bisZeit)"
-           
-                print(Absenzstatus as Any)
-              */
                 
                 SaveButton.isEnabled = true
             }
@@ -252,12 +272,15 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
         if pickerView.tag == 1 {
         
             vonStundenTextField.text = vonTime[row]
+            
         
         }
         
         if pickerView.tag == 2  {
             bisStundenTextField.text = bisTime[row]
-        }
+            Absenzstatus = "\(vonStundenTextField.text!) - \(bisStundenTextField.text!)"
+                
+                        }
 
     }
     
@@ -276,10 +299,15 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
    return nil
        }
    
+   
+    
+    
+    
+    
     @IBAction func Save(_ sender: Any) {
         
         
-        ref?.child("ABSENZEN").child("Absenzen").childByAutoId().setValue(["AText": AbsenzenPersons.text, "ADatum": AbsenzenDatum.text /*,"HDatum": DatumTextField.text*/])
+        ref?.child("ABSENZEN").child("Absenzen").childByAutoId().setValue(["AText": AbsenzenPersons.text!, "ADatum": AbsenzenDatum.text!,"AZeitspanne": Absenzstatus])
         
         
         
