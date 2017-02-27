@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 import Firebase
 
 class Register: UIViewController, UITextFieldDelegate {
@@ -36,7 +38,7 @@ class Register: UIViewController, UITextFieldDelegate {
     var effect: UIVisualEffect!
     var iconClick: Bool!
     var iconClick2: Bool!
-    
+    var ref:FIRDatabaseReference?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +81,8 @@ class Register: UIViewController, UITextFieldDelegate {
         // Cornerradius
         InformationView.layer.cornerRadius = 5
         
+        //Database Refrence Property
+        ref = FIRDatabase.database().reference()
         
     }
     
@@ -287,7 +291,7 @@ class Register: UIViewController, UITextFieldDelegate {
                             
                             
                             self.gotoOnboarding()
-                            
+                            self.setupUserinDatabase()
                             
                             
                         }
@@ -295,8 +299,9 @@ class Register: UIViewController, UITextFieldDelegate {
                         self.present(alert, animated: true, completion: nil)
                         
                         
-                        self.RegisterEmailTextField.text = ""
-                        self.RegisterPasswordTextField.text = ""
+                        //self.RegisterEmailTextField.text = ""
+                        //self.RegisterPasswordTextField.text = ""
+                        //self.RegisterPasswordTextField2.text = ""
                         
                     }
                     else
@@ -357,7 +362,12 @@ class Register: UIViewController, UITextFieldDelegate {
     }
     
     
-    
+    func setupUserinDatabase(){
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        self.ref?.child("users").child(uid!).setValue(["email": RegisterEmailTextField.text!])
+
+    }
         
     func gotoOnboarding(){
 
@@ -371,7 +381,7 @@ class Register: UIViewController, UITextFieldDelegate {
                 // Because the User registered He has to see the Onboarding
                 
                 self.performSegue(withIdentifier: "FirstOnboarding", sender: self)
-
+                
             
             } else {
                 

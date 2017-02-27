@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
+import Firebase
 
 class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 
@@ -40,26 +42,6 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
         
         //Database Refrence Property
         ref = FIRDatabase.database().reference()
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     
     }
    
@@ -158,24 +140,17 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
    
     @IBAction func SaveButtonclicked(_ sender: Any) {
         
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
         
-        
-    ref?.child("HOMEWORK").child("Hausaufgabe").childByAutoId().setValue(["HText": HausaufgabenTextField.text, "HFach": SchulfachTextField.text, "HDatum": DatumTextField.text])
+        self.ref?.child("users").child(uid!).child("Hausaufgaben").childByAutoId().setValue(["HText": HausaufgabenTextField.text, "HFach": SchulfachTextField.text, "HDatum": DatumTextField.text])
         
 
-        
         self.dismiss(animated: true, completion: nil)
     }
     
     
     func postHomework(){
-    
-
-        
-        
-        
-        
-    
     
     
     }

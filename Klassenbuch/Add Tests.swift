@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
+import Firebase
 
 class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
@@ -134,7 +136,10 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
  
     @IBAction func Save(_ sender: Any) {
         
-            ref?.child("TESTS").child("Tests").childByAutoId().setValue(["TText": TestTextField.text, "TFach": TestSchulfachTextField.text, "TDatum": TestDatum.text])
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        self.ref?.child("users").child(uid!).child("Tests").childByAutoId().setValue(["TText": TestTextField.text, "TFach": TestSchulfachTextField.text, "TDatum": TestDatum.text])
 
         
         self.dismiss(animated: true, completion: nil)

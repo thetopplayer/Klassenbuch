@@ -8,6 +8,9 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
+import Firebase
+
 
 class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
    
@@ -76,12 +79,6 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
     }
     
     //Variables
-    
-    
-   
-
-    
-    
     var ref:FIRDatabaseReference?
     
 
@@ -307,7 +304,10 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
     @IBAction func Save(_ sender: Any) {
         
         
-        ref?.child("ABSENZEN").child("Absenzen").childByAutoId().setValue(["AText": AbsenzenPersons.text!, "ADatum": AbsenzenDatum.text!,"AZeitspanne": Absenzstatus])
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        self.ref?.child("users").child(uid!).child("Absenzen").childByAutoId().setValue(["AText": AbsenzenPersons.text!, "ADatum": AbsenzenDatum.text!,"AZeitspanne": Absenzstatus])
         
         
         
