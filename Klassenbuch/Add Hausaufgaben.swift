@@ -138,6 +138,8 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
         
     }
    
+    // Here I write the data to the Firabase
+    
     @IBAction func SaveButtonclicked(_ sender: Any) {
         
         let user = FIRAuth.auth()?.currentUser
