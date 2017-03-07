@@ -27,6 +27,8 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     
     var HWSubjectpicker = UIPickerView()
     var ref:FIRDatabaseReference?
+    var selectedDateZeroHour: Int?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,14 +130,10 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     }
     func datePickerValueChanged(_ sender: UIDatePicker) {
         
-        let dateformatter = DateFormatter()
-        
-        dateformatter.dateStyle = DateFormatter.Style.medium
-        
-        dateformatter.timeStyle = DateFormatter.Style.none
-        
-        DatumTextField.text = dateformatter.string(from: sender.date)
-        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        DatumTextField.text = dateFormatter.string(from: sender.date)
+        self.selectedDateZeroHour = sender.date.getDateFromZeroHour
     }
    
     // Here I write the data to the Firabase
@@ -145,10 +143,14 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         
-        self.ref?.child("users").child(uid!).child("Hausaufgaben").childByAutoId().setValue(["HText": HausaufgabenTextField.text, "HFach": SchulfachTextField.text, "HDatum": DatumTextField.text])
+        self.ref!.child("homeworks").child(uid!).childByAutoId().setValue([
+            "HText": HausaufgabenTextField.text!,
+            "HFach": SchulfachTextField.text!,
+            "HDatum": self.selectedDateZeroHour!
+            ])
         
-
         self.dismiss(animated: true, completion: nil)
+
     }
     
     
@@ -167,4 +169,26 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
         self.dismiss(animated: true, completion: nil)
 
     }
+}
+
+extension Date {
+    
+    /// This computed property will take date and convert the date to zero hours e.g. 7 Mar 2017 12:08PM After 7 Mar 2017 00:00PM
+    
+    var getDateFromZeroHour: Int {
+        
+        get {
+            
+            let oldDate: Date = self
+            let calendar: Calendar = Calendar.current
+            var comps: DateComponents = (calendar as NSCalendar).components([NSCalendar.Unit.year , NSCalendar.Unit.month , NSCalendar.Unit.day], from: oldDate)
+            comps.hour = 0
+            comps.minute = 0
+            comps.second = 0
+            (comps as NSDateComponents).timeZone = calendar.timeZone
+            let newDate: Date = calendar.date(from: comps)!
+            return Int(newDate.timeIntervalSince1970*1000)
+        }
+    }
+    
 }

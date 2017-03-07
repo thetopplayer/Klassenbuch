@@ -26,7 +26,9 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
     //Variables
     var TestSubjectPicker = UIPickerView()
     var ref:FIRDatabaseReference?
-   
+   var selectedDateZeroHour: Int?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         TestSubjectPicker.delegate = self
@@ -119,18 +121,17 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         sender.inputView = datepickerView
         
-        datepickerView.addTarget(self, action: #selector(Add_Tests.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        datepickerView.addTarget(self, action: #selector(Add_Hausaufgaben.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        
+
         
     }
     func datePickerValueChanged(_ sender: UIDatePicker) {
         
-        let dateformatter = DateFormatter()
-        
-        dateformatter.dateStyle = DateFormatter.Style.medium
-        
-        dateformatter.timeStyle = DateFormatter.Style.none
-        
-        TestDatum.text = dateformatter.string(from: sender.date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        TestDatum.text = dateFormatter.string(from: sender.date)
+        self.selectedDateZeroHour = sender.date.getDateFromZeroHour
         
     }
  
@@ -139,8 +140,11 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         
-        self.ref?.child("users").child(uid!).child("Tests").childByAutoId().setValue(["TText": TestTextField.text, "TFach": TestSchulfachTextField.text, "TDatum": TestDatum.text])
-
+        self.ref!.child("tests").child(uid!).childByAutoId().setValue([
+            "TText": TestTextField.text!,
+            "TFach": TestSchulfachTextField.text!,
+            "TDatum": self.selectedDateZeroHour!
+            ])
         
         self.dismiss(animated: true, completion: nil)
 }

@@ -4,10 +4,22 @@
 //
 //  Created by Developing on 11.12.16.
 //  Copyright © 2016 Hadorn Developing. All rights reserved.
-//
+//  Original
+
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
+
+
+struct Homework {
+    var HDatum: Int
+    var HFach: String
+    var HText: String
+    var HUid: String
+}
+
+
 
 class Hausaufgaben: UITableViewController {
 
@@ -17,6 +29,9 @@ class Hausaufgaben: UITableViewController {
     
     
     // Variables
+    
+    var data = [Int: [Homework]]() // Date: Homework Object
+    var sortedData = [(Int, [Homework])]()
     
     var ref: FIRDatabaseReference?
     var databaseHandle: FIRDatabaseHandle?
@@ -28,18 +43,42 @@ class Hausaufgaben: UITableViewController {
         
         self.EmptyHausaufgaben()
         self.FirstLoginOnboarding()
-       
+        
         // Set the Firebase refrence
         ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()?.currentUser
         
         // Retrieve the Post and listen for Changes
-        databaseHandle = ref?.child("Hausaufgabe").observe(.childAdded, with: { (snapshot) in
+        ref!.child("homeworks/\(user!.uid)").observe(.childAdded, with: { (snapshot) in
             
+            if let fdata = snapshot.value as? NSDictionary {
+                
+                let hdatum = fdata["HDatum"] as! Int
+                
+                let hfach = fdata["HFach"] as! String
+                
+                let htext = fdata["HText"] as! String
+                
+                let hID = snapshot.key
+                
+                let homeObject = Homework(HDatum: hdatum, HFach: hfach, HText: htext, HUid: hID)
+                
+                if self.data[hdatum] == nil {
+                    self.data[hdatum] = [homeObject]
+                }else {
+                    self.data[hdatum]!.append(homeObject)
+                }
+                
+            }
             
-            // Take the Value from the Snapshot and added it to the postData array
+            self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
             
+            self.tableView.reloadData()
+            
+            self.EmptyHausaufgaben()
         })
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,19 +86,29 @@ class Hausaufgaben: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-
         
-        return 0
+        return self.sortedData.count
     }
-
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      
         
-        return 0
+        return self.sortedData[section].1.count
     }
-
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.sortedData[section].0.convertTimestampToDate
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "HausaufgabenCell")
+        cell.textLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].HText
+        cell.detailTextLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].HFach
+        return cell
+    }
+    
     
     // Func for EmptyState
     
@@ -72,7 +121,7 @@ class Hausaufgaben: UITableViewController {
         
   
         } else{
-        
+        tableView.backgroundView = nil
         tableView.separatorStyle = .singleLine
             
         }
@@ -127,6 +176,24 @@ class Hausaufgaben: UITableViewController {
     @IBAction func cancelAppOnboarding (_ segue:UIStoryboardSegue) {
         
     }
+}
+
+extension Int {
+    
+    var convertTimestampToDate: String {
+        
+        get {
+            
+            let date = Date(timeIntervalSince1970: Double(self)/1000.0)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MMM yyyy"
+            
+            return dateFormatter.string(from: date)
+            
+        }
+    }
+    
 }
 
 

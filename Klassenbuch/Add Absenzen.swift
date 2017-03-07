@@ -33,6 +33,9 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
     var Absenzstatus: String = ""
     var Beginn: String = ""
     var Ende: String = ""
+    var ref:FIRDatabaseReference?
+    var selectedDateZeroHour: Int?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,8 +81,6 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
 
     }
     
-    //Variables
-    var ref:FIRDatabaseReference?
     
 
     
@@ -157,18 +158,17 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
         
         sender.inputView = datepickerView
         
-        datepickerView.addTarget(self, action: #selector(Add_Absenzen.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        datepickerView.addTarget(self, action: #selector(Add_Hausaufgaben.datePickerValueChanged), for: UIControlEvents.valueChanged)
         
     }
     func datePickerValueChanged(_ sender: UIDatePicker) {
         
-        let dateformatter = DateFormatter()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        AbsenzenDatum.text = dateFormatter.string(from: sender.date)
+        self.selectedDateZeroHour = sender.date.getDateFromZeroHour
         
-        dateformatter.dateStyle = DateFormatter.Style.medium
-        
-        dateformatter.timeStyle = DateFormatter.Style.none
-        
-        AbsenzenDatum.text = dateformatter.string(from: sender.date)
+
         
     }
 
@@ -307,8 +307,11 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         
-        self.ref?.child("users").child(uid!).child("Absenzen").childByAutoId().setValue(["AText": AbsenzenPersons.text!, "ADatum": AbsenzenDatum.text!,"AZeitspanne": Absenzstatus])
-        
+        self.ref!.child("absenzen").child(uid!).childByAutoId().setValue([
+            "APerson": AbsenzenPersons.text!,
+            "AStatus": Absenzstatus,
+            "ADatum": self.selectedDateZeroHour!
+            ])
         
         
         self.dismiss(animated: true, completion: nil)
