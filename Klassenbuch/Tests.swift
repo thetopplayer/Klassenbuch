@@ -45,6 +45,7 @@ class Tests: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.EmptyScreen()
         
         // Set the Firebase refrence
         ref = FIRDatabase.database().reference()
@@ -77,7 +78,7 @@ class Tests: UITableViewController {
             
             self.tableView.reloadData()
             
-            self.EmptyTest()
+            self.EmptyScreen()
         })
     }
     
@@ -114,7 +115,11 @@ class Tests: UITableViewController {
         return cell
     }
     
-    func EmptyTest () {
+    
+    
+    // Func for EmptyState
+    
+    func EmptyScreen () {
         
         if tableView.visibleCells.count == 0 {
             
@@ -122,9 +127,14 @@ class Tests: UITableViewController {
             tableView.separatorStyle = .none
             
             
-        } else{}
+        } else{
+            tableView.backgroundView = nil
+            tableView.separatorStyle = .singleLine
+            
+        }
         
     }
+
     
     // UIBarButtons Functions
     

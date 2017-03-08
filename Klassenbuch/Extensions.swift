@@ -49,7 +49,45 @@ extension UIViewController {
  */
 
 
+extension Int {
+    
+    var convertTimestampToDate: String {
+        
+        get {
+            
+            let date = Date(timeIntervalSince1970: Double(self)/1000.0)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd MMM yyyy"
+            
+            return dateFormatter.string(from: date)
+            
+        }
+    }
+    
+}
 
 
+extension Date {
+    
+    /// This computed property will take date and convert the date to zero hours e.g. 7 Mar 2017 12:08PM After 7 Mar 2017 00:00PM
+    
+    var getDateFromZeroHour: Int {
+        
+        get {
+            
+            let oldDate: Date = self
+            let calendar: Calendar = Calendar.current
+            var comps: DateComponents = (calendar as NSCalendar).components([NSCalendar.Unit.year , NSCalendar.Unit.month , NSCalendar.Unit.day], from: oldDate)
+            comps.hour = 0
+            comps.minute = 0
+            comps.second = 0
+            (comps as NSDateComponents).timeZone = calendar.timeZone
+            let newDate: Date = calendar.date(from: comps)!
+            return Int(newDate.timeIntervalSince1970*1000)
+        }
+    }
+    
+}
 
 

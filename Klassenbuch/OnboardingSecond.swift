@@ -17,7 +17,7 @@ class OnboardingSecond: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //PhoneImage2.loadGif(name: "GifAnimation")
+        PhoneImage2.loadGif(name: "GIF2")
     }
 
     override func didReceiveMemoryWarning() {

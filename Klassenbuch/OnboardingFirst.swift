@@ -19,7 +19,7 @@ class OnboardingFirst: UIViewController {
         super.viewDidLoad()
 
         
-      //  PhoneImage1.loadGif(name: "giphy")
+     PhoneImage1.loadGif(name: "GIF")
             }
 
     override func didReceiveMemoryWarning() {

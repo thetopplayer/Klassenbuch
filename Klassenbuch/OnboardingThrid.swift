@@ -17,7 +17,7 @@ class OnboardingThrid: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //PhoneImage3.loadGif(name: "giphy")  
+        PhoneImage3.loadGif(name: "GIF3")  
     }
 
     override func didReceiveMemoryWarning() {

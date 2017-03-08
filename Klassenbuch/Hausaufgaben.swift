@@ -41,8 +41,10 @@ class Hausaufgaben: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.EmptyHausaufgaben()
+        self.EmptyScreen()
         self.FirstLoginOnboarding()
+        
+        tableView.allowsMultipleSelectionDuringEditing = true
         
         // Set the Firebase refrence
         ref = FIRDatabase.database().reference()
@@ -75,7 +77,7 @@ class Hausaufgaben: UITableViewController {
             
             self.tableView.reloadData()
             
-            self.EmptyHausaufgaben()
+            self.EmptyScreen()
         })
     }
 
@@ -108,11 +110,27 @@ class Hausaufgaben: UITableViewController {
         cell.detailTextLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].HFach
         return cell
     }
+   
+    
+
+    
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    
+        if editingStyle == UITableViewCellEditingStyle.delete{
+        
+            
+        
+        }
+        
+        
+        print(indexPath.row)
+}
     
     
     // Func for EmptyState
     
-    func EmptyHausaufgaben () {
+    func EmptyScreen () {
     
         if tableView.visibleCells.count == 0 {
             
@@ -178,22 +196,5 @@ class Hausaufgaben: UITableViewController {
     }
 }
 
-extension Int {
-    
-    var convertTimestampToDate: String {
-        
-        get {
-            
-            let date = Date(timeIntervalSince1970: Double(self)/1000.0)
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd MMM yyyy"
-            
-            return dateFormatter.string(from: date)
-            
-        }
-    }
-    
-}
 
 

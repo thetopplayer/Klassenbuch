@@ -35,7 +35,7 @@ class Absenzen: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.EmptyScreen()
         // Set the Firebase refrence
         ref = FIRDatabase.database().reference()
         let user = FIRAuth.auth()?.currentUser
@@ -67,7 +67,7 @@ class Absenzen: UITableViewController {
             
             self.tableView.reloadData()
             
-            self.EmptyAbsenzen()
+            self.EmptyScreen()
         })
         
         
@@ -108,7 +108,7 @@ class Absenzen: UITableViewController {
     
     // Func for EmptyState
     
-    func EmptyAbsenzen () {
+    func EmptyScreen () {
         
         if tableView.visibleCells.count == 0 {
             
@@ -116,7 +116,11 @@ class Absenzen: UITableViewController {
             tableView.separatorStyle = .none
             
             
-        } else{}
+        } else{
+            tableView.backgroundView = nil
+            tableView.separatorStyle = .singleLine
+            
+        }
         
     }
     

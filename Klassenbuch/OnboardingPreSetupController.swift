@@ -20,7 +20,7 @@ class OnboardingPreSetupController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //PhoneImage31.loadGif(name: "giphy")
+        PhoneImage31.loadGif(name: "GIF3")
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
           self.Schliessen.isHidden = false
         }
