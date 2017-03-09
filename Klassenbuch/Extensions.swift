@@ -38,16 +38,6 @@ extension UIViewController {
     }
 }
 
-// Now in every UIViewController, all you have to do is call this function:
-
-/*override func viewDidLoad() {
-    super.viewDidLoad()
- 
-    self.hideKeyboardWhenTappedAround()
- 
-}
- */
-
 
 extension Int {
     

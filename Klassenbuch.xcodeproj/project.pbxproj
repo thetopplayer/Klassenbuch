@@ -162,8 +162,9 @@
 		377FFC071E2FFF7D008EE114 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				37FCAE761DFD51C000789BFF /* AppDelegate.swift */,
+				37FCAEB01DFD55D900789BFF /* Manager.swift */,
 				372B20911E2E8C62004BF666 /* AuthTextField.swift */,
-				377FFC081E2FFFA2008EE114 /* NonEditableTextField.swift */,
 				37FB38251E227EBA0075C106 /* Extensions.swift */,
 			);
 			name = Helpers;
@@ -247,6 +248,14 @@
 			name = Authentication;
 			sourceTree = "<group>";
 		};
+		37B99BD21E71BC0500938C6E /* Delete */ = {
+			isa = PBXGroup;
+			children = (
+				377FFC081E2FFFA2008EE114 /* NonEditableTextField.swift */,
+			);
+			name = Delete;
+			sourceTree = "<group>";
+		};
 		37FCAE6A1DFD51C000789BFF = {
 			isa = PBXGroup;
 			children = (
@@ -278,15 +287,14 @@
 				379BF9A01DFD5C2800BA382D /* Tests */,
 				379BF9A31DFD5C4C00BA382D /* Absenzen */,
 				379BF9A41DFD5C5300BA382D /* Informationen */,
-				37FCAEB01DFD55D900789BFF /* Manager.swift */,
 				3755896E1E48E63000F41C0B /* Onboarding */,
 				377FFC071E2FFF7D008EE114 /* Helpers */,
 				37FCAE7F1DFD51C000789BFF /* LaunchScreen.storyboard */,
-				37FCAE761DFD51C000789BFF /* AppDelegate.swift */,
 				37075C4D1E36A38200187480 /* Media.xcassets */,
 				37FE769E1E4723250056A196 /* Settings.bundle */,
 				37FCAE821DFD51C000789BFF /* Info.plist */,
 				37AD16E41E2D4696002F41D9 /* GoogleService-Info.plist */,
+				37B99BD21E71BC0500938C6E /* Delete */,
 			);
 			path = Klassenbuch;
 			sourceTree = "<group>";

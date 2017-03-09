@@ -26,7 +26,6 @@ class Absenzen: UITableViewController {
     
     var data = [Int: [AbsenzenStruct]]() // Date: Homework Object
     var sortedData = [(Int, [AbsenzenStruct])]()
-    
     var ref: FIRDatabaseReference?
     var databaseHandle: FIRDatabaseHandle?
     
@@ -35,7 +34,9 @@ class Absenzen: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set EmptyState
         self.EmptyScreen()
+        
         // Set the Firebase refrence
         ref = FIRDatabase.database().reference()
         let user = FIRAuth.auth()?.currentUser
@@ -69,11 +70,8 @@ class Absenzen: UITableViewController {
             
             self.EmptyScreen()
         })
-        
-        
-        
-        
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -84,7 +82,6 @@ class Absenzen: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
         return self.sortedData.count
     }
     
@@ -114,20 +111,15 @@ class Absenzen: UITableViewController {
             
             tableView.backgroundView = UIImageView(image: UIImage(named: "EmptyAbsenzen"))
             tableView.separatorStyle = .none
-            
-            
         } else{
             tableView.backgroundView = nil
             tableView.separatorStyle = .singleLine
-            
         }
-        
     }
     
     //UIBarButton Functions
     
     @IBAction func cancelAbsenzen (_ segue:UIStoryboardSegue) {
-        
     }
     
 

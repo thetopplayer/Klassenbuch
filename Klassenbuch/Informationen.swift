@@ -14,11 +14,10 @@ import MessageUI
 class Informationen: UITableViewController, MFMailComposeViewControllerDelegate {
 
     
-    
     //Outlets
-
     @IBOutlet weak var ConnectionState: UIBarButtonItem!
 
+    
     // Variables
     var effect:UIVisualEffect!
 
@@ -29,12 +28,13 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
 
         self.ConnectionstateOnOff()
         
-            }
+        }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
  
-    }
+        }
   
     
     
@@ -47,8 +47,6 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
             if let connected = snapshot.value as? Bool, connected {
                 
                 self.ConnectionState.image = #imageLiteral(resourceName: "WifiOn")
-                
-                
                 print("Connected")
             } else {
                 
@@ -56,11 +54,11 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
                 print("Not connected")
             }
         })
-
     }
    
     
     // Activtiy Sheet Function
+    
     @IBAction func ActivitySheet(_ sender: Any) {
 
         let shareText = "Sieh dir diese App an, ein mobiles Klassenbuch"
@@ -72,6 +70,9 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
         present(activityViewController, animated: true, completion: nil)
     }
 
+    
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -89,11 +90,9 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
     // UIBarButtons Functions
     
     @IBAction func cancelSettings (_ segue:UIStoryboardSegue) {
-        
     }
     
     @IBAction func cancelKlassenSettings (_ segue:UIStoryboardSegue) {
-        
     }
 
     
@@ -103,7 +102,7 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
         
             print("Rate Us row tapped.")
             
-            let alertController = UIAlertController(title: "Bewerte die Klassenbuch App!", message: "\nGefällt dir die Klassenbuch App? Bitte schreibe eine Rezension im App Store!\n\nFalls dir die App nicht gefällt kannst du eine Email schreiben, ich bin immer erfreut über Feedbacks um die App zu verbessern!\n\nDankeschön!\nJérôme Hadorn", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Ave! Bewerte die Klassenbuch App!", message: "\nGefällt dir die Klassenbuch App? Bitte schreibe eine Rezension im App Store!\n\nFalls dir die App nicht gefällt kannst du eine Email schreiben, ich bin immer erfreut über Feedbacks um die App zu verbessern!\n\nDankeschön!\nJérôme Hadorn", preferredStyle: .alert)
             
             alertController.addAction(UIAlertAction(title: "Bewerten", style: .default, handler: { (action: UIAlertAction!) in
                 print("RateUs.RateUs_Tapped")
@@ -138,7 +137,10 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
             present(alertController, animated: true, completion: nil)
         }
 
-// Mail Compose for Feedback Functions
+    
+    
+    
+    // Mail Compose for Feedback Functions
     
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
@@ -160,7 +162,6 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
         
         self.present(sendMailErrorAlert, animated: true, completion: nil)
         
-        
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController,
@@ -177,10 +178,10 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
         default:
             break
         }
+        
         // Dismiss the mail compose view controller.
         controller.dismiss(animated: true, completion: nil)
     }
-    
 }
 
 

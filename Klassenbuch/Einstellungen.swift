@@ -12,9 +12,10 @@ import MessageUI
 
 class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate {
 
-   //Outlets
-    
+   
+    //Outlets
     @IBOutlet weak var LogOutButton: UIBarButtonItem!
+    
     
     
     
@@ -26,24 +27,25 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
         edgePan.edges = .left
         
         view.addGestureRecognizer(edgePan)
-        
+         }
 
-        
-            }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
 
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
 
+    
     //Log User Out Function with ActionSheet
 
     @IBAction func LogUserOut(_ sender: Any) {
@@ -69,8 +71,8 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
         actionSheet.addAction(cancelAction)
         
         self.present(actionSheet, animated: true, completion: nil)
-
     }
+    
     
     // Email Feedback
     
@@ -87,7 +89,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
             } else {
                 self.showSendMailErrorAlert()
             }
- }
+        }
         if indexPath.section == 0 && indexPath.row == 3 {
 
            self.gotoSettings()
@@ -97,7 +99,6 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
             
             self.gotoiBook()
         }
-
     }
 
     
@@ -155,20 +156,21 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
         default:
             break
         }
+        
         // Dismiss the mail compose view controller.
         controller.dismiss(animated: true, completion: nil)
     }
     
+    
     // Cancel App Info
     
     @IBAction func cancelAppInfo (_ segue:UIStoryboardSegue) {
-        
     }
+    
     
     // Cancel App Onboarding
     
     @IBAction func cancelAppOnboarding (_ segue:UIStoryboardSegue) {
-        
     }
 
     
@@ -177,14 +179,15 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
     
     func gotoSettings() {
         
-            print("Send to Settings")
+        print("Send to Settings")
             
-            // THIS IS WHERE THE MAGIC HAPPENS!!!!
+        // THIS IS WHERE THE MAGIC HAPPENS!!!!
             
-            if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+        if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
                 UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
             }
-    }
+        }
+    
     
     //Fund for Left Swipe
     

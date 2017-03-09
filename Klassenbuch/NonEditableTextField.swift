@@ -10,7 +10,7 @@ import UIKit
 
 // Makes Textfields in Datepickers and Pickerviews not editable
 
-class NonEditableTextField: UITextField {
+/*class NonEditableTextField: UITextField {
 
     override func caretRect(for position: UITextPosition) -> CGRect {
         return CGRect.zero
@@ -33,3 +33,4 @@ class NonEditableTextField: UITextField {
 
 
 
+*/

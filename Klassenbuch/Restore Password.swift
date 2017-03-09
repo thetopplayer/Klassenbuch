@@ -11,6 +11,8 @@ import Firebase
 
 class Restore_Password: UIViewController, UITextFieldDelegate {
 
+   //Outlets
+    
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var Form: UIImageView!
     @IBOutlet weak var EmailLabel: UILabel!
@@ -39,9 +41,9 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
         edgePan.edges = .left
         
         view.addGestureRecognizer(edgePan)
-        
-           }
+       }
 
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
        
@@ -53,15 +55,14 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
        
         if recognizer.state == .recognized {
             self.dismiss(animated: true, completion: nil)
-            
         }
     }
+    
     
     // Next Button Klicked Textfield new First Responder
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == RestorePasswordTextField{
-            
             RestorePasswordTextField.resignFirstResponder()
         }
         return true
@@ -69,8 +70,8 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
 
     
     
-    @IBAction func restorePassword(sender: AnyObject)
-    {
+    @IBAction func restorePassword(sender: AnyObject) {
+        
         if self.RestorePasswordTextField.text == ""
         {
             let alertController = UIAlertController(title: "Oops!", message: "Bitte gib eine korrekte Email Adresse an.", preferredStyle: .alert)
@@ -109,6 +110,8 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
         }
     }
 
+   
+    
     func applyMotionEffect (toView view:UIView, magnitude:Float) {
         let xMotion = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
         xMotion.minimumRelativeValue = -magnitude
@@ -131,8 +134,7 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
         applyMotionEffect(toView: ZüriBild, magnitude: -10)
         applyMotionEffect(toView: RestorePasswordTextField, magnitude: -10)
         applyMotionEffect(toView: EmailLabel, magnitude: -10)
-        applyMotionEffect(toView: RestorePasswordButton, magnitude: -10)
-        
+        applyMotionEffect(toView: RestorePasswordButton, magnitude: -10)   
     }
 
 }

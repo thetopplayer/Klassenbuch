@@ -69,6 +69,7 @@ class TutorialViewController: UIPageViewController, UIPageViewControllerDataSour
         return ViewControllerList[nextIndex]
         
     }
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }

@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import Firebase
 
+
 struct TestsStruct {
     var TDatum: Int
     var TFach: String
@@ -22,29 +23,19 @@ struct TestsStruct {
 class Tests: UITableViewController {
     
     
-    
-    
-    
-    
-    
-    
+
     // Variables
     
     var data = [Int: [TestsStruct]]() // Date: Homework Object
     var sortedData = [(Int, [TestsStruct])]()
-    
     var ref: FIRDatabaseReference?
     var databaseHandle: FIRDatabaseHandle?
     
-    
-    
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set the EmptyState
         self.EmptyScreen()
         
         // Set the Firebase refrence
@@ -71,13 +62,9 @@ class Tests: UITableViewController {
                 }else {
                     self.data[tdatum]!.append(homeObject2)
                 }
-                
             }
-            
             self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
-            
             self.tableView.reloadData()
-            
             self.EmptyScreen()
         })
     }
@@ -107,6 +94,7 @@ class Tests: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.sortedData[section].0.convertTimestampToDate
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "TestCell")
@@ -122,24 +110,19 @@ class Tests: UITableViewController {
     func EmptyScreen () {
         
         if tableView.visibleCells.count == 0 {
-            
             tableView.backgroundView = UIImageView(image: UIImage(named: "EmptyTest"))
             tableView.separatorStyle = .none
-            
-            
+   
         } else{
             tableView.backgroundView = nil
             tableView.separatorStyle = .singleLine
-            
         }
-        
     }
 
     
     // UIBarButtons Functions
     
     @IBAction func cancelTests (_ segue:UIStoryboardSegue) {
-        
     }
     
 

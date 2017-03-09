@@ -18,15 +18,11 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
     //Outlets
     
     @IBOutlet weak var AbsenzenPersons: UITextField!
-    
     @IBOutlet weak var AbsenzenDatum: UITextField!
-    
     @IBOutlet weak var vonStundenTextField: UITextField!
-    
     @IBOutlet weak var bisStundenTextField: UITextField!
-    
     @IBOutlet weak var SaveButton: UIBarButtonItem!
-
+    @IBOutlet weak var GanzerTagSwitch: UISwitch!
    
     
     //Variables
@@ -40,11 +36,12 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
    
+        // Setting up TextFielddelegates and Pickerdelegates
+        
         Beginn = vonStundenTextField.text!
         Ende = bisStundenTextField.text!
         
-       
-        Absenzstatus = "Ganzer Tag"
+       Absenzstatus = "Ganzer Tag"
         
         AbsenzenPersons.delegate = self
         AbsenzenDatum.delegate = self
@@ -76,6 +73,7 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
         
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
@@ -83,14 +81,6 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
     
     
 
-    
-    
-    
-    
-    
-    
-    
-    
     
     // Make SaveButton Appear
     
@@ -118,15 +108,14 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
     }
 
   
+    
     // Next Button Klicked Textfield new First Responder
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == AbsenzenPersons{
             AbsenzenDatum.becomeFirstResponder()
         } else {
-            
-            }
-        
+        }
         return true
     }
 
@@ -135,6 +124,10 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
     //Array to have diffrent rows for sections
     
     var rowArray = [["One Row"], ["One Row"], ["One Row","Second Row"], ["One Row"]]
+    
+  
+   
+    // TableView Settings
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         
@@ -145,7 +138,15 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
         
         
        return self.rowArray[section].count
-}
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath.section == 2 && indexPath.row == 1 && GanzerTagSwitch.isOn == true {
+            return 0.0
+        }
+        return 44.0
+    }
 
 
     // DatePicker
@@ -172,12 +173,8 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
         
     }
 
-    // Switch changed
-
-    
-    @IBOutlet weak var GanzerTagSwitch: UISwitch!
-    
    
+    // Switch changed
     
     @IBAction func ValueChanged(_ sender: UISwitch) {
         
@@ -194,48 +191,24 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
             if (AbsenzenPersons.text?.isEmpty)! || (AbsenzenDatum.text?.isEmpty)!{
             
             SaveButton.isEnabled = false
-
-         
-       
-                
+   
             }else {
             SaveButton.isEnabled = true
             }
         } else  {
-            
-            
+ 
             if (vonStundenTextField.text?.isEmpty)! || (bisStundenTextField.text?.isEmpty)! {
                 
                 SaveButton.isEnabled = false
             }else{
-                
-                
-                
+     
                 SaveButton.isEnabled = true
             }
         }
-
-        
-        
-        
-        
-        }
-    
-    //asd
-    
-    
-    
-    
-    
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        if indexPath.section == 2 && indexPath.row == 1 && GanzerTagSwitch.isOn == true {
-            return 0.0
-        }
-    
-        return 44.0
     }
+    
+   
+    
 
     
      //StundenPickerView von und bis
@@ -269,15 +242,12 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
         if pickerView.tag == 1 {
         
             vonStundenTextField.text = vonTime[row]
-            
-        
         }
         
         if pickerView.tag == 2  {
             bisStundenTextField.text = bisTime[row]
             Absenzstatus = "\(vonStundenTextField.text!) - \(bisStundenTextField.text!)"
-                
-                        }
+        }
 
     }
     

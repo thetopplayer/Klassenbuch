@@ -16,11 +16,8 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     //Outlets
     
     @IBOutlet weak var HausaufgabenTextField: UITextField!
-    
     @IBOutlet weak var SchulfachTextField: UITextField!
-    
     @IBOutlet weak var DatumTextField: UITextField!
-    
     @IBOutlet weak var SaveButton: UIBarButtonItem!
     
     // Variables
@@ -32,12 +29,17 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Setting up TextFielddelegates and Pickerdelegates
+        
         HWSubjectpicker.delegate = self
         HWSubjectpicker.dataSource = self
         DatumTextField.delegate = self
         SchulfachTextField.delegate = self
         HausaufgabenTextField.delegate = self
         SchulfachTextField.inputView = HWSubjectpicker
+        
+        //self.Savebuttonfont()
         self.hideKeyboardWhenTappedAround()
         SaveButton.isEnabled = false
         
@@ -62,7 +64,19 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
         }
     }
     
-   
+   // Save Button custom Font
+    
+    func Savebuttonfont() {
+    
+        SaveButton.setTitleTextAttributes([
+            NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 17)!,
+            NSForegroundColorAttributeName : UIColor.white],
+                                          for: UIControlState.normal)
+
+        SaveButton.isEnabled = false
+    }
+    
+    
     // Next Button Klicked Textfield new First Responder
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -79,18 +93,17 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-
         return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         return 1
     }
 
+   
     // SubjectPicker
     
-    var subjects = ["Mathemathik","Deutsch","Spanisch","Englisch","Französisch","Biologie","Chemie","Physik","Geschichte","Geografie","Wirtschaft"]
+    var subjects = ["Bildnerisches Gestalten","Biologie","Chemie","Deutsch","Englisch","Französisch","Geografie","Geschichte","Italienisch","Latein","Mathemathik","Musik","Physik","Spanisch","Sport","Wirtschaft"]
     
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int{
@@ -120,14 +133,11 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     @IBAction func DTFBeginEditing(_ sender: UITextField) {
        
         let datepickerView = UIDatePicker()
-        
         datepickerView.datePickerMode = UIDatePickerMode.date
-        
         sender.inputView = datepickerView
-        
         datepickerView.addTarget(self, action: #selector(Add_Hausaufgaben.datePickerValueChanged), for: UIControlEvents.valueChanged)
-
     }
+    
     func datePickerValueChanged(_ sender: UIDatePicker) {
         
         let dateFormatter = DateFormatter()
@@ -157,19 +167,11 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
             ])
         
         self.dismiss(animated: true, completion: nil)
-
     }
     
-    
 
-    
-    
-    
-    
-    
     @IBAction func cancelButtonclicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-
     }
 }
 

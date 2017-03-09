@@ -24,39 +24,6 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UIApplicationShortcutItems</key>
-	<array>
-		<dict>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>Home3D</string>
-			<key>UIApplicationShortcutItemSubtitle</key>
-			<string>neue Hausaufgabe</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Hausaufgabe</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).First</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>Exam3D</string>
-			<key>UIApplicationShortcutItemSubtitle</key>
-			<string>neuer Test</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Test</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).Second</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>Contacts3D</string>
-			<key>UIApplicationShortcutItemSubtitle</key>
-			<string>neue Absenz</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Absenz</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).Third</string>
-		</dict>
-	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

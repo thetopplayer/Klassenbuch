@@ -26,11 +26,14 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
     //Variables
     var TestSubjectPicker = UIPickerView()
     var ref:FIRDatabaseReference?
-   var selectedDateZeroHour: Int?
+    var selectedDateZeroHour: Int?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        // Setting up TextFielddelegates and Pickerdelegates
+        
         TestSubjectPicker.delegate = self
         TestSubjectPicker.dataSource = self
         TestTextField.delegate = self
@@ -84,22 +87,20 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         return 1
     }
 
+   
     //SubjectPickerView
     
-    var subjects = ["Mathemathik","Deutsch","Spanisch","Englisch","Französisch","Biologie","Chemie","Physik","Geschichte","Geografie","Wirtschaft"]
-    
+    var subjects = ["Bildnerisches Gestalten","Biologie","Chemie","Deutsch","Englisch","Französisch","Geografie","Geschichte","Italienisch","Latein","Mathemathik","Musik","Physik","Spanisch","Sport","Wirtschaft"]
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int{
         return 1
     }
     
     
-    
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
         
         return subjects.count
     }
-    
     
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -110,6 +111,7 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         return subjects[row]
     }
 
+    
     
     // DatumPicker
     
@@ -122,9 +124,7 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         sender.inputView = datepickerView
         
         datepickerView.addTarget(self, action: #selector(Add_Hausaufgaben.datePickerValueChanged), for: UIControlEvents.valueChanged)
-        
-
-        
+    
     }
     func datePickerValueChanged(_ sender: UIDatePicker) {
         
@@ -132,9 +132,10 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         dateFormatter.dateFormat = "dd MMM yyyy"
         TestDatum.text = dateFormatter.string(from: sender.date)
         self.selectedDateZeroHour = sender.date.getDateFromZeroHour
-        
     }
  
+    // Firebase Write Function
+    
     @IBAction func Save(_ sender: Any) {
         
         let user = FIRAuth.auth()?.currentUser

@@ -97,7 +97,6 @@ class Login: UIViewController, UITextFieldDelegate {
         if EyeButton.tag == 0
         {
             (sender as AnyObject).setImage(UIImage(named: "Eye Selected"), for: UIControlState.normal)
-
                         EyeButton.tag=1
         }
         else
@@ -105,7 +104,6 @@ class Login: UIViewController, UITextFieldDelegate {
             (sender as AnyObject).setImage(UIImage(named: "Eye"), for: UIControlState.normal)
             EyeButton.tag=0
         }
-
         
         if(iconClick == true) {
             
@@ -116,7 +114,6 @@ class Login: UIViewController, UITextFieldDelegate {
             LoginPasswordTextField.isSecureTextEntry = true
             iconClick = true
         }
-
     }
     
     
@@ -128,7 +125,6 @@ class Login: UIViewController, UITextFieldDelegate {
           
             if authuser != nil {
                     self.performSegue(withIdentifier: "HomePageSegue", sender: self)
-   
                 
                 } else {
                 // No User is signed in. Show user the login screen
@@ -158,13 +154,10 @@ class Login: UIViewController, UITextFieldDelegate {
                 
                 if error == nil
                 {
-
-                   self.performSegue(withIdentifier: "HomePageSegue", sender: self)
+                    self.performSegue(withIdentifier: "HomePageSegue", sender: self)
                     self.LoginEmailTextField.text = ""
                     self.LoginPasswordTextField.text = ""
-
                 }
-               
                 else
                 {
                     let alertController = UIAlertController(title: "Oops!", message: error?.localizedDescription, preferredStyle: .alert)
@@ -173,8 +166,6 @@ class Login: UIViewController, UITextFieldDelegate {
                     alertController.addAction(defaultAction)
                     
                     self.present(alertController, animated: true, completion: nil)
-                    
-             
     }  } } }
     
   
@@ -190,18 +181,16 @@ class Login: UIViewController, UITextFieldDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     // Cancel Registration
     
         @IBAction func cancelRegistration (_ segue:UIStoryboardSegue) {
-        
     }
+    
     // Cancel Restore Password
     
     @IBAction func cancelRestorePassword (_ segue:UIStoryboardSegue) {
-        
     }
 
     // Motion Effect
@@ -221,7 +210,6 @@ class Login: UIViewController, UITextFieldDelegate {
         view.addMotionEffect(group)
     }
 
-
     func ApplyMotionEffectsforViewDidLoad() {
         applyMotionEffect(toView: BackgroundImage, magnitude: 5)
         applyMotionEffect(toView: Form, magnitude: -10)
@@ -232,7 +220,6 @@ class Login: UIViewController, UITextFieldDelegate {
         applyMotionEffect(toView: PasswordLabel, magnitude: -10)
         applyMotionEffect(toView: LoginButton, magnitude: -10)
         applyMotionEffect(toView: EyeButton, magnitude: -10)
-        
     }
    
     
