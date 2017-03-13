@@ -42,6 +42,10 @@ class Tests: UITableViewController {
         ref = FIRDatabase.database().reference()
         let user = FIRAuth.auth()?.currentUser
         
+        //TableViewCell Auto resizing
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         // Retrieve the Post and listen for Changes
         ref!.child("tests/\(user!.uid)").observe(.childAdded, with: { (snapshot) in
             
@@ -100,6 +104,7 @@ class Tests: UITableViewController {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "TestCell")
         cell.textLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].TText
         cell.detailTextLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].TFach
+        cell.textLabel?.numberOfLines = 0
         return cell
     }
     

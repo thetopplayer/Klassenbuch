@@ -43,6 +43,10 @@ class Hausaufgaben: UITableViewController {
         
         tableView.allowsMultipleSelectionDuringEditing = true
         
+        //TableViewCell Auto resizing
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         // Set the Firebase refrence
         ref = FIRDatabase.database().reference()
         let user = FIRAuth.auth()?.currentUser
@@ -105,6 +109,7 @@ class Hausaufgaben: UITableViewController {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "HausaufgabenCell")
         cell.textLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].HText
         cell.detailTextLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].HFach
+        cell.textLabel?.numberOfLines = 0
         return cell
     }
 

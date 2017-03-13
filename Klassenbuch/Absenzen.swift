@@ -41,6 +41,10 @@ class Absenzen: UITableViewController {
         ref = FIRDatabase.database().reference()
         let user = FIRAuth.auth()?.currentUser
         
+        //TableViewCell Auto resizing
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         // Retrieve the Post and listen for Changes
         ref!.child("absenzen/\(user!.uid)").observe(.childAdded, with: { (snapshot) in
             
@@ -99,6 +103,7 @@ class Absenzen: UITableViewController {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "AbsenzenCell")
         cell.textLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].APerson
         cell.detailTextLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].AStatus
+        cell.textLabel?.numberOfLines = 0
         return cell
     }
     
