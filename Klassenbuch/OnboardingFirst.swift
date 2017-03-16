@@ -19,8 +19,19 @@ class OnboardingFirst: UIViewController {
         super.viewDidLoad()
 
         
+        self.loadingGif()
+    
+        DispatchQueue.main.asyncAfter(deadline: .now() + 12) {
+            
+            self.PhoneImage1.image = #imageLiteral(resourceName: "SwipeRight")
+        }
+    }
+    
+    func loadingGif(){
+    
      PhoneImage1.loadGif(name: "GIF")
-            }
+    
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

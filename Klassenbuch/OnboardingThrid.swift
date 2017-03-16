@@ -17,9 +17,19 @@ class OnboardingThrid: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        PhoneImage3.loadGif(name: "GIF3")  
+        self.loadingGif()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
+            
+            self.PhoneImage3.image = #imageLiteral(resourceName: "LeaveOnboarding")
+        }
     }
-
+    
+    func loadingGif(){
+        
+        PhoneImage3.loadGif(name: "GIF3")
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         

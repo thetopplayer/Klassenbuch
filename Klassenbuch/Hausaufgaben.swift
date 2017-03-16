@@ -113,14 +113,24 @@ class Hausaufgaben: UITableViewController {
         return cell
     }
 
+   override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Enables editing only for the selected table view, if you have multiple table views
+        return true
+    }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     
         if editingStyle == UITableViewCellEditingStyle.delete{
-
-        }
-        print(indexPath.row)
-}
+           
+            let user = FIRAuth.auth()?.currentUser
+            let uid = user?.uid
+           
+            ref?.child("homeworks").child(uid!)/*De Post*/.removeValue()
+            //data.removeValue(forKey: "qwe23423e2" as! Int)
+            tableView.reloadData()
+           
+     
+            }}
     
     
     // Func for EmptyState

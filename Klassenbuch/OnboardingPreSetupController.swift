@@ -20,13 +20,28 @@ class OnboardingPreSetupController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        PhoneImage31.loadGif(name: "GIF3")
+        self.loadingGif()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
           self.Schliessen.isHidden = false
         }
 
 
-            }
+       
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
+            self.Schliessen.isHidden = true
+            self.PhoneImage31.image = #imageLiteral(resourceName: "LeaveOnboarding")
+        }
+    }
+
+
+ func loadingGif(){
+        
+        PhoneImage31.loadGif(name: "GIF3")
+        
+    }
+
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
