@@ -28,7 +28,6 @@
 		37AADF9A1E7B24B200C05052 /* GIF.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37AADF991E7B24B200C05052 /* GIF.gif */; };
 		37AADF9C1E7B296200C05052 /* GIF2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37AADF9B1E7B296200C05052 /* GIF2.gif */; };
 		37AADF9E1E7B2CF900C05052 /* GIF3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37AADF9D1E7B2CF900C05052 /* GIF3.gif */; };
-		37AADFA01E7B2F7000C05052 /* Stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 37AADF9F1E7B2F7000C05052 /* Stop.png */; };
 		37AD16E01E2D4438002F41D9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16DF1E2D4438002F41D9 /* Login.swift */; };
 		37AD16E21E2D4448002F41D9 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16E11E2D4448002F41D9 /* Register.swift */; };
 		37AD16E51E2D4696002F41D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37AD16E41E2D4696002F41D9 /* GoogleService-Info.plist */; };
@@ -92,7 +91,6 @@
 		37AADF991E7B24B200C05052 /* GIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GIF.gif; sourceTree = "<group>"; };
 		37AADF9B1E7B296200C05052 /* GIF2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GIF2.gif; sourceTree = "<group>"; };
 		37AADF9D1E7B2CF900C05052 /* GIF3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GIF3.gif; sourceTree = "<group>"; };
-		37AADF9F1E7B2F7000C05052 /* Stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stop.png; sourceTree = "<group>"; };
 		37AD16DF1E2D4438002F41D9 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		37AD16E11E2D4448002F41D9 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		37AD16E41E2D4696002F41D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -197,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				37AADF991E7B24B200C05052 /* GIF.gif */,
-				37AADF9F1E7B2F7000C05052 /* Stop.png */,
 				37AADF9B1E7B296200C05052 /* GIF2.gif */,
 				37AADF9D1E7B2CF900C05052 /* GIF3.gif */,
 			);
@@ -468,7 +465,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37AADFA01E7B2F7000C05052 /* Stop.png in Resources */,
 				37AD16E51E2D4696002F41D9 /* GoogleService-Info.plist in Resources */,
 				37FCAE811DFD51C000789BFF /* LaunchScreen.storyboard in Resources */,
 				37FE769F1E4723250056A196 /* Settings.bundle in Resources */,

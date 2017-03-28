@@ -65,6 +65,9 @@ class Hausaufgaben: UITableViewController {
                 
                 let hID = snapshot.key
                 
+                               
+                print(hID)
+                
                 let homeObject = Homework(HDatum: hdatum, HFach: hfach, HText: htext, HUid: hID)
                 
                 if self.data[hdatum] == nil {
@@ -118,19 +121,49 @@ class Hausaufgaben: UITableViewController {
         return true
     }
     
+    
+    
+    
+    
+    // Here deleting the Posts
+    // Delete Part
+    
+    
+    
+    
+    
+    
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     
         if editingStyle == UITableViewCellEditingStyle.delete{
            
             let user = FIRAuth.auth()?.currentUser
             let uid = user?.uid
-           
-            ref?.child("homeworks").child(uid!)/*De Post*/.removeValue()
-            //data.removeValue(forKey: "qwe23423e2" as! Int)
+            
+            ref?.child("homeworks").child(uid!)/*The Post*/.removeValue()
             tableView.reloadData()
            
      
             }}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     // Func for EmptyState

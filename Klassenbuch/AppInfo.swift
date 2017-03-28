@@ -12,6 +12,9 @@ class AppInfo: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
 
         // Left Swipe
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
@@ -30,7 +33,7 @@ class AppInfo: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
        
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,8 +41,7 @@ class AppInfo: UITableViewController {
         return 1
     }
 
-   
-    //Fund for Left Swipe
+       //Fund for Left Swipe
     
     func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         

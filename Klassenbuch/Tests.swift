@@ -109,6 +109,19 @@ class Tests: UITableViewController {
     }
     
     
+    // Here deleting the Posts
+    // Delete Part
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.delete{
+            let user = FIRAuth.auth()?.currentUser
+            let uid = user?.uid
+           // ref?.child("tests").child(uid!).child(/*The Snapshot*/).removeValue()
+            tableView.reloadData()
+        }
+    }
+    
     
     // Func for EmptyState
     

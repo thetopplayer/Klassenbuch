@@ -329,6 +329,7 @@ class Register: UIViewController, UITextFieldDelegate {
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         self.ref?.child("users").child(uid!).setValue(["email": RegisterEmailTextField.text!])
+        
     }
         
    

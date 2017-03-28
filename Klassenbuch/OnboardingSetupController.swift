@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class OnboardingSetupController: UIViewController, UITextFieldDelegate {
 
@@ -16,7 +18,10 @@ class OnboardingSetupController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var KlassenNamenTextField: AuthTextField!
     
-    
+    // Variables
+    var ref: FIRDatabaseReference?
+    var databaseHandle: FIRDatabaseHandle?
+   
     
     
     override func viewDidLoad() {
@@ -27,6 +32,12 @@ class OnboardingSetupController: UIViewController, UITextFieldDelegate {
 
         // TextField Delegates
         KlassenNamenTextField.delegate = self
+        
+        ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        self.ref?.child("users").child(uid!).child("KlassenInfos").setValue(["Name": "AFFE"])
+       
     }
     
 
@@ -50,12 +61,10 @@ class OnboardingSetupController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func GotoAppforthefirstTime(_ sender: Any) {
-  
-    // setup the NSUserdefaults
-        
-    // perform Segue to App Homescreen
-    self.Checkstatus()
-        
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        self.ref?.child("users").child(uid!).child("KlassenInfos").setValue(["Name": self.KlassenNamenTextField.text!])
+        self.Checkstatus()
     }
    
     
@@ -78,12 +87,18 @@ class OnboardingSetupController: UIViewController, UITextFieldDelegate {
         }else {
 
         FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
+           
             
             if authuser != nil {
                 // User is signed in. Show home screen
+                
                 UserDefaults.standard.set(true, forKey: "launchedBefore") 
-               self.performSegue(withIdentifier: "SetupUpMadeHomePage", sender: self)
-            
+                self.performSegue(withIdentifier: "SetupUpMadeHomePage", sender: self)
+                
+                let user = FIRAuth.auth()?.currentUser
+                let uid = user?.uid
+                self.ref?.child("users").child(uid!).child("KlassenInfos").setValue(["klassenname": self.KlassenNamenTextField.text!])
+
             } else {
                
                 // Alert Controller if there was a Failure
@@ -110,5 +125,6 @@ class OnboardingSetupController: UIViewController, UITextFieldDelegate {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-
+    
+  
 }
