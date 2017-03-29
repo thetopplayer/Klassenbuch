@@ -25,6 +25,7 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     var HWSubjectpicker = UIPickerView()
     var ref:FIRDatabaseReference?
     var selectedDateZeroHour: Int?
+    let todaysDate = Date()
     
     
     override func viewDidLoad() {
@@ -133,6 +134,7 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     @IBAction func DTFBeginEditing(_ sender: UITextField) {
        
         let datepickerView = UIDatePicker()
+        datepickerView.minimumDate = Date() // set minimum date of today
         datepickerView.datePickerMode = UIDatePickerMode.date
         sender.inputView = datepickerView
         datepickerView.addTarget(self, action: #selector(Add_Hausaufgaben.datePickerValueChanged), for: UIControlEvents.valueChanged)

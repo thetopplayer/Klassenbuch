@@ -154,7 +154,7 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
     @IBAction func ADTextField(_ sender: UITextField) {
   
         let datepickerView = UIDatePicker()
-        
+        datepickerView.minimumDate = Date() // set minimum date of today
         datepickerView.datePickerMode = UIDatePickerMode.date
         
         sender.inputView = datepickerView

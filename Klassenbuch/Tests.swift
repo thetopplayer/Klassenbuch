@@ -33,20 +33,33 @@ class Tests: UITableViewController {
     
 
     override func viewDidLoad() {
+       
         super.viewDidLoad()
         
         // Set the EmptyState
         self.EmptyScreen()
         
-        // Set the Firebase refrence
-        ref = FIRDatabase.database().reference()
-        let user = FIRAuth.auth()?.currentUser
+  
+        
+        tableView.allowsMultipleSelectionDuringEditing = true
         
         //TableViewCell Auto resizing
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        // Retrieve the Post and listen for Changes
+        // Set the Firebase refrence
+        ref = FIRDatabase.database().reference()
+        
+        // Listen for added and removed
+        self.databaseListener()
+    }
+    
+    
+    func databaseListener() {
+        
+        let user = FIRAuth.auth()?.currentUser
+        
+        // Added listener
         ref!.child("tests/\(user!.uid)").observe(.childAdded, with: { (snapshot) in
             
             if let fdata = snapshot.value as? NSDictionary {
@@ -61,20 +74,53 @@ class Tests: UITableViewController {
                 
                 let homeObject2 = TestsStruct(TDatum: tdatum, TFach: tfach, TText: ttext, TUid: tID)
                 
-                if self.data[tdatum] == nil {
-                    self.data[tdatum] = [homeObject2]
-                }else {
-                    self.data[tdatum]!.append(homeObject2)
+                // compare dates
+                switch tdatum < Date().getDateFromZeroHour {
+                    
+                case true:
+                    // delete earlier dates data from database
+                    self.ref!.child("tests/\(user!.uid)/\(snapshot.key)").removeValue()
+                    
+                case false:
+                    // save data in dictionary
+                    if self.data[tdatum] == nil {
+                        self.data[tdatum] = [homeObject2]
+                    }else {
+                        self.data[tdatum]!.append(homeObject2)
+                    }
                 }
             }
+            
+            self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
+            self.tableView.reloadData()
+            self.EmptyScreen()
+        })
+        
+        // Remove listener
+        ref!.child("tests/\(user!.uid)").observe(.childRemoved, with: { (snapshot) in
+            
+            if let fdata = snapshot.value as? NSDictionary {
+                
+                let tdatum = fdata["TDatum"] as! Int
+                let tID = snapshot.key
+                
+                let filterdArr = self.data[tdatum]!.filter({$0.TUid != tID})
+                
+                if filterdArr.count > 0 {
+                    self.data[tdatum] = filterdArr
+                }else {
+                    self.data.removeValue(forKey: tdatum)
+                }
+            }
+            
             self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
             self.tableView.reloadData()
             self.EmptyScreen()
         })
     }
+
     
-    
-    
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -115,10 +161,13 @@ class Tests: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == UITableViewCellEditingStyle.delete{
+            
             let user = FIRAuth.auth()?.currentUser
             let uid = user?.uid
-           // ref?.child("tests").child(uid!).child(/*The Snapshot*/).removeValue()
-            tableView.reloadData()
+            
+            let test = self.sortedData[indexPath.section].1[indexPath.row]
+            self.ref!.child("tests/\(uid!)/\(test.TUid)").removeValue()
+            
         }
     }
     

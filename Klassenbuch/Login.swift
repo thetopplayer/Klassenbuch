@@ -4,7 +4,7 @@
 //
 //  Created by Developing on 16.01.17.
 //  Copyright © 2017 Hadorn Developing. All rights reserved.
-//
+// Original ORiginal
 
 import UIKit
 import Firebase
@@ -169,6 +169,29 @@ class Login: UIViewController, UITextFieldDelegate {
     }  } } }
     
   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // Register Button pressed, Text is empty
     
     @IBAction func RegisteredPressed(_ sender: UIButton) {

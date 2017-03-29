@@ -32,20 +32,33 @@ class Absenzen: UITableViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        // Set EmptyState
+        // Set the EmptyState
         self.EmptyScreen()
         
-        // Set the Firebase refrence
-        ref = FIRDatabase.database().reference()
-        let user = FIRAuth.auth()?.currentUser
+        
+        
+        tableView.allowsMultipleSelectionDuringEditing = true
         
         //TableViewCell Auto resizing
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        // Retrieve the Post and listen for Changes
+        // Set the Firebase refrence
+        ref = FIRDatabase.database().reference()
+        
+        // Listen for added and removed
+        self.databaseListener()
+    }
+    
+    
+    func databaseListener() {
+        
+        let user = FIRAuth.auth()?.currentUser
+        
+        // Added listener
         ref!.child("absenzen/\(user!.uid)").observe(.childAdded, with: { (snapshot) in
             
             if let fdata = snapshot.value as? NSDictionary {
@@ -60,22 +73,53 @@ class Absenzen: UITableViewController {
                 
                 let homeObject3 = AbsenzenStruct(ADatum: adatum, AStatus: astatus, APerson: aperson, AUid: aID)
                 
-                if self.data[adatum] == nil {
-                    self.data[adatum] = [homeObject3]
-                }else {
-                    self.data[adatum]!.append(homeObject3)
+                // compare dates
+                switch adatum < Date().getDateFromZeroHour {
+                    
+                case true:
+                    // delete earlier dates data from database
+                    self.ref!.child("absenzen/\(user!.uid)/\(snapshot.key)").removeValue()
+                    
+                case false:
+                    // save data in dictionary
+                    if self.data[adatum] == nil {
+                        self.data[adatum] = [homeObject3]
+                    }else {
+                        self.data[adatum]!.append(homeObject3)
+                    }
                 }
-                
             }
             
             self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
-            
             self.tableView.reloadData()
+            self.EmptyScreen()
+        })
+        
+        // Remove listener
+        ref!.child("absenzen/\(user!.uid)").observe(.childRemoved, with: { (snapshot) in
             
+            if let fdata = snapshot.value as? NSDictionary {
+                
+                let adatum = fdata["ADatum"] as! Int
+                let aID = snapshot.key
+                
+                let filterdArr = self.data[adatum]!.filter({$0.AUid != aID})
+                
+                if filterdArr.count > 0 {
+                    self.data[adatum] = filterdArr
+                }else {
+                    self.data.removeValue(forKey: adatum)
+                }
+            }
+            
+            self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
+            self.tableView.reloadData()
             self.EmptyScreen()
         })
     }
+
     
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -106,6 +150,25 @@ class Absenzen: UITableViewController {
         cell.textLabel?.numberOfLines = 0
         return cell
     }
+    
+    // Here deleting the Posts
+    // Delete Part
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.delete{
+            
+            let user = FIRAuth.auth()?.currentUser
+            let uid = user?.uid
+            
+            let absenz = self.sortedData[indexPath.section].1[indexPath.row]
+            self.ref!.child("absenzen/\(uid!)/\(absenz.AUid)").removeValue()
+            
+        }
+    }
+
+    
+    
     
     
     // Func for EmptyState

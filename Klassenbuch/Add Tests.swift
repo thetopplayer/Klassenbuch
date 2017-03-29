@@ -118,6 +118,7 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBAction func TDTextField(_ sender: UITextField) {
     
         let datepickerView = UIDatePicker()
+        datepickerView.minimumDate = Date() // set minimum date of today
         
         datepickerView.datePickerMode = UIDatePickerMode.date
         

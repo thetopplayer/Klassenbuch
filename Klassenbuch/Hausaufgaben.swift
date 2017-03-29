@@ -49,10 +49,23 @@ class Hausaufgaben: UITableViewController {
         
         // Set the Firebase refrence
         ref = FIRDatabase.database().reference()
+        
+        // Listen for added and removed
+        self.databaseListener()
+    }
+    
+
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+
+    }
+
+    func databaseListener() {
+        
         let user = FIRAuth.auth()?.currentUser
         
-        
-        // Retrieve the Post and listen for Changes
+        // Added listener
         ref!.child("homeworks/\(user!.uid)").observe(.childAdded, with: { (snapshot) in
             
             if let fdata = snapshot.value as? NSDictionary {
@@ -65,15 +78,44 @@ class Hausaufgaben: UITableViewController {
                 
                 let hID = snapshot.key
                 
-                               
-                print(hID)
-                
                 let homeObject = Homework(HDatum: hdatum, HFach: hfach, HText: htext, HUid: hID)
                 
-                if self.data[hdatum] == nil {
-                    self.data[hdatum] = [homeObject]
+                // compare dates
+                switch hdatum < Date().getDateFromZeroHour {
+                    
+                case true:
+                    // delete earlier dates data from database
+                    self.ref!.child("homeworks/\(user!.uid)/\(snapshot.key)").removeValue()
+                    
+                case false:
+                    // save data in dictionary
+                    if self.data[hdatum] == nil {
+                        self.data[hdatum] = [homeObject]
+                    }else {
+                        self.data[hdatum]!.append(homeObject)
+                    }
+                }
+            }
+            
+            self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
+            self.tableView.reloadData()
+            self.EmptyScreen()
+        })
+        
+        // Remove listener
+        ref!.child("homeworks/\(user!.uid)").observe(.childRemoved, with: { (snapshot) in
+            
+            if let fdata = snapshot.value as? NSDictionary {
+                
+                let hdatum = fdata["HDatum"] as! Int
+                let hID = snapshot.key
+                
+                let filterdArr = self.data[hdatum]!.filter({$0.HUid != hID})
+                
+                if filterdArr.count > 0 {
+                    self.data[hdatum] = filterdArr
                 }else {
-                    self.data[hdatum]!.append(homeObject)
+                    self.data.removeValue(forKey: hdatum)
                 }
             }
             
@@ -83,13 +125,7 @@ class Hausaufgaben: UITableViewController {
         })
     }
 
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-    }
-
-   
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -124,29 +160,21 @@ class Hausaufgaben: UITableViewController {
     
     
     
-    
     // Here deleting the Posts
     // Delete Part
     
-    
-    
-    
-    
-    
-    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    
+        
         if editingStyle == UITableViewCellEditingStyle.delete{
-           
+            
             let user = FIRAuth.auth()?.currentUser
             let uid = user?.uid
             
-            ref?.child("homeworks").child(uid!)/*The Post*/.removeValue()
-            tableView.reloadData()
-           
-     
-            }}
-    
+            let homework = self.sortedData[indexPath.section].1[indexPath.row]
+            self.ref!.child("homeworks/\(uid!)/\(homework.HUid)").removeValue()
+            
+        }
+    }
     
     
     
