@@ -104,7 +104,7 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
    
     // SubjectPicker
     
-    var subjects = ["Bildnerisches Gestalten","Biologie","Chemie","Deutsch","Englisch","Französisch","Geografie","Geschichte","Italienisch","Latein","Mathemathik","Musik","Physik","Spanisch","Sport","Wirtschaft"]
+    var subjects = ["Bildnerisches Gestalten","Biologie","Chemie","Deutsch","Englisch","Ergänzungsfach","Französisch","Freifach","Geografie","Geschichte","Italienisch","Latein","Mathemathik","Musik","Physik","Spanisch","Sport","Wirtschaft"]
     
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int{

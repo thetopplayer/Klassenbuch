@@ -21,16 +21,20 @@
 		376DDB3A1E44C0ED0064E2D2 /* Einstellungen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */; };
 		377FFC091E2FFFA2008EE114 /* NonEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377FFC081E2FFFA2008EE114 /* NonEditableTextField.swift */; };
 		378465441E4F96EC0012CDBF /* Gif+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378465431E4F96EC0012CDBF /* Gif+Swift.swift */; };
-		378465461E4F975A0012CDBF /* OnboardingFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378465451E4F975A0012CDBF /* OnboardingFirst.swift */; };
-		3784654A1E4F979A0012CDBF /* OnboardingSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378465491E4F979A0012CDBF /* OnboardingSecond.swift */; };
 		3784654C1E4F97B00012CDBF /* OnboardingThrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3784654B1E4F97B00012CDBF /* OnboardingThrid.swift */; };
+		379B8C931EA4F87A00E27CBC /* PushNachrichten.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B8C921EA4F87A00E27CBC /* PushNachrichten.swift */; };
+		379B8C951EA6857300E27CBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 379B8C941EA6857300E27CBC /* GoogleService-Info.plist */; };
+		379B8C9D1EA6B78D00E27CBC /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379B8C9C1EA6B78D00E27CBC /* NotificationCenter.framework */; };
+		379B8CA01EA6B78D00E27CBC /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B8C9F1EA6B78D00E27CBC /* TodayViewController.swift */; };
+		379B8CA31EA6B78E00E27CBC /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 379B8CA11EA6B78E00E27CBC /* MainInterface.storyboard */; };
+		379B8CA71EA6B79000E27CBC /* KlassenbuchExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 379B8C9B1EA6B78D00E27CBC /* KlassenbuchExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		379B8CAD1EA764E600E27CBC /* Delivery.png in Resources */ = {isa = PBXBuildFile; fileRef = 379B8CAC1EA764E600E27CBC /* Delivery.png */; };
 		37A436DE1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A436DD1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift */; };
 		37AADF9A1E7B24B200C05052 /* GIF.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37AADF991E7B24B200C05052 /* GIF.gif */; };
 		37AADF9C1E7B296200C05052 /* GIF2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37AADF9B1E7B296200C05052 /* GIF2.gif */; };
 		37AADF9E1E7B2CF900C05052 /* GIF3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37AADF9D1E7B2CF900C05052 /* GIF3.gif */; };
 		37AD16E01E2D4438002F41D9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16DF1E2D4438002F41D9 /* Login.swift */; };
 		37AD16E21E2D4448002F41D9 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16E11E2D4448002F41D9 /* Register.swift */; };
-		37AD16E51E2D4696002F41D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37AD16E41E2D4696002F41D9 /* GoogleService-Info.plist */; };
 		37BFF9911E09D14F00FDDFE6 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BFF9901E09D14F00FDDFE6 /* Tests.swift */; };
 		37DC43381E3E3794009EAC4B /* Restore Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DC43371E3E3794009EAC4B /* Restore Password.swift */; };
 		37FB38261E227EBA0075C106 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB38251E227EBA0075C106 /* Extensions.swift */; };
@@ -49,6 +53,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		379B8CA51EA6B79000E27CBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37FCAE6B1DFD51C000789BFF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 379B8C9A1EA6B78C00E27CBC;
+			remoteInfo = KlassenbuchExtension;
+		};
 		37FCAE881DFD51C000789BFF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 37FCAE6B1DFD51C000789BFF /* Project object */;
@@ -64,6 +75,20 @@
 			remoteInfo = Klassenbuch;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		379B8CAB1EA6B79000E27CBC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				379B8CA71EA6B79000E27CBC /* KlassenbuchExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		017B159347FCC1A8CCCC9426 /* Pods-KlassenbuchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KlassenbuchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KlassenbuchTests/Pods-KlassenbuchTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -84,16 +109,22 @@
 		376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Einstellungen.swift; sourceTree = "<group>"; };
 		377FFC081E2FFFA2008EE114 /* NonEditableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonEditableTextField.swift; sourceTree = "<group>"; };
 		378465431E4F96EC0012CDBF /* Gif+Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gif+Swift.swift"; sourceTree = "<group>"; };
-		378465451E4F975A0012CDBF /* OnboardingFirst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFirst.swift; sourceTree = "<group>"; };
-		378465491E4F979A0012CDBF /* OnboardingSecond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSecond.swift; sourceTree = "<group>"; };
 		3784654B1E4F97B00012CDBF /* OnboardingThrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingThrid.swift; sourceTree = "<group>"; };
+		379B8C921EA4F87A00E27CBC /* PushNachrichten.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNachrichten.swift; sourceTree = "<group>"; };
+		379B8C941EA6857300E27CBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		379B8C961EA6884600E27CBC /* Klassenbuch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Klassenbuch.entitlements; sourceTree = "<group>"; };
+		379B8C9B1EA6B78D00E27CBC /* KlassenbuchExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KlassenbuchExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		379B8C9C1EA6B78D00E27CBC /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		379B8C9F1EA6B78D00E27CBC /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		379B8CA21EA6B78E00E27CBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		379B8CA41EA6B78E00E27CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		379B8CAC1EA764E600E27CBC /* Delivery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Delivery.png; sourceTree = "<group>"; };
 		37A436DD1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPreSetupController.swift; sourceTree = "<group>"; };
 		37AADF991E7B24B200C05052 /* GIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GIF.gif; sourceTree = "<group>"; };
 		37AADF9B1E7B296200C05052 /* GIF2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GIF2.gif; sourceTree = "<group>"; };
 		37AADF9D1E7B2CF900C05052 /* GIF3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GIF3.gif; sourceTree = "<group>"; };
 		37AD16DF1E2D4438002F41D9 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		37AD16E11E2D4448002F41D9 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
-		37AD16E41E2D4696002F41D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		37BFF9901E09D14F00FDDFE6 /* Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		37DC43371E3E3794009EAC4B /* Restore Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Restore Password.swift"; sourceTree = "<group>"; };
 		37FB38251E227EBA0075C106 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -120,6 +151,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		379B8C981EA6B78C00E27CBC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				379B8C9D1EA6B78D00E27CBC /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		37FCAE701DFD51C000789BFF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -173,8 +212,6 @@
 		378465411E4F96AD0012CDBF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				378465451E4F975A0012CDBF /* OnboardingFirst.swift */,
-				378465491E4F979A0012CDBF /* OnboardingSecond.swift */,
 				3784654B1E4F97B00012CDBF /* OnboardingThrid.swift */,
 				37A436DD1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift */,
 				375589711E48EB7200F41C0B /* OnboardingSetupController.swift */,
@@ -199,6 +236,16 @@
 				37AADF9D1E7B2CF900C05052 /* GIF3.gif */,
 			);
 			name = Gifs;
+			sourceTree = "<group>";
+		};
+		379B8C9E1EA6B78D00E27CBC /* KlassenbuchExtension */ = {
+			isa = PBXGroup;
+			children = (
+				379B8C9F1EA6B78D00E27CBC /* TodayViewController.swift */,
+				379B8CA11EA6B78E00E27CBC /* MainInterface.storyboard */,
+				379B8CA41EA6B78E00E27CBC /* Info.plist */,
+			);
+			path = KlassenbuchExtension;
 			sourceTree = "<group>";
 		};
 		379BF99D1DFD5C1000BA382D /* Hausaufgaben */ = {
@@ -234,6 +281,7 @@
 				37FCAEAE1DFD556F00789BFF /* Informationen.swift */,
 				376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */,
 				3707B7671E44D70D00BD150D /* AppInfo.swift */,
+				379B8C921EA4F87A00E27CBC /* PushNachrichten.swift */,
 			);
 			name = Informationen;
 			sourceTree = "<group>";
@@ -263,6 +311,7 @@
 				37FCAE751DFD51C000789BFF /* Klassenbuch */,
 				37FCAE8A1DFD51C000789BFF /* KlassenbuchTests */,
 				37FCAE951DFD51C000789BFF /* KlassenbuchUITests */,
+				379B8C9E1EA6B78D00E27CBC /* KlassenbuchExtension */,
 				37FCAE741DFD51C000789BFF /* Products */,
 				BC0BA7438E9AAC30E8ACBC2E /* Pods */,
 				A801B0C46304E64EE95DAECE /* Frameworks */,
@@ -275,6 +324,7 @@
 				37FCAE731DFD51C000789BFF /* Klassenbuch.app */,
 				37FCAE871DFD51C000789BFF /* KlassenbuchTests.xctest */,
 				37FCAE921DFD51C000789BFF /* KlassenbuchUITests.xctest */,
+				379B8C9B1EA6B78D00E27CBC /* KlassenbuchExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -291,9 +341,11 @@
 				377FFC071E2FFF7D008EE114 /* Helpers */,
 				37FCAE7F1DFD51C000789BFF /* LaunchScreen.storyboard */,
 				37075C4D1E36A38200187480 /* Media.xcassets */,
+				379B8CAC1EA764E600E27CBC /* Delivery.png */,
 				37FE769E1E4723250056A196 /* Settings.bundle */,
 				37FCAE821DFD51C000789BFF /* Info.plist */,
-				37AD16E41E2D4696002F41D9 /* GoogleService-Info.plist */,
+				379B8C961EA6884600E27CBC /* Klassenbuch.entitlements */,
+				379B8C941EA6857300E27CBC /* GoogleService-Info.plist */,
 				37B99BD21E71BC0500938C6E /* Delete */,
 			);
 			path = Klassenbuch;
@@ -324,6 +376,7 @@
 				D38845EA0770DFA88801FE1C /* Pods_Klassenbuch.framework */,
 				6F074CF7F67BDDC616A8F03C /* Pods_KlassenbuchTests.framework */,
 				B9A43E3B1147EC6AB62AA1BE /* Pods_KlassenbuchUITests.framework */,
+				379B8C9C1EA6B78D00E27CBC /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -344,6 +397,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		379B8C9A1EA6B78C00E27CBC /* KlassenbuchExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 379B8CA81EA6B79000E27CBC /* Build configuration list for PBXNativeTarget "KlassenbuchExtension" */;
+			buildPhases = (
+				379B8C971EA6B78C00E27CBC /* Sources */,
+				379B8C981EA6B78C00E27CBC /* Frameworks */,
+				379B8C991EA6B78C00E27CBC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KlassenbuchExtension;
+			productName = KlassenbuchExtension;
+			productReference = 379B8C9B1EA6B78D00E27CBC /* KlassenbuchExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		37FCAE721DFD51C000789BFF /* Klassenbuch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 37FCAE9B1DFD51C000789BFF /* Build configuration list for PBXNativeTarget "Klassenbuch" */;
@@ -354,10 +424,12 @@
 				37FCAE711DFD51C000789BFF /* Resources */,
 				9A528D69E314E7427FCF9A97 /* [CP] Embed Pods Frameworks */,
 				B4982C8FE21DD39121664715 /* [CP] Copy Pods Resources */,
+				379B8CAB1EA6B79000E27CBC /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				379B8CA61EA6B79000E27CBC /* PBXTargetDependency */,
 			);
 			name = Klassenbuch;
 			productName = Klassenbuch;
@@ -411,18 +483,26 @@
 		37FCAE6B1DFD51C000789BFF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0820;
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Hadorn Developing";
 				TargetAttributes = {
+					379B8C9A1EA6B78C00E27CBC = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 86ZAAG46Z8;
+						ProvisioningStyle = Automatic;
+					};
 					37FCAE721DFD51C000789BFF = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 865JTAAGDU;
+						DevelopmentTeam = 86ZAAG46Z8;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
 							};
 						};
 					};
@@ -456,18 +536,28 @@
 				37FCAE721DFD51C000789BFF /* Klassenbuch */,
 				37FCAE861DFD51C000789BFF /* KlassenbuchTests */,
 				37FCAE911DFD51C000789BFF /* KlassenbuchUITests */,
+				379B8C9A1EA6B78C00E27CBC /* KlassenbuchExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		379B8C991EA6B78C00E27CBC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				379B8CA31EA6B78E00E27CBC /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		37FCAE711DFD51C000789BFF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37AD16E51E2D4696002F41D9 /* GoogleService-Info.plist in Resources */,
 				37FCAE811DFD51C000789BFF /* LaunchScreen.storyboard in Resources */,
 				37FE769F1E4723250056A196 /* Settings.bundle in Resources */,
+				379B8C951EA6857300E27CBC /* GoogleService-Info.plist in Resources */,
+				379B8CAD1EA764E600E27CBC /* Delivery.png in Resources */,
 				37FCAE7C1DFD51C000789BFF /* Main.storyboard in Resources */,
 				37AADF9C1E7B296200C05052 /* GIF2.gif in Resources */,
 				37AADF9E1E7B2CF900C05052 /* GIF3.gif in Resources */,
@@ -616,6 +706,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		379B8C971EA6B78C00E27CBC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				379B8CA01EA6B78D00E27CBC /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		37FCAE6F1DFD51C000789BFF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -628,7 +726,6 @@
 				37FCAEB11DFD55D900789BFF /* Manager.swift in Sources */,
 				375534FD1E0849F5000C0842 /* Add Hausaufgaben.swift in Sources */,
 				37DC43381E3E3794009EAC4B /* Restore Password.swift in Sources */,
-				3784654A1E4F979A0012CDBF /* OnboardingSecond.swift in Sources */,
 				37FB38261E227EBA0075C106 /* Extensions.swift in Sources */,
 				37AD16E21E2D4448002F41D9 /* Register.swift in Sources */,
 				37A436DE1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift in Sources */,
@@ -636,7 +733,7 @@
 				375535011E084A4E000C0842 /* Add Absenzen.swift in Sources */,
 				370542E81E4777C3006B8C7E /* TutorialViewController.swift in Sources */,
 				372B20921E2E8C62004BF666 /* AuthTextField.swift in Sources */,
-				378465461E4F975A0012CDBF /* OnboardingFirst.swift in Sources */,
+				379B8C931EA4F87A00E27CBC /* PushNachrichten.swift in Sources */,
 				376DDB3A1E44C0ED0064E2D2 /* Einstellungen.swift in Sources */,
 				37FCAE771DFD51C000789BFF /* AppDelegate.swift in Sources */,
 				3707B7681E44D70D00BD150D /* AppInfo.swift in Sources */,
@@ -667,6 +764,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		379B8CA61EA6B79000E27CBC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 379B8C9A1EA6B78C00E27CBC /* KlassenbuchExtension */;
+			targetProxy = 379B8CA51EA6B79000E27CBC /* PBXContainerItemProxy */;
+		};
 		37FCAE891DFD51C000789BFF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 37FCAE721DFD51C000789BFF /* Klassenbuch */;
@@ -680,6 +782,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		379B8CA11EA6B78E00E27CBC /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				379B8CA21EA6B78E00E27CBC /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		37FCAE7A1DFD51C000789BFF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -700,6 +810,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		379B8CA91EA6B79000E27CBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = 86ZAAG46Z8;
+				INFOPLIST_FILE = KlassenbuchExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Matura.Klassenbuch.Jerome.KlassenbuchExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		379B8CAA1EA6B79000E27CBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = 86ZAAG46Z8;
+				INFOPLIST_FILE = KlassenbuchExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Matura.Klassenbuch.Jerome.KlassenbuchExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		37FCAE991DFD51C000789BFF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -808,12 +948,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 865JTAAGDU;
+				CODE_SIGN_ENTITLEMENTS = Klassenbuch/Klassenbuch.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 86ZAAG46Z8;
 				INFOPLIST_FILE = Klassenbuch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Matura.Klassenbuch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Matura.Klassenbuch.Jerome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -828,12 +971,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 865JTAAGDU;
+				CODE_SIGN_ENTITLEMENTS = Klassenbuch/Klassenbuch.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 86ZAAG46Z8;
 				INFOPLIST_FILE = Klassenbuch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Matura.Klassenbuch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Matura.Klassenbuch.Jerome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -901,6 +1047,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		379B8CA81EA6B79000E27CBC /* Build configuration list for PBXNativeTarget "KlassenbuchExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				379B8CA91EA6B79000E27CBC /* Debug */,
+				379B8CAA1EA6B79000E27CBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		37FCAE6E1DFD51C000789BFF /* Build configuration list for PBXProject "Klassenbuch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

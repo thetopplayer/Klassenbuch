@@ -19,28 +19,42 @@ class OnboardingPreSetupController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.loadingGif()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-          self.Schliessen.isHidden = false
-        }
-
-
-       
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
-            self.Schliessen.isHidden = true
-            self.PhoneImage31.image = #imageLiteral(resourceName: "LeaveOnboarding")
-        }
-    }
-
-
- func loadingGif(){
-        
-        PhoneImage31.loadGif(name: "GIF3")
+        self.Schliessen.isHidden = true
+        self.loadingGifs()
         
     }
 
+
+
+    func loadingGifs(){
+        
+        PhoneImage31.loadGif(name: "GIF")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 12) {
+            
+            self.PhoneImage31.image = #imageLiteral(resourceName: "SwipeRight")
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 16) {
+            
+            self.PhoneImage31.loadGif(name: "GIF2")
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 28) {
+            
+            self.PhoneImage31.image = #imageLiteral(resourceName: "SwipeRight")
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 32) {
+            
+            self.PhoneImage31.loadGif(name: "GIF3")
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 45) {
+            
+            self.PhoneImage31.image = #imageLiteral(resourceName: "SwipeRight")
+           self.Schliessen.isHidden = false
+            
+        }}
 
 
     override func didReceiveMemoryWarning() {

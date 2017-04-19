@@ -154,7 +154,7 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
     @IBAction func ADTextField(_ sender: UITextField) {
   
         let datepickerView = UIDatePicker()
-        datepickerView.minimumDate = Date() // set minimum date of today
+        datepickerView.minimumDate = Date() - 31536000 //set minimum date of today
         datepickerView.datePickerMode = UIDatePickerMode.date
         
         sender.inputView = datepickerView
@@ -277,16 +277,27 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         
-        self.ref!.child("absenzen").child(uid!).childByAutoId().setValue([
-            "APerson": AbsenzenPersons.text!,
-            "AStatus": Absenzstatus,
-            "ADatum": self.selectedDateZeroHour!
-            ])
-        
-        
-        self.dismiss(animated: true, completion: nil)
- 
+        if (AbsenzenPersons.text?.isEmpty)! || (AbsenzenDatum.text?.isEmpty)!
 
+        {
+            let alertController = UIAlertController(title: "Oops!", message: "Du hast nicht alle Angaben ausgefüllt.", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+
+        
+        }else {
+        
+            self.ref!.child("absenzen").child(uid!).childByAutoId().setValue([
+                "APerson": AbsenzenPersons.text!,
+                "AStatus": Absenzstatus,
+                "ADatum": self.selectedDateZeroHour!
+                ])
+        self.dismiss(animated: true, completion: nil)
+        }
+        
     }
 }
 

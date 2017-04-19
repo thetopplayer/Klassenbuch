@@ -20,8 +20,7 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
     
     // Variables
     var effect:UIVisualEffect!
-
-    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +35,10 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
  
         }
   
+
+    
+
+    
     
     
     // ConncectionState
@@ -63,8 +66,12 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
 
         let shareText = "Sieh dir diese App an, ein mobiles Klassenbuch"
         let shareURL = URL(string: "https://itunes.apple.com/us/app/calcfast/id876781417?mt=8")
-       //  let image = UIImage(named: "Delivery@3x.png")
-        let activityArray = [shareText, shareURL!/* , image!*/] as [Any]
+        
+      
+      
+        
+        let image = UIImage(named: "Delivery.png")
+        let activityArray = [shareText, shareURL! , image!] as [Any]
         let activityViewController = UIActivityViewController(activityItems: activityArray , applicationActivities: nil)
         activityViewController.excludedActivityTypes = [UIActivityType.assignToContact, UIActivityType.addToReadingList]
         present(activityViewController, animated: true, completion: nil)
@@ -74,6 +81,9 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
     
     
     // MARK: - Table view data source
+    
+    
+    var rowArray = [["One Row","One Row"], ["One Row"],["Second Row"]]
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 
@@ -83,7 +93,7 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
  
-        return 1
+        return self.rowArray[section].count
     }
    
     

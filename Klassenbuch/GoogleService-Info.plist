@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>305372416692-9f7nabnm83eul02mmmpk86fag7631iuj.apps.googleusercontent.com</string>
+	<string>599056700386-un03mha10hvpkr3hc7dl7rgvb74hs7hn.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.305372416692-9f7nabnm83eul02mmmpk86fag7631iuj</string>
+	<string>com.googleusercontent.apps.599056700386-un03mha10hvpkr3hc7dl7rgvb74hs7hn</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDfYHN9-ga53JJX0Oiiemoy0nIkSy3KXuY</string>
+	<string>AIzaSyBPGxOYnhH8t052bEGgzhlL0_ij08tx2-o</string>
 	<key>GCM_SENDER_ID</key>
-	<string>305372416692</string>
+	<string>599056700386</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.Matura.Klassenbuch</string>
+	<string>com.Matura.Klassenbuch.Jerome</string>
 	<key>PROJECT_ID</key>
-	<string>klassenbuch-55cc0</string>
+	<string>klassenbuch-5dfe2</string>
 	<key>STORAGE_BUCKET</key>
-	<string>klassenbuch-55cc0.appspot.com</string>
+	<string>klassenbuch-5dfe2.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:305372416692:ios:092ab5037236ba58</string>
+	<string>1:599056700386:ios:b8a2519951ea1528</string>
 	<key>DATABASE_URL</key>
-	<string>https://klassenbuch-55cc0.firebaseio.com</string>
+	<string>https://klassenbuch-5dfe2.firebaseio.com</string>
 </dict>
 </plist>

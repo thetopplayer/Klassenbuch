@@ -75,7 +75,7 @@ class Tests: UITableViewController {
                 let homeObject2 = TestsStruct(TDatum: tdatum, TFach: tfach, TText: ttext, TUid: tID)
                 
                 // compare dates
-                switch tdatum < Date().getDateFromZeroHour {
+                switch tdatum < Date().getDateFromZeroHour{
                     
                 case true:
                     // delete earlier dates data from database
@@ -151,6 +151,7 @@ class Tests: UITableViewController {
         cell.textLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].TText
         cell.detailTextLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].TFach
         cell.textLabel?.numberOfLines = 0
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
     

@@ -8,14 +8,22 @@
 
 import UIKit
 
-class AppInfo: UITableViewController {
+class AppInfo: UIViewController {
 
+    //Outlets
+    @IBOutlet weak var First: UIImageView!
+    @IBOutlet weak var Second: UIImageView!
+    @IBOutlet weak var Third: UIImageView!
+    @IBOutlet weak var background2: UIImageView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.estimatedRowHeight = 44
-        tableView.rowHeight = UITableViewAutomaticDimension
-
+        
+        self.ApplyMotionEffectsforViewDidLoad()
+        
         // Left Swipe
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
@@ -31,16 +39,7 @@ class AppInfo: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-       
-        return 3
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
-        return 1
-    }
-
+   
        //Fund for Left Swipe
     
     func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
@@ -49,6 +48,30 @@ class AppInfo: UITableViewController {
             self.dismiss(animated: true, completion: nil)
             
         }
+    }
+    // Motion Effect
+    
+    func applyMotionEffect (toView view:UIView, magnitude:Float) {
+        let xMotion = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
+        xMotion.minimumRelativeValue = -magnitude
+        xMotion.maximumRelativeValue = magnitude
+        
+        let yMotion = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
+        yMotion.minimumRelativeValue = -magnitude
+        yMotion.maximumRelativeValue = magnitude
+        
+        let group = UIMotionEffectGroup()
+        group.motionEffects = [xMotion, yMotion]
+        
+        view.addMotionEffect(group)
+    }
+    
+    func ApplyMotionEffectsforViewDidLoad() {
+        applyMotionEffect(toView: background2, magnitude: 5)
+        applyMotionEffect(toView: First, magnitude: -10)
+        applyMotionEffect(toView: Second, magnitude: -10)
+        applyMotionEffect(toView: Third, magnitude: -10)
+      
     }
 
 }

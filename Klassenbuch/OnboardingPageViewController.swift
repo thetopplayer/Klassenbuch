@@ -16,11 +16,10 @@ class OnboardingPageViewController: UIPageViewController, UIPageViewControllerDa
         let sb = UIStoryboard(name: "Main", bundle: nil)
         
         
-        let vc1 = sb.instantiateViewController(withIdentifier: "First")
-        let vc2 = sb.instantiateViewController(withIdentifier: "Second")
-        let vc3 = sb.instantiateViewController(withIdentifier: "Third")
-        let vc4 = sb.instantiateViewController(withIdentifier: "Fourth")
-        return[vc1, vc2, vc3, vc4]
+        let vc1 = sb.instantiateViewController(withIdentifier: "Third")
+        let vc2 = sb.instantiateViewController(withIdentifier: "Fourth")
+     
+        return[vc1, vc2]
         
     }()
     

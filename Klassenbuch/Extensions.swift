@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseMessaging
+import UserNotifications
 
 
 
@@ -58,6 +60,7 @@ extension Int {
 }
 
 
+
 extension Date {
     
     /// This computed property will take date and convert the date to zero hours e.g. 7 Mar 2017 12:08PM After 7 Mar 2017 00:00PM
@@ -80,4 +83,76 @@ extension Date {
     
 }
 
+
+// [START ios_10_message_handling]
+@available(iOS 10, *)
+extension AppDelegate : UNUserNotificationCenterDelegate {
+    
+    // Receive displayed notifications for iOS 10 devices.
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo
+        // Print message ID.
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+        
+        // Print full message.
+        print(userInfo)
+        
+        // Change this to your preferred presentation option
+        completionHandler([])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        // Print message ID.
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+        
+        // Print full message.
+        print(userInfo)
+        
+        completionHandler()
+    }
+}
+// [END ios_10_message_handling]
+// [START ios_10_data_message_handling]
+extension AppDelegate : FIRMessagingDelegate {
+    // Receive data message on iOS 10 devices while app is in the foreground.
+    func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
+        print(remoteMessage.appData)
+    }
+}
+// [END ios_10_data_message_handling]
+
+
+
+//Old Extensions
+/*extension AppDelegate : UNUserNotificationCenterDelegate {
+ 
+ // Receive displayed notifications for iOS 10 devices.
+ 
+ func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+ let userInfo = notification.request.content.userInfo
+ // Print message ID.
+ print("Message ID: \(userInfo["gcm.message_id"]!)")
+ 
+ // Print full message.
+ print("%@", userInfo)
+ 
+ }
+ 
+ }
+ 
+ extension AppDelegate : FIRMessagingDelegate {
+ // Receive data message on iOS 10 devices.
+ func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
+ print("%@", remoteMessage.appData)
+ }
+ }   */
 

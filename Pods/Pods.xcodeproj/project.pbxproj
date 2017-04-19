@@ -23,19 +23,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>00B699A00AEA346E957B6B6017074A20</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>IQKeyboardManagerSwift-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>00DF8AF59A27547EB6B8D9123ED674ED</key>
 		<dict>
 			<key>baseConfigurationReference</key>
@@ -106,115 +93,39 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>011355DFD7E90C294E3B5F5ABD0D12E9</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>5C77C6F9A0A501DABC990DB282DB0351</string>
-				<string>5E65CF01DEC90ECB1DA8DF3B3C18A5DB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>FirebaseInstanceID</string>
-			<key>path</key>
-			<string>FirebaseInstanceID</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>01557829FB8F7F050C96FEABF3BC5C9F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>GoogleSymbolUtilities.framework</string>
-			<key>path</key>
-			<string>Frameworks/frameworks/GoogleSymbolUtilities.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>01911DC13472315D521D02DAB151C356</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>0264E6DA5DAC8713C174F983B218D10D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>DCE4ACF0C3C6E9A3915D42A1A3C6B3DA</string>
+			<string>23FE99A0E6653A676DC9399B1BB6E835</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>02A3644D78BF0FDF80BD5D0DD88E6E7B</key>
+		<key>03E6E56F8533C2E42C696D7CCAC42910</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>IQNSArray+Sort.swift</string>
-			<key>path</key>
-			<string>IQKeyboardManagerSwift/Categories/IQNSArray+Sort.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0335D92BD6D47C653F8322A3264A646A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>Firebase.h</string>
-			<key>path</key>
-			<string>Core/Sources/Firebase.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>03D10B19DBAAF68D732A537858E96531</key>
-		<dict>
-			<key>children</key>
+			<key>buildConfigurationList</key>
+			<string>4AA53F3F82A9F39FE603AB3548E416F7</string>
+			<key>buildPhases</key>
 			<array>
-				<string>A17D18CAA87C0EE1AC2139C4046F8921</string>
+				<string>175C5BB666A42F11AA8A270F5D6A26FF</string>
+				<string>CB10B2D20933A6AFFF01B9A42863B4B2</string>
+				<string>789520F9E8A9D59980877DA987EB2818</string>
 			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
 			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>PBXNativeTarget</string>
 			<key>name</key>
-			<string>Resources</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>GoogleToolboxForMac</string>
+			<key>productName</key>
+			<string>GoogleToolboxForMac</string>
+			<key>productReference</key>
+			<string>3EAF42EB03A682CCE58ED312C7646E7D</string>
+			<key>productType</key>
+			<string>com.apple.product-type.framework</string>
 		</dict>
-		<key>04BE4C037DAAFA60C326D6783F5E58AD</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>EE327E403CBB5E5021F440772E972A5C</string>
-				<string>F08E0DD97D4D2D079322A6E06B5CD37C</string>
-				<string>39195CE4F51713267EFFB978CC6FF659</string>
-				<string>FD7819650A77515B551355DB3D9C91A7</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>0548A81C76E551C216781D7F33714E08</key>
+		<key>04C865D94963725A854E2E9A6128F439</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -222,17 +133,46 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTMSessionFetcherLogging.m</string>
 			<key>path</key>
-			<string>IQKeyboardManagerSwift-dummy.m</string>
+			<string>Source/GTMSessionFetcherLogging.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>05B16B28ECA58BDADA5FF859FC55F428</key>
+		<dict>
+			<key>fileRef</key>
+			<string>08F36B7D3A8A9276BB342DA4EDF75D66</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
 		<key>06EDB944284E74970F312CB7F2910C07</key>
 		<dict>
 			<key>fileRef</key>
-			<string>571AC17E88CEB50676EBA7C50FAAE9BC</string>
+			<string>77BBD8702E7F965798C5BE3A49FEF86F</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>08F36B7D3A8A9276BB342DA4EDF75D66</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GTMDefines.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>09907E8D8793B5FA5AD5845B9920217D</key>
 		<dict>
@@ -244,19 +184,6 @@
 			<string>sourcecode.c.h</string>
 			<key>path</key>
 			<string>Pods-Klassenbuch-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>0A7CD48E327E09D7EB1A5A1ADABA23DB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>FD5126A25216183DF3DF03579257BE02</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -288,19 +215,6 @@
 			<string>Release</string>
 			<key>isa</key>
 			<string>XCConfigurationList</string>
-		</dict>
-		<key>0E5095A83D8D3391BD64381BB1AF0D6F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>GoogleToolboxForMac-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>0EE4E0768D080DCABC884C9C4E4E5138</key>
 		<dict>
@@ -383,113 +297,35 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>10EE6F0B246F74F8E6711E71C49F23E2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>GTMSessionFetcher-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>112BEB4E2EF7496D7943AE11E084FB49</key>
+		<key>108472256BBBC2183E93DA9AF4F1E2E4</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>65FE8A30A28B64F9CA3940C83A53C767</string>
-				<string>CCF600BDA939A584B381CAF3F5D48AA9</string>
-				<string>41B059CFEDC6F610DFC452F2026F31A0</string>
-				<string>66D19D083AE72CF2B37A8D5EF5BAF11C</string>
-				<string>4BCDC612891B41582D25B965D35DAEB9</string>
-				<string>B008CF8285EA973B00E41B6F463E5B85</string>
+				<string>749BE96F05DDE638820E31EF6B40132E</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>GoogleToolboxForMac</string>
+			<string>FirebaseDatabase</string>
 			<key>path</key>
-			<string>GoogleToolboxForMac</string>
+			<string>FirebaseDatabase</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>119FE3B53E4E5C44B2C741E392CCE8B5</key>
+		<key>116F048E2D7ECEC47F1B2C03A9D309EA</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>children</key>
+			<array>
+				<string>855C323AE1AEFBD87D562F95904BCB58</string>
+			</array>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>PBXGroup</string>
 			<key>name</key>
-			<string>GTMNSString+URLArguments.h</string>
+			<string>FirebaseAnalytics</string>
 			<key>path</key>
-			<string>Foundation/GTMNSString+URLArguments.h</string>
+			<string>FirebaseAnalytics</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>11D6F28C4A05ADF6F3A1F2351988AB9E</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>65ABC5B7AF6EFE4B4AE721ACA6FD8FD9</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf</string>
-				<key>DEFINES_MODULE</key>
-				<string>YES</string>
-				<key>DYLIB_COMPATIBILITY_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_CURRENT_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_INSTALL_NAME_BASE</key>
-				<string>@rpath</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/GoogleToolboxForMac/Info.plist</string>
-				<key>INSTALL_PATH</key>
-				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-					<string>@loader_path/Frameworks</string>
-				</array>
-				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>PRODUCT_NAME</key>
-				<string>GoogleToolboxForMac</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VERSIONING_SYSTEM</key>
-				<string>apple-generic</string>
-				<key>VERSION_INFO_PREFIX</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
 		</dict>
 		<key>11F4DA9ABF507E960C254C3A62C2C343</key>
 		<dict>
@@ -586,7 +422,7 @@
 		<key>139250EF8D4E404AD5019BA8966C0ED0</key>
 		<dict>
 			<key>fileRef</key>
-			<string>00B699A00AEA346E957B6B6017074A20</string>
+			<string>8FD22C4556E41B793528595279EBBDA6</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -600,7 +436,7 @@
 		<key>140CD39A692D39FFD88267BED2D8D532</key>
 		<dict>
 			<key>fileRef</key>
-			<string>67E267F11BEAE0A4F48718022087CACE</string>
+			<string>8CFB382A558D0F62E2969938491379AC</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -643,20 +479,6 @@
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
-		<key>15F9229A82FBF89A858BB1FCABADD283</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3B23AB115DF7075BE64E94767BE8601F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
 		<key>161601383DEA1F2FC6BB5588B4EE58C9</key>
 		<dict>
 			<key>buildActionMask</key>
@@ -686,18 +508,48 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>16B34A7B0D136F65B50AB849776D2122</key>
+		<key>175C5BB666A42F11AA8A270F5D6A26FF</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>E78AE49882F8CAC036627DAE5ED0B734</string>
+				<string>5A2EE95614A1A002E425F50FD313F2CE</string>
+				<string>CB61690A5E16D143978F644E0396DAF4</string>
+				<string>FA590612D848E3DB4F73DC11C88CB0AD</string>
+				<string>791F1896C3FEAA4F9D1DF81E910C5F65</string>
+			</array>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>17897BA41F26B2B842AD35AA685C2FE8</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8D40E1F24B440F29B1A1082D0B290240</string>
+				<string>F29E703EAF8D74787B0AC9E6B7A68798</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
 			<key>name</key>
-			<string>GTMSessionUploadFetcher.m</string>
-			<key>path</key>
-			<string>Source/GTMSessionUploadFetcher.m</string>
+			<string>NSData+zlib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>17A7B1CD988465220803D68F165185FF</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>403A07D3ABF89D1AD0B0E4D558279909</string>
+				<string>67A1858F0EB487A3D875A10FF5B86D6A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>NSString+URLArguments</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -782,21 +634,6 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>1B26AF638AF632424DD8A631C128E524</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTMDebugThreadValidation.h</string>
-			<key>path</key>
-			<string>DebugUtils/GTMDebugThreadValidation.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>1C908C9E23B0214C9B9B55CCB6C90A02</key>
 		<dict>
 			<key>buildSettings</key>
@@ -868,29 +705,29 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
-		<key>1D34CF4D543ED145AA11F5848D28E8CB</key>
+		<key>1E445A310AA486B7E4D00843D2E78378</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>3A9F2CB37160BF3DC9C67463AC498D01</string>
-			</array>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
 			<key>name</key>
-			<string>FirebaseDatabase</string>
+			<string>IQUIViewController+Additions.swift</string>
 			<key>path</key>
-			<string>FirebaseDatabase</string>
+			<string>IQKeyboardManagerSwift/Categories/IQUIViewController+Additions.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>1E6F4C1F5FC9D8C84C434BB45985FCFB</key>
 		<dict>
 			<key>fileRef</key>
-			<string>16B34A7B0D136F65B50AB849776D2122</string>
+			<string>FFA5528D064CFD312452F4D8C87CCA07</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>228AC0A954DAD127B4B3A67C740DB679</key>
+		<key>1EEE8B7F0E2868F32D88064312C4F056</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -898,8 +735,40 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FIRMessaging.h</string>
 			<key>path</key>
-			<string>GTMSessionFetcher-umbrella.h</string>
+			<string>Sources/FIRMessaging.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F82B78F01C02E7A37198D5D0A79BFF9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.plug-in</string>
+			<key>name</key>
+			<string>IQKeyboardManager.bundle</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift/Resources/IQKeyboardManager.bundle</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FF797D98A0C88F6C3E209BBA5F231BB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>67AD74BA37015BF1B8D01705FBC8EACE</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>GoogleSymbolUtilities</string>
+			<key>path</key>
+			<string>GoogleSymbolUtilities</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -937,9 +806,24 @@
 			<key>proxyType</key>
 			<string>1</string>
 			<key>remoteGlobalIDString</key>
-			<string>7D04535608058A2FABC0D16935868FB9</string>
+			<string>03E6E56F8533C2E42C696D7CCAC42910</string>
 			<key>remoteInfo</key>
 			<string>GoogleToolboxForMac</string>
+		</dict>
+		<key>23FE99A0E6653A676DC9399B1BB6E835</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>IQKeyboardManagerConstants.swift</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstants.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>255A79741BDF3D4E9DF80CD6633E8140</key>
 		<dict>
@@ -957,7 +841,7 @@
 		<key>25C40E5227B25581C854804747C2C346</key>
 		<dict>
 			<key>fileRef</key>
-			<string>AEBFBC39BF76DC2941427B3E8EF091F1</string>
+			<string>E4F0DC864CB37CB135D12B7EAD4185B6</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -968,17 +852,32 @@
 				</array>
 			</dict>
 		</dict>
+		<key>25E714A86FD12467746FCD557B70DCC5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTMNSDictionary+URLArguments.m</string>
+			<key>path</key>
+			<string>Foundation/GTMNSDictionary+URLArguments.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>2641CD2EBD374904D2E5759683B97B76</key>
 		<dict>
 			<key>fileRef</key>
-			<string>86267A29B46932CF468DD01BAFBE8031</string>
+			<string>715EB7062C5CA83A04DCC5C31557F2DA</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>26C3425F45F1374791CB8B07AD01942D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>A17D18CAA87C0EE1AC2139C4046F8921</string>
+			<string>1F82B78F01C02E7A37198D5D0A79BFF9</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -1049,27 +948,7 @@
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
-		<key>293736674DAFF98204041CC914976590</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>496142BA8FDC455B8C71EB1D9D9CC520</string>
-				<string>15F9229A82FBF89A858BB1FCABADD283</string>
-				<string>B2781A35A41CFD843CBB5848EFC63B66</string>
-				<string>A2AB2252C5CB27D158745F245C4ED39E</string>
-				<string>F6498C02655C4E58AD3013140A40A328</string>
-				<string>F117CDA64FF333D2C8E2E3D685870C08</string>
-				<string>C885F0BDB0D76B2A3F5771814A8BBCC5</string>
-				<string>E3587E2F2FEAAC7D49B01E33D5157295</string>
-			</array>
-			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>2AFE8FCB6CA3C37A300D80DF4ED83938</key>
+		<key>29DFF8F6B83B00C3C1BFD10E78D59382</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1077,72 +956,10 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTMSessionFetcherService.h</string>
 			<key>path</key>
-			<string>Source/GTMSessionFetcherService.h</string>
+			<string>IQKeyboardManagerSwift-prefix.pch</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>2C24246B3E254B9C6F5B1B1BF4D7623D</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>65ABC5B7AF6EFE4B4AE721ACA6FD8FD9</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>DEFINES_MODULE</key>
-				<string>YES</string>
-				<key>DYLIB_COMPATIBILITY_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_CURRENT_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_INSTALL_NAME_BASE</key>
-				<string>@rpath</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/GoogleToolboxForMac/Info.plist</string>
-				<key>INSTALL_PATH</key>
-				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-					<string>@loader_path/Frameworks</string>
-				</array>
-				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>PRODUCT_NAME</key>
-				<string>GoogleToolboxForMac</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VERSIONING_SYSTEM</key>
-				<string>apple-generic</string>
-				<key>VERSION_INFO_PREFIX</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
 		</dict>
 		<key>2CB0C09B0FC8BAA0921FBB8FA7268E91</key>
 		<dict>
@@ -1185,6 +1002,13 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
+		<key>30E4DF0B19A0681DE6E791CB435C3FBA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>12A1C3ACBDBC15557CAEDA4AA0D99419</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>314BB49AF380BC9CD683F40929E3EF8D</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -1195,6 +1019,35 @@
 			<string>sourcecode.c.objc</string>
 			<key>path</key>
 			<string>Pods-KlassenbuchUITests-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>317E4AD9E1BED5785B6165E2374F5514</key>
+		<dict>
+			<key>fileRef</key>
+			<string>89EDD3BDA882E845E6D527675569FAD6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>32168ADECC064580F147EBDB5C99F0AB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>IQUITextFieldView+Additions.swift</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift/Categories/IQUITextFieldView+Additions.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1212,6 +1065,40 @@
 				</array>
 			</dict>
 		</dict>
+		<key>32A4E0212EB77E54470A3391B609AC99</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6C774E8057FCD21D4F3A64A588EC9F95</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>32A991E1AEB76F44A68F96DF6E5ED365</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8A0EC764A630C469FDC435B59125A5E6</string>
+				<string>C44ABB392FDC472D538567B8FF3169BE</string>
+				<string>B97EEB10DF38C701E258A3F89DD2F4F7</string>
+				<string>4F78E5FCE4DD54228CDA4F88DD90F496</string>
+				<string>29DFF8F6B83B00C3C1BFD10E78D59382</string>
+				<string>8FD22C4556E41B793528595279EBBDA6</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/IQKeyboardManagerSwift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>33AAD8F31A793DA0A3E3BC74EDE110BA</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -1225,39 +1112,25 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>3518C3FCACC934575172BE3BFE9ABC49</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9088C0AC54B2DF757E63A7CDFD59A92B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>361F0957E7F62205C1B285C0D5907CCF</key>
 		<dict>
 			<key>fileRef</key>
 			<string>180469E3BA6F69F23FF0B9E77EA75D67</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>389C4D7022C33797BE293CBBFC021D51</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>IQPreviousNextView.swift</string>
-			<key>path</key>
-			<string>IQKeyboardManagerSwift/IQToolbar/IQPreviousNextView.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>39195CE4F51713267EFFB978CC6FF659</key>
-		<dict>
-			<key>fileRef</key>
-			<string>9274220D9266167480FBC54D1A27A5FD</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
 		</dict>
 		<key>39514D36BDF9D63FD9FD9A066F19465F</key>
 		<dict>
@@ -1280,83 +1153,36 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>3A3DEA85AC681176FA28205CA745D717</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0A7CD48E327E09D7EB1A5A1ADABA23DB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>FirebaseAuth</string>
-			<key>path</key>
-			<string>FirebaseAuth</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A86D3EEFB6B76B76FD9E979D22D1838</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>IQToolbar.swift</string>
-			<key>path</key>
-			<string>IQKeyboardManagerSwift/IQToolbar/IQToolbar.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A9F2CB37160BF3DC9C67463AC498D01</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>EA0E157E88B13A70F4E81C7D4212E4FF</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>3B082E6ACCC2D096E28EE29CE82F89F6</key>
 		<dict>
 			<key>fileRef</key>
-			<string>8924CEF6CF4426C4A01EE2DD66D079A3</string>
+			<string>1E445A310AA486B7E4D00843D2E78378</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>3B23AB115DF7075BE64E94767BE8601F</key>
+		<key>3B44707D191518440A261843A062D520</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTMDebugSelectorValidation.h</string>
+			<string>text.plist.xml</string>
 			<key>path</key>
-			<string>DebugUtils/GTMDebugSelectorValidation.h</string>
+			<string>Info.plist</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>3CCECA2E0A249661701DEA741248E235</key>
+		<key>3E17B5ED14D6E7F4FBBB988E85CEB3A8</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>wrapper.framework</string>
 			<key>name</key>
-			<string>GTMNSData+zlib.h</string>
+			<string>GoogleSymbolUtilities.framework</string>
 			<key>path</key>
-			<string>Foundation/GTMNSData+zlib.h</string>
+			<string>Frameworks/frameworks/GoogleSymbolUtilities.framework</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1443,62 +1269,46 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
-		<key>41B059CFEDC6F610DFC452F2026F31A0</key>
+		<key>40240608A154B055FF53D0E7DB490479</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>3CCECA2E0A249661701DEA741248E235</string>
-				<string>ED8DA940343D5F3EA963EB95A21A4A3E</string>
+				<string>08F36B7D3A8A9276BB342DA4EDF75D66</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>NSData+zlib</string>
+			<string>Defines</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>41F9C3F0DC66E8852E29D970EBCDC6EB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>6D9984D8469389C49086259FB3A7D133</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>GoogleSymbolUtilities</string>
-			<key>path</key>
-			<string>GoogleSymbolUtilities</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>43F3ADCD2333852F00BEFDEECA7BA50A</key>
+		<key>403A07D3ABF89D1AD0B0E4D558279909</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>IQTitleBarButtonItem.swift</string>
+			<string>GTMNSString+URLArguments.h</string>
 			<key>path</key>
-			<string>IQKeyboardManagerSwift/IQToolbar/IQTitleBarButtonItem.swift</string>
+			<string>Foundation/GTMNSString+URLArguments.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>44F237A7207596C368285FBE3D7B20AD</key>
+		<key>428B724B5EEFFEB8E187ED21D23E08AB</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>BCA4B23D43C1F6FC47089C8CDA832DBE</string>
-			</array>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GoogleInterchangeUtilities</string>
+			<string>Firebase.h</string>
 			<key>path</key>
-			<string>GoogleInterchangeUtilities</string>
+			<string>Core/Sources/Firebase.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1509,9 +1319,57 @@
 			<key>name</key>
 			<string>GoogleToolboxForMac</string>
 			<key>target</key>
-			<string>7D04535608058A2FABC0D16935868FB9</string>
+			<string>03E6E56F8533C2E42C696D7CCAC42910</string>
 			<key>targetProxy</key>
 			<string>23F4EA4AFF7C3A139291D7BADA3AEE79</string>
+		</dict>
+		<key>45387CEDFE41BA392A905992B60680D1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GTMSessionFetcher-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>46E1D2FFC3923220C8D021C7E716654B</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>97A92004FE7364FED8213375BCC9A99E</string>
+				<string>958854EEF9C4251796DB60C05AC273E0</string>
+				<string>62AF8C4C3559667821C1B1808DF16BE5</string>
+				<string>45387CEDFE41BA392A905992B60680D1</string>
+				<string>FBE3320FB573D1D4833463705CD80BBA</string>
+				<string>3B44707D191518440A261843A062D520</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/GTMSessionFetcher</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4744C0421E90E1D27BAF08DBC1A7CB65</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>B9225976B66B2A5A6D6F2EA3B2CE2330</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Firebase</string>
+			<key>path</key>
+			<string>Firebase</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>4746D01DDC67EF585E6274C9CF9481AC</key>
 		<dict>
@@ -1526,26 +1384,40 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>48A5794D7633E929CAF945CCE5D94916</key>
+		<key>47718C74E7A6C6D6948934990C7EE8C0</key>
 		<dict>
-			<key>fileRef</key>
-			<string>12A1C3ACBDBC15557CAEDA4AA0D99419</string>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXBuildFile</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>IQUIWindow+Hierarchy.swift</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift/Categories/IQUIWindow+Hierarchy.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
-		<key>496142BA8FDC455B8C71EB1D9D9CC520</key>
+		<key>48D7DF4940E63B41D7AA20670652FBF3</key>
 		<dict>
-			<key>fileRef</key>
-			<string>0E5095A83D8D3391BD64381BB1AF0D6F</string>
+			<key>children</key>
+			<array>
+				<string>8E1E1F50593E3CB52F439A569CA882D3</string>
+				<string>58904FEF66153C0C28CE342B69E9CBCA</string>
+				<string>B408CD45FC349E0041D476F57F260E8B</string>
+				<string>DC0D403C8A898D225C76E070040C40CA</string>
+				<string>7CEF9268FE15E0DADE1398CF989A0323</string>
+				<string>D4F92ACB147D488906C1275A1B67DF9D</string>
+			</array>
 			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/GoogleToolboxForMac</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>498EC3E651F56EED35EDAAAFB8924ABE</key>
 		<dict>
@@ -1560,12 +1432,27 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>4AEBB187FDCC7C53ECD2FC0EA27EB970</key>
+		<key>4A1078D860ADBC29CF8840FCFC61207B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>IQNSArray+Sort.swift</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift/Categories/IQNSArray+Sort.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4AA53F3F82A9F39FE603AB3548E416F7</key>
 		<dict>
 			<key>buildConfigurations</key>
 			<array>
-				<string>11D6F28C4A05ADF6F3A1F2351988AB9E</string>
-				<string>2C24246B3E254B9C6F5B1B1BF4D7623D</string>
+				<string>A1BD3C9E4D847624798CD0C10982CA48</string>
+				<string>FE6D07BE537837EDD4B0455F6768F304</string>
 			</array>
 			<key>defaultConfigurationIsVisible</key>
 			<string>0</string>
@@ -1574,30 +1461,30 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
-		<key>4BCDC612891B41582D25B965D35DAEB9</key>
+		<key>4E5EA84A74415C4FAB331B424A9083D4</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>119FE3B53E4E5C44B2C741E392CCE8B5</string>
-				<string>7D9A58F25C38408C5EAF15BCD66A6819</string>
-			</array>
+			<key>fileRef</key>
+			<string>E1E59ACBE7243B613A54BE9A43BDE6DB</string>
 			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>NSString+URLArguments</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
-		<key>4C4C08282BE355E04A71B2BD09A8C9CF</key>
+		<key>4F78E5FCE4DD54228CDA4F88DD90F496</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
+			<string>sourcecode.c.objc</string>
 			<key>path</key>
-			<string>Info.plist</string>
+			<string>IQKeyboardManagerSwift-dummy.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1651,25 +1538,10 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>5268916843FC42ADFDF2F1F8C50EDDFE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>IQKeyboardManager.swift</string>
-			<key>path</key>
-			<string>IQKeyboardManagerSwift/IQKeyboardManager.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>52C93F841C149E5040384D4D16FEEF53</key>
 		<dict>
 			<key>fileRef</key>
-			<string>228AC0A954DAD127B4B3A67C740DB679</string>
+			<string>FBE3320FB573D1D4833463705CD80BBA</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1680,33 +1552,43 @@
 				</array>
 			</dict>
 		</dict>
-		<key>53103C98019270F2896786136F81211D</key>
+		<key>5464B59089CF1131696AAB4D810EE018</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>BA30225D7F32D7B66778380982F6B574</string>
+				<string>E8479E9CE7A4438D8721032069FDDE2D</string>
+				<string>25E714A86FD12467746FCD557B70DCC5</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Firebase</string>
-			<key>path</key>
-			<string>Firebase</string>
+			<string>NSDictionary+URLArguments</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>571AC17E88CEB50676EBA7C50FAAE9BC</key>
+		<key>551AE05365E4074BFD2103696E99AC2B</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>GoogleInterchangeUtilities.framework</string>
+			<key>path</key>
+			<string>Frameworks/frameworks/GoogleInterchangeUtilities.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>58904FEF66153C0C28CE342B69E9CBCA</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>IQBarButtonItem.swift</string>
+			<string>text.xcconfig</string>
 			<key>path</key>
-			<string>IQKeyboardManagerSwift/IQToolbar/IQBarButtonItem.swift</string>
+			<string>GoogleToolboxForMac.xcconfig</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1739,14 +1621,26 @@
 		<key>59D87C6DDEE038D47CC06ECFA3478F66</key>
 		<dict>
 			<key>fileRef</key>
-			<string>02A3644D78BF0FDF80BD5D0DD88E6E7B</string>
+			<string>4A1078D860ADBC29CF8840FCFC61207B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>5A2EE95614A1A002E425F50FD313F2CE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E905816081CD4FA82BB5EDAB9A15F361</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fno-objc-arc</string>
+			</dict>
 		</dict>
 		<key>5B3C01BCDA5A0604C0D71250BA77EC8B</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>B981A18FFAB4576B1A6E8E52F6698DE2</string>
+			<string>B97EEB10DF38C701E258A3F89DD2F4F7</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -1805,46 +1699,31 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>5C77C6F9A0A501DABC990DB282DB0351</key>
+		<key>5B7D39B0EAB4251E060D0CD8BCF9DAAF</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>children</key>
+			<array>
+				<string>90EF95E1EAF51935B79BDCFF71788737</string>
+			</array>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>PBXGroup</string>
 			<key>name</key>
-			<string>FIRInstanceID.h</string>
-			<key>path</key>
-			<string>Sources/FIRInstanceID.h</string>
+			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>5DCD12C2C139245388578C182CACC06D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B4277DBD978B7F29E07633D10AB862D7</string>
+			<string>47718C74E7A6C6D6948934990C7EE8C0</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>5E19F0EFE06C3BC7DAA6AFE5EA21D4DF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>IQKeyboardManagerSwift-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>5E65CF01DEC90ECB1DA8DF3B3C18A5DB</key>
+		<key>5E8CA1C3622D491BC631478BBEA1F087</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>96D7A1B1D665345EB423FF73F22B788C</string>
+				<string>65952671A09BB65906DEFA7261183153</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -1868,14 +1747,16 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>6369DA5369C1BE4736E7B7AA48840E69</key>
+		<key>62AF8C4C3559667821C1B1808DF16BE5</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
 			<key>path</key>
-			<string>IQKeyboardManagerSwift.modulemap</string>
+			<string>GTMSessionFetcher-dummy.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1907,6 +1788,21 @@
 			<key>sourceTree</key>
 			<string>DEVELOPER_DIR</string>
 		</dict>
+		<key>653BC0B843D3D0E0B9F034AB8BD75C63</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>IQTitleBarButtonItem.swift</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift/IQToolbar/IQTitleBarButtonItem.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>6575B03C92455416D43B5FC3573CB205</key>
 		<dict>
 			<key>fileRef</key>
@@ -1914,52 +1810,51 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>65ABC5B7AF6EFE4B4AE721ACA6FD8FD9</key>
+		<key>65952671A09BB65906DEFA7261183153</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>FirebaseCore.framework</string>
+			<key>path</key>
+			<string>Frameworks/frameworks/FirebaseCore.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>67A1858F0EB487A3D875A10FF5B86D6A</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTMNSString+URLArguments.m</string>
 			<key>path</key>
-			<string>GoogleToolboxForMac.xcconfig</string>
+			<string>Foundation/GTMNSString+URLArguments.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>65FE8A30A28B64F9CA3940C83A53C767</key>
+		<key>67AD74BA37015BF1B8D01705FBC8EACE</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>3B23AB115DF7075BE64E94767BE8601F</string>
-				<string>1B26AF638AF632424DD8A631C128E524</string>
-				<string>87540FEA027E3B4252A70986BA913885</string>
+				<string>3E17B5ED14D6E7F4FBBB988E85CEB3A8</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>DebugUtils</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>66D19D083AE72CF2B37A8D5EF5BAF11C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E9A95B8BD4797B362939DCD55151CF70</string>
-				<string>9274220D9266167480FBC54D1A27A5FD</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>NSDictionary+URLArguments</string>
+			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>67DB80E18D2186D438F50D0359483C7E</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>7C70F9B133B511B1C3A895ED56BE3783</string>
+			<string>958854EEF9C4251796DB60C05AC273E0</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -2016,18 +1911,35 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>67E267F11BEAE0A4F48718022087CACE</key>
+		<key>6A3F1374308F2CCE05003CDB70FB801F</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>children</key>
+			<array>
+				<string>77BBD8702E7F965798C5BE3A49FEF86F</string>
+				<string>7115E0FFA515340F927BFE2F55478CF1</string>
+				<string>23FE99A0E6653A676DC9399B1BB6E835</string>
+				<string>BABBEEC43EBCEDFFDC5B66EEEA495BA1</string>
+				<string>C7FFC89342498C95ED14002A1214C4DA</string>
+				<string>4A1078D860ADBC29CF8840FCFC61207B</string>
+				<string>AE0B4B1C6F1FB45795C2AD6C5AD3BBB6</string>
+				<string>A79E09D1C0EC32BB96008EF9E14606B7</string>
+				<string>653BC0B843D3D0E0B9F034AB8BD75C63</string>
+				<string>8516C8242EBEE63C9D632C513C49B442</string>
+				<string>715EB7062C5CA83A04DCC5C31557F2DA</string>
+				<string>32168ADECC064580F147EBDB5C99F0AB</string>
+				<string>6F12C1B0BC720F81E902A7527E9A5AFE</string>
+				<string>F5189EF13EF4CF294F69CEF7797FD84A</string>
+				<string>1E445A310AA486B7E4D00843D2E78378</string>
+				<string>47718C74E7A6C6D6948934990C7EE8C0</string>
+				<string>C6CD64B1908CBEDD7E13649192F12808</string>
+				<string>32A991E1AEB76F44A68F96DF6E5ED365</string>
+			</array>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>PBXGroup</string>
 			<key>name</key>
-			<string>GTMSessionFetcherService.m</string>
+			<string>IQKeyboardManagerSwift</string>
 			<key>path</key>
-			<string>Source/GTMSessionFetcherService.m</string>
+			<string>IQKeyboardManagerSwift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2044,16 +1956,67 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>6D9984D8469389C49086259FB3A7D133</key>
+		<key>6C774E8057FCD21D4F3A64A588EC9F95</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTMLogger.h</string>
+			<key>path</key>
+			<string>Foundation/GTMLogger.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6D1DA27239641578F13EACC7EADBE752</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>01557829FB8F7F050C96FEABF3BC5C9F</string>
+				<string>B2F7BEB2D677056863F327A379F03A3F</string>
+				<string>CC0A1C9485F38FB6C833502B540CC5C0</string>
+				<string>F262E9C24E55018FC994B1D32DD5996F</string>
+				<string>04C865D94963725A854E2E9A6128F439</string>
+				<string>EBCF8B626E7E61357F0F3451C3643084</string>
+				<string>8CFB382A558D0F62E2969938491379AC</string>
+				<string>E4F0DC864CB37CB135D12B7EAD4185B6</string>
+				<string>FFA5528D064CFD312452F4D8C87CCA07</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Frameworks</string>
+			<string>Core</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6DE911E8E96E18EFFFFC309089749699</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6C774E8057FCD21D4F3A64A588EC9F95</string>
+				<string>E905816081CD4FA82BB5EDAB9A15F361</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Logger</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F12C1B0BC720F81E902A7527E9A5AFE</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>IQUIView+Hierarchy.swift</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift/Categories/IQUIView+Hierarchy.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2088,10 +2051,40 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>7115E0FFA515340F927BFE2F55478CF1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>IQKeyboardManager.swift</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift/IQKeyboardManager.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>715EB7062C5CA83A04DCC5C31557F2DA</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>IQUIScrollView+Additions.swift</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift/Categories/IQUIScrollView+Additions.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>722AF5C1FD6DB498D64284678BC7D74F</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>7C70F9B133B511B1C3A895ED56BE3783</string>
+			<string>958854EEF9C4251796DB60C05AC273E0</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -2188,7 +2181,7 @@
 		<key>731196A3A85E405C95CA491032AA77F7</key>
 		<dict>
 			<key>fileRef</key>
-			<string>EE8CC60BD194EF97D508DE9406D2E02D</string>
+			<string>F262E9C24E55018FC994B1D32DD5996F</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2198,6 +2191,19 @@
 					<string>Public</string>
 				</array>
 			</dict>
+		</dict>
+		<key>749BE96F05DDE638820E31EF6B40132E</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BC23E6ACB13343BEBDA483157996FD11</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>74E5A52C41096C68F3511A75017184EA</key>
 		<dict>
@@ -2212,6 +2218,21 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
+		<key>77BBD8702E7F965798C5BE3A49FEF86F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>IQBarButtonItem.swift</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift/IQToolbar/IQBarButtonItem.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>77D1CA4BDC11F30E8223CAEC291D7C95</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -2224,6 +2245,27 @@
 			<string>Pods-KlassenbuchUITests-frameworks.sh</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>789520F9E8A9D59980877DA987EB2818</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>8A2D9124F64DA6C86316EA0EBB7AE3B6</string>
+				<string>D7770A14719F46DAF38CE355E25417CD</string>
+				<string>317E4AD9E1BED5785B6165E2374F5514</string>
+				<string>05B16B28ECA58BDADA5FF859FC55F428</string>
+				<string>32A4E0212EB77E54470A3391B609AC99</string>
+				<string>4E5EA84A74415C4FAB331B424A9083D4</string>
+				<string>F169A737E18A100F03797645C45AD5D0</string>
+				<string>B0121960E57ABDE6B026FB138D91B378</string>
+				<string>CE519F281BC84173ABAE7B93D9281E06</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
 		</dict>
 		<key>79009B64AC2F9102C44C483E69AE450E</key>
 		<dict>
@@ -2238,12 +2280,37 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>791F1896C3FEAA4F9D1DF81E910C5F65</key>
+		<dict>
+			<key>fileRef</key>
+			<string>67A1858F0EB487A3D875A10FF5B86D6A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fno-objc-arc</string>
+			</dict>
+		</dict>
 		<key>7BACCF61D73B6C690CE657C66614E65F</key>
 		<dict>
 			<key>fileRef</key>
-			<string>AE7326FA1E499DEA0F61CC3697CD54BC</string>
+			<string>04C865D94963725A854E2E9A6128F439</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>7BE63D5C8DDB10543E8F5E2FE6C34F25</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>FirebaseAnalytics.framework</string>
+			<key>path</key>
+			<string>Frameworks/frameworks/FirebaseAnalytics.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>7C653148CAE12C400E4385392B698DB9</key>
 		<dict>
@@ -2271,19 +2338,6 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>7C70F9B133B511B1C3A895ED56BE3783</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>GTMSessionFetcher.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>7C9FEF88D1E99C97DBC1EF6A50493C65</key>
 		<dict>
 			<key>isa</key>
@@ -2300,47 +2354,20 @@
 		<key>7CB712C6A1E658068A0F9DAB530FB705</key>
 		<dict>
 			<key>fileRef</key>
-			<string>DE32FD36A1D81C601117D28F777F4F8B</string>
+			<string>CC0A1C9485F38FB6C833502B540CC5C0</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>7D04535608058A2FABC0D16935868FB9</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>4AEBB187FDCC7C53ECD2FC0EA27EB970</string>
-			<key>buildPhases</key>
-			<array>
-				<string>04BE4C037DAAFA60C326D6783F5E58AD</string>
-				<string>FE8E96EA896ADC4707F91D2E4091A2F4</string>
-				<string>293736674DAFF98204041CC914976590</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>GoogleToolboxForMac</string>
-			<key>productName</key>
-			<string>GoogleToolboxForMac</string>
-			<key>productReference</key>
-			<string>3EAF42EB03A682CCE58ED312C7646E7D</string>
-			<key>productType</key>
-			<string>com.apple.product-type.framework</string>
-		</dict>
-		<key>7D9A58F25C38408C5EAF15BCD66A6819</key>
+		<key>7CEF9268FE15E0DADE1398CF989A0323</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTMNSString+URLArguments.m</string>
+			<string>sourcecode.c.h</string>
 			<key>path</key>
-			<string>Foundation/GTMNSString+URLArguments.m</string>
+			<string>GoogleToolboxForMac-umbrella.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2350,12 +2377,40 @@
 			<array>
 				<string>93A4A3777CF96A4AAC1D13BA6DCCEA73</string>
 				<string>14B8B9B15ECBE87983FF987239AB2D7B</string>
-				<string>A3218B97318ACEEB14A14FC737CA6E4A</string>
+				<string>FDFEDE4777BC40609A148D0421B58196</string>
 				<string>929FC26258FFB31C441C38397544AB36</string>
 				<string>6FBABB6396F94C86450A561FD9BBF66A</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8516C8242EBEE63C9D632C513C49B442</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>IQToolbar.swift</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift/IQToolbar/IQToolbar.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>855C323AE1AEFBD87D562F95904BCB58</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>7BE63D5C8DDB10543E8F5E2FE6C34F25</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2386,56 +2441,6 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>86267A29B46932CF468DD01BAFBE8031</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>IQUIScrollView+Additions.swift</string>
-			<key>path</key>
-			<string>IQKeyboardManagerSwift/Categories/IQUIScrollView+Additions.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>867DF59E1E38E45C01BAEC6274AAB6AA</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B8572646D1520A36D5627520A6C7D505</string>
-				<string>DE32FD36A1D81C601117D28F777F4F8B</string>
-				<string>EE8CC60BD194EF97D508DE9406D2E02D</string>
-				<string>AE7326FA1E499DEA0F61CC3697CD54BC</string>
-				<string>2AFE8FCB6CA3C37A300D80DF4ED83938</string>
-				<string>67E267F11BEAE0A4F48718022087CACE</string>
-				<string>AEBFBC39BF76DC2941427B3E8EF091F1</string>
-				<string>16B34A7B0D136F65B50AB849776D2122</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Core</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>87540FEA027E3B4252A70986BA913885</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTMMethodCheck.h</string>
-			<key>path</key>
-			<string>DebugUtils/GTMMethodCheck.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>8799645AAB73B4E0A450E6DE6B5A60F6</key>
 		<dict>
 			<key>buildActionMask</key>
@@ -2452,7 +2457,7 @@
 		<key>879EDC2C7E8100C20DD5C06ACCF75467</key>
 		<dict>
 			<key>fileRef</key>
-			<string>DCC4A1B6E35F4DC56C71ABD1CF9CCCE9</string>
+			<string>BABBEEC43EBCEDFFDC5B66EEEA495BA1</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -2473,33 +2478,102 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>8924CEF6CF4426C4A01EE2DD66D079A3</key>
+		<key>8932F4F278DF2C7C391089586C82D58E</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6D1DA27239641578F13EACC7EADBE752</string>
+				<string>46E1D2FFC3923220C8D021C7E716654B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>GTMSessionFetcher</string>
+			<key>path</key>
+			<string>GTMSessionFetcher</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>89EDD3BDA882E845E6D527675569FAD6</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>IQUIViewController+Additions.swift</string>
+			<string>GTMDebugThreadValidation.h</string>
 			<key>path</key>
-			<string>IQKeyboardManagerSwift/Categories/IQUIViewController+Additions.swift</string>
+			<string>DebugUtils/GTMDebugThreadValidation.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>8DD1B379082E473C60CBD1CFCA086D11</key>
+		<key>8A0EC764A630C469FDC435B59125A5E6</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>9F4FADDF0DADF22F7244A83A5A08FC46</string>
-			</array>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>FirebaseAnalytics</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
 			<key>path</key>
-			<string>FirebaseAnalytics</string>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8A2D9124F64DA6C86316EA0EBB7AE3B6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7CEF9268FE15E0DADE1398CF989A0323</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>8CFB382A558D0F62E2969938491379AC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTMSessionFetcherService.m</string>
+			<key>path</key>
+			<string>Source/GTMSessionFetcherService.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8D40E1F24B440F29B1A1082D0B290240</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTMNSData+zlib.h</string>
+			<key>path</key>
+			<string>Foundation/GTMNSData+zlib.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8E1E1F50593E3CB52F439A569CA882D3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>GoogleToolboxForMac.modulemap</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2520,7 +2594,7 @@
 		<key>8F8D1EEFFD0AC14C975C78CAD0C9808F</key>
 		<dict>
 			<key>fileRef</key>
-			<string>FA3E4E639B62CF12AE3A2A0B7F1739BA</string>
+			<string>62AF8C4C3559667821C1B1808DF16BE5</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -2538,42 +2612,51 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
+		<key>8FD22C4556E41B793528595279EBBDA6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9088C0AC54B2DF757E63A7CDFD59A92B</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>FirebaseInstanceID.framework</string>
+			<key>path</key>
+			<string>Frameworks/frameworks/FirebaseInstanceID.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>90EF95E1EAF51935B79BDCFF71788737</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>FirebaseAuth.framework</string>
+			<key>path</key>
+			<string>Frameworks/frameworks/FirebaseAuth.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>91030AF37F93914AB64B6D95F55E762D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>3A86D3EEFB6B76B76FD9E979D22D1838</string>
+			<string>8516C8242EBEE63C9D632C513C49B442</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>91E3A39AFE76199FA141A928458E75C2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>IQUITextFieldView+Additions.swift</string>
-			<key>path</key>
-			<string>IQKeyboardManagerSwift/Categories/IQUITextFieldView+Additions.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9274220D9266167480FBC54D1A27A5FD</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTMNSDictionary+URLArguments.m</string>
-			<key>path</key>
-			<string>Foundation/GTMNSDictionary+URLArguments.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>929FC26258FFB31C441C38397544AB36</key>
 		<dict>
@@ -2612,30 +2695,41 @@
 			<key>xcLanguageSpecificationIdentifier</key>
 			<string>xcode.lang.ruby</string>
 		</dict>
-		<key>96D7A1B1D665345EB423FF73F22B788C</key>
+		<key>958854EEF9C4251796DB60C05AC273E0</key>
 		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>FirebaseInstanceID.framework</string>
+			<string>text.xcconfig</string>
 			<key>path</key>
-			<string>Frameworks/frameworks/FirebaseInstanceID.framework</string>
+			<string>GTMSessionFetcher.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>97A92004FE7364FED8213375BCC9A99E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>GTMSessionFetcher.modulemap</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>989EE4ED1C86991E81339AF1CBF3654A</key>
 		<dict>
 			<key>fileRef</key>
-			<string>EC93690E378CF3C96873E0769A63B2C9</string>
+			<string>6F12C1B0BC720F81E902A7527E9A5AFE</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>9A03275F6099149BA40499CCE7A70E8F</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B8572646D1520A36D5627520A6C7D505</string>
+			<string>B2F7BEB2D677056863F327A379F03A3F</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2666,82 +2760,92 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>9F4FADDF0DADF22F7244A83A5A08FC46</key>
+		<key>A021F253845B005C700FF4A56648B392</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>D0EFA94BA82538FFBB56EA40687BC3D5</string>
+				<string>5E8CA1C3622D491BC631478BBEA1F087</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A17D18CAA87C0EE1AC2139C4046F8921</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.plug-in</string>
-			<key>name</key>
-			<string>IQKeyboardManager.bundle</string>
+			<string>FirebaseCore</string>
 			<key>path</key>
-			<string>IQKeyboardManagerSwift/Resources/IQKeyboardManager.bundle</string>
+			<string>FirebaseCore</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>A2AB2252C5CB27D158745F245C4ED39E</key>
+		<key>A1BD3C9E4D847624798CD0C10982CA48</key>
 		<dict>
-			<key>fileRef</key>
-			<string>E081F7EC26E6DF050E074FC5DE7C0018</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
+			<key>baseConfigurationReference</key>
+			<string>58904FEF66153C0C28CE342B69E9CBCA</string>
+			<key>buildSettings</key>
 			<dict>
-				<key>ATTRIBUTES</key>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/GoogleToolboxForMac/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
 				<array>
-					<string>Public</string>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
 				</array>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>PRODUCT_NAME</key>
+				<string>GoogleToolboxForMac</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
 			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
 		</dict>
 		<key>A2FF64B577CEAC43E765D9E4AF96F432</key>
 		<dict>
 			<key>fileRef</key>
-			<string>389C4D7022C33797BE293CBBFC021D51</string>
+			<string>AE0B4B1C6F1FB45795C2AD6C5AD3BBB6</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>A3218B97318ACEEB14A14FC737CA6E4A</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>53103C98019270F2896786136F81211D</string>
-				<string>8DD1B379082E473C60CBD1CFCA086D11</string>
-				<string>3A3DEA85AC681176FA28205CA745D717</string>
-				<string>B9124ABC1BA0BE73E612D8894C1EE1DF</string>
-				<string>1D34CF4D543ED145AA11F5848D28E8CB</string>
-				<string>011355DFD7E90C294E3B5F5ABD0D12E9</string>
-				<string>44F237A7207596C368285FBE3D7B20AD</string>
-				<string>41F9C3F0DC66E8852E29D970EBCDC6EB</string>
-				<string>112BEB4E2EF7496D7943AE11E084FB49</string>
-				<string>D3F36F9CEB850B814C8E2AEA51B40D4B</string>
-				<string>EB6B2059F207C1D70653EEE2E2D7A68E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>A3FAEF9CA01F3716E2B562F58AFAA046</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B3AD2D7C638E35FD762565542973F30D</string>
+			<string>C7FFC89342498C95ED14002A1214C4DA</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -2763,7 +2867,7 @@
 		<key>A544584273C6081943F4877B55605CB7</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>B981A18FFAB4576B1A6E8E52F6698DE2</string>
+			<string>B97EEB10DF38C701E258A3F89DD2F4F7</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -2819,6 +2923,21 @@
 			<string>XCBuildConfiguration</string>
 			<key>name</key>
 			<string>Release</string>
+		</dict>
+		<key>A79E09D1C0EC32BB96008EF9E14606B7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>IQTextView.swift</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift/IQTextView/IQTextView.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>A9B4B2DB7B2F4750B00C068A59EDC923</key>
 		<dict>
@@ -3013,33 +3132,18 @@
 			<key>remoteInfo</key>
 			<string>IQKeyboardManagerSwift</string>
 		</dict>
-		<key>AE7326FA1E499DEA0F61CC3697CD54BC</key>
+		<key>AE0B4B1C6F1FB45795C2AD6C5AD3BBB6</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>sourcecode.swift</string>
 			<key>name</key>
-			<string>GTMSessionFetcherLogging.m</string>
+			<string>IQPreviousNextView.swift</string>
 			<key>path</key>
-			<string>Source/GTMSessionFetcherLogging.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AEBFBC39BF76DC2941427B3E8EF091F1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GTMSessionUploadFetcher.h</string>
-			<key>path</key>
-			<string>Source/GTMSessionUploadFetcher.h</string>
+			<string>IQKeyboardManagerSwift/IQToolbar/IQPreviousNextView.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -3069,25 +3173,19 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>B008CF8285EA973B00E41B6F463E5B85</key>
+		<key>B0121960E57ABDE6B026FB138D91B378</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>F125D0BDAC7DDB73C0EE16603B045A8B</string>
-				<string>65ABC5B7AF6EFE4B4AE721ACA6FD8FD9</string>
-				<string>CD54AEEB7CC1F82E28364B5BA85CCEFB</string>
-				<string>BE30D54A9346D316BB2E3ED6761E7614</string>
-				<string>0E5095A83D8D3391BD64381BB1AF0D6F</string>
-				<string>01911DC13472315D521D02DAB151C356</string>
-			</array>
+			<key>fileRef</key>
+			<string>E8479E9CE7A4438D8721032069FDDE2D</string>
 			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/GoogleToolboxForMac</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
 		<key>B044DD3518957589E35C4DAB4047B856</key>
 		<dict>
@@ -3105,62 +3203,26 @@
 		<key>B1709542A41A677BA835CEC032F4DB2D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>0548A81C76E551C216781D7F33714E08</string>
+			<string>4F78E5FCE4DD54228CDA4F88DD90F496</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>B2781A35A41CFD843CBB5848EFC63B66</key>
+		<key>B20D8A9A3BFCEED59EAACF6593ADEAAC</key>
 		<dict>
-			<key>fileRef</key>
-			<string>1B26AF638AF632424DD8A631C128E524</string>
+			<key>children</key>
+			<array>
+				<string>5B7D39B0EAB4251E060D0CD8BCF9DAAF</string>
+			</array>
 			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>B3AD2D7C638E35FD762565542973F30D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
+			<string>PBXGroup</string>
 			<key>name</key>
-			<string>IQKeyboardReturnKeyHandler.swift</string>
+			<string>FirebaseAuth</string>
 			<key>path</key>
-			<string>IQKeyboardManagerSwift/IQKeyboardReturnKeyHandler.swift</string>
+			<string>FirebaseAuth</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>B4277DBD978B7F29E07633D10AB862D7</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>IQUIWindow+Hierarchy.swift</string>
-			<key>path</key>
-			<string>IQKeyboardManagerSwift/Categories/IQUIWindow+Hierarchy.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6DB24F02D71E5B838910D3CCD1723F9</key>
-		<dict>
-			<key>fileRef</key>
-			<string>5268916843FC42ADFDF2F1F8C50EDDFE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B8572646D1520A36D5627520A6C7D505</key>
+		<key>B2F7BEB2D677056863F327A379F03A3F</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -3175,22 +3237,71 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>B9124ABC1BA0BE73E612D8894C1EE1DF</key>
+		<key>B408CD45FC349E0041D476F57F260E8B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GoogleToolboxForMac-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B6DB24F02D71E5B838910D3CCD1723F9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7115E0FFA515340F927BFE2F55478CF1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>B743808EB1D4275FE1E5ADB711A57150</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>C450B72737FA4B7267AD7523105CB5E3</string>
+				<string>1EEE8B7F0E2868F32D88064312C4F056</string>
+				<string>FA958E1254A8CAC4FD4623FB244A98E4</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>FirebaseCore</string>
+			<string>FirebaseMessaging</string>
 			<key>path</key>
-			<string>FirebaseCore</string>
+			<string>FirebaseMessaging</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>B981A18FFAB4576B1A6E8E52F6698DE2</key>
+		<key>B9225976B66B2A5A6D6F2EA3B2CE2330</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>428B724B5EEFFEB8E187ED21D23E08AB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Core</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B9674BE5F2F58D2E78B5AF6AB84003CD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>C94AC7E6CC5BD837DD58B9DD1B9BF8DD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>GoogleInterchangeUtilities</string>
+			<key>path</key>
+			<string>GoogleInterchangeUtilities</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B97EEB10DF38C701E258A3F89DD2F4F7</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -3216,19 +3327,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>BA30225D7F32D7B66778380982F6B574</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>0335D92BD6D47C653F8322A3264A646A</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Core</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>BA7AFC12A6757B70940C4D26FB01178E</key>
 		<dict>
 			<key>buildActionMask</key>
@@ -3242,12 +3340,40 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
+		<key>BABBEEC43EBCEDFFDC5B66EEEA495BA1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>IQKeyboardManagerConstantsInternal.swift</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstantsInternal.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>BACEB4A1F7183C8A34C16333AA0CFC88</key>
 		<dict>
 			<key>fileRef</key>
-			<string>E6DB5E282CBD0DF3B0E54704DE3E0FE1</string>
+			<string>F5189EF13EF4CF294F69CEF7797FD84A</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>BC23E6ACB13343BEBDA483157996FD11</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>FirebaseDatabase.framework</string>
+			<key>path</key>
+			<string>Frameworks/FirebaseDatabase.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>BC3BE1F56AFF393BD199BA4E7FB03835</key>
 		<dict>
@@ -3260,16 +3386,18 @@
 			<key>targetProxy</key>
 			<string>F7B09B8E9F70B25089E04372A927ADD9</string>
 		</dict>
-		<key>BCA4B23D43C1F6FC47089C8CDA832DBE</key>
+		<key>BCEDA41A03AD1B5B14C66066E99D69D6</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>CF6ABD25F58D629AAB449B82D8869C57</string>
-			</array>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>Frameworks</string>
+			<string>GTMDebugSelectorValidation.h</string>
+			<key>path</key>
+			<string>DebugUtils/GTMDebugSelectorValidation.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -3301,19 +3429,6 @@
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
-		<key>BE30D54A9346D316BB2E3ED6761E7614</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>GoogleToolboxForMac-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>BFFF785951F543C6423A19DBC5578589</key>
 		<dict>
 			<key>fileRef</key>
@@ -3328,19 +3443,6 @@
 				</array>
 			</dict>
 		</dict>
-		<key>C015651D6FCCF075AD4BDE3149FFD76B</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>FirebaseCore.framework</string>
-			<key>path</key>
-			<string>Frameworks/frameworks/FirebaseCore.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>C022A5A34AA932E2619E309CD32D9EB3</key>
 		<dict>
 			<key>fileRef</key>
@@ -3348,73 +3450,65 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>C1197F597BCB0E7355F00B142B5981EA</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F5A71E7E3B5D27FB58C89CFF6CE5DC27</string>
-				<string>7C70F9B133B511B1C3A895ED56BE3783</string>
-				<string>FA3E4E639B62CF12AE3A2A0B7F1739BA</string>
-				<string>10EE6F0B246F74F8E6711E71C49F23E2</string>
-				<string>228AC0A954DAD127B4B3A67C740DB679</string>
-				<string>D15D606C4EF2D5C4D97A4296E0D40694</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/GTMSessionFetcher</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>C2905200A0CEA22AF403EE0B5E244CEF</key>
 		<dict>
 			<key>fileRef</key>
-			<string>F4700552233B3709E4E6F5DC811B509F</string>
+			<string>A79E09D1C0EC32BB96008EF9E14606B7</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>C450B72737FA4B7267AD7523105CB5E3</key>
+		<key>C44ABB392FDC472D538567B8FF3169BE</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>C015651D6FCCF075AD4BDE3149FFD76B</string>
-			</array>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift.modulemap</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>C66E57E618FD5536917D0052777CC8EB</key>
 		<dict>
 			<key>fileRef</key>
-			<string>43F3ADCD2333852F00BEFDEECA7BA50A</string>
+			<string>653BC0B843D3D0E0B9F034AB8BD75C63</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>C6CD64B1908CBEDD7E13649192F12808</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1F82B78F01C02E7A37198D5D0A79BFF9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Resources</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>C76E3B78D128469AB4CBF1B4D1708360</key>
 		<dict>
 			<key>fileRef</key>
-			<string>91E3A39AFE76199FA141A928458E75C2</string>
+			<string>32168ADECC064580F147EBDB5C99F0AB</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>C885F0BDB0D76B2A3F5771814A8BBCC5</key>
+		<key>C7FFC89342498C95ED14002A1214C4DA</key>
 		<dict>
-			<key>fileRef</key>
-			<string>E9A95B8BD4797B362939DCD55151CF70</string>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>IQKeyboardReturnKeyHandler.swift</string>
+			<key>path</key>
+			<string>IQKeyboardManagerSwift/IQKeyboardReturnKeyHandler.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>C8CCFEF21313DE9A81E39517123F756B</key>
 		<dict>
@@ -3440,20 +3534,45 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>CCF600BDA939A584B381CAF3F5D48AA9</key>
+		<key>C94AC7E6CC5BD837DD58B9DD1B9BF8DD</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>E081F7EC26E6DF050E074FC5DE7C0018</string>
+				<string>551AE05365E4074BFD2103696E99AC2B</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Defines</string>
+			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>CD54AEEB7CC1F82E28364B5BA85CCEFB</key>
+		<key>CB10B2D20933A6AFFF01B9A42863B4B2</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>30E4DF0B19A0681DE6E791CB435C3FBA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>CB61690A5E16D143978F644E0396DAF4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F29E703EAF8D74787B0AC9E6B7A68798</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>CC0A1C9485F38FB6C833502B540CC5C0</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -3461,49 +3580,26 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>GoogleToolboxForMac-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>CF6ABD25F58D629AAB449B82D8869C57</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
 			<key>name</key>
-			<string>GoogleInterchangeUtilities.framework</string>
+			<string>GTMSessionFetcher.m</string>
 			<key>path</key>
-			<string>Frameworks/frameworks/GoogleInterchangeUtilities.framework</string>
+			<string>Source/GTMSessionFetcher.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>D0EFA94BA82538FFBB56EA40687BC3D5</key>
+		<key>CE519F281BC84173ABAE7B93D9281E06</key>
 		<dict>
+			<key>fileRef</key>
+			<string>403A07D3ABF89D1AD0B0E4D558279909</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>FirebaseAnalytics.framework</string>
-			<key>path</key>
-			<string>Frameworks/frameworks/FirebaseAnalytics.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D15D606C4EF2D5C4D97A4296E0D40694</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
 		<key>D194BB44FB814F2D2CCB165CEB00AF71</key>
 		<dict>
@@ -3529,22 +3625,6 @@
 			<string>6414A58DD2D0A31039A844FB0594A7C5</string>
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
-		</dict>
-		<key>D3F36F9CEB850B814C8E2AEA51B40D4B</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>867DF59E1E38E45C01BAEC6274AAB6AA</string>
-				<string>C1197F597BCB0E7355F00B142B5981EA</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>GTMSessionFetcher</string>
-			<key>path</key>
-			<string>GTMSessionFetcher</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>D41D8CD98F00B204E9800998ECF8427E</key>
 		<dict>
@@ -3581,7 +3661,7 @@
 			<string></string>
 			<key>targets</key>
 			<array>
-				<string>7D04535608058A2FABC0D16935868FB9</string>
+				<string>03E6E56F8533C2E42C696D7CCAC42910</string>
 				<string>23BA9083ED0D2392A167A8AFA04427FA</string>
 				<string>1520003FEBEC114D6C84F832AFEDB994</string>
 				<string>2923BA501E43E5C26EBF1707A69C9D64</string>
@@ -3600,6 +3680,49 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>D4D840A2EAAD5C7BC612FD7B8C40822F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F2F9BB993B4D1C582D5146D3CF843A93</string>
+				<string>3518C3FCACC934575172BE3BFE9ABC49</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>FirebaseInstanceID</string>
+			<key>path</key>
+			<string>FirebaseInstanceID</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D4F92ACB147D488906C1275A1B67DF9D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D7770A14719F46DAF38CE355E25417CD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BCEDA41A03AD1B5B14C66066E99D69D6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
 		<key>DA8EB5702E7D5B06D398ECF568D0C304</key>
 		<dict>
 			<key>buildActionMask</key>
@@ -3613,6 +3736,32 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
+		<key>DB78628FC5467A60FAB8AACDE5DA041F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>FirebaseMessaging.framework</string>
+			<key>path</key>
+			<string>Frameworks/frameworks/FirebaseMessaging.framework</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DC0D403C8A898D225C76E070040C40CA</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GoogleToolboxForMac-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>DC2B388A20BE4F689CE994EAB57CCDEF</key>
 		<dict>
 			<key>buildActionMask</key>
@@ -3625,51 +3774,6 @@
 			<string>PBXHeadersBuildPhase</string>
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
-		</dict>
-		<key>DCC4A1B6E35F4DC56C71ABD1CF9CCCE9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>IQKeyboardManagerConstantsInternal.swift</string>
-			<key>path</key>
-			<string>IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstantsInternal.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>DCE4ACF0C3C6E9A3915D42A1A3C6B3DA</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>IQKeyboardManagerConstants.swift</string>
-			<key>path</key>
-			<string>IQKeyboardManagerSwift/Constants/IQKeyboardManagerConstants.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>DE32FD36A1D81C601117D28F777F4F8B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTMSessionFetcher.m</string>
-			<key>path</key>
-			<string>Source/GTMSessionFetcher.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>DE354FF59176A1861632300882EB1C66</key>
 		<dict>
@@ -3728,7 +3832,7 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>E081F7EC26E6DF050E074FC5DE7C0018</key>
+		<key>E1E59ACBE7243B613A54BE9A43BDE6DB</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -3736,44 +3840,53 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTMMethodCheck.h</string>
 			<key>path</key>
-			<string>GTMDefines.h</string>
+			<string>DebugUtils/GTMMethodCheck.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>E3587E2F2FEAAC7D49B01E33D5157295</key>
-		<dict>
-			<key>fileRef</key>
-			<string>119FE3B53E4E5C44B2C741E392CCE8B5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>E6DB5E282CBD0DF3B0E54704DE3E0FE1</key>
+		<key>E4F0DC864CB37CB135D12B7EAD4185B6</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>IQUIView+IQKeyboardToolbar.swift</string>
+			<string>GTMSessionUploadFetcher.h</string>
 			<key>path</key>
-			<string>IQKeyboardManagerSwift/IQToolbar/IQUIView+IQKeyboardToolbar.swift</string>
+			<string>Source/GTMSessionUploadFetcher.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E5758469E600BC3FAB04D2040911CEC9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>E8F02C8F90F73BE6C5915C3721683BC3</string>
+				<string>40240608A154B055FF53D0E7DB490479</string>
+				<string>6DE911E8E96E18EFFFFC309089749699</string>
+				<string>17897BA41F26B2B842AD35AA685C2FE8</string>
+				<string>5464B59089CF1131696AAB4D810EE018</string>
+				<string>17A7B1CD988465220803D68F165185FF</string>
+				<string>48D7DF4940E63B41D7AA20670652FBF3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>GoogleToolboxForMac</string>
+			<key>path</key>
+			<string>GoogleToolboxForMac</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>E7709B7C816F1751438D760389D65FD6</key>
 		<dict>
 			<key>fileRef</key>
-			<string>2AFE8FCB6CA3C37A300D80DF4ED83938</string>
+			<string>EBCF8B626E7E61357F0F3451C3643084</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -3784,7 +3897,14 @@
 				</array>
 			</dict>
 		</dict>
-		<key>E9A95B8BD4797B362939DCD55151CF70</key>
+		<key>E78AE49882F8CAC036627DAE5ED0B734</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B408CD45FC349E0041D476F57F260E8B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E8479E9CE7A4438D8721032069FDDE2D</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -3799,83 +3919,48 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>E9E620A4FACB36F68B0434AA8FF8E1E9</key>
+		<key>E8F02C8F90F73BE6C5915C3721683BC3</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>4C4C08282BE355E04A71B2BD09A8C9CF</string>
-				<string>6369DA5369C1BE4736E7B7AA48840E69</string>
-				<string>B981A18FFAB4576B1A6E8E52F6698DE2</string>
-				<string>0548A81C76E551C216781D7F33714E08</string>
-				<string>5E19F0EFE06C3BC7DAA6AFE5EA21D4DF</string>
-				<string>00B699A00AEA346E957B6B6017074A20</string>
+				<string>BCEDA41A03AD1B5B14C66066E99D69D6</string>
+				<string>89EDD3BDA882E845E6D527675569FAD6</string>
+				<string>E1E59ACBE7243B613A54BE9A43BDE6DB</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/IQKeyboardManagerSwift</string>
+			<string>DebugUtils</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>EA0E157E88B13A70F4E81C7D4212E4FF</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>FirebaseDatabase.framework</string>
-			<key>path</key>
-			<string>Frameworks/FirebaseDatabase.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>EB6B2059F207C1D70653EEE2E2D7A68E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>571AC17E88CEB50676EBA7C50FAAE9BC</string>
-				<string>5268916843FC42ADFDF2F1F8C50EDDFE</string>
-				<string>DCE4ACF0C3C6E9A3915D42A1A3C6B3DA</string>
-				<string>DCC4A1B6E35F4DC56C71ABD1CF9CCCE9</string>
-				<string>B3AD2D7C638E35FD762565542973F30D</string>
-				<string>02A3644D78BF0FDF80BD5D0DD88E6E7B</string>
-				<string>389C4D7022C33797BE293CBBFC021D51</string>
-				<string>F4700552233B3709E4E6F5DC811B509F</string>
-				<string>43F3ADCD2333852F00BEFDEECA7BA50A</string>
-				<string>3A86D3EEFB6B76B76FD9E979D22D1838</string>
-				<string>86267A29B46932CF468DD01BAFBE8031</string>
-				<string>91E3A39AFE76199FA141A928458E75C2</string>
-				<string>EC93690E378CF3C96873E0769A63B2C9</string>
-				<string>E6DB5E282CBD0DF3B0E54704DE3E0FE1</string>
-				<string>8924CEF6CF4426C4A01EE2DD66D079A3</string>
-				<string>B4277DBD978B7F29E07633D10AB862D7</string>
-				<string>03D10B19DBAAF68D732A537858E96531</string>
-				<string>E9E620A4FACB36F68B0434AA8FF8E1E9</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>IQKeyboardManagerSwift</string>
-			<key>path</key>
-			<string>IQKeyboardManagerSwift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>EC93690E378CF3C96873E0769A63B2C9</key>
+		<key>E905816081CD4FA82BB5EDAB9A15F361</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>IQUIView+Hierarchy.swift</string>
+			<string>GTMLogger.m</string>
 			<key>path</key>
-			<string>IQKeyboardManagerSwift/Categories/IQUIView+Hierarchy.swift</string>
+			<string>Foundation/GTMLogger.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EBCF8B626E7E61357F0F3451C3643084</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GTMSessionFetcherService.h</string>
+			<key>path</key>
+			<string>Source/GTMSessionFetcherService.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -3929,7 +4014,35 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>ED8DA940343D5F3EA963EB95A21A4A3E</key>
+		<key>EF0500FDFBC08333163B680EAE9E7823</key>
+		<dict>
+			<key>fileRef</key>
+			<string>12A1C3ACBDBC15557CAEDA4AA0D99419</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F0EC3920107562BEFAAA72F00B85BDD3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>12A1C3ACBDBC15557CAEDA4AA0D99419</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F169A737E18A100F03797645C45AD5D0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8D40E1F24B440F29B1A1082D0B290240</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>F225C88C2B9A94CCD46165FCCB29BE9C</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -3937,21 +4050,12 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>GTMNSData+zlib.m</string>
 			<key>path</key>
-			<string>Foundation/GTMNSData+zlib.m</string>
+			<string>Pods-KlassenbuchTests-dummy.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>EE327E403CBB5E5021F440772E972A5C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>CD54AEEB7CC1F82E28364B5BA85CCEFB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>EE8CC60BD194EF97D508DE9406D2E02D</key>
+		<key>F262E9C24E55018FC994B1D32DD5996F</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -3966,58 +4070,7 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>EF0500FDFBC08333163B680EAE9E7823</key>
-		<dict>
-			<key>fileRef</key>
-			<string>12A1C3ACBDBC15557CAEDA4AA0D99419</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F08E0DD97D4D2D079322A6E06B5CD37C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>ED8DA940343D5F3EA963EB95A21A4A3E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-		<key>F0EC3920107562BEFAAA72F00B85BDD3</key>
-		<dict>
-			<key>fileRef</key>
-			<string>12A1C3ACBDBC15557CAEDA4AA0D99419</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F117CDA64FF333D2C8E2E3D685870C08</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3CCECA2E0A249661701DEA741248E235</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>F125D0BDAC7DDB73C0EE16603B045A8B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>GoogleToolboxForMac.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F225C88C2B9A94CCD46165FCCB29BE9C</key>
+		<key>F29E703EAF8D74787B0AC9E6B7A68798</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -4025,8 +4078,10 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>GTMNSData+zlib.m</string>
 			<key>path</key>
-			<string>Pods-KlassenbuchTests-dummy.m</string>
+			<string>Foundation/GTMNSData+zlib.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -4043,6 +4098,21 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
+		<key>F2F9BB993B4D1C582D5146D3CF843A93</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>FIRInstanceID.h</string>
+			<key>path</key>
+			<string>Sources/FIRInstanceID.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>F39E6121BE9036ACFC1475198A549720</key>
 		<dict>
 			<key>fileRef</key>
@@ -4050,7 +4120,7 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>F4700552233B3709E4E6F5DC811B509F</key>
+		<key>F5189EF13EF4CF294F69CEF7797FD84A</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -4059,36 +4129,11 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
 			<key>name</key>
-			<string>IQTextView.swift</string>
+			<string>IQUIView+IQKeyboardToolbar.swift</string>
 			<key>path</key>
-			<string>IQKeyboardManagerSwift/IQTextView/IQTextView.swift</string>
+			<string>IQKeyboardManagerSwift/IQToolbar/IQUIView+IQKeyboardToolbar.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F5A71E7E3B5D27FB58C89CFF6CE5DC27</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>GTMSessionFetcher.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6498C02655C4E58AD3013140A40A328</key>
-		<dict>
-			<key>fileRef</key>
-			<string>87540FEA027E3B4252A70986BA913885</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
 		</dict>
 		<key>F7B09B8E9F70B25089E04372A927ADD9</key>
 		<dict>
@@ -4103,7 +4148,129 @@
 			<key>remoteInfo</key>
 			<string>GTMSessionFetcher</string>
 		</dict>
-		<key>FA3E4E639B62CF12AE3A2A0B7F1739BA</key>
+		<key>FA590612D848E3DB4F73DC11C88CB0AD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>25E714A86FD12467746FCD557B70DCC5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>FA958E1254A8CAC4FD4623FB244A98E4</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>DB78628FC5467A60FAB8AACDE5DA041F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FBE3320FB573D1D4833463705CD80BBA</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GTMSessionFetcher-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FDFEDE4777BC40609A148D0421B58196</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>4744C0421E90E1D27BAF08DBC1A7CB65</string>
+				<string>116F048E2D7ECEC47F1B2C03A9D309EA</string>
+				<string>B20D8A9A3BFCEED59EAACF6593ADEAAC</string>
+				<string>A021F253845B005C700FF4A56648B392</string>
+				<string>108472256BBBC2183E93DA9AF4F1E2E4</string>
+				<string>D4D840A2EAAD5C7BC612FD7B8C40822F</string>
+				<string>B743808EB1D4275FE1E5ADB711A57150</string>
+				<string>B9674BE5F2F58D2E78B5AF6AB84003CD</string>
+				<string>1FF797D98A0C88F6C3E209BBA5F231BB</string>
+				<string>E5758469E600BC3FAB04D2040911CEC9</string>
+				<string>8932F4F278DF2C7C391089586C82D58E</string>
+				<string>6A3F1374308F2CCE05003CDB70FB801F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FE6D07BE537837EDD4B0455F6768F304</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>58904FEF66153C0C28CE342B69E9CBCA</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/GoogleToolboxForMac/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>PRODUCT_NAME</key>
+				<string>GoogleToolboxForMac</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>FFA5528D064CFD312452F4D8C87CCA07</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -4111,48 +4278,12 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>GTMSessionFetcher-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>FD5126A25216183DF3DF03579257BE02</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
 			<key>name</key>
-			<string>FirebaseAuth.framework</string>
+			<string>GTMSessionUploadFetcher.m</string>
 			<key>path</key>
-			<string>Frameworks/frameworks/FirebaseAuth.framework</string>
+			<string>Source/GTMSessionUploadFetcher.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>FD7819650A77515B551355DB3D9C91A7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7D9A58F25C38408C5EAF15BCD66A6819</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-fno-objc-arc</string>
-			</dict>
-		</dict>
-		<key>FE8E96EA896ADC4707F91D2E4091A2F4</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>48A5794D7633E929CAF945CCE5D94916</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
 		</dict>
 	</dict>
 	<key>rootObject</key>

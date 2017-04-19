@@ -20,7 +20,7 @@ struct Homework {
 }
 
 
-class Hausaufgaben: UITableViewController {
+class Hausaufgaben: UITableViewController, UITabBarDelegate {
     
     
     // Variables
@@ -52,6 +52,9 @@ class Hausaufgaben: UITableViewController {
         
         // Listen for added and removed
         self.databaseListener()
+        
+
+
     }
     
 
@@ -149,6 +152,7 @@ class Hausaufgaben: UITableViewController {
         cell.textLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].HText
         cell.detailTextLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].HFach
         cell.textLabel?.numberOfLines = 0
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
 
@@ -178,9 +182,16 @@ class Hausaufgaben: UITableViewController {
     
     
     
+     /*  // Tab Bar Settings
     
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
+        if ((tabBarController?.selectedIndex = 0) != nil) {
+        
+        print("HI")
+        }
     
-    
+    }*/
     
     
     

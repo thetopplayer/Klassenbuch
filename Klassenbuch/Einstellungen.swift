@@ -42,7 +42,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
 
     
@@ -50,7 +50,17 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
 
     @IBAction func LogUserOut(_ sender: Any) {
         
-        let actionSheet = UIAlertController(title: "Willst du dich wirklich abmelden?", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+        
+        let titleAttrString = NSMutableAttributedString(string: "Willst du dich wirklich abmelden?", attributes: titleFont)
+
+        
+        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+       
+
+        
         
         let logoutAction = UIAlertAction(title: "Abmelden", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
             
@@ -73,6 +83,27 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
         self.present(actionSheet, animated: true, completion: nil)
     }
     
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     // Email Feedback
     
@@ -94,15 +125,15 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
 
            self.gotoSettings()
         }
-        
+        /*
         if indexPath.section == 0 && indexPath.row == 4 {
             
             self.gotoiBook()
-        }
+        }*/
     }
 
     
-    // go to iBook
+    /* go to iBook
     
     func gotoiBook () {
     
@@ -112,7 +143,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
             UIApplication.shared.open(iBook, options: [:], completionHandler: nil)
         }
     }
-    
+    */
     
     
     

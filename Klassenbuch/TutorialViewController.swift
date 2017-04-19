@@ -16,11 +16,10 @@ class TutorialViewController: UIPageViewController, UIPageViewControllerDataSour
         let sb = UIStoryboard(name: "Main", bundle: nil)
         
         
-        let vc1 = sb.instantiateViewController(withIdentifier: "First")
-        let vc2 = sb.instantiateViewController(withIdentifier: "Second")
-        let vc3 = sb.instantiateViewController(withIdentifier: "ThirdOption")
+        let vc1 = sb.instantiateViewController(withIdentifier: "ThirdOption")
         
-        return[vc1, vc2, vc3]
+        
+        return[vc1]
         
     }()
     
