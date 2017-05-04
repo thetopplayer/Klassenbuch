@@ -259,12 +259,13 @@ class Register: UIViewController, UITextFieldDelegate {
                     
                     if error == nil
                     {
-                        let alert = UIAlertController(title: "Erfolgreich Registriert", message: "Du wirst nun eine Einführung für das Klassenbuch App erhalten.", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Erfolgreich Registriert", message: "", preferredStyle: .alert)
                         
                         let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
-                            
-                            self.gotoOnboarding()
+                      
                             self.setupUserinDatabase()
+                            self.performSegue(withIdentifier: "HomePageSegue", sender: self)
+
                         }
                         alert.addAction(action)
                         self.present(alert, animated: true, completion: nil)
@@ -332,7 +333,7 @@ class Register: UIViewController, UITextFieldDelegate {
         
     }
         
-   
+   /*
    // Go to Onboarding
     
     func gotoOnboarding(){
@@ -359,6 +360,6 @@ class Register: UIViewController, UITextFieldDelegate {
  
             }
         }
-    }
+    }*/
     
 }

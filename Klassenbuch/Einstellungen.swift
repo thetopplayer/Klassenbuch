@@ -42,7 +42,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
 
     
@@ -84,34 +84,14 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
     }
     
  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     // Email Feedback
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selected Row = \(indexPath.description)")
         
         
-        if indexPath.section == 0 && indexPath.row == 2 {
+        if indexPath.section == 0 && indexPath.row == 1 {
             
             let mailComposeViewController = configuredMailComposeViewController()
             
@@ -121,7 +101,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
                 self.showSendMailErrorAlert()
             }
         }
-        if indexPath.section == 0 && indexPath.row == 3 {
+        if indexPath.section == 0 && indexPath.row == 2 {
 
            self.gotoSettings()
         }

@@ -39,7 +39,7 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
         self.EmptyScreen()
         
         //Setup Onboarding
-        self.FirstLoginOnboarding()
+        // self.FirstLoginOnboarding()
         
         tableView.allowsMultipleSelectionDuringEditing = true
         
@@ -228,7 +228,7 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
     @IBAction func saveHausaufgaben (_ segue:UIStoryboardSegue) {
     }
     
-   
+   /*
     //Login Onboarding Setup
     func FirstLoginOnboarding() {
         
@@ -251,7 +251,7 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
             print("First launch, setting UserDefault.")
             UserDefaults.standard.set(true, forKey: "launchedBefore")
         }
-    }
+    }*/
    
     // Cancel App Onboarding
     

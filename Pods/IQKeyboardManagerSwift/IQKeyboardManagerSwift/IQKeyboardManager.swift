@@ -359,9 +359,10 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
         return shouldResign
     }
     
+    
     /**
-    Resigns currently first responder field.
-    */
+     Resigns currently first responder field.
+     */
     @discardableResult open func resignFirstResponder()-> Bool {
         
         if let textFieldRetain = _textFieldView {
@@ -879,9 +880,9 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                     unwrappedController.view.setNeedsLayout()
                     unwrappedController.view.layoutIfNeeded()
                 }
- 
                 
-                }) { (animated:Bool) -> Void in}
+                
+            }) { (animated:Bool) -> Void in}
         } else {  //  If can't get rootViewController then printing warning to user.
             showLog("You must set UIWindow.rootViewController in your AppDelegate to work with IQKeyboardManager")
         }

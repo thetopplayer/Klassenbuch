@@ -169,28 +169,7 @@ class Login: UIViewController, UITextFieldDelegate {
     }  } } }
     
   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     // Register Button pressed, Text is empty
     

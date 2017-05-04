@@ -108,6 +108,7 @@ class PushNachrichten: UITableViewController {
         if Switch1Klasse.isOn {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
         FIRMessaging.messaging().subscribe(toTopic: "/topics/Klasse1")
+                print("subscribed to Klasse1")
             }
         }else{
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
@@ -121,6 +122,7 @@ class PushNachrichten: UITableViewController {
         if Switch2Klasse.isOn {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
              FIRMessaging.messaging().subscribe(toTopic: "/topics/Klasse2")
+                print("subscribed to Klasse2")
             }  }else{
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/Klasse2")
@@ -131,6 +133,7 @@ class PushNachrichten: UITableViewController {
         if Switch3Klasse.isOn {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
           FIRMessaging.messaging().subscribe(toTopic: "/topics/Klasse3")
+                print("subscribed to Klasse3")
             }}else{
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
            FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/Klasse3")
@@ -141,6 +144,7 @@ class PushNachrichten: UITableViewController {
         if Switch4Klasse.isOn {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
              FIRMessaging.messaging().subscribe(toTopic: "/topics/Klasse4")
+                print("subscribed to Klasse4")
             }}else{
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/Klasse4")
@@ -151,6 +155,7 @@ class PushNachrichten: UITableViewController {
         if Switch5Klasse.isOn {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
              FIRMessaging.messaging().subscribe(toTopic: "/topics/Klasse5")
+                print("subscribed to Klasse5")
             } }else{
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/Klasse5")
@@ -161,6 +166,7 @@ class PushNachrichten: UITableViewController {
         if Switch6Klasse.isOn {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
              FIRMessaging.messaging().subscribe(toTopic: "/topics/Klasse6")
+                       print("subscribed to Klasse6")
             } }else{
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/Klasse6")
@@ -171,6 +177,7 @@ class PushNachrichten: UITableViewController {
         if SwitchFreiwilligeAnlässe.isOn {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             FIRMessaging.messaging().subscribe(toTopic: "/topics/freiwillig")
+                print("subscribed to freiwillige Anlässe")
             }}else{
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/freiwillig")

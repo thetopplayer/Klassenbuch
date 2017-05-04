@@ -29,6 +29,7 @@
 		379B8CA31EA6B78E00E27CBC /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 379B8CA11EA6B78E00E27CBC /* MainInterface.storyboard */; };
 		379B8CA71EA6B79000E27CBC /* KlassenbuchExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 379B8C9B1EA6B78D00E27CBC /* KlassenbuchExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		379B8CAD1EA764E600E27CBC /* Delivery.png in Resources */ = {isa = PBXBuildFile; fileRef = 379B8CAC1EA764E600E27CBC /* Delivery.png */; };
+		379B8CAF1EAFB22E00E27CBC /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379B8CAE1EAFB22E00E27CBC /* GoogleMobileAds.framework */; };
 		37A436DE1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A436DD1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift */; };
 		37AADF9A1E7B24B200C05052 /* GIF.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37AADF991E7B24B200C05052 /* GIF.gif */; };
 		37AADF9C1E7B296200C05052 /* GIF2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37AADF9B1E7B296200C05052 /* GIF2.gif */; };
@@ -119,6 +120,7 @@
 		379B8CA21EA6B78E00E27CBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		379B8CA41EA6B78E00E27CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		379B8CAC1EA764E600E27CBC /* Delivery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Delivery.png; sourceTree = "<group>"; };
+		379B8CAE1EAFB22E00E27CBC /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		37A436DD1E4CFDCA00B356E9 /* OnboardingPreSetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPreSetupController.swift; sourceTree = "<group>"; };
 		37AADF991E7B24B200C05052 /* GIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GIF.gif; sourceTree = "<group>"; };
 		37AADF9B1E7B296200C05052 /* GIF2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GIF2.gif; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				379B8CAF1EAFB22E00E27CBC /* GoogleMobileAds.framework in Frameworks */,
 				3707B7661E44C92900BD150D /* MessageUI.framework in Frameworks */,
 				3E5C6F2EB73F2ECDEA81F287 /* Pods_Klassenbuch.framework in Frameworks */,
 			);
@@ -342,10 +345,11 @@
 				37FCAE7F1DFD51C000789BFF /* LaunchScreen.storyboard */,
 				37075C4D1E36A38200187480 /* Media.xcassets */,
 				379B8CAC1EA764E600E27CBC /* Delivery.png */,
+				379B8CAE1EAFB22E00E27CBC /* GoogleMobileAds.framework */,
 				37FE769E1E4723250056A196 /* Settings.bundle */,
 				37FCAE821DFD51C000789BFF /* Info.plist */,
-				379B8C961EA6884600E27CBC /* Klassenbuch.entitlements */,
 				379B8C941EA6857300E27CBC /* GoogleService-Info.plist */,
+				379B8C961EA6884600E27CBC /* Klassenbuch.entitlements */,
 				37B99BD21E71BC0500938C6E /* Delete */,
 			);
 			path = Klassenbuch;
@@ -951,6 +955,10 @@
 				CODE_SIGN_ENTITLEMENTS = Klassenbuch/Klassenbuch.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 86ZAAG46Z8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Klassenbuch",
+				);
 				INFOPLIST_FILE = Klassenbuch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -974,6 +982,10 @@
 				CODE_SIGN_ENTITLEMENTS = Klassenbuch/Klassenbuch.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 86ZAAG46Z8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Klassenbuch",
+				);
 				INFOPLIST_FILE = Klassenbuch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1054,6 +1066,7 @@
 				379B8CAA1EA6B79000E27CBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		37FCAE6E1DFD51C000789BFF /* Build configuration list for PBXProject "Klassenbuch" */ = {
 			isa = XCConfigurationList;

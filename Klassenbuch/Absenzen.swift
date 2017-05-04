@@ -234,8 +234,8 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         cell.detailTextLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].AStatus
         cell.textLabel?.numberOfLines = 0
         cell.accessoryType = .detailButton
-
-        
+        cell.tintColor = UIColor(red:0.17, green:0.22, blue:0.45, alpha:1.0)
+                
         
         
         

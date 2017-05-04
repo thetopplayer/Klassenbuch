@@ -11,52 +11,47 @@ import UIKit
 class OnboardingPreSetupController: UIViewController {
 
     //Outlets
-    @IBOutlet weak var PhoneImage31: UIImageView!
-    
+    @IBOutlet weak var ImageGIF: UIImageView!
+    @IBOutlet weak var NextButton: UIButton!
     @IBOutlet weak var Schliessen: UIImageView!
+    @IBOutlet weak var cancelButton: UIButton!
    
-    
+    //Variables
+    var NextButtonClick: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.Schliessen.isHidden = true
-        self.loadingGifs()
-        
+        Schliessen.isHidden = true
+        cancelButton.isHidden = true
+        ImageGIF.loadGif(name: "GIF")
     }
 
+    
+    @IBAction func NextGif(_ sender: Any) {
+       self.ButtonNext()
 
-
-    func loadingGifs(){
-        
-        PhoneImage31.loadGif(name: "GIF")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 12) {
+    }
+   
+    
+    func ButtonNext(){
+    
+        if NextButton.tag == 0 {
             
-            self.PhoneImage31.image = #imageLiteral(resourceName: "SwipeRight")
+            Schliessen.isHidden = true
+            cancelButton.isHidden = true
+            ImageGIF.loadGif(name: "GIF2")
+            
+        }else if NextButton.tag == 1 {
+            
+            Schliessen.isHidden = true
+            cancelButton.isHidden = true
+            ImageGIF.loadGif(name: "GIF3")
+            
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 16) {
-            
-            self.PhoneImage31.loadGif(name: "GIF2")
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 28) {
-            
-            self.PhoneImage31.image = #imageLiteral(resourceName: "SwipeRight")
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 32) {
-            
-            self.PhoneImage31.loadGif(name: "GIF3")
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 45) {
-            
-            self.PhoneImage31.image = #imageLiteral(resourceName: "SwipeRight")
-           self.Schliessen.isHidden = false
-            
-        }}
-
-
+    
+    
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
             }

@@ -7,22 +7,43 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class AppInfo: UIViewController {
 
     //Outlets
-    @IBOutlet weak var First: UIImageView!
-    @IBOutlet weak var Second: UIImageView!
-    @IBOutlet weak var Third: UIImageView!
+    @IBOutlet weak var First: UIView!
+    @IBOutlet weak var Second: UIView!
+    @IBOutlet weak var Third: UIView!
+    @IBOutlet weak var myBanner: GADNativeExpressAdView!
     @IBOutlet weak var background2: UIImageView!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         
+        // Request
         
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        
+        // Setup GoogleMobileAds
+        
+        myBanner.adUnitID = "ca-app-pub-5885475777180984/9012420958"
+        myBanner.rootViewController = self
+       // myBanner.delegate = self as! GADNativeExpressAdViewDelegate
+        
+        myBanner.load(request)
+        
+      
         self.ApplyMotionEffectsforViewDidLoad()
+        
+        
+        First.layer.cornerRadius = 5
+        Second.layer.cornerRadius = 5
+        Third.layer.cornerRadius = 5
         
         // Left Swipe
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
