@@ -38,9 +38,6 @@ class Tests: UITableViewController {
         
         // Set the EmptyState
         self.EmptyScreen()
-        
-  
-        
         tableView.allowsMultipleSelectionDuringEditing = true
         
         //TableViewCell Auto resizing
@@ -104,10 +101,10 @@ class Tests: UITableViewController {
                 let tdatum = fdata["TDatum"] as! Int
                 let tID = snapshot.key
                 
-                let filterdArr = self.data[tdatum]!.filter({$0.TUid != tID})
+                let filterdArr2 = self.data[tdatum]!.filter({$0.TUid != tID})
                 
-                if filterdArr.count > 0 {
-                    self.data[tdatum] = filterdArr
+                if filterdArr2.count > 0 {
+                    self.data[tdatum] = filterdArr2
                 }else {
                     self.data.removeValue(forKey: tdatum)
                 }
@@ -187,12 +184,15 @@ class Tests: UITableViewController {
         }
     }
 
+
     
     // UIBarButtons Functions
     
     @IBAction func cancelTests (_ segue:UIStoryboardSegue) {
     }
-    
+    @IBAction func saveTests (_ segue:UIStoryboardSegue) {
+    }
+
 
 
 }

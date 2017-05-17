@@ -4,7 +4,7 @@
 //
 //  Created by Developing on 16.01.17.
 //  Copyright © 2017 Hadorn Developing. All rights reserved.
-// Original ORiginal
+
 
 import UIKit
 import Firebase
@@ -35,7 +35,6 @@ class Login: UIViewController, UITextFieldDelegate {
         // Keep User Logged In
         self.KeepUserSigndIn()
 
-        
         //Motion Setup
         self.ApplyMotionEffectsforViewDidLoad()
         
@@ -52,11 +51,10 @@ class Login: UIViewController, UITextFieldDelegate {
         // Eye EyeButton
         iconClick = true
         LoginPasswordTextField.isSecureTextEntry = true
-       
     }
 
     
-    // Next Button Klicked Textfield new First Responder
+    // Next Button Klicked Textfield denn new First Responder
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == LoginEmailTextField{
@@ -73,15 +71,11 @@ class Login: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == LoginPasswordTextField {
-        
             EyeButton.isHidden = false
-            
         }else {
-        
              EyeButton.isHidden = true
         }
     }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == LoginPasswordTextField{
         EyeButton.setImage(UIImage(named: "Eye"), for: UIControlState.normal)
@@ -128,9 +122,7 @@ class Login: UIViewController, UITextFieldDelegate {
                 
                 } else {
                 // No User is signed in. Show user the login screen
-            }
-        }
-    }
+        }}}
     
     
 
@@ -179,24 +171,18 @@ class Login: UIViewController, UITextFieldDelegate {
         self.LoginPasswordTextField.text = ""
     }
 
-    
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
-    // Cancel Registration
+    // Cancel Registration / Restore Password Segues
     
-        @IBAction func cancelRegistration (_ segue:UIStoryboardSegue) {
-    }
-    
-    // Cancel Restore Password
-    
-    @IBAction func cancelRestorePassword (_ segue:UIStoryboardSegue) {
-    }
+    @IBAction func cancelRegistration (_ segue:UIStoryboardSegue) {}
+    @IBAction func cancelRestorePassword (_ segue:UIStoryboardSegue) {}
 
+    
+    
+    
+    
     // Motion Effect
-    
     func applyMotionEffect (toView view:UIView, magnitude:Float) {
         let xMotion = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
         xMotion.minimumRelativeValue = -magnitude
@@ -211,7 +197,6 @@ class Login: UIViewController, UITextFieldDelegate {
         
         view.addMotionEffect(group)
     }
-
     func ApplyMotionEffectsforViewDidLoad() {
         applyMotionEffect(toView: BackgroundImage, magnitude: 5)
         applyMotionEffect(toView: Form, magnitude: -10)

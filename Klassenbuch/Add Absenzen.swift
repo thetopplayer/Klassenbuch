@@ -69,7 +69,12 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
 
         //Database Refrence Property
         ref = FIRDatabase.database().reference()
-
+        
+        // Left Swipe
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        
+        view.addGestureRecognizer(edgePan)
         
     }
 
@@ -295,15 +300,26 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
                 "AStatus": Absenzstatus,
                 "ADatum": self.selectedDateZeroHour!
                 ])
-        self.dismiss(animated: true, completion: nil)
+            self.performSegue(withIdentifier: "unwindtoAbsenzen", sender: self)
         }
         
     }
+
+    //Fund for Left Swipe
+    
+    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        
+        if recognizer.state == .recognized {
+            self.performSegue(withIdentifier: "unwindtoAbsenzen", sender: self)
+        }
+    }
+
+
 }
 
-    
-    
-  
+
+
+
 
 
 

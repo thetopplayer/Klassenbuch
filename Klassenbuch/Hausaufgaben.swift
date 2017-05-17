@@ -52,17 +52,10 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
         
         // Listen for added and removed
         self.databaseListener()
-        
-
 
     }
     
 
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-    }
 
     func databaseListener() {
         
@@ -181,27 +174,7 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
     }
     
     
-    
-     /*  // Tab Bar Settings
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        
-        if ((tabBarController?.selectedIndex = 0) != nil) {
-        
-        print("HI")
-        }
-    
-    }*/
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     
     
@@ -228,36 +201,7 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
     @IBAction func saveHausaufgaben (_ segue:UIStoryboardSegue) {
     }
     
-   /*
-    //Login Onboarding Setup
-    func FirstLoginOnboarding() {
-        
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        if launchedBefore  {
-            
-            print("Not first launch.")
-            
-        } else {
-            //User hat die App noch nicht gebraucht und bekommt einen Walkthrough
-            
-            let alert = UIAlertController(title: "Sieh dir die App an!", message: "Du wirst nun eine Einführung für das Klassenbuch App erhalten", preferredStyle: .alert)
-            
-            let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
-                self.performSegue(withIdentifier: "LoginOnboarding", sender: self)
-            }
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
-            
-            print("First launch, setting UserDefault.")
-            UserDefaults.standard.set(true, forKey: "launchedBefore")
-        }
-    }*/
-   
-    // Cancel App Onboarding
-    
-    @IBAction func cancelAppOnboarding (_ segue:UIStoryboardSegue) {
-    }
-}
+   }
 
 
 

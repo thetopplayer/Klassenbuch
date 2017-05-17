@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import GoogleMobileAds
+
 
 class AppInfo: UIViewController {
 
@@ -15,7 +15,6 @@ class AppInfo: UIViewController {
     @IBOutlet weak var First: UIView!
     @IBOutlet weak var Second: UIView!
     @IBOutlet weak var Third: UIView!
-    @IBOutlet weak var myBanner: GADNativeExpressAdView!
     @IBOutlet weak var background2: UIImageView!
     
     
@@ -24,20 +23,6 @@ class AppInfo: UIViewController {
         super.viewDidLoad()
        
         
-        // Request
-        
-        let request = GADRequest()
-        request.testDevices = [kGADSimulatorID]
-        
-        // Setup GoogleMobileAds
-        
-        myBanner.adUnitID = "ca-app-pub-5885475777180984/9012420958"
-        myBanner.rootViewController = self
-       // myBanner.delegate = self as! GADNativeExpressAdViewDelegate
-        
-        myBanner.load(request)
-        
-      
         self.ApplyMotionEffectsforViewDidLoad()
         
         
@@ -66,7 +51,7 @@ class AppInfo: UIViewController {
     func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         
         if recognizer.state == .recognized {
-            self.dismiss(animated: true, completion: nil)
+            self.performSegue(withIdentifier: "unwindtoSettings", sender: self)
             
         }
     }

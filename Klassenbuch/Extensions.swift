@@ -34,9 +34,7 @@ extension UIViewController {
                 // No User is signed in. Show user the login screen
             }
         }
-
-       
-    
+ 
     }
 }
 

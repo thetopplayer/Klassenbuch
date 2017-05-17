@@ -39,7 +39,6 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
         // Left Swipe
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
-        
         view.addGestureRecognizer(edgePan)
        }
 
@@ -54,7 +53,7 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
     func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
        
         if recognizer.state == .recognized {
-            self.dismiss(animated: true, completion: nil)
+           self.performSegue(withIdentifier: "cancelRestore", sender: nil)
         }
     }
     

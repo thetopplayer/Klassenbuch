@@ -65,13 +65,10 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
     @IBAction func ActivitySheet(_ sender: Any) {
 
         let shareText = "Sieh dir diese App an, ein mobiles Klassenbuch"
-        let shareURL = URL(string: "https://itunes.apple.com/us/app/calcfast/id876781417?mt=8")
-        
-      
-      
-        
-        let image = UIImage(named: "Delivery.png")
-        let activityArray = [shareText, shareURL! , image!] as [Any]
+        let shareURL = URL(string: "itms-apps://itunes.apple.com/app/id1228080204")
+     
+        //let image = UIImage(named: "Delivery.png")
+        let activityArray = [shareText, shareURL! /*, image!*/] as [Any]
         let activityViewController = UIActivityViewController(activityItems: activityArray , applicationActivities: nil)
         activityViewController.excludedActivityTypes = [UIActivityType.assignToContact, UIActivityType.addToReadingList]
         present(activityViewController, animated: true, completion: nil)
@@ -104,6 +101,10 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
     
     @IBAction func cancelKlassenSettings (_ segue:UIStoryboardSegue) {
     }
+    @IBAction func saveSettings (_ segue:UIStoryboardSegue) {
+    }
+    @IBAction func savePushes (_ segue:UIStoryboardSegue) {
+    }
 
     
     
@@ -118,13 +119,8 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
                 print("RateUs.RateUs_Tapped")
                 print("Send to App Store")
                 
-                if let path = URL(string: "https://itunes.apple.com/us/app/calcfast/id876781417?mt=8") {
-                    UIApplication.shared.open(path) {
-                        (didOpen:Bool) in
-                        if !didOpen {
-                            print("Error opening:\(path.absoluteString)")
-                        }
-                    }
+                self.rateApp(appId: "1228080204") { success in
+                    print("RateApp \(success)")
                 }
             }))
         
@@ -192,6 +188,19 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
         // Dismiss the mail compose view controller.
         controller.dismiss(animated: true, completion: nil)
     }
-}
+    
+    func rateApp(appId: String, completion: @escaping ((_ success: Bool)->())) {
+        guard let url = URL(string : "itms-apps://itunes.apple.com/app/id\(appId)?ls=1&mt=8&action=write-review"      ) else {
+            completion(false)
+            return
+        }
+        guard #available(iOS 10, *) else {
+            completion(UIApplication.shared.openURL(url))
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: completion)
+    }
+    
+    }
 
 

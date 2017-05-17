@@ -181,7 +181,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
     
     // Cancel App Onboarding
     
-    @IBAction func cancelAppOnboarding (_ segue:UIStoryboardSegue) {
+    @IBAction func saveAppInfo (_ segue:UIStoryboardSegue) {
     }
 
     
@@ -205,8 +205,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
     func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         
         if recognizer.state == .recognized {
-            self.dismiss(animated: true, completion: nil)
-            
+            self.performSegue(withIdentifier: "unwindtoInfos", sender: self)
         }
     }
 }

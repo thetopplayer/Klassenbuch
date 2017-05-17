@@ -46,7 +46,12 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
         //Database Refrence Property
         ref = FIRDatabase.database().reference()
-
+        
+        // Left Swipe
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        
+        view.addGestureRecognizer(edgePan)
     }
 
     override func didReceiveMemoryWarning() {
@@ -148,9 +153,17 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
             "TDatum": self.selectedDateZeroHour!
             ])
         
-        self.dismiss(animated: true, completion: nil)
-}
+       self.performSegue(withIdentifier: "unwindtoTests", sender: self)
+    }
         
+    //Fund for Left Swipe
     
+    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        
+        if recognizer.state == .recognized {
+            self.performSegue(withIdentifier: "unwindtoTests", sender: self)
+        }
+    }
+
     
 }

@@ -14,8 +14,7 @@ import Firebase
 class Register: UIViewController, UITextFieldDelegate {
 
     //Outlets
-    
-    
+
     @IBOutlet weak var RegisterEmailTextField: UITextField!
     @IBOutlet weak var RegisterPasswordTextField: UITextField!
     @IBOutlet weak var RegisterPasswordTextField2: AuthTextField!
@@ -47,9 +46,7 @@ class Register: UIViewController, UITextFieldDelegate {
         // Left Swipe
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
-        
         view.addGestureRecognizer(edgePan)
-        
         
         // Parallax Effect
         self.ApplyMotionEffectsforViewDidLoad()
@@ -195,7 +192,7 @@ class Register: UIViewController, UITextFieldDelegate {
     func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         
         if recognizer.state == .recognized {
-            self.dismiss(animated: true, completion: nil)
+            self.performSegue(withIdentifier: "cancelRegistration", sender: nil)
         }
     }
     
@@ -264,7 +261,9 @@ class Register: UIViewController, UITextFieldDelegate {
                         let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
                       
                             self.setupUserinDatabase()
-                            self.performSegue(withIdentifier: "HomePageSegue", sender: self)
+                         
+                           self.performSegue(withIdentifier: "Start", sender: self)
+                            
 
                         }
                         alert.addAction(action)
@@ -333,33 +332,31 @@ class Register: UIViewController, UITextFieldDelegate {
         
     }
         
-   /*
-   // Go to Onboarding
     
-    func gotoOnboarding(){
-
-        // If Ok tapped check if user is sucessfully signed in
-        FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
-            
-            if authuser != nil {
-                
-                // There is a User, because the User registered He has to see the Onboarding
-
-                self.performSegue(withIdentifier: "FirstOnboarding", sender: self)
-  
-            } else {
-                
-                // No User is signed in. Show Alert View Controller
-                
-                let failedAuthTest = UIAlertController(title: "Oops!", message: "Es lief etwas schief mit deiner Identifikation, bitte probiere es nochmals.", preferredStyle: .alert)
-                
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                failedAuthTest.addAction(defaultAction)
-                
-                self.present(failedAuthTest, animated: true, completion: nil)
- 
-            }
-        }
-    }*/
+//    func gotoOnboarding(){
+//
+//        // If Ok tapped check if user is sucessfully signed in
+//        FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
+//            
+//            if authuser != nil {
+//                
+//                // There is a User, because the User registered He has to see the Onboarding
+//
+//                self.performSegue(withIdentifier: "ClassSetup", sender: self)
+//  
+//            } else {
+//                
+//                // No User is signed in. Show Alert View Controller
+//                
+//                let failedAuthTest = UIAlertController(title: "Oops!", message: "Es lief etwas schief mit deiner Identifikation, bitte probiere es nochmals.", preferredStyle: .alert)
+//                
+//                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//                failedAuthTest.addAction(defaultAction)
+//                
+//                self.present(failedAuthTest, animated: true, completion: nil)
+// 
+//            }
+//        }
+//    }
     
 }

@@ -48,6 +48,11 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
         //Database Refrence Property
         ref = FIRDatabase.database().reference()
     
+        // Left Swipe
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        
+        view.addGestureRecognizer(edgePan)
     }
    
     override func didReceiveMemoryWarning() {
@@ -104,7 +109,7 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
    
     // SubjectPicker
     
-    var subjects = ["Bildnerisches Gestalten","Biologie","Chemie","Deutsch","Englisch","Ergänzungsfach","Französisch","Freifach","Geografie","Geschichte","Italienisch","Latein","Mathemathik","Musik","Physik","Spanisch","Sport","Wirtschaft"]
+    var subjects = ["Bildnerisches Gestalten","Biologie","Chemie","Deutsch","Englisch","Ergänzungsfach","Französisch","Freifach","Geografie","Geschichte","Italienisch","Latein","Mathemathik","Musik","Physik","Religion","Spanisch","Sport","Wirtschaft"]
     
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int{
@@ -149,7 +154,14 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     }
    
   
+    //Fund for Left Swipe
     
+    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        
+        if recognizer.state == .recognized {
+            self.performSegue(withIdentifier: "unwindtoHA", sender: self)
+        }
+    }
     
     
     
@@ -167,8 +179,9 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
             "HFach": SchulfachTextField.text!,
             "HDatum": self.selectedDateZeroHour!
             ])
+
+        self.performSegue(withIdentifier: "unwindtoHA", sender: self)
         
-        self.dismiss(animated: true, completion: nil)
     }
     
 
