@@ -63,7 +63,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
         
         
         let logoutAction = UIAlertAction(title: "Abmelden", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
-            
+            FIRAnalytics.logEvent(withName: "User logged out", parameters: nil)
             try! FIRAuth.auth()!.signOut()
             if let storyboard = self.storyboard {
                 let vc = storyboard.instantiateViewController(withIdentifier: "LoginNavigationVC") as! UINavigationController

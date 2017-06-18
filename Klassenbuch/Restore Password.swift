@@ -19,6 +19,7 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var RestorePasswordTextField: AuthTextField!
     @IBOutlet weak var ZüriBild: UIImageView!
     @IBOutlet weak var RestorePasswordButton: UIButton!
+    @IBOutlet weak var BacktoLoginfromPR: UIButton!
     
     
     override func viewDidLoad() {
@@ -36,26 +37,33 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
         // TextFieldDelegates
         RestorePasswordTextField.delegate = self
 
-        // Left Swipe
+        /* Left Swipe
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
-        view.addGestureRecognizer(edgePan)
+        view.addGestureRecognizer(edgePan)*/
+        
+        Form.alpha = 0
+        EmailLabel.alpha = 0
+        RestorePasswordTextField.alpha = 0
+        ZüriBild.alpha = 0
+        RestorePasswordButton.alpha = 0
+        BacktoLoginfromPR.alpha = 0
        }
 
-   
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-       
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 0.6 , animations: {
+        self.Form.alpha = 0.95
+        self.EmailLabel.alpha = 1
+        self.RestorePasswordTextField.alpha = 1
+        self.ZüriBild.alpha = 1
+        self.RestorePasswordButton.alpha = 1
+        self.BacktoLoginfromPR.alpha = 1
+        })
     }
+
     
-    //Fund for Left Swipe
     
-    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-       
-        if recognizer.state == .recognized {
-           self.performSegue(withIdentifier: "cancelRestore", sender: nil)
-        }
-    }
+
     
     
     // Next Button Klicked Textfield new First Responder
@@ -97,6 +105,7 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
                     title = "Passwort Erfolgreich zurückgesetzt!"
                     message = "In Kürze wirst du eine Email erhalten mit Anweisungen wie du dein Passwort erneuern kannst."
                     self.RestorePasswordTextField.text = ""
+                    FIRAnalytics.logEvent(withName: "Password restored", parameters: nil)
                 }
                 
                 let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

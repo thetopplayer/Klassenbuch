@@ -235,22 +235,13 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         cell.textLabel?.numberOfLines = 0
         cell.accessoryType = .detailButton
         cell.tintColor = UIColor(red:0.17, green:0.22, blue:0.45, alpha:1.0)
-                
-        
-        
-        
+
         return cell
-        
     }
     
 
     
-    
-    
-
-    
-    
-    
+ 
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         
@@ -346,20 +337,11 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
                 alertController.addAction(UIAlertAction(title: "Errinere mich!", style: .default, handler: { (action: UIAlertAction!) in
     
  
-                 
-                let content = UNMutableNotificationContent()
-     
-                // Actions
-                let Action1 = UNNotificationAction(identifier:  "Action 1", title: "Morgen nochmals Errinern!", options: UNNotificationActionOptions.foreground)
-                //let Action2 = UNNotificationAction(identifier:  "Action 2", title: "ok", options: UNNotificationActionOptions.foreground)
-                let category = UNNotificationCategory(identifier: "myCategory", actions: [Action1/*, Action2*/], intentIdentifiers: [], options: [])
-                UNUserNotificationCenter.current().setNotificationCategories([category])
-                
-                    
                 // Content
+                let content = UNMutableNotificationContent()
                 content.title = "Absenz Errinerung"
-                content.body = "\(String(describing: PersonTitle)), Morgen ist die Absenz vom \(String(describing: sectionTitle!)) abzugeben"
-                content.categoryIdentifier = "myCategory"
+                content.body = "\(String(describing: PersonTitle)), Morgen ist die Absenz vom \(String(describing: sectionTitle!)) abzugeben."
+                    // content.categoryIdentifier = "myCategory"
                 content.sound = UNNotificationSound.default()
                 content.badge = 1
                     
@@ -369,13 +351,12 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
                 let mydate = ((NSDate() as Date) as Date) + (futureDateinDate?.timeIntervalSince(Date()))! - 36000 - 86400
                 
                 let dateComponent = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: mydate)
-                    
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
                
-                /*
+           
                 // For Developing only
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-                */
+                //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+               
                     
                 let request = UNNotificationRequest(identifier: "Absenzen Timer Fertig", content: content, trigger: trigger)
                 
@@ -431,24 +412,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     }
 
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        if response.actionIdentifier == "Action1"
-        {
-            
-            let content2 = UNMutableNotificationContent()
-            
-            // Content
-            content2.title = "Letzte Absenz Errinerung"
-            content2.body = "Heute ist die letzte möglichkeit deine Absenz pünktlich abzugeben"
-            
-            let trigger2 = UNTimeIntervalNotificationTrigger(timeInterval: 64800, repeats: false)
-            let request = UNNotificationRequest(identifier: "Absenzen Timer Fertig 2", content: content2, trigger: trigger2)
-            
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-            print("User pressed remind me tomorrow")
-        }
-        completionHandler()
-        }
+
 
     // Func for EmptyState
     
@@ -473,3 +437,5 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     
     
 }
+
+

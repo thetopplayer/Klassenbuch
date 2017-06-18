@@ -10,6 +10,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import StoreKit
 
 
 struct Homework {
@@ -29,7 +30,9 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
     var sortedData = [(Int, [Homework])]()
     var ref: FIRDatabaseReference?
     var databaseHandle: FIRDatabaseHandle?
-    
+
+
+   
     
     
     override func viewDidLoad() {
@@ -37,6 +40,8 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
         
         //Setup EmtyState
         self.EmptyScreen()
+        
+        self.RateApp()
         
         //Setup Onboarding
         // self.FirstLoginOnboarding()
@@ -56,6 +61,21 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
     }
     
 
+    
+    
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        
+          super.viewDidAppear(animated)
+
+      
+
+  
+        
+    }
 
     func databaseListener() {
         
@@ -106,10 +126,10 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
                 let hdatum = fdata["HDatum"] as! Int
                 let hID = snapshot.key
                 
-                let filterdArr = self.data[hdatum]!.filter({$0.HUid != hID})
+                let filterdArr = self.data[hdatum]?.filter({$0.HUid != hID})
                 
-                if filterdArr.count > 0 {
-                    self.data[hdatum] = filterdArr
+                if (filterdArr?.count)! > 0 {
+                    self.data[hdatum]! = (filterdArr)!
                 }else {
                     self.data.removeValue(forKey: hdatum)
                 }
@@ -155,7 +175,9 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
     }
     
     
-    
+    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Löschen"
+    }
     
     // Here deleting the Posts
     // Delete Part
@@ -174,7 +196,6 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
     }
     
     
-
     
     
     
@@ -192,6 +213,16 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
         }
     }
     
+    func RateApp () {
+        if tableView.visibleCells.count == 10 {
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            } else {
+                // Fallback on earlier versions
+            }
+        }else {}
+ 
+    }
     
     // UIBarButtons Functions
     

@@ -14,13 +14,12 @@ import Firebase
 class Register: UIViewController, UITextFieldDelegate {
 
     //Outlets
-
     @IBOutlet weak var RegisterEmailTextField: UITextField!
     @IBOutlet weak var RegisterPasswordTextField: UITextField!
     @IBOutlet weak var RegisterPasswordTextField2: AuthTextField!
     @IBOutlet var       InformationView: UIView!
     @IBOutlet weak var VisualEffect: UIVisualEffectView!
-    @IBOutlet weak var background: UIVisualEffectView!
+    @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var ZüriBild: UIImageView!
     @IBOutlet weak var PasswordLabel: UILabel!
     @IBOutlet weak var RegisterButton: UIButton!
@@ -30,8 +29,7 @@ class Register: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var EyeButton2: UIButton!
     
     
-    // Variables
-    
+    // Variables    
     var effect: UIVisualEffect!
     var iconClick: Bool!
     var iconClick2: Bool!
@@ -43,10 +41,11 @@ class Register: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         
-        // Left Swipe
+        /* Left Swipe
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
         view.addGestureRecognizer(edgePan)
+        */
         
         // Parallax Effect
         self.ApplyMotionEffectsforViewDidLoad()
@@ -189,18 +188,24 @@ class Register: UIViewController, UITextFieldDelegate {
     
     //Fund for Left Swipe
     
-    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+   /* func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         
         if recognizer.state == .recognized {
             self.performSegue(withIdentifier: "cancelRegistration", sender: nil)
         }
-    }
+    }*/
     
     //Dismiss ViewAction
     
     @IBAction func RemoveInformationView(_ sender: Any) {
        self.animateOut()
     }
+   
+    
+    @IBAction func backtoLogin(_ sender: Any) {
+        performSegue(withIdentifier: "backtoLogin", sender: nil)
+    }
+    
     
     // Starting Information Animation
     
@@ -255,7 +260,9 @@ class Register: UIViewController, UITextFieldDelegate {
                 FIRAuth.auth()?.createUser(withEmail: self.RegisterEmailTextField.text!, password: self.RegisterPasswordTextField.text!) { (user, error) in
                     
                     if error == nil
+                        
                     {
+                        FIRAnalytics.logEvent(withName: "new registered User", parameters: nil)
                         let alert = UIAlertController(title: "Erfolgreich Registriert", message: "", preferredStyle: .alert)
                         
                         let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
@@ -312,7 +319,7 @@ class Register: UIViewController, UITextFieldDelegate {
     }
     
     func ApplyMotionEffectsforViewDidLoad() {
-        applyMotionEffect(toView: background, magnitude: 5)
+        //applyMotionEffect(toView: background, magnitude: 5)
         applyMotionEffect(toView: Form, magnitude: -10)
         applyMotionEffect(toView: ZüriBild, magnitude: -10)
         applyMotionEffect(toView: RegisterPasswordTextField, magnitude: -10)

@@ -181,6 +181,7 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
             ])
 
         self.performSegue(withIdentifier: "unwindtoHA", sender: self)
+        FIRAnalytics.logEvent(withName: "Hausaufgabe gepostet", parameters: nil)
         
     }
     

@@ -301,6 +301,7 @@ class Add_Absenzen: UITableViewController, UIPickerViewDataSource, UIPickerViewD
                 "ADatum": self.selectedDateZeroHour!
                 ])
             self.performSegue(withIdentifier: "unwindtoAbsenzen", sender: self)
+            FIRAnalytics.logEvent(withName: "Absenz gepostet", parameters: nil)
         }
         
     }

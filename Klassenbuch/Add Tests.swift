@@ -154,6 +154,7 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
             ])
         
        self.performSegue(withIdentifier: "unwindtoTests", sender: self)
+        FIRAnalytics.logEvent(withName: "Test gepostet", parameters: nil)
     }
         
     //Fund for Left Swipe

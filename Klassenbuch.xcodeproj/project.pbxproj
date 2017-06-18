@@ -150,8 +150,8 @@
 			children = (
 				37FCAE761DFD51C000789BFF /* AppDelegate.swift */,
 				37FCAEB01DFD55D900789BFF /* Manager.swift */,
-				372B20911E2E8C62004BF666 /* AuthTextField.swift */,
 				37FB38251E227EBA0075C106 /* Extensions.swift */,
+				372B20911E2E8C62004BF666 /* AuthTextField.swift */,
 				378465421E4F96CE0012CDBF /* Gif */,
 			);
 			name = Helpers;
@@ -694,7 +694,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -742,7 +742,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -758,6 +758,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3644FF363637C9A7B024BAB8 /* Pods-Klassenbuch.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Klassenbuch/Klassenbuch.entitlements;
@@ -784,6 +785,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BFC360E84BA572860174E2BC /* Pods-Klassenbuch.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Klassenbuch/Klassenbuch.entitlements;

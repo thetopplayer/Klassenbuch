@@ -136,7 +136,7 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
                 print("RateUs.Feedback_Tapped")
             }))
         
-        alertController.addAction(UIAlertAction(title: "Abbrechen", style: .default, handler: { (action: UIAlertAction!) in
+        alertController.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: { (action: UIAlertAction!) in
             print("RateUs.Cancel_Tapped")
         }))
         

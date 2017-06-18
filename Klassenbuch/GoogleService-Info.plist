@@ -36,5 +36,9 @@
 	<string>1:599056700386:ios:b8a2519951ea1528</string>
 	<key>DATABASE_URL</key>
 	<string>https://klassenbuch-5dfe2.firebaseio.com</string>
+	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLE</key>
+	<string>NO</string>
+	<key>FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED</key>
+	<string>YES</string>
 </dict>
 </plist>
