@@ -15,6 +15,9 @@
 		375534FD1E0849F5000C0842 /* Add Hausaufgaben.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375534FC1E0849F5000C0842 /* Add Hausaufgaben.swift */; };
 		375534FF1E084A3C000C0842 /* Add Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375534FE1E084A3C000C0842 /* Add Tests.swift */; };
 		375535011E084A4E000C0842 /* Add Absenzen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375535001E084A4E000C0842 /* Add Absenzen.swift */; };
+		3761778F1EFD63650051B90C /* NewReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3761778E1EFD63650051B90C /* NewReminder.swift */; };
+		376177911EFD63750051B90C /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376177901EFD63750051B90C /* Reminders.swift */; };
+		376177931EFD6B5B0051B90C /* NewReminderNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376177921EFD6B5B0051B90C /* NewReminderNC.swift */; };
 		376DDB3A1E44C0ED0064E2D2 /* Einstellungen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */; };
 		378465441E4F96EC0012CDBF /* Gif+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378465431E4F96EC0012CDBF /* Gif+Swift.swift */; };
 		379B8C931EA4F87A00E27CBC /* PushNachrichten.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B8C921EA4F87A00E27CBC /* PushNachrichten.swift */; };
@@ -82,6 +85,9 @@
 		375534FC1E0849F5000C0842 /* Add Hausaufgaben.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Add Hausaufgaben.swift"; sourceTree = "<group>"; };
 		375534FE1E084A3C000C0842 /* Add Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Add Tests.swift"; sourceTree = "<group>"; };
 		375535001E084A4E000C0842 /* Add Absenzen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Add Absenzen.swift"; sourceTree = "<group>"; };
+		3761778E1EFD63650051B90C /* NewReminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewReminder.swift; sourceTree = "<group>"; };
+		376177901EFD63750051B90C /* Reminders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
+		376177921EFD6B5B0051B90C /* NewReminderNC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewReminderNC.swift; sourceTree = "<group>"; };
 		376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Einstellungen.swift; sourceTree = "<group>"; };
 		378465431E4F96EC0012CDBF /* Gif+Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gif+Swift.swift"; sourceTree = "<group>"; };
 		379B8C921EA4F87A00E27CBC /* PushNachrichten.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNachrichten.swift; sourceTree = "<group>"; };
@@ -187,6 +193,9 @@
 			isa = PBXGroup;
 			children = (
 				375534FA1E08490C000C0842 /* Absenzen.swift */,
+				3761778E1EFD63650051B90C /* NewReminder.swift */,
+				376177921EFD6B5B0051B90C /* NewReminderNC.swift */,
+				376177901EFD63750051B90C /* Reminders.swift */,
 				375535001E084A4E000C0842 /* Add Absenzen.swift */,
 			);
 			name = Absenzen;
@@ -595,9 +604,12 @@
 				376DDB3A1E44C0ED0064E2D2 /* Einstellungen.swift in Sources */,
 				37FCAE771DFD51C000789BFF /* AppDelegate.swift in Sources */,
 				3707B7681E44D70D00BD150D /* AppInfo.swift in Sources */,
+				376177911EFD63750051B90C /* Reminders.swift in Sources */,
 				375534FB1E08490C000C0842 /* Absenzen.swift in Sources */,
+				376177931EFD6B5B0051B90C /* NewReminderNC.swift in Sources */,
 				37AD16E01E2D4438002F41D9 /* Login.swift in Sources */,
 				37FCAEA91DFD553900789BFF /* Hausaufgaben.swift in Sources */,
+				3761778F1EFD63650051B90C /* NewReminder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

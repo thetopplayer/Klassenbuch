@@ -29,6 +29,9 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     var ref: FIRDatabaseReference?
     var databaseHandle: FIRDatabaseHandle?
     
+    var PersonenTitel: String?
+    var Absenzdauer: String?
+    var AbsenzDatumDate: String?
     
     
     override func viewDidLoad() {
@@ -247,7 +250,12 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         
         // Taking Sectionheader Title and putting it in a variable
         let sectionHeaderView = tableView.headerView(forSection: indexPath.section)
+        
         let sectionTitle = sectionHeaderView!.textLabel!.text
+        
+       // let absenzstat = self.sortedData[indexPath.section].1[indexPath.row].AStatus
+        
+        
         
         // Get the cell and the Persontitle from the Cell
         //let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "AbsenzenCell")
@@ -255,7 +263,8 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         
         let PersonTitle = self.sortedData[indexPath.section].1[indexPath.row].APerson
        
-        
+       
+       
         // Taking the SectionheaderTitle and saving it and changig it from a String to Date
         
         let SectiondateInString = sectionTitle
@@ -264,7 +273,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         let SectionDateinDate = dateformatter.date(from: (SectiondateInString)!)
         print(SectionDateinDate as Any)
   
-  
+        
         // Addition of 14 Days to SectionDateinDate to get FutureDateinDate
         let daysToAdd = 14
         var dateComponent = DateComponents()
@@ -310,84 +319,20 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         
        let StatusAction = UIAlertAction(title: "Errinerung", style: UIAlertActionStyle.default) { (alert:UIAlertAction) -> Void in
         
-        
-                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (Bool, error) in
-                    if let error = error {
-                print(error)
-                    }
-            }
+       
         
         
+                self.AbsenzDatumDate = sectionHeaderView!.textLabel!.text
+        
+                self.Absenzdauer = self.sortedData[indexPath.section].1[indexPath.row].AStatus
+        
+                self.PersonenTitel = self.sortedData[indexPath.section].1[indexPath.row].APerson
         
         
-                // Alert Controller
-                let alertController = UIAlertController(title: "", message: "Um einen Tag vor der Frist informiert zu werden klicke auf Errinere mich!", preferredStyle:UIAlertControllerStyle.actionSheet)
-
-               // let AbsenzenSheet = UIAlertController(title: "", message: "\(String(describing: PersonTitle)) du musst deine Absenz vom \(String(describing: sectionTitle!)) bis am \(futureDateinString) unterschreiben lassen und abgeben.", preferredStyle: UIAlertControllerStyle.actionSheet)
-        
-                let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
-        
-                let titleAttrString = NSMutableAttributedString(string: "Errinerung einrichten!", attributes: titleFont)
-        
-                alertController.setValue(titleAttrString, forKey: "attributedTitle")
-                alertController.view.tintColor = UIColor.black
-        
-
-        
-                alertController.addAction(UIAlertAction(title: "Errinere mich!", style: .default, handler: { (action: UIAlertAction!) in
-    
- 
-                // Content
-                let content = UNMutableNotificationContent()
-                content.title = "Absenz Errinerung"
-                content.body = "\(String(describing: PersonTitle)), Morgen ist die Absenz vom \(String(describing: sectionTitle!)) abzugeben."
-                    // content.categoryIdentifier = "myCategory"
-                content.sound = UNNotificationSound.default()
-                content.badge = 1
-                    
-   
-                    
-                    
-                let mydate = ((NSDate() as Date) as Date) + (futureDateinDate?.timeIntervalSince(Date()))! - 36000 - 86400
-                
-                let dateComponent = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: mydate)
-                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
-               
-           
-                // For Developing only
-                //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-               
-                    
-                let request = UNNotificationRequest(identifier: "Absenzen Timer Fertig", content: content, trigger: trigger)
-                
-                UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
-                    if let error = error{
-                    print("Could not create Local notification", error)
-                    }else if let date = trigger.nextTriggerDate(){
-                    print("Next notification date:", date)
-                    print("Errinierung an")
-                    }
-                    }
-                        )
-        
-
-                    }))
-        
-                    alertController.addAction(UIAlertAction(title: "Alle Errinerungen stoppen!", style: .destructive, handler: { (action: UIAlertAction!) in
-                    print("Alle Reminder stoppen Tapped")
-            
-                        // Stop all reminders
-                        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-                 
-                    }))
         
         
-                alertController.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: { (action: UIAlertAction!) in
-                        print("Abbrechen Tapped")
-                            }))
-        
-                self.present(alertController, animated: true, completion: nil)
-                }
+                   self.performSegue(withIdentifier: "ReminderEinrichten", sender: nil)
+        }
         
         // Delete Action
         let deleteaction = UIAlertAction(title: "Löschen", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
@@ -434,8 +379,36 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     }
     @IBAction func saveAbsenzen (_ segue:UIStoryboardSegue) {
     }
+    @IBAction func unwindtoAbsenzen (_sender: UIStoryboardSegue){
+        
+    }
     
-    
+
+
+
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ReminderEinrichten"){
+        
+            var DestViewController = segue.destination as! NewReminderNC
+            let targetController = DestViewController.topViewController as! NewReminder
+        //let viewController = segue.destination as! NewReminder
+        targetController.Person = PersonenTitel
+        targetController.DauerderAbsenz = Absenzdauer
+        targetController.Datum = AbsenzDatumDate
+        
+        
+        
+        
+        
+        
+        }
+    }
+
+
+
+
+
 }
 
 
