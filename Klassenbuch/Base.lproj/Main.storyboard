@@ -227,13 +227,13 @@
         <!--Reminders-->
         <scene sceneID="zr7-cX-yjJ">
             <objects>
-                <tableViewController id="jAY-wr-9iA" sceneMemberID="viewController">
+                <tableViewController id="jAY-wr-9iA" customClass="ReminderTableViewController" customModule="Klassenbuch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3ss-l7-Pn7">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="b3e-fa-V8k" detailTextLabel="7NW-nH-Zu6" style="IBUITableViewCellStyleSubtitle" id="YFM-iN-k9E">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reminderCell" textLabel="b3e-fa-V8k" detailTextLabel="7NW-nH-Zu6" style="IBUITableViewCellStyleSubtitle" id="YFM-iN-k9E">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YFM-iN-k9E" id="qDO-IA-epr">
@@ -1346,7 +1346,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BQB-Wb-c75" userLabel="Absenzen NC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" image="Contacts" selectedImage="Contacts Filled" id="51Z-nh-z40"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="v9u-fJ-gMD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="v9u-fJ-gMD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.23137254901960785" blue="0.48627450980392156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1512,7 +1512,7 @@
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TwH-Ia-yKr" id="4RU-nA-PRm">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Person" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqR-SU-ShT">
@@ -1540,7 +1540,7 @@
                                         <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e2v-wL-opM" id="3Pg-et-zE4">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpz-ec-VoJ">
@@ -1568,11 +1568,11 @@
                                         <rect key="frame" x="0.0" y="143.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qfw-tb-YJ9" id="dad-lu-SRJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AbgabeDatum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXg-1G-wgu">
-                                                    <rect key="frame" x="7.9999999999999929" y="12" width="113.33333333333331" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abgabe Datum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXg-1G-wgu">
+                                                    <rect key="frame" x="8" y="12" width="118" height="21"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1588,7 +1588,7 @@
                                                 <constraint firstItem="OXg-1G-wgu" firstAttribute="top" secondItem="dad-lu-SRJ" secondAttribute="topMargin" constant="4" id="6dT-xY-kur"/>
                                                 <constraint firstItem="HWd-OD-NrF" firstAttribute="top" secondItem="dad-lu-SRJ" secondAttribute="topMargin" constant="3" id="HSv-Zm-UHf"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="OXg-1G-wgu" secondAttribute="leading" id="k1K-7K-bM1"/>
-                                                <constraint firstItem="HWd-OD-NrF" firstAttribute="leading" secondItem="OXg-1G-wgu" secondAttribute="trailing" constant="39.666666666666686" id="mUG-3l-2ee"/>
+                                                <constraint firstItem="HWd-OD-NrF" firstAttribute="leading" secondItem="OXg-1G-wgu" secondAttribute="trailing" constant="35" id="mUG-3l-2ee"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1596,7 +1596,7 @@
                                         <rect key="frame" x="0.0" y="187.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FMn-yE-WaX" id="KZl-6g-b5f">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dauer der Absenz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whp-ow-6aF">
@@ -1628,7 +1628,7 @@
                                         <rect key="frame" x="0.0" y="287.5" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3MM-Dh-k8s" id="3gz-Q2-pMk">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="69.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="EyI-g3-pfp">
@@ -1639,6 +1639,9 @@
                                                         <segment title="Abgabetermin"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.1019607843" green="0.23137254900000001" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="DateToggle:" destination="elO-a5-ANN" eventType="valueChanged" id="4vk-mK-anH"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
@@ -1656,7 +1659,7 @@
                                         <rect key="frame" x="0.0" y="413.5" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M5W-KV-8qg" id="tlV-WI-wvW">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="69.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="skT-6I-PzU">
@@ -1667,6 +1670,9 @@
                                                         <segment title="Abend"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.1019607843" green="0.23137254900000001" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="TimeToggle:" destination="elO-a5-ANN" eventType="valueChanged" id="HIu-A2-1FI"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
@@ -1697,21 +1703,24 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="JFE-Ec-4Nu">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="a6m-OL-r86" kind="presentation" id="tcm-uy-LKY"/>
+                                <action selector="SavingReminding:" destination="elO-a5-ANN" id="RCz-aB-FRI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="AbgabeDatumLabel" destination="HWd-OD-NrF" id="hyH-Nd-Db9"/>
+                        <outlet property="DateSegmentedControl" destination="EyI-g3-pfp" id="zQr-Xb-fG9"/>
                         <outlet property="DatumLabel" destination="DRV-f4-PTB" id="5Nu-3B-Vl4"/>
                         <outlet property="DauerderAbsenzLabel" destination="WVT-Ey-oW5" id="Wwf-lb-ZMQ"/>
                         <outlet property="PersonLabel" destination="SId-Sg-M8V" id="9Sx-np-Q2Q"/>
+                        <outlet property="TimeSegmentedControl" destination="skT-6I-PzU" id="kbj-c0-jRU"/>
+                        <segue destination="a6m-OL-r86" kind="show" identifier="ReminderList" id="A0J-gc-FwS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="42I-Cu-TTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="eN5-sr-W21" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6458" y="1167"/>
+            <point key="canvasLocation" x="5935" y="1105"/>
         </scene>
         <!--Add Absenzen TC-->
         <scene sceneID="IcL-O5-SzM">
@@ -2192,7 +2201,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="a6m-OL-r86" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="hP9-Vc-wCq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="hP9-Vc-wCq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10196078431372549" green="0.23137254901960785" blue="0.48627450980392156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2207,14 +2216,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XXf-4N-5Qs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4919" y="333"/>
+            <point key="canvasLocation" x="4887" y="333"/>
         </scene>
         <!--New ReminderNC-->
         <scene sceneID="qTg-kw-MwH">
             <objects>
                 <navigationController storyboardIdentifier="NewReminderNC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="F7x-ks-mDv" customClass="NewReminderNC" customModule="Klassenbuch" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="205-L2-81W">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="205-L2-81W">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1019607843" green="0.23137254900000001" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2229,7 +2238,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AWo-Iv-qvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5142" y="1140"/>
+            <point key="canvasLocation" x="4887" y="1105"/>
         </scene>
     </scenes>
     <resources>
@@ -2257,6 +2266,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="Rys-rZ-nx5"/>
         <segue reference="ebt-9g-SHb"/>
-        <segue reference="tcm-uy-LKY"/>
+        <segue reference="A0J-gc-FwS"/>
     </inferredMetricsTieBreakers>
 </document>

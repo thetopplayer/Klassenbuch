@@ -2,7 +2,7 @@
 //  NewReminderNC.swift
 //  Klassenbuch
 //
-//  Created by Developing on 23.06.17.
+//  Created by Developing on 24.06.17.
 //  Copyright © 2017 Hadorn Developing. All rights reserved.
 //
 

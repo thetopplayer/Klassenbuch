@@ -271,7 +271,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "dd MMM yyyy"
         let SectionDateinDate = dateformatter.date(from: (SectiondateInString)!)
-        print(SectionDateinDate as Any)
+        //print(SectionDateinDate as Any)
   
         
         // Addition of 14 Days to SectionDateinDate to get FutureDateinDate
@@ -280,12 +280,12 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         dateComponent.day = daysToAdd
         
         let futureDateinDate = Calendar.current.date(byAdding: dateComponent, to: SectionDateinDate!)
-        print(futureDateinDate as Any)
+       // print(futureDateinDate as Any)
         
         
         // Putting FutureDateinDate to FutureDateInString to display it
         let futureDateinString = dateformatter.string(from: futureDateinDate!)
-        print(futureDateinString)
+        //print(futureDateinString)
         
        
         
