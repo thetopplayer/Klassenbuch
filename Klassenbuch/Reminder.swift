@@ -14,9 +14,9 @@ import UserNotificationsUI
 class Reminder: NSObject, NSCoding {
     
     // Properties
-    var notification: UNUserNotificationCenter
+    var notification: UNNotification
     var name: String
-    var time: Date
+    var time: Date 
     
     // Archive Paths for Persistent Data
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -30,7 +30,7 @@ class Reminder: NSObject, NSCoding {
     }
     
     // Initializer
-    init(name: String, time: Date, notification: UNUserNotificationCenter) {
+    init(name: String, time: Date, notification: UNNotification) {
         // set properties
         self.name = name
         self.time = time
@@ -73,7 +73,7 @@ class Reminder: NSObject, NSCoding {
         // Because photo is an optional property of Meal, use conditional cast.
         let time = aDecoder.decodeObject(forKey: PropertyKey.timeKey) as! Date
         
-        let notification = aDecoder.decodeObject(forKey: PropertyKey.notificationKey) as! UNUserNotificationCenter
+        let notification = aDecoder.decodeObject(forKey: PropertyKey.notificationKey) as! UNNotification
         
         // Must call designated initializer.
         self.init(name: name, time: time, notification: notification)

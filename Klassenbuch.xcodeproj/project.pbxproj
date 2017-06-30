@@ -20,6 +20,7 @@
 		376177951EFE63050051B90C /* NewReminderNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376177941EFE63050051B90C /* NewReminderNC.swift */; };
 		376177971EFE6A080051B90C /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376177961EFE6A080051B90C /* Reminder.swift */; };
 		376DDB3A1E44C0ED0064E2D2 /* Einstellungen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */; };
+		3770835F1F06B94900B2C9FA /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3770835E1F06B94900B2C9FA /* Notes.swift */; };
 		378465441E4F96EC0012CDBF /* Gif+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378465431E4F96EC0012CDBF /* Gif+Swift.swift */; };
 		379B8C931EA4F87A00E27CBC /* PushNachrichten.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B8C921EA4F87A00E27CBC /* PushNachrichten.swift */; };
 		379B8C951EA6857300E27CBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 379B8C941EA6857300E27CBC /* GoogleService-Info.plist */; };
@@ -91,6 +92,7 @@
 		376177941EFE63050051B90C /* NewReminderNC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewReminderNC.swift; sourceTree = "<group>"; };
 		376177961EFE6A080051B90C /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Einstellungen.swift; sourceTree = "<group>"; };
+		3770835E1F06B94900B2C9FA /* Notes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		378465431E4F96EC0012CDBF /* Gif+Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gif+Swift.swift"; sourceTree = "<group>"; };
 		379B8C921EA4F87A00E27CBC /* PushNachrichten.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNachrichten.swift; sourceTree = "<group>"; };
 		379B8C941EA6857300E27CBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				37FCAE761DFD51C000789BFF /* AppDelegate.swift */,
+				3770835E1F06B94900B2C9FA /* Notes.swift */,
 				376177941EFE63050051B90C /* NewReminderNC.swift */,
 				37FCAEB01DFD55D900789BFF /* Manager.swift */,
 				37FB38251E227EBA0075C106 /* Extensions.swift */,
@@ -611,6 +614,7 @@
 				376177911EFD63750051B90C /* ReminderTableViewController.swift in Sources */,
 				375534FB1E08490C000C0842 /* Absenzen.swift in Sources */,
 				376177951EFE63050051B90C /* NewReminderNC.swift in Sources */,
+				3770835F1F06B94900B2C9FA /* Notes.swift in Sources */,
 				37AD16E01E2D4438002F41D9 /* Login.swift in Sources */,
 				37FCAEA91DFD553900789BFF /* Hausaufgaben.swift in Sources */,
 				3761778F1EFD63650051B90C /* NewReminder.swift in Sources */,

@@ -221,13 +221,13 @@ class NewReminder: UITableViewController, UNUserNotificationCenterDelegate {
             
         } else if DateSegmentedControl.selectedSegmentIndex == 2 && TimeSegmentedControl.selectedSegmentIndex == 1 {
             
-            triggerDate = NowDateinDate! + 36000 + 14400
+            triggerDate = NowDateinDate! + 36000 + 14400 + 250 + 250 + 1000
             TodayTomorrow = "bis Heute unterschrieben abgeben."
             print("\(triggerDate) this is the TriggerDate")
             
         } else if DateSegmentedControl.selectedSegmentIndex == 2 && TimeSegmentedControl.selectedSegmentIndex == 2 {
             
-            triggerDate = NowDateinDate! + 36000 + 14400 + 21600 + 1920 - 7200 + 300
+            triggerDate = NowDateinDate! + 36000 + 14400 + 21600
             TodayTomorrow = "bis Heute unterschrieben abgeben."
             print("\(triggerDate) this is the TriggerDate")
             
@@ -252,7 +252,7 @@ class NewReminder: UITableViewController, UNUserNotificationCenterDelegate {
     let name = PersonLabel.text!
     let predate = DatumLabel.text!
    
-    
+    //let notification = UNNotification()
         
         
         
@@ -263,67 +263,34 @@ class NewReminder: UITableViewController, UNUserNotificationCenterDelegate {
     content.sound = UNNotificationSound.default()
     content.badge = 1
     
-    
+    print(content.body)
         
-     print(content.body)
 //    let mytrigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-//   // let mytrigger = UNCalendarNotificationTrigger.init(dateMatching: triggerDate, repeats: false)
+//  let mytrigger = UNCalendarNotificationTrigger.init(dateMatching: triggerDate, repeats: false)
         
     
         
-        let dateComponent4 = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: triggerDate)
-       let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent4, repeats: false)
-       // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier:  UUID().uuidString, content: content, trigger: trigger)
-        print(trigger)
+    let dateComponent4 = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: triggerDate)
+    let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent4, repeats: false)
+    // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+    let request = UNNotificationRequest(identifier:  UUID().uuidString, content: content, trigger: trigger)
+    print(trigger)
         
         
-//        UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
-//                             if let error = error{
-//                                print("Could not create Local notification", error)
-//                            }else if let newdate = trigger.nextTriggerDate(){
-//                                print("Next notification date:", newdate)
-//                                print("Errinierung an")
-//                                }
-//                                }
-//                                    )
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
+                             if let error = error{
+                                print("Could not create Local notification", error)
+                            }else if let newdate = trigger.nextTriggerDate(){
+                                print("Next notification date:", newdate)
+                                print("Errinierung an")
+                                }
+                                }
+                                    )
         
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
-   //reminder = Reminder(name: name, time: triggerDate, notification: content)
-        
+
+        self.performSegue(withIdentifier: "saveReminder", sender: self)
     
-    
-        //                let mydate = ((NSDate() as Date) as Date) + (futureDateinDate?.timeIntervalSince(Date()))! - 36000 - 86400
-        //
-        //                let dateComponent = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: mydate)
-        //                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
-        //
-        //
-        //                // For Developing only
-        //                //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        //
-        //
-        //                let request = UNNotificationRequest(identifier: "Absenzen Timer Fertig", content: content, trigger: trigger)
-        //
-        //                UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
-        //                    if let error = error{
-        //                    print("Could not create Local notification", error)
-        //                    }else if let date = trigger.nextTriggerDate(){
-        //                    print("Next notification date:", date)
-        //                    print("Errinierung an")
-        //                    }
-        //                    }
-        //                        )
-        //
-        //
-        //                    }))
-   
-        
-        
-        
-       
-        performSegue(withIdentifier: "ReminderList", sender: nil)
+       // performSegue(withIdentifier: "unwindtoAbsenzenWith_sender:", sender: nil)
     }
 
 }
@@ -338,80 +305,3 @@ class NewReminder: UITableViewController, UNUserNotificationCenterDelegate {
 
 
 
-//
-//                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (Bool, error) in
-//                    if let error = error {
-//                print(error)
-//                    }
-//            }
-//
-//
-//
-//
-//                // Alert Controller
-//                let alertController = UIAlertController(title: "", message: "Um einen Tag vor der Frist informiert zu werden klicke auf Errinere mich!", preferredStyle:UIAlertControllerStyle.actionSheet)
-//
-//               // let AbsenzenSheet = UIAlertController(title: "", message: "\(String(describing: PersonTitle)) du musst deine Absenz vom \(String(describing: sectionTitle!)) bis am \(futureDateinString) unterschreiben lassen und abgeben.", preferredStyle: UIAlertControllerStyle.actionSheet)
-//
-//                let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
-//
-//                let titleAttrString = NSMutableAttributedString(string: "Errinerung einrichten!", attributes: titleFont)
-//
-//                alertController.setValue(titleAttrString, forKey: "attributedTitle")
-//                alertController.view.tintColor = UIColor.black
-//
-//
-//
-//                alertController.addAction(UIAlertAction(title: "Errinere mich!", style: .default, handler: { (action: UIAlertAction!) in
-//
-//
-//                // Content
-//                let content = UNMutableNotificationContent()
-//                content.title = "Absenz Errinerung"
-//                content.body = "\(String(describing: PersonTitle)), Morgen ist die Absenz vom \(String(describing: sectionTitle!)) abzugeben."
-//                    // content.categoryIdentifier = "myCategory"
-//                content.sound = UNNotificationSound.default()
-//                content.badge = 1
-//
-//
-//
-//
-//                let mydate = ((NSDate() as Date) as Date) + (futureDateinDate?.timeIntervalSince(Date()))! - 36000 - 86400
-//
-//                let dateComponent = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: mydate)
-//                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
-//
-//
-//                // For Developing only
-//                //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-//
-//
-//                let request = UNNotificationRequest(identifier: "Absenzen Timer Fertig", content: content, trigger: trigger)
-//
-//                UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
-//                    if let error = error{
-//                    print("Could not create Local notification", error)
-//                    }else if let date = trigger.nextTriggerDate(){
-//                    print("Next notification date:", date)
-//                    print("Errinierung an")
-//                    }
-//                    }
-//                        )
-//
-//
-//                    }))
-//
-//                    alertController.addAction(UIAlertAction(title: "Alle Errinerungen stoppen!", style: .destructive, handler: { (action: UIAlertAction!) in
-//                    print("Alle Reminder stoppen Tapped")
-//
-//                        // Stop all reminders
-//                        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-//
-//                    }))
-//
-//
-//                alertController.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: { (action: UIAlertAction!) in
-//                        print("Abbrechen Tapped")
-//                            }))
-//
-//                self.present(alertController, animated: true, completion: nil)

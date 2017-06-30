@@ -55,6 +55,8 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         
         // Listen for added and removed
         self.databaseListener()
+        
+        
     }
     
     
@@ -379,9 +381,12 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     }
     @IBAction func saveAbsenzen (_ segue:UIStoryboardSegue) {
     }
-    @IBAction func unwindtoAbsenzen (_sender: UIStoryboardSegue){
-        
+   
+    @IBAction func cancelReminder (_ segue:UIStoryboardSegue) {
     }
+    @IBAction func saveReminder (_ segue:UIStoryboardSegue) {
+    }
+    
     
 
 

@@ -65,40 +65,35 @@ class NotificationTableViewController: UITableViewController {
         return cell
     }
     
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            let toRemove = reminders.remove(at: indexPath.row)
-            
-            //UIApplication.shared.cancelLocalNotification(toRemove.notification)
-            
-           // let center = UNUserNotificationCenter.current()
-            //center.removeDeliveredNotifications(withIdentifiers: [toRemove])
-            
-            
-            
-            UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
-                var identifiers: [String] = []
-                for notification:UNNotificationRequest in notificationRequests {
-                    if notification.identifier == "identifierCancel" {
-                        identifiers.append(notification.identifier)
-                    }
-                }
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
-            }
-            
-            
-            
-            
-            
-            
-            
-            
-            saveReminders()
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
+//    // Override to support editing the table view.
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            // Delete the row from the data source
+//            let toRemove = reminders.remove(at: indexPath.row)
+//            
+//            //UIApplication.shared.cancelLocalNotification(toRemove.notification)
+//            
+//           // let center = UNUserNotificationCenter.current()
+//            //center.removeDeliveredNotifications(withIdentifiers: [toRemove])
+//            
+//            
+//            
+//            UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
+//                var identifiers: [String] = []
+//                for notification:UNNotificationRequest in notificationRequests {
+//                    if notification.identifier == "identifierCancel" {
+//                        identifiers.append(notification.identifier)
+//                    }
+//                }
+//                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+//            }
+//    
+//            
+
+//            saveReminders()
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
+//    }
     
     // NSCoding
     
@@ -113,7 +108,7 @@ class NotificationTableViewController: UITableViewController {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Reminder.ArchiveURL.path) as? [Reminder]
     }
     
-    /* When returning from AddReminderViewController
+  //When returning from AddReminderViewController
     @IBAction func unwindToReminderList(_ sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? NewReminder, let reminder = sourceViewController.reminder {
             
@@ -126,4 +121,4 @@ class NotificationTableViewController: UITableViewController {
         }
         
         
-    }*/}
+    }}
