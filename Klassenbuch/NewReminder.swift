@@ -39,7 +39,15 @@ class NewReminder: UITableViewController, UNUserNotificationCenterDelegate {
 
     var triggerDate: Date?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.navigationController?.isNavigationBarHidden = false
+    }
     
+
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -265,10 +273,7 @@ class NewReminder: UITableViewController, UNUserNotificationCenterDelegate {
     
     print(content.body)
         
-//    let mytrigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-//  let mytrigger = UNCalendarNotificationTrigger.init(dateMatching: triggerDate, repeats: false)
-        
-    
+
         
     let dateComponent4 = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: triggerDate)
     let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent4, repeats: false)
@@ -276,7 +281,26 @@ class NewReminder: UITableViewController, UNUserNotificationCenterDelegate {
     let request = UNNotificationRequest(identifier:  UUID().uuidString, content: content, trigger: trigger)
     print(trigger)
         
+        if triggerDate < Date() {
         
+        // error the trigger Date already happened
+            
+            let alertController = UIAlertController(title: "Oops!", message: "Du willst einen Reminder für eine Absenz einrichten die bereits abgelofen ist.", preferredStyle: .alert)
+            
+        
+            alertController.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: { (action: UIAlertAction!) in
+               
+              self.performSegue(withIdentifier: "saveReminder", sender: self)
+                
+            }))
+            
+            
+            
+            self.present(alertController, animated: true, completion: nil)
+        
+        
+        
+        }else {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
                              if let error = error{
                                 print("Could not create Local notification", error)
@@ -289,15 +313,18 @@ class NewReminder: UITableViewController, UNUserNotificationCenterDelegate {
         
 
         self.performSegue(withIdentifier: "saveReminder", sender: self)
-    
-       // performSegue(withIdentifier: "unwindtoAbsenzenWith_sender:", sender: nil)
-    }
+        }}
 
 }
 
 
 
+//    let mytrigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+//  let mytrigger = UNCalendarNotificationTrigger.init(dateMatching: triggerDate, repeats: false)
 
+
+//            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//            alertController.addAction(defaultAction)
 
 
 

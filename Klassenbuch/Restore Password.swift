@@ -37,10 +37,7 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
         // TextFieldDelegates
         RestorePasswordTextField.delegate = self
 
-        /* Left Swipe
-        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
-        edgePan.edges = .left
-        view.addGestureRecognizer(edgePan)*/
+ 
         
         Form.alpha = 0
         EmailLabel.alpha = 0
@@ -146,3 +143,10 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
     }
 
 }
+
+
+
+/* Left Swipe
+ let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+ edgePan.edges = .left
+ view.addGestureRecognizer(edgePan)*/

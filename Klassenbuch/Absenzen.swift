@@ -86,30 +86,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
                 }
 
                 
-                /* compare dates
-              switch adatum < Date().getDateFromZeroHour /*- 1209600 -86400*/ {
-                    
-                case true:
-                    // delete earlier dates data from database
-                    //self.ref!.child("absenzen/\(user!.uid)/\(snapshot.key)").removeValue()
-                    //cell.backgroundColor = UICOLor red
-                   
-                    if self.data[adatum] == nil {
-                        self.data[adatum] = [homeObject3]
-                    }else {
-                        self.data[adatum]!.append(homeObject3)
-                    }
-                
 
-                case false:
-                    // save data in dictionary
-                    if self.data[adatum] == nil {
-                        self.data[adatum] = [homeObject3]
-                    }else {
-                        self.data[adatum]!.append(homeObject3)
-                    }
-                
-                }*/
             }
             
             self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
@@ -395,9 +372,10 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ReminderEinrichten"){
         
-            var DestViewController = segue.destination as! NewReminderNC
+            let DestViewController = segue.destination as! NewReminderNC
             let targetController = DestViewController.topViewController as! NewReminder
-        //let viewController = segue.destination as! NewReminder
+       
+        //let targetController = segue.destination as! NewReminder
         targetController.Person = PersonenTitel
         targetController.DauerderAbsenz = Absenzdauer
         targetController.Datum = AbsenzDatumDate
@@ -417,3 +395,28 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
 }
 
 
+
+/* compare dates
+ switch adatum < Date().getDateFromZeroHour /*- 1209600 -86400*/ {
+ 
+ case true:
+ // delete earlier dates data from database
+ //self.ref!.child("absenzen/\(user!.uid)/\(snapshot.key)").removeValue()
+ //cell.backgroundColor = UICOLor red
+ 
+ if self.data[adatum] == nil {
+ self.data[adatum] = [homeObject3]
+ }else {
+ self.data[adatum]!.append(homeObject3)
+ }
+ 
+ 
+ case false:
+ // save data in dictionary
+ if self.data[adatum] == nil {
+ self.data[adatum] = [homeObject3]
+ }else {
+ self.data[adatum]!.append(homeObject3)
+ }
+ 
+ }*/

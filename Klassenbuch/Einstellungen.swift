@@ -113,18 +113,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
     }
 
     
-    /* go to iBook
-    
-    func gotoiBook () {
-    
-    print("went to iBooks Store")
-    
-        if let iBook = URL(string: "https://itunes.apple.com/ch/book/im-schatten-das-licht/id1112971928?mt=11") {
-            UIApplication.shared.open(iBook, options: [:], completionHandler: nil)
-        }
-    }
-    */
-    
+
     
     
     
@@ -210,3 +199,16 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
     }
 }
 
+
+/* go to iBook
+ 
+ func gotoiBook () {
+ 
+ print("went to iBooks Store")
+ 
+ if let iBook = URL(string: "https://itunes.apple.com/ch/book/im-schatten-das-licht/id1112971928?mt=11") {
+ UIApplication.shared.open(iBook, options: [:], completionHandler: nil)
+ }
+ }
+ */
+    

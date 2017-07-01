@@ -40,12 +40,7 @@ class Register: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        /* Left Swipe
-        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
-        edgePan.edges = .left
-        view.addGestureRecognizer(edgePan)
-        */
+ 
         
         // Parallax Effect
         self.ApplyMotionEffectsforViewDidLoad()
@@ -185,15 +180,7 @@ class Register: UIViewController, UITextFieldDelegate {
     
     
     
-    
-    //Fund for Left Swipe
-    
-   /* func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-        
-        if recognizer.state == .recognized {
-            self.performSegue(withIdentifier: "cancelRegistration", sender: nil)
-        }
-    }*/
+
     
     //Dismiss ViewAction
     
@@ -340,30 +327,5 @@ class Register: UIViewController, UITextFieldDelegate {
     }
         
     
-//    func gotoOnboarding(){
-//
-//        // If Ok tapped check if user is sucessfully signed in
-//        FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
-//            
-//            if authuser != nil {
-//                
-//                // There is a User, because the User registered He has to see the Onboarding
-//
-//                self.performSegue(withIdentifier: "ClassSetup", sender: self)
-//  
-//            } else {
-//                
-//                // No User is signed in. Show Alert View Controller
-//                
-//                let failedAuthTest = UIAlertController(title: "Oops!", message: "Es lief etwas schief mit deiner Identifikation, bitte probiere es nochmals.", preferredStyle: .alert)
-//                
-//                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//                failedAuthTest.addAction(defaultAction)
-//                
-//                self.present(failedAuthTest, animated: true, completion: nil)
-// 
-//            }
-//        }
-//    }
     
 }

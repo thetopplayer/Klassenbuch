@@ -155,26 +155,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3762E2B41F07B75900A21CC5 /* Not in Use */ = {
+			isa = PBXGroup;
+			children = (
+				3770835E1F06B94900B2C9FA /* Notes.swift */,
+				376177901EFD63750051B90C /* ReminderTableViewController.swift */,
+				376177941EFE63050051B90C /* NewReminderNC.swift */,
+				376177961EFE6A080051B90C /* Reminder.swift */,
+			);
+			name = "Not in Use";
+			sourceTree = "<group>";
+		};
 		377FFC071E2FFF7D008EE114 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				37FCAE761DFD51C000789BFF /* AppDelegate.swift */,
-				3770835E1F06B94900B2C9FA /* Notes.swift */,
-				376177941EFE63050051B90C /* NewReminderNC.swift */,
 				37FCAEB01DFD55D900789BFF /* Manager.swift */,
 				37FB38251E227EBA0075C106 /* Extensions.swift */,
 				372B20911E2E8C62004BF666 /* AuthTextField.swift */,
-				378465421E4F96CE0012CDBF /* Gif */,
+				378465421E4F96CE0012CDBF /* Gif + Image */,
+				3762E2B41F07B75900A21CC5 /* Not in Use */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
 		};
-		378465421E4F96CE0012CDBF /* Gif */ = {
+		378465421E4F96CE0012CDBF /* Gif + Image */ = {
 			isa = PBXGroup;
 			children = (
+				379B8CAC1EA764E600E27CBC /* Delivery.png */,
 				378465431E4F96EC0012CDBF /* Gif+Swift.swift */,
 			);
-			name = Gif;
+			name = "Gif + Image";
 			sourceTree = "<group>";
 		};
 		379BF99D1DFD5C1000BA382D /* Hausaufgaben */ = {
@@ -201,8 +212,6 @@
 				375534FA1E08490C000C0842 /* Absenzen.swift */,
 				375535001E084A4E000C0842 /* Add Absenzen.swift */,
 				3761778E1EFD63650051B90C /* NewReminder.swift */,
-				376177901EFD63750051B90C /* ReminderTableViewController.swift */,
-				376177961EFE6A080051B90C /* Reminder.swift */,
 			);
 			name = Absenzen;
 			sourceTree = "<group>";
@@ -262,7 +271,6 @@
 				377FFC071E2FFF7D008EE114 /* Helpers */,
 				37FCAE7F1DFD51C000789BFF /* LaunchScreen.storyboard */,
 				37075C4D1E36A38200187480 /* Media.xcassets */,
-				379B8CAC1EA764E600E27CBC /* Delivery.png */,
 				37FE769E1E4723250056A196 /* Settings.bundle */,
 				37FCAE821DFD51C000789BFF /* Info.plist */,
 				379B8C941EA6857300E27CBC /* GoogleService-Info.plist */,

@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseInstanceID
 import FirebaseMessaging
+import UserNotifications
 
 class PushNachrichten: UITableViewController {
 
@@ -35,6 +36,9 @@ class PushNachrichten: UITableViewController {
    
     let allgemeineInfos =   "AllgemeineInfos"
     let freiwilligeAnlaesse = "freiwilligeAnlaesse"
+    
+    
+    var RowSectionArray = [["1","1","1","1","1","1","1","1"],["1"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,12 +85,13 @@ class PushNachrichten: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 8
+        return self.RowSectionArray[section].count
+    
     }
 
 
@@ -100,12 +105,12 @@ class PushNachrichten: UITableViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             FIRMessaging.messaging().subscribe(toTopic: "/topics/Allgemeine-Informationen")
                 print("subscribed to Allgemeine-Informationen")
-                FIRAnalytics.logEvent(withName: "subscribed to Allgemeine-Informationen", parameters: nil)
+                FIRAnalytics.logEvent(withName: "subscribed_to_Allgemeine-Informationen", parameters: nil)
             }
         }else{
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/Allgemeine-Informationen")
-            FIRAnalytics.logEvent(withName: "unsubscribed to Allgemeine-Informationen", parameters: nil)
+            FIRAnalytics.logEvent(withName: "unsubscribed_to_Allgemeine-Informationen", parameters: nil)
             }}
         
     }
@@ -118,12 +123,12 @@ class PushNachrichten: UITableViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
         FIRMessaging.messaging().subscribe(toTopic: "/topics/Klasse1")
                 print("subscribed to Klasse1")
-                     FIRAnalytics.logEvent(withName: "subscribed to Klasse1", parameters: nil)
+                     FIRAnalytics.logEvent(withName: "subscribed_to_Klasse1", parameters: nil)
             }
         }else{
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
        FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/Klasse1")
-                FIRAnalytics.logEvent(withName: "unsubscribed to Klasse1", parameters: nil)
+                FIRAnalytics.logEvent(withName: "unsubscribed_to_Klasse1", parameters: nil)
             }}
     }
     
@@ -134,11 +139,11 @@ class PushNachrichten: UITableViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
              FIRMessaging.messaging().subscribe(toTopic: "/topics/Klasse2")
                 print("subscribed to Klasse2")
-                FIRAnalytics.logEvent(withName: "subscribed to Klasse2", parameters: nil)
+                FIRAnalytics.logEvent(withName: "subscribed_to_Klasse2", parameters: nil)
             }  }else{
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/Klasse2")
-                FIRAnalytics.logEvent(withName: "unsubscribed to Klasse2", parameters: nil)
+                FIRAnalytics.logEvent(withName: "unsubscribed_to_Klasse2", parameters: nil)
             }}
     }
     @IBAction func DritteKlasse(_ sender: UISwitch) {
@@ -146,12 +151,12 @@ class PushNachrichten: UITableViewController {
         if Switch3Klasse.isOn {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
           FIRMessaging.messaging().subscribe(toTopic: "/topics/Klasse3")
-                FIRAnalytics.logEvent(withName: "subscribed to Klasse3", parameters: nil)
+                FIRAnalytics.logEvent(withName: "subscribed_to_Klasse3", parameters: nil)
                 print("subscribed to Klasse3")
             }}else{
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
            FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/Klasse3")
-                FIRAnalytics.logEvent(withName: "unsubscribed to Klasse3", parameters: nil)
+                FIRAnalytics.logEvent(withName: "unsubscribed_to_Klasse3", parameters: nil)
             }}
     }
     @IBAction func VierteKlasse(_ sender: UISwitch) {
@@ -160,11 +165,11 @@ class PushNachrichten: UITableViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
              FIRMessaging.messaging().subscribe(toTopic: "/topics/Klasse4")
                 print("subscribed to Klasse4")
-                FIRAnalytics.logEvent(withName: "subscribed to Klasse4", parameters: nil)
+                FIRAnalytics.logEvent(withName: "subscribed_to_Klasse4", parameters: nil)
             }}else{
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/Klasse4")
-                FIRAnalytics.logEvent(withName: "unsubscribed to Klasse4", parameters: nil)
+                FIRAnalytics.logEvent(withName: "unsubscribed_to_Klasse4", parameters: nil)
             }}
     }
     @IBAction func fuenfteKlasse(_ sender: UISwitch) {
@@ -173,11 +178,11 @@ class PushNachrichten: UITableViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
              FIRMessaging.messaging().subscribe(toTopic: "/topics/Klasse5")
                 print("subscribed to Klasse5")
-                FIRAnalytics.logEvent(withName: "subscribed to Klasse5", parameters: nil)
+                FIRAnalytics.logEvent(withName: "subscribed_to_Klasse5", parameters: nil)
             } }else{
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/Klasse5")
-            FIRAnalytics.logEvent(withName: "unsubscribed to Klasse5", parameters: nil)
+            FIRAnalytics.logEvent(withName: "unsubscribed_to_Klasse5", parameters: nil)
         }
         }}
     @IBAction func sechsteKlasse(_ sender: UISwitch) {
@@ -186,11 +191,11 @@ class PushNachrichten: UITableViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
              FIRMessaging.messaging().subscribe(toTopic: "/topics/Klasse6")
                        print("subscribed to Klasse6")
-                FIRAnalytics.logEvent(withName: "subscribed to Klasse6", parameters: nil)
+                FIRAnalytics.logEvent(withName: "subscribed_to_Klasse6", parameters: nil)
             } }else{
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/Klasse6")
-                FIRAnalytics.logEvent(withName: "unsubscribed to Klasse6", parameters: nil)
+                FIRAnalytics.logEvent(withName: "unsubscribed_to_Klasse6", parameters: nil)
             }}
     }
     @IBAction func freiwilligeAnlaesse(_ sender: UISwitch) {
@@ -199,11 +204,11 @@ class PushNachrichten: UITableViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             FIRMessaging.messaging().subscribe(toTopic: "/topics/freiwillig")
                 print("subscribed to freiwillige Anlässe")
-                FIRAnalytics.logEvent(withName: "subscribed to freiwillige Anlässe", parameters: nil)
+                FIRAnalytics.logEvent(withName: "subscribed_to_freiwillige Anlässe", parameters: nil)
             }}else{
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             FIRMessaging.messaging().unsubscribe(fromTopic: "/topics/freiwillig")
-            FIRAnalytics.logEvent(withName: "unsubscribed to freiwillige Anlässe", parameters: nil)
+            FIRAnalytics.logEvent(withName: "unsubscribed_to_freiwillige Anlässe", parameters: nil)
             }}
     }
     //Fund for Left Swipe
@@ -213,6 +218,36 @@ class PushNachrichten: UITableViewController {
         if recognizer.state == .recognized {
             self.performSegue(withIdentifier: "unwindPushes", sender: self)
         }
+    }
+
+    @IBAction func StopAllReminders(_ sender: Any) {
+        
+        
+        let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+        
+        let titleAttrString = NSMutableAttributedString(string: "Willst du wirklich deine Absenzen Errinerungen löschen?", attributes: titleFont)
+        
+        
+        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+        
+        
+        
+        
+        let logoutAction = UIAlertAction(title: "Reminders löschen", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+           UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+            print("Cancel Pressed")
+        }
+        
+        actionSheet.addAction(logoutAction)
+        
+        actionSheet.addAction(cancelAction)
+        
+        self.present(actionSheet, animated: true, completion: nil)
     }
 
 }
