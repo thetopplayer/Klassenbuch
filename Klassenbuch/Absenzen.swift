@@ -297,21 +297,46 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         // Reminder & Status Action
         
        let StatusAction = UIAlertAction(title: "Errinerung", style: UIAlertActionStyle.default) { (alert:UIAlertAction) -> Void in
-        
        
-        
-        
-                self.AbsenzDatumDate = sectionHeaderView!.textLabel!.text
-        
-                self.Absenzdauer = self.sortedData[indexPath.section].1[indexPath.row].AStatus
-        
-                self.PersonenTitel = self.sortedData[indexPath.section].1[indexPath.row].APerson
-        
-        
-        
-        
-                   self.performSegue(withIdentifier: "ReminderEinrichten", sender: nil)
-        }
+        let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
+        if notificationType == [] {
+            
+            print("notifications are NOT enabled")
+            
+            let alertController2 = UIAlertController(title: "Ooops", message: "Benachrichtigungen für dieses App sind nicht eingeschaltet", preferredStyle: .alert)
+            
+            alertController2.addAction(UIAlertAction(title: "Einstellungen", style: .default, handler: { (action: UIAlertAction!) in
+                //Go to Settings
+                
+                self.gotoSettings()
+                
+            }))
+            
+            alertController2.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action: UIAlertAction!) in
+                
+            }))
+            
+            
+            
+            
+            self.present(alertController2, animated: true, completion: nil)
+            
+            
+        } else {
+            print("notifications are enabled")
+            
+            // User is registered for notification
+            self.AbsenzDatumDate = sectionHeaderView!.textLabel!.text
+            
+            self.Absenzdauer = self.sortedData[indexPath.section].1[indexPath.row].AStatus
+            
+            self.PersonenTitel = self.sortedData[indexPath.section].1[indexPath.row].APerson
+            
+            self.performSegue(withIdentifier: "ReminderEinrichten", sender: nil)
+            
+            
+            
+        }        }
         
         // Delete Action
         let deleteaction = UIAlertAction(title: "Löschen", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
@@ -362,6 +387,8 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     @IBAction func cancelReminder (_ segue:UIStoryboardSegue) {
     }
     @IBAction func saveReminder (_ segue:UIStoryboardSegue) {
+        
+
     }
     
     
@@ -388,7 +415,18 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         }
     }
 
-
+    // Go to Acknowledgements Function in Settings
+    
+    func gotoSettings() {
+        
+        print("Send to Settings")
+        
+        // THIS IS WHERE THE MAGIC HAPPENS!!!!
+        
+        if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+            UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+        }
+    }
 
 
 

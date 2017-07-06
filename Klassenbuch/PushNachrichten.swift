@@ -81,6 +81,9 @@ class PushNachrichten: UITableViewController {
 
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        self.noReminderinSettings()
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -248,6 +251,54 @@ class PushNachrichten: UITableViewController {
         actionSheet.addAction(cancelAction)
         
         self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func noReminderinSettings(){
+        
+        
+        let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
+        if notificationType == [] {
+            
+            print("notifications are NOT enabled")
+            
+            let alertController2 = UIAlertController(title: "Ooops", message: "Benachrichtigungen für dieses App sind nicht eingeschaltet", preferredStyle: .alert)
+            
+            alertController2.addAction(UIAlertAction(title: "Einstellungen", style: .default, handler: { (action: UIAlertAction!) in
+                //Go to Settings
+                
+                self.gotoSettings()
+                
+            }))
+            
+            alertController2.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action: UIAlertAction!) in
+                
+                self.performSegue(withIdentifier: "unwindPushes", sender: nil)
+            }))
+            
+            
+            
+            
+            self.present(alertController2, animated: true, completion: nil)
+            
+            
+        } else {
+            
+            
+        }
+        
+    }
+    
+    // Go to Acknowledgements Function in Settings
+    
+    func gotoSettings() {
+        
+        print("Send to Settings")
+        
+        // THIS IS WHERE THE MAGIC HAPPENS!!!!
+        
+        if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+            UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+        }
     }
 
 }

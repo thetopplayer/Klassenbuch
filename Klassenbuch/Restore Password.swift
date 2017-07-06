@@ -134,7 +134,7 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
     
     
     func ApplyMotionEffectsforViewDidLoad() {
-        applyMotionEffect(toView: background, magnitude: 5)
+       // applyMotionEffect(toView: background, magnitude: 5)
         applyMotionEffect(toView: Form, magnitude: -10)
         applyMotionEffect(toView: ZüriBild, magnitude: -10)
         applyMotionEffect(toView: RestorePasswordTextField, magnitude: -10)
