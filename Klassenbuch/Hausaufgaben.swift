@@ -23,7 +23,6 @@ struct Homework {
 
 class Hausaufgaben: UITableViewController, UITabBarDelegate {
     
-    
     // Variables
     
     var data = [Int: [Homework]]() // Date: Homework Object
@@ -32,9 +31,6 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
     var databaseHandle: FIRDatabaseHandle?
 
 
-   
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,24 +55,12 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
         self.databaseListener()
 
     }
-    
-
-    
-    
-    
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        
-          super.viewDidAppear(animated)
-
-      
-
   
-        
+    override func viewDidAppear(_ animated: Bool) {
+          super.viewDidAppear(animated)
     }
 
+    
     func databaseListener() {
         
         let user = FIRAuth.auth()?.currentUser
@@ -162,6 +146,7 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "HausaufgabenCell")
+       
         cell.textLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].HText
         cell.detailTextLabel?.text = self.sortedData[indexPath.section].1[indexPath.row].HFach
         cell.textLabel?.numberOfLines = 0
@@ -194,11 +179,7 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
             
         }
     }
-    
-    
-    
-    
-    
+
     // Func for EmptyState
     
     func EmptyScreen () {
@@ -230,8 +211,7 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
     }
 
     @IBAction func saveHausaufgaben (_ segue:UIStoryboardSegue) {
-    }
-    
+    } 
    }
 
 

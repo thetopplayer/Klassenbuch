@@ -51,6 +51,7 @@ class Informationen: UITableViewController, MFMailComposeViewControllerDelegate 
                 
                 self.ConnectionState.image = #imageLiteral(resourceName: "WifiOn")
                 print("Connected")
+              
             } else {
                 
                 self.ConnectionState.image = #imageLiteral(resourceName: "WifiOff")

@@ -92,10 +92,7 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
         }
         return true
     }
-    
-    
-    
-    
+  
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -131,8 +128,6 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
         return subjects[row]
     }
 
-    
-
     // DatumPicker
     
     
@@ -164,11 +159,8 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     }
     
     
-    
-    
-    
-    // Here I write the data to the Firabase
-    
+   
+    //  write the data zur FirebaseRealtimed.    
     @IBAction func SaveButtonclicked(_ sender: Any) {
         
         let user = FIRAuth.auth()?.currentUser

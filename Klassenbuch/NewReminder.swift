@@ -34,6 +34,9 @@ class NewReminder: UITableViewController, UNUserNotificationCenterDelegate {
     
     var rowArray = [["1","1","1","1"],["1"],["1"],["1"]]
     
+    
+    
+    
     //var FireTime: Date
     var TodayTomorrow = "bis Morgen unterschrieben abgeben."
 

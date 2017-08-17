@@ -24,16 +24,11 @@ class Login: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var Form: UIImageView!
     @IBOutlet weak var Stack1: UIStackView!
     @IBOutlet weak var Stack2: UIStackView!
-    
-    
-
-    
+   
     // Variables
     var iconClick: Bool!
-    
-
-    
-    
+ 
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -85,6 +80,7 @@ class Login: UIViewController, UITextFieldDelegate {
         self.Stack2.alpha = 1
          })
     }
+    
     
     // Next Button Klicked Textfield denn new First Responder
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -139,7 +135,6 @@ class Login: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
     // Keeped Users logged in
     func KeepUserSigndIn(){
         
@@ -152,8 +147,6 @@ class Login: UIViewController, UITextFieldDelegate {
                 // No User is signed in. Show user the login screen
         }}}
     
-    
-
     
     // Login Function
     @IBAction func LoginUser(_ sender: Any) {
@@ -187,8 +180,6 @@ class Login: UIViewController, UITextFieldDelegate {
                     
                     self.present(alertController, animated: true, completion: nil)
     }  } } }
-    
-  
 
     @IBAction func ForgotPasswod(_ sender: Any) {
 
@@ -198,12 +189,8 @@ class Login: UIViewController, UITextFieldDelegate {
     @IBAction func RegisteredPressed(_ sender: UIButton) {
         self.LoginEmailTextField.text = ""
         self.LoginPasswordTextField.text = ""
-        
     }
-
-   
-
-    
+  
     // Motion Effect
     func applyMotionEffect (toView view:UIView, magnitude:Float) {
         let xMotion = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
@@ -230,9 +217,6 @@ class Login: UIViewController, UITextFieldDelegate {
         applyMotionEffect(toView: PasswordLabel, magnitude: -10)
         applyMotionEffect(toView: LoginButton, magnitude: -10)
         applyMotionEffect(toView: EyeButton, magnitude: -10)
-
     }
-   
-    
     
 }

@@ -272,8 +272,8 @@
 				37FCAE7F1DFD51C000789BFF /* LaunchScreen.storyboard */,
 				37075C4D1E36A38200187480 /* Media.xcassets */,
 				37FE769E1E4723250056A196 /* Settings.bundle */,
-				37FCAE821DFD51C000789BFF /* Info.plist */,
 				379B8C941EA6857300E27CBC /* GoogleService-Info.plist */,
+				37FCAE821DFD51C000789BFF /* Info.plist */,
 				379B8C961EA6884600E27CBC /* Klassenbuch.entitlements */,
 			);
 			path = Klassenbuch;

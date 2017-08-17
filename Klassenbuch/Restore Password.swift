@@ -37,8 +37,6 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
         // TextFieldDelegates
         RestorePasswordTextField.delegate = self
 
- 
-        
         Form.alpha = 0
         EmailLabel.alpha = 0
         RestorePasswordTextField.alpha = 0
@@ -58,11 +56,6 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
         })
     }
 
-    
-    
-
-    
-    
     // Next Button Klicked Textfield new First Responder
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -71,9 +64,7 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-
-    
-    
+  
     @IBAction func restorePassword(sender: AnyObject) {
         
         if self.RestorePasswordTextField.text == ""
@@ -115,8 +106,6 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
         }
     }
 
-   
-    
     func applyMotionEffect (toView view:UIView, magnitude:Float) {
         let xMotion = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
         xMotion.minimumRelativeValue = -magnitude
@@ -131,7 +120,6 @@ class Restore_Password: UIViewController, UITextFieldDelegate {
         
         view.addMotionEffect(group)
     }
-    
     
     func ApplyMotionEffectsforViewDidLoad() {
        // applyMotionEffect(toView: background, magnitude: 5)

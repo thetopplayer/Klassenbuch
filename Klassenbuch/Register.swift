@@ -35,12 +35,8 @@ class Register: UIViewController, UITextFieldDelegate {
     var iconClick2: Bool!
     var ref:FIRDatabaseReference?
     
-   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
- 
         
         // Parallax Effect
         self.ApplyMotionEffectsforViewDidLoad()
@@ -77,7 +73,6 @@ class Register: UIViewController, UITextFieldDelegate {
         
     }
     
-    
     // Next Button Klicked Textfield new First Responder
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -96,7 +91,6 @@ class Register: UIViewController, UITextFieldDelegate {
         return true
     }
 
-    
     //Showing and Hiding the Eye Button
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -111,7 +105,6 @@ class Register: UIViewController, UITextFieldDelegate {
            EyeButton2.isHidden = true
         }
     }
-    
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == RegisterPasswordTextField{
@@ -151,7 +144,6 @@ class Register: UIViewController, UITextFieldDelegate {
     }
 
     
-       
     @IBAction func EyeTapped2(_ sender: Any) {
         if EyeButton2.tag == 0
         {
@@ -177,22 +169,15 @@ class Register: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
-    
-    
-
-    
     //Dismiss ViewAction
     
     @IBAction func RemoveInformationView(_ sender: Any) {
        self.animateOut()
     }
    
-    
     @IBAction func backtoLogin(_ sender: Any) {
         performSegue(withIdentifier: "backtoLogin", sender: nil)
     }
-    
     
     // Starting Information Animation
     
@@ -225,8 +210,6 @@ class Register: UIViewController, UITextFieldDelegate {
         }
     }
 
-    
-    
     //Register User Action
     
     @IBAction func RegisterUser(_ sender: Any) {
@@ -286,8 +269,6 @@ class Register: UIViewController, UITextFieldDelegate {
             }
         }
 
-    
-   
     // Apply Parallax Effect
     
     func applyMotionEffect (toView view:UIView, magnitude:Float) {
@@ -325,7 +306,4 @@ class Register: UIViewController, UITextFieldDelegate {
         self.ref?.child("users").child(uid!).setValue(["email": RegisterEmailTextField.text!])
         
     }
-        
-    
-    
 }
