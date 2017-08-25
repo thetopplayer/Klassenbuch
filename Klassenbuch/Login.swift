@@ -219,4 +219,19 @@ class Login: UIViewController, UITextFieldDelegate {
         applyMotionEffect(toView: EyeButton, magnitude: -10)
     }
     
+    
+    
+   
+    @IBAction func HierAnmelden(_ sender: Any) {
+        // go to Lehrer Login
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    
 }

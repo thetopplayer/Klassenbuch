@@ -71,6 +71,7 @@ class Register: UIViewController, UITextFieldDelegate {
         //Database Refrence Property
         ref = FIRDatabase.database().reference()
         
+        
     }
     
     // Next Button Klicked Textfield new First Responder
@@ -214,6 +215,10 @@ class Register: UIViewController, UITextFieldDelegate {
     
     @IBAction func RegisterUser(_ sender: Any) {
     
+        
+ 
+        
+ 
         if self.RegisterEmailTextField.text == "" || self.RegisterPasswordTextField.text == ""
         {
             let alertController = UIAlertController(title: "Oops!", message: "Bitte gib eine korrekte Email an und ein Password mit mindestens 6 Zeichen.", preferredStyle: .alert)
@@ -239,7 +244,7 @@ class Register: UIViewController, UITextFieldDelegate {
                       
                             self.setupUserinDatabase()
                          
-                           self.performSegue(withIdentifier: "Start", sender: self)
+                           self.performSegue(withIdentifier: "SyncClass", sender: self)
                             
 
                         }
@@ -265,9 +270,9 @@ class Register: UIViewController, UITextFieldDelegate {
                 alertController.addAction(defaultAction)
                 
                 self.present(alertController, animated: true, completion: nil)
-                }
-            }
         }
+        }}
+
 
     // Apply Parallax Effect
     
@@ -284,7 +289,7 @@ class Register: UIViewController, UITextFieldDelegate {
         group.motionEffects = [xMotion, yMotion]
         
         view.addMotionEffect(group)
-    }
+        }
     
     func ApplyMotionEffectsforViewDidLoad() {
         //applyMotionEffect(toView: background, magnitude: 5)
@@ -296,6 +301,12 @@ class Register: UIViewController, UITextFieldDelegate {
         applyMotionEffect(toView: PasswordLabel, magnitude: -10)
         applyMotionEffect(toView: RegisterButton, magnitude: -10)
         applyMotionEffect(toView: EyeButton, magnitude: -10)
+        }
+    
+  
+    
+
+    @IBAction func cancelClassSetup (_ segue:UIStoryboardSegue) {
     }
     
     // Write Users to Database
@@ -306,4 +317,4 @@ class Register: UIViewController, UITextFieldDelegate {
         self.ref?.child("users").child(uid!).setValue(["email": RegisterEmailTextField.text!])
         
     }
-}
+    }

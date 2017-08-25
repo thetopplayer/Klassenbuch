@@ -22,7 +22,8 @@ struct TestsStruct {
 
 class Tests: UITableViewController {
     
-    
+    // Outlets
+    @IBOutlet weak var AddAbsenzBarBtn: UIBarButtonItem!
 
     // Variables
     
@@ -35,6 +36,9 @@ class Tests: UITableViewController {
     override func viewDidLoad() {
        
         super.viewDidLoad()
+        
+        
+        AddAbsenzBarBtn.isEnabled = false
         
         // Set the EmptyState
         self.EmptyScreen()

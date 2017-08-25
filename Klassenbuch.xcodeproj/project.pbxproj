@@ -15,6 +15,10 @@
 		375534FD1E0849F5000C0842 /* Add Hausaufgaben.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375534FC1E0849F5000C0842 /* Add Hausaufgaben.swift */; };
 		375534FF1E084A3C000C0842 /* Add Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375534FE1E084A3C000C0842 /* Add Tests.swift */; };
 		375535011E084A4E000C0842 /* Add Absenzen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375535001E084A4E000C0842 /* Add Absenzen.swift */; };
+		37578E2D1F504E1A00ACFA80 /* AbsenzenOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37578E2C1F504E1A00ACFA80 /* AbsenzenOverview.swift */; };
+		37578E2F1F504E3E00ACFA80 /* LehrerNewAbsenz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37578E2E1F504E3E00ACFA80 /* LehrerNewAbsenz.swift */; };
+		37578E311F507BD900ACFA80 /* Select Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37578E301F507BD900ACFA80 /* Select Class.swift */; };
+		37578E331F50877B00ACFA80 /* CreateClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37578E321F50877B00ACFA80 /* CreateClass.swift */; };
 		3761778F1EFD63650051B90C /* NewReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3761778E1EFD63650051B90C /* NewReminder.swift */; };
 		376177911EFD63750051B90C /* ReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376177901EFD63750051B90C /* ReminderTableViewController.swift */; };
 		376177951EFE63050051B90C /* NewReminderNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376177941EFE63050051B90C /* NewReminderNC.swift */; };
@@ -87,6 +91,10 @@
 		375534FC1E0849F5000C0842 /* Add Hausaufgaben.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Add Hausaufgaben.swift"; sourceTree = "<group>"; };
 		375534FE1E084A3C000C0842 /* Add Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Add Tests.swift"; sourceTree = "<group>"; };
 		375535001E084A4E000C0842 /* Add Absenzen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Add Absenzen.swift"; sourceTree = "<group>"; };
+		37578E2C1F504E1A00ACFA80 /* AbsenzenOverview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsenzenOverview.swift; sourceTree = "<group>"; };
+		37578E2E1F504E3E00ACFA80 /* LehrerNewAbsenz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehrerNewAbsenz.swift; sourceTree = "<group>"; };
+		37578E301F507BD900ACFA80 /* Select Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Select Class.swift"; sourceTree = "<group>"; };
+		37578E321F50877B00ACFA80 /* CreateClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateClass.swift; sourceTree = "<group>"; };
 		3761778E1EFD63650051B90C /* NewReminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewReminder.swift; sourceTree = "<group>"; };
 		376177901EFD63750051B90C /* ReminderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTableViewController.swift; sourceTree = "<group>"; };
 		376177941EFE63050051B90C /* NewReminderNC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewReminderNC.swift; sourceTree = "<group>"; };
@@ -155,6 +163,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37578E2B1F504DFD00ACFA80 /* Lehrer */ = {
+			isa = PBXGroup;
+			children = (
+				37578E2C1F504E1A00ACFA80 /* AbsenzenOverview.swift */,
+				37578E2E1F504E3E00ACFA80 /* LehrerNewAbsenz.swift */,
+			);
+			name = Lehrer;
+			sourceTree = "<group>";
+		};
 		3762E2B41F07B75900A21CC5 /* Not in Use */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +250,8 @@
 				37AD16DF1E2D4438002F41D9 /* Login.swift */,
 				37AD16E11E2D4448002F41D9 /* Register.swift */,
 				37DC43371E3E3794009EAC4B /* Restore Password.swift */,
+				37578E301F507BD900ACFA80 /* Select Class.swift */,
+				37578E321F50877B00ACFA80 /* CreateClass.swift */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -263,6 +282,7 @@
 		37FCAE751DFD51C000789BFF /* Klassenbuch */ = {
 			isa = PBXGroup;
 			children = (
+				37578E2B1F504DFD00ACFA80 /* Lehrer */,
 				37AD16E31E2D4453002F41D9 /* Authentication */,
 				379BF99D1DFD5C1000BA382D /* Hausaufgaben */,
 				379BF9A01DFD5C2800BA382D /* Tests */,
@@ -611,6 +631,7 @@
 				375534FD1E0849F5000C0842 /* Add Hausaufgaben.swift in Sources */,
 				37DC43381E3E3794009EAC4B /* Restore Password.swift in Sources */,
 				37FB38261E227EBA0075C106 /* Extensions.swift in Sources */,
+				37578E331F50877B00ACFA80 /* CreateClass.swift in Sources */,
 				37AD16E21E2D4448002F41D9 /* Register.swift in Sources */,
 				375535011E084A4E000C0842 /* Add Absenzen.swift in Sources */,
 				372B20921E2E8C62004BF666 /* AuthTextField.swift in Sources */,
@@ -622,9 +643,12 @@
 				376177911EFD63750051B90C /* ReminderTableViewController.swift in Sources */,
 				375534FB1E08490C000C0842 /* Absenzen.swift in Sources */,
 				376177951EFE63050051B90C /* NewReminderNC.swift in Sources */,
+				37578E2F1F504E3E00ACFA80 /* LehrerNewAbsenz.swift in Sources */,
 				3770835F1F06B94900B2C9FA /* Notes.swift in Sources */,
+				37578E311F507BD900ACFA80 /* Select Class.swift in Sources */,
 				37AD16E01E2D4438002F41D9 /* Login.swift in Sources */,
 				37FCAEA91DFD553900789BFF /* Hausaufgaben.swift in Sources */,
+				37578E2D1F504E1A00ACFA80 /* AbsenzenOverview.swift in Sources */,
 				3761778F1EFD63650051B90C /* NewReminder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
