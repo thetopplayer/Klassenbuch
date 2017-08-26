@@ -69,7 +69,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         let user = FIRAuth.auth()?.currentUser
         
         // Added listener
-        ref!.child("absenzen/QgR1bar49tb8rMtdDc0u3SjkgM03").observe(.childAdded, with: { (snapshot) in
+        ref!.child("absenzen/N5aFS18").observe(.childAdded, with: { (snapshot) in
             
             if let fdata = snapshot.value as? NSDictionary {
                 
@@ -99,7 +99,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         })
         
         // Remove listener
-        ref!.child("absenzen/QgR1bar49tb8rMtdDc0u3SjkgM03").observe(.childRemoved, with: { (snapshot) in
+        ref!.child("absenzen/N5aFS18").observe(.childRemoved, with: { (snapshot) in
             
             if let fdata = snapshot.value as? NSDictionary {
                 

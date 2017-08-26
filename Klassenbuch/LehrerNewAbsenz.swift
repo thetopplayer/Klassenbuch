@@ -26,7 +26,7 @@
         @IBOutlet weak var GanzerTagSwitch: UISwitch!
         @IBOutlet weak var StundenStepperLabel: UILabel!
         @IBOutlet weak var StundenStepper: UIStepper!
-        
+        @IBOutlet weak var PersonLabel: UILabel!
         
         //Variables
         var Absenzstatus: String = ""
@@ -37,7 +37,15 @@
         var StundeInt = Int()
         var Absenzenstatus2 = String()
         var AbsenzInfo = String()
-        
+        var name = String()
+    
+    
+    
+    var Classmembers : [String] = []
+    //var Classlistt = ["asdsad","asasdsadd"]
+    var handle2 : FIRDatabaseHandle?
+    var ref2: FIRDatabaseReference?
+    
         override func viewDidLoad() {
             super.viewDidLoad()
             
@@ -47,7 +55,7 @@
             StundenStepperLabel.text = "\(StundeInt) Lektion"
 
           
-            
+            name = AbsenzenPersons.text!
             Beginn = vonStundenTextField.text!
             Ende = bisStundenTextField.text!
             
@@ -77,6 +85,11 @@
             bisPickerView.tag = 2
             bisStundenTextField.inputView = bisPickerView
             
+            let StudentPicker = UIPickerView()
+            StudentPicker.delegate = self
+            StudentPicker.tag = 3
+            AbsenzenPersons.inputView = StudentPicker
+            
             //Database Refrence Property
             ref = FIRDatabase.database().reference()
             
@@ -85,15 +98,39 @@
             edgePan.edges = .left
             
             view.addGestureRecognizer(edgePan)
-            
+           
         }
         
+    
+    
+    func getStudents(){
+       
+        ref2 = FIRDatabase.database().reference()
         
-        override func didReceiveMemoryWarning() {
-            super.didReceiveMemoryWarning()
+        handle2 = ref2?.child("KlassenMitglieder/N5aFS18").observe(.childAdded, with: { (snapshot2) in
             
+            
+            if let item2 = snapshot2.value as? String{
+                self.Classmembers.insert(item2, at: 0)   //.append(item2)
+                self.tableView.reloadData()
+                
+            }
         }
+            
+            
+        )
+        print(Classmembers)
         
+    
+    
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        getStudents()
+    }
+    
         
         
         
@@ -128,6 +165,7 @@
         
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             if textField == AbsenzenPersons{
+                AbsenzenPersons.text = name
                 AbsenzenDatum.becomeFirstResponder()
             } else {
             }
@@ -266,6 +304,9 @@
             if pickerView.tag == 2 {
                 return bisTime.count
             }
+            if pickerView.tag == 3{
+            return Classmembers.count
+            }
             
             return 0
         }
@@ -282,6 +323,13 @@
                 bisStundenTextField.text = bisTime[row]
                 Absenzstatus = "\(vonStundenTextField.text!) - \(bisStundenTextField.text!)"
             }
+            if pickerView.tag == 3 {
+            
+            AbsenzenPersons.text = Classmembers[row]
+            //AbsenzenPersons.text = name
+            name = "\(AbsenzenPersons.text!)"
+            print(name)
+            }
             
         }
         
@@ -295,6 +343,11 @@
             if pickerView.tag == 2 {
                 
                 return bisTime[row]
+                
+            }
+            if pickerView.tag == 3{
+            
+            return Classmembers[row]
             }
             
             return nil
@@ -309,6 +362,9 @@
         
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
+        
+        
+        name = AbsenzenPersons.text!
 
                     if (AbsenzenPersons.text?.isEmpty)! || (AbsenzenDatum.text?.isEmpty)!
         
@@ -322,13 +378,24 @@
         
         
                     }else {
-                        //AbsenzInfo = "\(Absenzstatus)  \(Absenzenstatus2)"
+                        AbsenzInfo = "\(Absenzstatus)  \(Absenzenstatus2)"
         
-                        self.ref!.child("absenzen").child(uid!).childByAutoId().setValue([
+                        
+                        self.ref!.child("SchülerAbsenzen").child(name).childByAutoId().setValue([
+                            "APerson": name,
+                            "AStatus": AbsenzInfo,
+                            "ADatum": self.selectedDateZeroHour!
+                            ])
+                        
+                        // here check für welli klass klasselehrerin denn child()ihir Klass wo jetzte uid isch
+                        
+                        self.ref!.child("absenzen").child("N5aFS18").childByAutoId().setValue([
                             "APerson": AbsenzenPersons.text!,
                             "AStatus": AbsenzInfo,
                             "ADatum": self.selectedDateZeroHour!
                             ])
+                        
+                  
                    
                         self.performSegue(withIdentifier: "canceltoOverView", sender: self)
                         

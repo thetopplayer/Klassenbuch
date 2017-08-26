@@ -13,6 +13,7 @@ class Select_Class: UITableViewController {
 
     
     @IBOutlet weak var BarButton: UIBarButtonItem!
+  
     var ClassList : [String] = []
     var handle : FIRDatabaseHandle?
     var ref: FIRDatabaseReference?
@@ -22,7 +23,7 @@ class Select_Class: UITableViewController {
 
         tableView.separatorStyle = .none
     ref = FIRDatabase.database().reference()
-        handle = ref?.child("Klassen").observe(.childAdded, with: { (snapshot) in
+        handle = ref?.child("users/Klassen").observe(.childAdded, with: { (snapshot) in
    
             
             if let item = snapshot.value as? String{
@@ -66,7 +67,7 @@ class Select_Class: UITableViewController {
         cell.textLabel?.text = ClassList[indexPath.row]
         cell.textLabel?.numberOfLines = 0
        
-        
+         
         
         
         return cell

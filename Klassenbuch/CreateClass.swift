@@ -130,7 +130,7 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
      
 
          // Upload to Firebase
-        self.ref?.child("Klassen").childByAutoId().setValue(Klasse)
+        self.ref?.child("users/Klassen").childByAutoId().setValue(Klasse)
       
         self.performSegue(withIdentifier: "GoBAcktoClassSelection", sender: self)
         
