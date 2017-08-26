@@ -684,7 +684,7 @@
         <!--Klassen & User-->
         <scene sceneID="yOw-Lr-yRy">
             <objects>
-                <tableViewController id="Fbr-Y7-hVm" sceneMemberID="viewController">
+                <tableViewController id="Fbr-Y7-hVm" customClass="KlassenUserInfo" customModule="Klassenbuch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="ivX-XT-eb9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -755,7 +755,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWO-8b-vWq">
-                                                    <rect key="frame" x="111" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="111" y="11" width="42" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -775,10 +775,13 @@
                     <navigationItem key="navigationItem" title="Klassen &amp; User" id="PF7-Br-KS8">
                         <barButtonItem key="leftBarButtonItem" image="Back Chevron" id="XtV-ah-poh"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="KlassenLabel" destination="eWO-8b-vWq" id="paL-sb-uRq"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BNT-1O-7mF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7225" y="2768"/>
+            <point key="canvasLocation" x="7224.6376811594209" y="2767.663043478261"/>
         </scene>
         <!--Login VC-->
         <scene sceneID="TgO-lg-79e">
@@ -1673,8 +1676,8 @@
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Hrc-74-iom" kind="relationship" relationship="viewControllers" id="Jhw-l0-LvH"/>
                         <segue destination="gXZ-6O-6JA" kind="relationship" relationship="viewControllers" id="kEl-xY-xTb"/>
+                        <segue destination="Hrc-74-iom" kind="relationship" relationship="viewControllers" id="Jhw-l0-LvH"/>
                         <segue destination="BQB-Wb-c75" kind="relationship" relationship="viewControllers" id="5YP-9k-77J"/>
                         <segue destination="yML-Yk-H5Y" kind="relationship" relationship="viewControllers" id="icP-UH-NSh"/>
                     </connections>

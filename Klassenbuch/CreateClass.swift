@@ -163,12 +163,14 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         
         ref?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
             
-            if let item = snapshot.value as? String{
-                self.myKlasse = item
+            if let item3 = snapshot.value as? String{
+                self.myKlasse = item3
              
             }
         })
     }
+    
+    
     
     //Fund for Left Swipe
     
@@ -182,11 +184,12 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
     @IBAction func SaveClass(_ sender: Any) {
         
        
-        
-        
-  
+     
+ 
         
        Klasse = "\(KlassenNamenTextLabel.text!)\(SemesterLabel.text!)"
+      
+        
         
         
         let user = FIRAuth.auth()?.currentUser
@@ -206,6 +209,10 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
     }
     
     
-    
+   
 
+}
+
+struct MyVariables {
+    static var myfuckingklass = "hhh"
 }

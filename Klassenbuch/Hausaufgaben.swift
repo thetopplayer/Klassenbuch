@@ -74,98 +74,79 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
         
         ref = FIRDatabase.database().reference()
         
-     
-        
-        ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let item = snapshot.value as? String{
-                self.myName = item
-            }
-        })
-        
-        ref?.child("users").child("Schüler").child(uid!).child("email").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let item = snapshot.value as? String{
-                self.myEmail = item
-                
-            }
-        })
-        
+   
         
         ref?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let item = snapshot.value as? String{
                 self.myKlasse = item
-                print(self.myKlasse)
                 
-            }
-        })
-    
-        
- 
-        
-        
-     /*  let user = FIRAuth.auth()?.currentUser
-    
-        // Added listener
-        ref!.child("homework/\(myKlasse)").observe(.childAdded, with: { (snapshot) in
-            
-            if let fdata = snapshot.value as? NSDictionary {
-                
-                let hdatum = fdata["HDatum"] as! Int
-                
-                let hfach = fdata["HFach"] as! String
-                
-                let htext = fdata["HText"] as! String
-                
-                let hID = snapshot.key
-                
-                let homeObject = Homework(HDatum: hdatum, HFach: hfach, HText: htext, HUid: hID)
-                
-                // compare dates
-                switch hdatum < Date().getDateFromZeroHour {
+                    // Added listener
+                self.ref!.child("homework/\(self.myKlasse)").observe(.childAdded, with: { (snapshot) in
                     
-                case true:
-                    // delete earlier dates data from database
-                    self.ref!.child("homeworks/\(self.myKlasse)/\(snapshot.key)").removeValue()
-                    
-                case false:
-                    // save data in dictionary
-                    if self.data[hdatum] == nil {
-                        self.data[hdatum] = [homeObject]
-                    }else {
-                        self.data[hdatum]!.append(homeObject)
+                    if let fdata = snapshot.value as? NSDictionary {
+                        
+                        let hdatum = fdata["HDatum"] as! Int
+                        
+                        let hfach = fdata["HFach"] as! String
+                        
+                        let htext = fdata["HText"] as! String
+                        
+                        let hID = snapshot.key
+                        
+                        let homeObject = Homework(HDatum: hdatum, HFach: hfach, HText: htext, HUid: hID)
+                        
+                        // compare dates
+                        switch hdatum < Date().getDateFromZeroHour {
+                            
+                        case true:
+                            // delete earlier dates data from database
+                            self.ref!.child("homework/\(self.myKlasse)/\(snapshot.key)").removeValue()
+                            
+                        case false:
+                            // save data in dictionary
+                            if self.data[hdatum] == nil {
+                                self.data[hdatum] = [homeObject]
+                            }else {
+                                self.data[hdatum]!.append(homeObject)
+                            }
+                        }
                     }
-                }
+                    
+                    self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
+                    self.tableView.reloadData()
+                    self.EmptyScreen()
+                })
+                
+                // Remove listener
+                self.ref!.child("homework/\(self.myKlasse)").observe(.childRemoved, with: { (snapshot) in
+                    
+                    if let fdata = snapshot.value as? NSDictionary {
+                        
+                        let hdatum = fdata["HDatum"] as! Int
+                        let hID = snapshot.key
+                        
+                        let filterdArr = self.data[hdatum]?.filter({$0.HUid != hID})
+                        
+                        if (filterdArr?.count)! > 0 {
+                            self.data[hdatum]! = (filterdArr)!
+                        }else {
+                            self.data.removeValue(forKey: hdatum)
+                        }
+                    }
+                    
+                    self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
+                    self.tableView.reloadData()
+                    self.EmptyScreen()
+                })
+  
+                
+                
+                
             }
-            
-            self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
-            self.tableView.reloadData()
-            self.EmptyScreen()
         })
-        
-        // Remove listener
-        ref!.child("homework").observe(.childRemoved, with: { (snapshot) in
-            
-            if let fdata = snapshot.value as? NSDictionary {
-                
-                let hdatum = fdata["HDatum"] as! Int
-                let hID = snapshot.key
-                
-                let filterdArr = self.data[hdatum]?.filter({$0.HUid != hID})
-                
-                if (filterdArr?.count)! > 0 {
-                    self.data[hdatum]! = (filterdArr)!
-                }else {
-                    self.data.removeValue(forKey: hdatum)
-                }
+
             }
-            
-            self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
-            self.tableView.reloadData()
-            self.EmptyScreen()
-        })*/
-    }
 
     
     // MARK: - Table view data source
@@ -217,11 +198,21 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
             let uid = user?.uid
             
             let homework = self.sortedData[indexPath.section].1[indexPath.row]
-            self.ref!.child("homeworks/\(myKlasse)\(homework.HUid)").removeValue()
             
-        }
-    }
-
+            
+            self.ref?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if let item = snapshot.value as? String{
+                    self.myKlasse = item
+            
+            self.ref!.child("homework/\(self.myKlasse)/\(homework.HUid)").removeValue()
+                    
+        
+                }
+        
+                
+            }
+            )}}
     // Func for EmptyState
     
     func EmptyScreen () {
@@ -256,11 +247,6 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
     }
     
     
-    func getInfos(){
-     
-
-    
-   }
 
 
 }

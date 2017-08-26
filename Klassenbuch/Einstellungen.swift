@@ -42,7 +42,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
 
     
