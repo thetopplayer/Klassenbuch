@@ -149,12 +149,21 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
+       
         
-        self.ref!.child("tests").child(uid!).childByAutoId().setValue([
-            "TText": TestTextField.text!,
-            "TFach": TestSchulfachTextField.text!,
+        
+        ref?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myKlasse = item
+                
+      
+        self.ref!.child("tests/\(self.myKlasse)").childByAutoId().setValue([
+            "TText": self.TestTextField.text!,
+            "TFach": self.TestSchulfachTextField.text!,
             "TDatum": self.selectedDateZeroHour!
-            ])
+            ])      }
+        })
         
        self.performSegue(withIdentifier: "unwindtoTests", sender: self)
         FIRAnalytics.logEvent(withName: "Test gepostet", parameters: nil)

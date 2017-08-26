@@ -21,7 +21,13 @@ struct Homework {
 }
 
 
-class Hausaufgaben: UITableViewController, UITabBarDelegate {
+class Hausaufgaben: UIViewController, UITabBarDelegate, UITableViewDelegate, UITableViewDataSource {
+    
+    //Outlets
+    @IBOutlet weak var tableView: UITableView!
+    
+    // if privat title = meine Hausaufgaben
+    
     
     // Variables
     
@@ -50,6 +56,8 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
         //TableViewCell Auto resizing
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.delegate = self
+        tableView.dataSource = self
         
         // Set the Firebase refrence
         ref = FIRDatabase.database().reference()
@@ -151,22 +159,22 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         
         return self.sortedData.count
     }
     
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.sortedData[section].1.count
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.sortedData[section].0.convertTimestampToDate
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "HausaufgabenCell")
        
@@ -177,20 +185,20 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
         return cell
     }
 
-   override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Enables editing only for the selected table view, if you have multiple table views
         return true
     }
     
     
-    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Löschen"
     }
     
     // Here deleting the Posts
     // Delete Part
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == UITableViewCellEditingStyle.delete{
             
