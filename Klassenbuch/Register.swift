@@ -34,6 +34,10 @@ class Register: UIViewController, UITextFieldDelegate {
     var iconClick: Bool!
     var iconClick2: Bool!
     var ref:FIRDatabaseReference?
+    var RegisterString1 = String()
+    var RegisterString2 = "@kslzh.ch"
+    var RegisterString = String()
+    var Namen = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -215,11 +219,16 @@ class Register: UIViewController, UITextFieldDelegate {
     
     @IBAction func RegisterUser(_ sender: Any) {
     
+       //String zusammenführen
+      //  RegisterString1
+        RegisterString1 = RegisterEmailTextField.text!
         
- 
+        RegisterString = "\(RegisterString1)\(RegisterString2)"
+
+        Namen = RegisterString1.replacingOccurrences(of: ".", with: " ", options: .literal, range: nil)
         
- 
-        if self.RegisterEmailTextField.text == "" || self.RegisterPasswordTextField.text == ""
+
+        if self.RegisterString == "" || self.RegisterPasswordTextField.text == ""
         {
             let alertController = UIAlertController(title: "Oops!", message: "Bitte gib eine korrekte Email an und ein Password mit mindestens 6 Zeichen.", preferredStyle: .alert)
             
@@ -232,7 +241,7 @@ class Register: UIViewController, UITextFieldDelegate {
         {
             if self.RegisterPasswordTextField.text == self.RegisterPasswordTextField2.text {
             
-                FIRAuth.auth()?.createUser(withEmail: self.RegisterEmailTextField.text!, password: self.RegisterPasswordTextField.text!) { (user, error) in
+                FIRAuth.auth()?.createUser(withEmail: RegisterString, password: self.RegisterPasswordTextField.text!) { (user, error) in
                     
                     if error == nil
                         
@@ -309,12 +318,15 @@ class Register: UIViewController, UITextFieldDelegate {
     @IBAction func cancelClassSetup (_ segue:UIStoryboardSegue) {
     }
     
+    
+    
     // Write Users to Database
     
     func setupUserinDatabase(){
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
-        self.ref?.child("users").child("Schüler").child(uid!).setValue(["email": RegisterEmailTextField.text!])
+        self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["email": RegisterString])
+        self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["name": Namen])
         
     }
     }

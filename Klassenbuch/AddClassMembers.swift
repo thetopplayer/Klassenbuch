@@ -14,7 +14,7 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     //Variables
     //Pass this Value from ClassSelection
-    var Class = "N5aFS18"
+    var myClass = "N5aFS18"
     var Vorname = String()
     var Nachname = String()
     var Name = String()
@@ -34,6 +34,7 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ClassNameLabel.text = myClass
         self.hideKeyboardWhenTappedAround()
         
         tableView.delegate = self
@@ -41,7 +42,7 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         ref2 = FIRDatabase.database().reference()
        
-        handle2 = ref2?.child("KlassenMitglieder/N5aFS18").observe(.childAdded, with: { (snapshot2) in
+        handle2 = ref2?.child("KlassenMitglieder/\(myClass)").observe(.childAdded, with: { (snapshot2) in
             
             
             if let item2 = snapshot2.value as? String{
@@ -74,7 +75,7 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         if VornameTextField.text != "" || NachnameTextField.text != "" {
         
-         self.ref2?.child("KlassenMitglieder/N5aFS18").childByAutoId().setValue(Name.lowercased())
+         self.ref2?.child("KlassenMitglieder/\(myClass)").childByAutoId().setValue(Name.lowercased())
         print("uploaded")
             
             VornameTextField.text = ""
@@ -105,6 +106,14 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
    
 
+    @IBAction func FinishSetup(_ sender: Any) {
+        
+        // Nach Double Check mit jeweiligen Informationen
+        self.performSegue(withIdentifier: "FinishSetup", sender: nil)
+        
+        
+        
+    }
 
    
     // Override to support editing the table view.

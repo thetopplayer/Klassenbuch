@@ -17,7 +17,10 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
     var KlassenNamenString = String()
     var Klasse = String()
     var ref:FIRDatabaseReference?
-    
+    var handle : FIRDatabaseHandle?
+    var myName = String()
+    var myKlasse = String()
+    var myEmail = String()
     
     @IBOutlet weak var KlassenNamenTextLabel: UITextField!
     @IBOutlet weak var SemesterLabel: UILabel!
@@ -28,9 +31,11 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    
         
+        print(myKlasse)
         KlassenNamenTextLabel.delegate = self
-        
+        Klasse = "\(KlassenNamenTextLabel.text!)\(SemesterLabel.text!)"
         
         // Picker Delegates & Datasource
         SemesterPicker.delegate = self
@@ -50,6 +55,11 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         ref = FIRDatabase.database().reference()
         self.hideKeyboardWhenTappedAround()
         //self.dismissKeyboard()
+        
+    
+    
+    
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -104,9 +114,61 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
     
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        
+        
+        if segue.identifier == "NewClassMembers" {
+            
+            let DestViewController = segue.destination as! AddClassMembers
+            DestViewController.myClass = Klasse
+            
+        }
     
     
     
+    
+    }
+    
+    
+    
+    func getName(){
+    
+    
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        ref = FIRDatabase.database().reference()
+        
+       // handle = ref?.child("users").child("Schüler").child(uid!).observe(.value, with: { (snapshot) in
+            
+      //      self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["name": Namen])
+            
+      ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myName = item
+            }
+        })
+        
+        ref?.child("users").child("Schüler").child(uid!).child("email").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myEmail = item
+               
+            }
+        })
+
+        
+        ref?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myKlasse = item
+             
+            }
+        })
+    }
     
     //Fund for Left Swipe
     
@@ -126,13 +188,20 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         
        Klasse = "\(KlassenNamenTextLabel.text!)\(SemesterLabel.text!)"
         
-
-     
+        
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
 
          // Upload to Firebase
         self.ref?.child("users/Klassen").childByAutoId().setValue(Klasse)
+        
+        self.ref?.child("users/Schüler").child(uid!).updateChildValues(["Klasse" : Klasse]) //setValue(["Klasse": Klasse])
+        self.ref?.child("KlassenMitglieder/\(Klasse)").childByAutoId().setValue(myName)
+        
+        // Name scho ineglodet in array für nechst view mit klassemitglieder
+        
       
-        self.performSegue(withIdentifier: "GoBAcktoClassSelection", sender: self)
+        self.performSegue(withIdentifier: "NewClassMembers", sender: self)
         
     }
     

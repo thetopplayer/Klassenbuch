@@ -30,6 +30,9 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
     var ref: FIRDatabaseReference?
     var databaseHandle: FIRDatabaseHandle?
 
+    var myName = String()
+    var myKlasse = String()
+    var myEmail = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,12 +64,51 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
     }
 
     
+ 
     func databaseListener() {
         
-        let user = FIRAuth.auth()?.currentUser
+       
         
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        ref = FIRDatabase.database().reference()
+        
+     
+        
+        ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myName = item
+            }
+        })
+        
+        ref?.child("users").child("Schüler").child(uid!).child("email").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myEmail = item
+                
+            }
+        })
+        
+        
+        ref?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myKlasse = item
+                print(self.myKlasse)
+                
+            }
+        })
+    
+        
+ 
+        
+        
+     /*  let user = FIRAuth.auth()?.currentUser
+    
         // Added listener
-        ref!.child("homeworks/\(user!.uid)").observe(.childAdded, with: { (snapshot) in
+        ref!.child("homework/\(myKlasse)").observe(.childAdded, with: { (snapshot) in
             
             if let fdata = snapshot.value as? NSDictionary {
                 
@@ -85,7 +127,7 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
                     
                 case true:
                     // delete earlier dates data from database
-                    self.ref!.child("homeworks/\(user!.uid)/\(snapshot.key)").removeValue()
+                    self.ref!.child("homeworks/\(self.myKlasse)/\(snapshot.key)").removeValue()
                     
                 case false:
                     // save data in dictionary
@@ -103,7 +145,7 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
         })
         
         // Remove listener
-        ref!.child("homeworks/\(user!.uid)").observe(.childRemoved, with: { (snapshot) in
+        ref!.child("homework").observe(.childRemoved, with: { (snapshot) in
             
             if let fdata = snapshot.value as? NSDictionary {
                 
@@ -122,7 +164,7 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
             self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
             self.tableView.reloadData()
             self.EmptyScreen()
-        })
+        })*/
     }
 
     
@@ -175,7 +217,7 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
             let uid = user?.uid
             
             let homework = self.sortedData[indexPath.section].1[indexPath.row]
-            self.ref!.child("homeworks/\(uid!)/\(homework.HUid)").removeValue()
+            self.ref!.child("homeworks/\(myKlasse)\(homework.HUid)").removeValue()
             
         }
     }
@@ -211,8 +253,14 @@ class Hausaufgaben: UITableViewController, UITabBarDelegate {
     }
 
     @IBAction func saveHausaufgaben (_ segue:UIStoryboardSegue) {
-    } 
+    }
+    
+    
+    func getInfos(){
+     
+
+    
    }
 
 
-
+}

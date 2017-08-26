@@ -27,10 +27,17 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     var selectedDateZeroHour: Int?
     let todaysDate = Date()
     
+    var myName = String()
+    var myKlasse = String()
+    var myEmail = String()
     
+    
+    var neueKlasse = String()
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
+     
         // Setting up TextFielddelegates and Pickerdelegates
         
         HWSubjectpicker.delegate = self
@@ -166,7 +173,23 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         
-        self.ref!.child("homeworks").child(uid!).childByAutoId().setValue([
+        
+        
+        print("gaht da noooo\(neueKlasse)")
+        
+        
+        self.ref?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myKlasse = item
+                print(self.myKlasse)
+                self.myKlasse = self.neueKlasse
+                print(self.neueKlasse)
+                
+            }
+        })
+        
+        self.ref!.child("homework").child(neueKlasse).childByAutoId().setValue([
             "HText": HausaufgabenTextField.text!,
             "HFach": SchulfachTextField.text!,
             "HDatum": self.selectedDateZeroHour!
@@ -181,5 +204,46 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     @IBAction func cancelButtonclicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func getInfos(){
+        
+        var ref:FIRDatabaseReference?
+        
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        ref = FIRDatabase.database().reference()
+        
+     
+        
+        ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myName = item
+                
+            }
+        })
+        
+        ref?.child("users").child("Schüler").child(uid!).child("email").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myEmail = item
+                
+            }
+        })
+        
+        
+        ref?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myKlasse = item
+                print(self.myKlasse)
+                self.myKlasse = self.neueKlasse
+                print(self.neueKlasse)
+                
+            }
+        })
+    }
+    
 }
 

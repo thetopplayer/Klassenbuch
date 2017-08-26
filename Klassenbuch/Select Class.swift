@@ -67,19 +67,18 @@ class Select_Class: UITableViewController {
         cell.textLabel?.text = ClassList[indexPath.row]
         cell.textLabel?.numberOfLines = 0
        
-         
         
         
         return cell
     }
     
    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .checkmark
+
         
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath as IndexPath)?.accessoryType = .none
+       
     }
  
     @IBAction func cancelClassErsellen (_ segue:UIStoryboardSegue) {

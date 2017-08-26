@@ -33,6 +33,9 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     var Absenzdauer: String?
     var AbsenzDatumDate: String?
     
+    var myName = String()
+    var myKlasse = String()
+    var myEmail = String()
     
     override func viewDidLoad() {
        
@@ -428,7 +431,43 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         }
     }
 
-
+    func getInfos(){
+        
+        var ref:FIRDatabaseReference?
+        
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        ref = FIRDatabase.database().reference()
+        
+        // handle = ref?.child("users").child("Schüler").child(uid!).observe(.value, with: { (snapshot) in
+        
+        //      self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["name": Namen])
+        
+        ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myName = item
+            }
+        })
+        
+        ref?.child("users").child("Schüler").child(uid!).child("email").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myEmail = item
+                
+            }
+        })
+        
+        
+        ref?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myKlasse = item
+                
+            }
+        })
+    }
 
 }
 
