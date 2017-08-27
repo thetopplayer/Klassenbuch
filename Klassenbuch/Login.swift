@@ -27,13 +27,17 @@ class Login: UIViewController, UITextFieldDelegate {
    
     // Variables
     var iconClick: Bool!
- 
-   
+    var funktion  = String()
+    var ref: FIRDatabaseReference?
+    var databaseHandle: FIRDatabaseHandle?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        loggin()
             // Keep User Logged In
-            self.KeepUserSigndIn()
+            //self.KeepUserSigndIn()
 
             //Motion Setup
             self.ApplyMotionEffectsforViewDidLoad()
@@ -81,6 +85,7 @@ class Login: UIViewController, UITextFieldDelegate {
          })
     }
     
+
     
     // Next Button Klicked Textfield denn new First Responder
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -138,14 +143,60 @@ class Login: UIViewController, UITextFieldDelegate {
     // Keeped Users logged in
     func KeepUserSigndIn(){
         
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
         FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
           
             if authuser != nil {
-                    self.performSegue(withIdentifier: "HomePageSegue", sender: self)
                 
-                } else {
+                self.ref?.child("UID").child(uid!).child("funktion").observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    if let item = snapshot.value as? String{
+                        self.funktion = item
+                        
+                        if self.funktion == "Schüler"{
+                            
+                            print("schüllerererereerer")
+                        
+                        } else if self.funktion == "Lehrer"
+                        {
+                       
+                        }
+                        
+                    }}
+            )
+            
+                
+                
+                
                 // No User is signed in. Show user the login screen
-        }}}
+            }}
+    
+    
+    // Userdefaults test
+        
+        
+    }
+    
+    
+    func loggin(){
+    
+        
+        FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
+            
+            if authuser != nil {
+                if UserDefaults.standard.bool(forKey: "isStudent") == true {
+                    self.performSegue(withIdentifier: "HomePageSegue", sender: self)
+                } else if UserDefaults.standard.bool(forKey: "isTeacher") == true {
+                    self.performSegue(withIdentifier: "LehrerHP", sender: self)
+                }
+       
+            }else {
+            
+            print("notloggedin")
+            }}
+        }
     
     
     // Login Function
@@ -232,6 +283,8 @@ class Login: UIViewController, UITextFieldDelegate {
         
         
     }
-    
+    @IBAction func backLehrerLogin (_ segue:UIStoryboardSegue) {
+    }
+
     
 }

@@ -101,7 +101,7 @@ class Register: UIViewController, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == RegisterEmailTextField {
         
-            self.performSegue(withIdentifier: "LehrerAuswahl", sender: nil)
+            //self.performSegue(withIdentifier: "LehrerAuswahl", sender: nil)
         }
         
         if textField == RegisterPasswordTextField {
@@ -332,6 +332,9 @@ class Register: UIViewController, UITextFieldDelegate {
         let uid = user?.uid
         self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["email": RegisterString])
         self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["name": Namen.lowercased()])
+       // self.ref?.child("UID").child(uid!).updateChildValues(["funktion": "Schüler"])
+        UserDefaults.standard.set(true, forKey: "isStudent")
+        UserDefaults.standard.synchronize()
         
     }
     }

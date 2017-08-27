@@ -25,6 +25,7 @@
         @IBOutlet weak var Form: UIImageView!
         @IBOutlet weak var Stack1: UIStackView!
         @IBOutlet weak var Stack2: UIStackView!
+        @IBOutlet weak var LehrerLoginLabel: UILabel!
         
         // Variables
         var iconClick: Bool!
@@ -64,6 +65,7 @@
             self.Form.alpha = 0
             self.Stack1.alpha = 0
             self.Stack2.alpha = 0
+            self.LehrerLoginLabel.alpha = 0
         }
         
         override func viewDidAppear(_ animated: Bool) {
@@ -79,6 +81,7 @@
                 self.Form.alpha = 0.95
                 self.Stack1.alpha = 1
                 self.Stack2.alpha = 1
+                self.LehrerLoginLabel.alpha = 1
             })
         }
         
@@ -139,14 +142,15 @@
         // Keeped Users logged in
         func KeepUserSigndIn(){
             
-            FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
-                
-                if authuser != nil {
-                    self.performSegue(withIdentifier: "HomePageSegue", sender: self)
-                    
-                } else {
-                    // No User is signed in. Show user the login screen
-                }}}
+//            FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
+//                
+//                if authuser != nil {
+//                    self.performSegue(withIdentifier: "HomePageSegue", sender: self)
+//                    
+//                } else {
+//                    // No User is signed in. Show user the login screen
+//                }}
+        }
         
         
         // Login Function
@@ -167,7 +171,7 @@
                     
                     if error == nil
                     {
-                        self.performSegue(withIdentifier: "HomePageSegue", sender: self)
+                        self.performSegue(withIdentifier: "LehrerHomePageSegue", sender: self)
                         self.LoginEmailTextField.text = ""
                         self.LoginPasswordTextField.text = ""
                         FIRAnalytics.logEvent(withName: "new Login", parameters: nil)
@@ -182,9 +186,8 @@
                         self.present(alertController, animated: true, completion: nil)
                     }  } } }
         
-        @IBAction func ForgotPasswod(_ sender: Any) {
-            
-        }
+        
+      
         
         // Register Button pressed, Text is empty
         @IBAction func RegisteredPressed(_ sender: UIButton) {
@@ -220,19 +223,7 @@
             applyMotionEffect(toView: EyeButton, magnitude: -10)
         }
         
-        
-        
-        
-        @IBAction func HierAnmelden(_ sender: Any) {
-            // go to Lehrer Login
-            
-            
-            
-            
-            
-            
-            
+        @IBAction func backLehrerRegistration (_ segue:UIStoryboardSegue) {
         }
-        
         
 }

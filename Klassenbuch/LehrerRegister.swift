@@ -18,7 +18,7 @@
         @IBOutlet weak var RegisterEmailTextField: UITextField!
         @IBOutlet weak var RegisterPasswordTextField: UITextField!
         @IBOutlet weak var RegisterPasswordTextField2: AuthTextField!
-        @IBOutlet var       InformationView: UIView!
+        
         @IBOutlet weak var VisualEffect: UIVisualEffectView!
         @IBOutlet weak var background: UIImageView!
         @IBOutlet weak var ZüriBild: UIImageView!
@@ -28,6 +28,7 @@
         @IBOutlet weak var Form: UIImageView!
         @IBOutlet weak var EyeButton: UIButton!
         @IBOutlet weak var EyeButton2: UIButton!
+        @IBOutlet weak var Lehrerloginlabel: UILabel!
         
         
         // Variables
@@ -68,10 +69,9 @@
             // Visual Effect
             effect = VisualEffect.effect
             VisualEffect.effect = nil
-            self.animateIn()
+           
             
-            // Cornerradius
-            InformationView.layer.cornerRadius = 5
+       
             
             //Database Refrence Property
             ref = FIRDatabase.database().reference()
@@ -100,10 +100,10 @@
         //Showing and Hiding the Eye Button
         
         func textFieldDidBeginEditing(_ textField: UITextField) {
-            if textField == RegisterEmailTextField {
-                
-                self.performSegue(withIdentifier: "LehrerAuswahl", sender: nil)
-            }
+//            if textField == RegisterEmailTextField {
+//                
+//                self.performSegue(withIdentifier: "LehrerAuswahl", sender: nil)
+//            }
             
             if textField == RegisterPasswordTextField {
                 EyeButton.isHidden = false
@@ -181,46 +181,12 @@
         }
         
         //Dismiss ViewAction
-        
-        @IBAction func RemoveInformationView(_ sender: Any) {
-            self.animateOut()
-        }
-        
-        @IBAction func backtoLogin(_ sender: Any) {
-            performSegue(withIdentifier: "backtoLogin", sender: nil)
-        }
+
+    
         
         // Starting Information Animation
         
-        func animateIn() {
-            self.view.addSubview(InformationView)
-            InformationView.center = self.view.center
-            
-            InformationView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-            InformationView.alpha = 0
-            
-            UIView.animate(withDuration: 0.4) {
-                self.VisualEffect.effect = self.effect
-                self.InformationView.alpha = 1
-                self.InformationView.transform = CGAffineTransform.identity
-                self.VisualEffect.isUserInteractionEnabled = true
-            }
-        }
-        
-        // Ending Information Animation
-        
-        func animateOut () {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.InformationView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-                self.InformationView.alpha = 0
-                self.VisualEffect.isUserInteractionEnabled = false
-                self.VisualEffect.effect = nil
-                
-            }) { (success:Bool) in
-                self.InformationView.removeFromSuperview()
-            }
-        }
-        
+ 
         //Register User Action
         
         @IBAction func RegisterUser(_ sender: Any) {
@@ -259,7 +225,7 @@
                                 
                                 self.setupUserinDatabase()
                                 
-                                self.performSegue(withIdentifier: "SyncClass", sender: self)
+                                self.performSegue(withIdentifier: "KlassenLehrereinrichten", sender: self)
                                 
                                 
                             }
@@ -331,8 +297,11 @@
         func setupUserinDatabase(){
             let user = FIRAuth.auth()?.currentUser
             let uid = user?.uid
-            self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["email": RegisterString])
-            self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["name": Namen.lowercased()])
+            self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["email": RegisterString])
+            self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["name": Namen.lowercased()])
+          //self.ref?.child("UID").child(uid!).updateChildValues(["funktion": "Lehrer"])
+            UserDefaults.standard.set(true, forKey: "isTeacher")
+            UserDefaults.standard.synchronize()
             
         }
 }
