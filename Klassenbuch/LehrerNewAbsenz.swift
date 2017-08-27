@@ -38,7 +38,8 @@
         var Absenzenstatus2 = String()
         var AbsenzInfo = String()
         var name = String()
-    
+        var myklasse = String()
+        var myklasse2 : String?
     
     
     var Classmembers : [String] = []
@@ -107,24 +108,43 @@
        
         ref2 = FIRDatabase.database().reference()
         
-        handle2 = ref2?.child("KlassenMitglieder/N5aFS18").observe(.childAdded, with: { (snapshot2) in
+        
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        ref2 = FIRDatabase.database().reference()
+        handle2 = ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
             
             
-            if let item2 = snapshot2.value as? String{
-                self.Classmembers.insert(item2, at: 0)   //.append(item2)
-                self.tableView.reloadData()
+            if let item1 = snapshot.value as? String{
                 
-            }
-        }
+                
+                self.myklasse = item1
+                
+                
+                
+                self.handle2 = self.ref2?.child("KlassenMitglieder/\(self.myklasse)").observe(.childAdded, with: { (snapshot2) in
+                    
+                    
+                    if let item2 = snapshot2.value as? String{
+                        self.Classmembers.insert(item2, at: 0)   //.append(item2)
+                        self.tableView.reloadData()
+                        
+                    }
+                })
+                print(self.Classmembers)
+    
+                
+            }}
+            )
+    }
+    
             
-            
-        )
-        print(Classmembers)
+ 
+        
+        
         
     
-    
-    
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -389,11 +409,22 @@
                         
                         // here check für welli klass klasselehrerin denn child()ihir Klass wo jetzte uid isch
                         
-                        self.ref!.child("absenzen").child("N5aFS18").childByAutoId().setValue([
-                            "APerson": AbsenzenPersons.text!,
-                            "AStatus": AbsenzInfo,
-                            "ADatum": self.selectedDateZeroHour!
-                            ])
+                        self.ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+                            
+                            if let item = snapshot.value as? String{
+                                
+                                self.myklasse2 = item
+                                self.ref!.child("AbsenzenKlassen").child(self.myklasse2!).childByAutoId().setValue([
+                                    "APerson": self.AbsenzenPersons.text!,
+                                    "AStatus": self.AbsenzInfo,
+                                    "ADatum": self.selectedDateZeroHour!
+                                    ])
+                            }
+                        })
+
+                        
+                        
+                        
                         
                   
                    

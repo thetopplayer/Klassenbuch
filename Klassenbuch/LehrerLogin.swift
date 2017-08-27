@@ -172,6 +172,8 @@
                     if error == nil
                     {
                         self.performSegue(withIdentifier: "LehrerHomePageSegue", sender: self)
+                        UserDefaults.standard.set(true, forKey: "isTeacher")
+                        UserDefaults.standard.synchronize()
                         self.LoginEmailTextField.text = ""
                         self.LoginPasswordTextField.text = ""
                         FIRAnalytics.logEvent(withName: "new Login", parameters: nil)

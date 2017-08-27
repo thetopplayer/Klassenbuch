@@ -66,6 +66,9 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
             FIRAnalytics.logEvent(withName: "User logged out", parameters: nil)
             try! FIRAuth.auth()!.signOut()
             if let storyboard = self.storyboard {
+                UserDefaults.standard.set(false, forKey: "isStudent")
+                UserDefaults.standard.synchronize()
+                
                 let vc = storyboard.instantiateViewController(withIdentifier: "LoginNavigationVC") as! UINavigationController
                 self.present(vc, animated: false, completion: nil)
                 

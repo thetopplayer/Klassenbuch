@@ -11,7 +11,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import UserNotifications
 
-struct AbsenzenStruct {
+struct AbsenzenStruct4 {
     var ADatum: Int
     var AStatus: String
     var APerson: String
@@ -24,14 +24,15 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
     
     // Variables
     
-    var data = [Int: [AbsenzenStruct]]() // Date: Homework Object
-    var sortedData = [(Int, [AbsenzenStruct])]()
+    var data = [Int: [AbsenzenStruct4]]() // Date: Homework Object
+    var sortedData = [(Int, [AbsenzenStruct4])]()
     var ref: FIRDatabaseReference?
     var databaseHandle: FIRDatabaseHandle?
     
     var PersonenTitel: String?
     var Absenzdauer: String?
     var AbsenzDatumDate: String?
+    var myKlasse = String()
     
     
     override func viewDidLoad() {
@@ -67,9 +68,16 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
     func databaseListener() {
         
         let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
         
+        
+        ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myKlasse = item
+                
         // Added listener
-        ref!.child("absenzen/N5aFS18").observe(.childAdded, with: { (snapshot) in
+        self.ref!.child("AbsenzenKlassen/\(self.myKlasse)").observe(.childAdded, with: { (snapshot) in
             
             if let fdata = snapshot.value as? NSDictionary {
                 
@@ -81,7 +89,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                 
                 let aID = snapshot.key
                 
-                let homeObject3 = AbsenzenStruct(ADatum: adatum, AStatus: astatus, APerson: aperson, AUid: aID)
+                let homeObject3 = AbsenzenStruct4(ADatum: adatum, AStatus: astatus, APerson: aperson, AUid: aID)
                 
                 if self.data[adatum] == nil {
                     self.data[adatum] = [homeObject3]
@@ -99,7 +107,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         })
         
         // Remove listener
-        ref!.child("absenzen/N5aFS18").observe(.childRemoved, with: { (snapshot) in
+       self.ref!.child("AbsenzenKlassen/\(self.myKlasse)").observe(.childRemoved, with: { (snapshot) in
             
             if let fdata = snapshot.value as? NSDictionary {
                 
@@ -118,6 +126,10 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
             self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
             self.tableView.reloadData()
             
+        })
+                
+                
+            }
         })
     }
     
@@ -348,7 +360,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
             let uid = user?.uid
             
             let absenz = self.sortedData[indexPath.section].1[indexPath.row]
-            self.ref!.child("absenzen/\(uid!)/\(absenz.AUid)").removeValue()
+            self.ref!.child("AbsenzenKlassen/\(self.myKlasse)/\(absenz.AUid)").removeValue()
             print("deleted pressed")
         }
         

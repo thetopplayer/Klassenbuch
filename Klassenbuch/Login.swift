@@ -217,6 +217,8 @@ class Login: UIViewController, UITextFieldDelegate {
                 
                 if error == nil
                 {
+                    UserDefaults.standard.set(true, forKey: "isStudent")
+                    UserDefaults.standard.synchronize()
                     self.performSegue(withIdentifier: "HomePageSegue", sender: self)
                     self.LoginEmailTextField.text = ""
                     self.LoginPasswordTextField.text = ""

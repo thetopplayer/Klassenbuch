@@ -14,7 +14,7 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     //Variables
     //Pass this Value from ClassSelection
-    var myClass = "N5aFS18"
+    var myClass = String()//"N5aFS18"
     var Vorname = String()
     var Nachname = String()
     var Name = String()
