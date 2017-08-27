@@ -54,7 +54,7 @@ class Login: UIViewController, UITextFieldDelegate {
         
         self.LoginEmailTextField.alpha = 0
         self.LoginPasswordTextField.alpha = 0
-        self.BackgroundImage.alpha = 1
+        //self.BackgroundImage.alpha = 1
         self.ZüriBild.alpha = 0
         self.EmailLabel.alpha = 0
         self.PasswordLabel.alpha = 0
@@ -208,7 +208,7 @@ class Login: UIViewController, UITextFieldDelegate {
     }
     
     func ApplyMotionEffectsforViewDidLoad() {
-        applyMotionEffect(toView: BackgroundImage, magnitude: 0)
+       // applyMotionEffect(toView: BackgroundImage, magnitude: 0)
         applyMotionEffect(toView: Form, magnitude: -10)
         applyMotionEffect(toView: ZüriBild, magnitude: -10)
         applyMotionEffect(toView: LoginEmailTextField, magnitude: -10)

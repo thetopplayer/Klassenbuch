@@ -34,7 +34,24 @@ class Select_Class: UITableViewController {
         }
             
             
-        )}
+        )
+    
+    
+        handle = ref?.child("users/Klassen").observe(.childRemoved, with: { (snapshot) in
+            
+            
+            if let item2 = snapshot.value as? String{
+              
+                
+                
+                
+                if let i = self.ClassList.index(where: {$0 == (item2) }) {
+                     self.ClassList.remove(at: i)
+                    self.tableView.reloadData()
+                }
+   
+            }
+        })  }
 
 
 

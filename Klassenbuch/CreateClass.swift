@@ -145,12 +145,7 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
             
       //      self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["name": Namen])
             
-      ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let item = snapshot.value as? String{
-                self.myName = item
-            }
-        })
+   
         
         ref?.child("users").child("Schüler").child(uid!).child("email").observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -199,7 +194,27 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         self.ref?.child("users/Klassen").childByAutoId().setValue(Klasse)
         
         self.ref?.child("users/Schüler").child(uid!).updateChildValues(["Klasse" : Klasse]) //setValue(["Klasse": Klasse])
-        self.ref?.child("KlassenMitglieder/\(Klasse)").childByAutoId().setValue(myName)
+       
+        
+        
+        
+        ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myName = item
+           
+            self.ref?.child("KlassenMitglieder/\(self.Klasse)").childByAutoId().setValue(self.myName)
+            
+            
+            }
+        })
+        
+        
+        
+        
+        
+        
+        
         
         // Name scho ineglodet in array für nechst view mit klassemitglieder
         

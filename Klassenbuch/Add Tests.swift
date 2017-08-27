@@ -16,12 +16,11 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     //Outlets
     @IBOutlet weak var TestTextField: UITextField!
-   
     @IBOutlet weak var TestSchulfachTextField: UITextField!
-    
     @IBOutlet weak var TestDatum: UITextField!
-    
+    @IBOutlet weak var PrivatSwitch: UISwitch!
     @IBOutlet weak var SaveButton: UIBarButtonItem!
+    @IBOutlet weak var PrivatKlassenLabel: UILabel!
     
     //Variables
     var TestSubjectPicker = UIPickerView()
@@ -87,7 +86,7 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 
-        return 3
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -150,25 +149,73 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
        
-        
-        
-        ref?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+        if PrivatSwitch.isOn == true {
             
-            if let item = snapshot.value as? String{
-                self.myKlasse = item
+            self.ref?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
                 
-      
-        self.ref!.child("tests/\(self.myKlasse)").childByAutoId().setValue([
-            "TText": self.TestTextField.text!,
-            "TFach": self.TestSchulfachTextField.text!,
-            "TDatum": self.selectedDateZeroHour!
-            ])      }
-        })
+                if let item = snapshot.value as? String{
+                    
+                    self.myKlasse = item
+                    
+                    self.ref!.child("TestsKlassen").child(self.myKlasse).childByAutoId().setValue([
+                        "TText": self.TestTextField.text!,
+                        "TFach": self.TestSchulfachTextField.text!,
+                        "TDatum": self.selectedDateZeroHour!
+                        ])
+                    
+                }
+            })
+            
+        } else if PrivatSwitch.isOn == false {
+            
+            
+            
+            self.ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if let item = snapshot.value as? String{
+                    
+                    self.myName = item
+                    
+                    self.ref!.child("TestsSchüler").child(self.myName).childByAutoId().setValue([
+                        "TText": self.TestTextField.text!,
+                        "TFach": self.TestSchulfachTextField.text!,
+                        "TDatum": self.selectedDateZeroHour!
+                        ])
+                    
+                }
+            })}
+
+        
+//        ref?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+//            
+//            if let item = snapshot.value as? String{
+//                self.myKlasse = item
+//                
+//      
+//        self.ref!.child("tests/\(self.myKlasse)").childByAutoId().setValue([
+//            "TText": self.TestTextField.text!,
+//            "TFach": self.TestSchulfachTextField.text!,
+//            "TDatum": self.selectedDateZeroHour!
+//            ])      }
+//        })
         
        self.performSegue(withIdentifier: "unwindtoTests", sender: self)
         FIRAnalytics.logEvent(withName: "Test gepostet", parameters: nil)
     }
-        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     //Fund for Left Swipe
     
     func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
@@ -215,4 +262,18 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         })
     }
     
+    @IBAction func SwitchChanged(_ sender: Any) {
+        
+        if PrivatSwitch.isOn == true{
+            
+            
+            PrivatKlassenLabel.text = "Test ist für die Klasse"
+            
+        } else if PrivatSwitch.isOn == false {
+            
+            
+            PrivatKlassenLabel.text = "Test ist privat"
+        }
+
+    }
 }

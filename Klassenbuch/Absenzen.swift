@@ -34,8 +34,8 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     var AbsenzDatumDate: String?
     
     var myName = String()
-    var myKlasse = String()
-    var myEmail = String()
+    let myKlasse = String()
+    let myEmail = String()
     
     override func viewDidLoad() {
        
@@ -65,10 +65,25 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     
     func databaseListener() {
         
-        let user = FIRAuth.auth()?.currentUser
+       
         
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        
+        
+        ref = FIRDatabase.database().reference()
+        
+        databaseHandle = ref?.child("users").child("Schüler").child(uid!).child("name").observe(.value, with: { (snapshot) in
+            
+            
+            if let item = snapshot.value as? String{
+                
+               self.myName = item
+        
+               
         // Added listener
-        ref!.child("SchülerAbsenzen/jerome hadorn").observe(.childAdded, with: { (snapshot) in
+        self.ref!.child("SchülerAbsenzen/\(self.myName)").observe(.childAdded, with: { (snapshot) in
             
             if let fdata = snapshot.value as? NSDictionary {
                 
@@ -98,7 +113,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         })
         
         // Remove listener
-        ref!.child("SchülerAbsenzen/jerome hadorn").observe(.childRemoved, with: { (snapshot) in
+        self.ref!.child("SchülerAbsenzen/\(self.myName)").observe(.childRemoved, with: { (snapshot) in
             
             if let fdata = snapshot.value as? NSDictionary {
                 
@@ -118,6 +133,13 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
             self.tableView.reloadData()
             self.EmptyScreen()
         })
+   
+            
+            }
+        }
+            
+            
+        )
     }
 
     
@@ -344,11 +366,8 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         // Delete Action
         let deleteaction = UIAlertAction(title: "Löschen", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
             
-            let user = FIRAuth.auth()?.currentUser
-            let uid = user?.uid
-            
             let absenz = self.sortedData[indexPath.section].1[indexPath.row]
-            self.ref!.child("absenzen/\(uid!)/\(absenz.AUid)").removeValue()
+            self.ref!.child("SchülerAbsenzen/\(self.myName)/\(absenz.AUid)").removeValue()
             print("deleted pressed")
         }
         
@@ -431,48 +450,8 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         }
     }
 
-    func getInfos(){
-        
-        var ref:FIRDatabaseReference?
-        
-        let user = FIRAuth.auth()?.currentUser
-        let uid = user?.uid
-        
-        ref = FIRDatabase.database().reference()
-        
-        // handle = ref?.child("users").child("Schüler").child(uid!).observe(.value, with: { (snapshot) in
-        
-        //      self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["name": Namen])
-        
-        ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let item = snapshot.value as? String{
-                self.myName = item
-            }
-        })
-        
-        ref?.child("users").child("Schüler").child(uid!).child("email").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let item = snapshot.value as? String{
-                self.myEmail = item
-                
-            }
-        })
-        
-        
-        ref?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let item = snapshot.value as? String{
-                self.myKlasse = item
-                
-            }
-        })
-    }
-
+  
 }
-
-
-
 /* compare dates
  switch adatum < Date().getDateFromZeroHour /*- 1209600 -86400*/ {
  

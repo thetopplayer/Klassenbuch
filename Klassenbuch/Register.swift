@@ -99,6 +99,11 @@ class Register: UIViewController, UITextFieldDelegate {
     //Showing and Hiding the Eye Button
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == RegisterEmailTextField {
+        
+            self.performSegue(withIdentifier: "LehrerAuswahl", sender: nil)
+        }
+        
         if textField == RegisterPasswordTextField {
             EyeButton.isHidden = false
         }else {
@@ -220,10 +225,10 @@ class Register: UIViewController, UITextFieldDelegate {
     @IBAction func RegisterUser(_ sender: Any) {
     
        //String zusammenführen
-      //  RegisterString1
+
         RegisterString1 = RegisterEmailTextField.text!
         
-        RegisterString = "\(RegisterString1)\(RegisterString2)"
+        RegisterString = "\(RegisterString1.lowercased())\(RegisterString2.lowercased())"
 
         Namen = RegisterString1.replacingOccurrences(of: ".", with: " ", options: .literal, range: nil)
         
@@ -326,7 +331,7 @@ class Register: UIViewController, UITextFieldDelegate {
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["email": RegisterString])
-        self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["name": Namen])
+        self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["name": Namen.lowercased()])
         
     }
     }

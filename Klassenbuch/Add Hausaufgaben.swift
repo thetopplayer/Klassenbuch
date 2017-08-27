@@ -19,6 +19,8 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     @IBOutlet weak var SchulfachTextField: UITextField!
     @IBOutlet weak var DatumTextField: UITextField!
     @IBOutlet weak var SaveButton: UIBarButtonItem!
+    @IBOutlet weak var PrivatSwitch: UISwitch!
+    @IBOutlet weak var PrivatKlassenLabel: UILabel!
     
     // Variables
     var Label = UILabel()
@@ -105,7 +107,7 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -175,21 +177,50 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         
-
-        self.ref?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+        
+        if PrivatSwitch.isOn == true {
+        
+            self.ref?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if let item = snapshot.value as? String{
+                    
+                    self.myKlasse = item
+                    
+                    self.ref!.child("HausaufgabenKlassen").child(self.myKlasse!).childByAutoId().setValue([
+                        "HText": self.HausaufgabenTextField.text!,
+                        "HFach": self.SchulfachTextField.text!,
+                        "HDatum": self.selectedDateZeroHour!
+                        ])
+                    
+                }
+            })
+        
+        } else if PrivatSwitch.isOn == false {
             
-            if let item = snapshot.value as? String{
+         
+        
+            self.ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
                 
-               self.myKlasse = item
-                
-                self.ref!.child("homework").child(self.myKlasse!).childByAutoId().setValue([
-                    "HText": self.HausaufgabenTextField.text!,
-                    "HFach": self.SchulfachTextField.text!,
-                    "HDatum": self.selectedDateZeroHour!
-                    ])
+                if let item = snapshot.value as? String{
+                    
+                    self.myName = item
+                    
+                    self.ref!.child("HausaufgabenSchüler").child(self.myName).childByAutoId().setValue([
+                        "HText": self.HausaufgabenTextField.text!,
+                        "HFach": self.SchulfachTextField.text!,
+                        "HDatum": self.selectedDateZeroHour!
+                        ])
+                    
+                }
+            })
+            
+            
+            
+        
+        }
+        
 
-            }
-        })
+      
       
 
 
@@ -198,6 +229,18 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
         
     }
     
+    @IBAction func PrivatSwitch(_ sender: Any) {
+        
+        if PrivatSwitch.isOn == true{
+        
+        PrivatKlassenLabel.text = "Hausaufgabe ist für die Klasse"
+        
+        } else if PrivatSwitch.isOn == false {
+        
+        
+        PrivatKlassenLabel.text = "Hausaufgabe ist privat"
+        }
+    }
 
     @IBAction func cancelButtonclicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

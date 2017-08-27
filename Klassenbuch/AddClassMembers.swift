@@ -29,7 +29,7 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var VornameTextField: UITextField!
     @IBOutlet weak var NachnameTextField: UITextField!
     
-    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +40,18 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
         tableView.delegate = self
         tableView.dataSource = self
         
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
         ref2 = FIRDatabase.database().reference()
        
-        handle2 = ref2?.child("KlassenMitglieder/\(myClass)").observe(.childAdded, with: { (snapshot2) in
+        ref2?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myClass = item
+                
+
+        self.ref2?.child("KlassenMitglieder/\(self.myClass)").observe(.childAdded, with: { (snapshot2) in
             
             
             if let item2 = snapshot2.value as? String{
@@ -54,8 +63,11 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
             
         
         )
-        print(Classmembers)
-        tableView.reloadData()
+        print(self.Classmembers)
+        self.tableView.reloadData()
+            }
+        })
+        
     }
 
 
@@ -69,17 +81,33 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
 
     @IBAction func AddClassMemberAction(_ sender: Any) {
    
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
         
         Name = "\(VornameTextField.text!) \(NachnameTextField.text!)"
        
         
         if VornameTextField.text != "" || NachnameTextField.text != "" {
         
-         self.ref2?.child("KlassenMitglieder/\(myClass)").childByAutoId().setValue(Name.lowercased())
+            
+            
+        ref2?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if let item = snapshot.value as? String{
+                    self.myClass = item
+            
+            
+            
+         self.ref2?.child("KlassenMitglieder/\(self.myClass)").childByAutoId().setValue(self.Name.lowercased())
         print("uploaded")
             
-            VornameTextField.text = ""
-            NachnameTextField.text = ""
+            self.VornameTextField.text = ""
+            self.NachnameTextField.text = ""
+            
+            
+        }
+    })
+    
         }
     
     }
