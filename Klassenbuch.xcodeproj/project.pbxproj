@@ -36,6 +36,7 @@
 		3787EDA21F5324DF00664523 /* LehrerKlassenauswahl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3787EDA11F5324DE00664523 /* LehrerKlassenauswahl.swift */; };
 		3787EDA41F533A1D00664523 /* LehrerKlassenundUserEinstellungen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3787EDA31F533A1D00664523 /* LehrerKlassenundUserEinstellungen.swift */; };
 		3787EDA61F533FF600664523 /* LehrerEinstellungen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3787EDA51F533FF600664523 /* LehrerEinstellungen.swift */; };
+		3787EDA81F547E5B00664523 /* LehrerStudentListe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3787EDA71F547E5A00664523 /* LehrerStudentListe.swift */; };
 		379B8C931EA4F87A00E27CBC /* PushNachrichten.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379B8C921EA4F87A00E27CBC /* PushNachrichten.swift */; };
 		379B8C951EA6857300E27CBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 379B8C941EA6857300E27CBC /* GoogleService-Info.plist */; };
 		379B8CAD1EA764E600E27CBC /* Delivery.png in Resources */ = {isa = PBXBuildFile; fileRef = 379B8CAC1EA764E600E27CBC /* Delivery.png */; };
@@ -122,6 +123,7 @@
 		3787EDA11F5324DE00664523 /* LehrerKlassenauswahl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehrerKlassenauswahl.swift; sourceTree = "<group>"; };
 		3787EDA31F533A1D00664523 /* LehrerKlassenundUserEinstellungen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehrerKlassenundUserEinstellungen.swift; sourceTree = "<group>"; };
 		3787EDA51F533FF600664523 /* LehrerEinstellungen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehrerEinstellungen.swift; sourceTree = "<group>"; };
+		3787EDA71F547E5A00664523 /* LehrerStudentListe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehrerStudentListe.swift; sourceTree = "<group>"; };
 		379B8C921EA4F87A00E27CBC /* PushNachrichten.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNachrichten.swift; sourceTree = "<group>"; };
 		379B8C941EA6857300E27CBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		379B8C961EA6884600E27CBC /* Klassenbuch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Klassenbuch.entitlements; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				3787EDA51F533FF600664523 /* LehrerEinstellungen.swift */,
 				3787EDA11F5324DE00664523 /* LehrerKlassenauswahl.swift */,
 				3787EDA31F533A1D00664523 /* LehrerKlassenundUserEinstellungen.swift */,
+				3787EDA71F547E5A00664523 /* LehrerStudentListe.swift */,
 			);
 			name = Lehrer;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				37FCAEAF1DFD556F00789BFF /* Informationen.swift in Sources */,
 				378465441E4F96EC0012CDBF /* Gif+Swift.swift in Sources */,
 				3787EDA61F533FF600664523 /* LehrerEinstellungen.swift in Sources */,
+				3787EDA81F547E5B00664523 /* LehrerStudentListe.swift in Sources */,
 				37578E371F51548E00ACFA80 /* LehrerSchülerListe.swift in Sources */,
 				37BFF9911E09D14F00FDDFE6 /* Tests.swift in Sources */,
 				3787ED9A1F51A3B400664523 /* KlassenUserInfo.swift in Sources */,

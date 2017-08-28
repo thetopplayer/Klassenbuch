@@ -4,7 +4,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import UserNotifications
 
-struct AbsenzenStruct2 {
+struct AbsenzenStruct16 {
     var ADatum: Int
     var AStatus: String
     var APerson: String
@@ -19,15 +19,17 @@ class StudentAbsenzen: UITableViewController, UNUserNotificationCenterDelegate, 
     
    // var Schüler Info vo voher
     
-    var data = [Int: [AbsenzenStruct2]]() // Date: Homework Object
-    var sortedData = [(Int, [AbsenzenStruct2])]()
+    var data = [Int: [AbsenzenStruct16]]() // Date: Homework Object
+    var sortedData = [(Int, [AbsenzenStruct16])]()
     var ref: FIRDatabaseReference?
     var databaseHandle: FIRDatabaseHandle?
     
     var PersonenTitel: String?
     var Absenzdauer: String?
     var AbsenzDatumDate: String?
+    var StudentName = String()
     
+    @IBOutlet weak var Header: UINavigationItem!
     
     override func viewDidLoad() {
         
@@ -50,6 +52,8 @@ class StudentAbsenzen: UITableViewController, UNUserNotificationCenterDelegate, 
         // Listen for added and removed
         self.databaseListener()
         
+        Header.title = StudentName
+        
         
     }
     
@@ -61,24 +65,23 @@ class StudentAbsenzen: UITableViewController, UNUserNotificationCenterDelegate, 
     
     func databaseListener() {
         
-        let user = FIRAuth.auth()?.currentUser
         
         // Added listener
         // da muess mer de schüeler wert wo mer voher mit nimmt ine tueh
         
-        ref!.child("SchülerAbsenzen/jerome hadorn").observe(.childAdded, with: { (snapshot) in
+        ref!.child("SchülerAbsenzen/\(StudentName)").observe(.childAdded, with: { (snapshot) in
             
-            if let fdata = snapshot.value as? NSDictionary {
+            if let fdata16 = snapshot.value as? NSDictionary {
                 
-                let adatum = fdata["ADatum"] as! Int
+                let adatum = fdata16["ADatum"] as! Int
                 
-                let astatus = fdata["AStatus"] as! String
+                let astatus = fdata16["AStatus"] as! String
                 
-                let aperson = fdata["APerson"] as! String
+                let aperson = fdata16["APerson"] as! String
                 
                 let aID = snapshot.key
                 
-                let homeObject3 = AbsenzenStruct2(ADatum: adatum, AStatus: astatus, APerson: aperson, AUid: aID)
+                let homeObject3 = AbsenzenStruct16(ADatum: adatum, AStatus: astatus, APerson: aperson, AUid: aID)
                 
                 if self.data[adatum] == nil {
                     self.data[adatum] = [homeObject3]
@@ -96,7 +99,7 @@ class StudentAbsenzen: UITableViewController, UNUserNotificationCenterDelegate, 
         })
         
         // Remove listener
-        ref!.child("SchülerAbsenzen/jerome hadorn").observe(.childRemoved, with: { (snapshot) in
+        ref!.child("SchülerAbsenzen/\(StudentName)").observe(.childRemoved, with: { (snapshot) in
             
             if let fdata = snapshot.value as? NSDictionary {
                 
@@ -404,6 +407,8 @@ class StudentAbsenzen: UITableViewController, UNUserNotificationCenterDelegate, 
     
 }
 
+
+//Vlt falss älter als 1 Jahr
 
 
 /* compare dates

@@ -194,14 +194,30 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         
        Klasse = "\(KlassenNamenTextLabel.text!)\(SemesterTextField.text!)"
       
-        
+       self.ref?.child("users/Klassen").updateChildValues([self.Klasse : self.Klasse])
         
         
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
 
-         // Upload to Firebase
-        self.ref?.child("users/Klassen").childByAutoId().setValue(Klasse)
+        // Upload to Firebase
+        //self.ref?.child("users/Klassen").childByAutoId().setValue(Klasse)
+        
+//        ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
+//            
+//            if let item = snapshot.value as? String{
+//                self.myName = item
+//                
+//                
+//        self.ref?.child("users/Klassen").childByAutoId().setValue([self.Klasse : self.Klasse])
+//                
+//                
+//            }
+//        })
+        
+        
+        
+  
         
         self.ref?.child("users/Schüler").child(uid!).updateChildValues(["Klasse" : Klasse]) //setValue(["Klasse": Klasse])
        
@@ -214,8 +230,11 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
             if let item = snapshot.value as? String{
                 self.myName = item
            
-            self.ref?.child("KlassenMitglieder/\(self.Klasse)").childByAutoId().setValue(self.myName)
-            
+            self.ref?.child("KlassenMitglieder/\(self.Klasse)").updateChildValues([self.myName.lowercased() : self.myName.lowercased()])
+           
+                
+              //  self.ref2?.child("KlassenMitglieder/\(self.myClass)")
+
             
             }
         })

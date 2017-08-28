@@ -29,7 +29,9 @@
         
         // Variables
         var iconClick: Bool!
-        
+        var LoginString1 = String()
+        var LoginString2 = "@kslzh.ch"
+        var LoginString = String()
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -156,7 +158,11 @@
         // Login Function
         @IBAction func LoginUser(_ sender: Any) {
             
-            if self.LoginEmailTextField.text == "" || self.LoginPasswordTextField.text == ""
+            LoginString1 = LoginEmailTextField.text!
+            
+            LoginString = "\(LoginString1.lowercased())\(LoginString2.lowercased())"
+            
+            if self.LoginString == "" || self.LoginPasswordTextField.text == ""
             {
                 let alertController = UIAlertController(title: "Oops!", message: "Bitte gib eine Email Adresse und ein Password ein.", preferredStyle: .alert)
                 
@@ -167,7 +173,7 @@
             }
             else
             {
-                FIRAuth.auth()?.signIn(withEmail: self.LoginEmailTextField.text!, password: self.LoginPasswordTextField.text!) { (user, error) in
+                FIRAuth.auth()?.signIn(withEmail: self.LoginString, password: self.LoginPasswordTextField.text!) { (user, error) in
                     
                     if error == nil
                     {

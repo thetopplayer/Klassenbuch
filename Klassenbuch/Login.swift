@@ -30,6 +30,9 @@ class Login: UIViewController, UITextFieldDelegate {
     var funktion  = String()
     var ref: FIRDatabaseReference?
     var databaseHandle: FIRDatabaseHandle?
+    var LoginString1 = String()
+    var LoginString2 = "@kslzh.ch"
+    var LoginString = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -225,8 +228,13 @@ class Login: UIViewController, UITextFieldDelegate {
     
     // Login Function
     @IBAction func LoginUser(_ sender: Any) {
+        
+        LoginString1 = LoginEmailTextField.text!
+        
+        LoginString = "\(LoginString1.lowercased())\(LoginString2.lowercased())"
+        
     
-        if self.LoginEmailTextField.text == "" || self.LoginPasswordTextField.text == ""
+        if self.LoginString == "" || self.LoginPasswordTextField.text == ""
         {
             let alertController = UIAlertController(title: "Oops!", message: "Bitte gib eine Email Adresse und ein Password ein.", preferredStyle: .alert)
             
@@ -237,7 +245,7 @@ class Login: UIViewController, UITextFieldDelegate {
         }
         else
         {
-            FIRAuth.auth()?.signIn(withEmail: self.LoginEmailTextField.text!, password: self.LoginPasswordTextField.text!) { (user, error) in
+            FIRAuth.auth()?.signIn(withEmail: LoginString, password: self.LoginPasswordTextField.text!) { (user, error) in
                 
                 if error == nil
                 {

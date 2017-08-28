@@ -25,7 +25,7 @@ class Select_Class: UITableViewController {
         UserDefaults.standard.synchronize()
 
         tableView.separatorStyle = .none
-    ref = FIRDatabase.database().reference()
+        ref = FIRDatabase.database().reference()
         handle = ref?.child("users/Klassen").observe(.childAdded, with: { (snapshot) in
    
             

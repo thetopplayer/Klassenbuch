@@ -18,6 +18,7 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
     var Vorname = String()
     var Nachname = String()
     var Name = String()
+    var myName = String()
     var Classmembers : [String] = []
     var Classlistt = ["asdsad","asasdsadd"]
     var handle2 : FIRDatabaseHandle?
@@ -69,6 +70,18 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
         })
         
+        handle2 = ref2?.child("KlassenMitglieder/\(self.myClass)").observe(.childRemoved, with: { (snapshot) in
+            
+            
+            if let item2 = snapshot.value as? String{
+          
+                if let i = self.Classmembers.index(where: {$0 == (item2) }) {
+                    self.Classmembers.remove(at: i)
+                    self.tableView.reloadData()
+                }
+                
+            }
+        })
     }
 
 
@@ -97,10 +110,13 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
                 if let item = snapshot.value as? String{
                     self.myClass = item
             
+         // self.ref2?.child("KlassenMitglieder/\(self.myClass)").updateChildValues([self.Klasse : self.Klasse])
+            
+         self.ref2?.child("KlassenMitglieder/\(self.myClass)").updateChildValues([self.Name.lowercased() : self.Name.lowercased()])
             
             
-         self.ref2?.child("KlassenMitglieder/\(self.myClass)").childByAutoId().setValue(self.Name.lowercased())
-        print("uploaded")
+           
+                    print("uploaded")
             
             self.VornameTextField.text = ""
             self.NachnameTextField.text = ""
@@ -149,7 +165,25 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
+           
             
+            
+            let user = FIRAuth.auth()?.currentUser
+            let uid = user?.uid
+           
+            
+            ref2?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if let item = snapshot.value as? String{
+                    self.myClass = item
+                    
+          
+            
+            self.ref2?.child("KlassenMitglieder/\(self.myClass)").child(self.Classmembers[indexPath.row]).removeValue()
+            
+            
+                }
+            })
             
            // tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -188,7 +222,7 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
                     UserDefaults.standard.set(false, forKey: "StudenthasClass")
                     UserDefaults.standard.synchronize()
                     // Delete in KlassenListe NED FERtIG!
-                   // self.ref2?.child("users").child("Klassen").removeValue()                  // Delete in KlassenmitgliederListe
+                self.ref2?.child("users/Klassen").child(self.myClass).removeValue()                  // Delete in KlassenmitgliederListe
                     self.ref2?.child("KlassenMitglieder").child(self.myClass).removeValue()
                     // Delete User Data
                     self.ref2?.child("users").child("Schüler").child(uid!).child("Klasse").removeValue()

@@ -14,7 +14,7 @@ class LehrerSchülerListe: UITableViewController {
     // Variables
 //    var TeacherofClass = "N5aFS18"
 
-    var Classmembers = ["Tomate", "Gurke"]//: [String] = []
+    var Classmembers : [String] = []
     //var Classlistt = ["asdsad","asasdsadd"]
     var handle2 : FIRDatabaseHandle?
     var ref2: FIRDatabaseReference?
@@ -25,10 +25,54 @@ class LehrerSchülerListe: UITableViewController {
         super.viewDidLoad()
 
         ref2 = FIRDatabase.database().reference()
-        getStudents()
+        //getStudents()
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
         
-      
-    
+        
+        ref2?.child("users").child("Lehrer").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myklasse = item
+                
+                
+                self.ref2?.child("KlassenMitglieder/\(self.myklasse2)").observe(.childAdded, with: { (snapshot2) in
+                    
+                    
+                    if let item2 = snapshot2.value as? String{
+                        self.Classmembers.insert(item2, at: 0)   //.append(item2)
+                        self.tableView.reloadData()
+                        
+                    }
+                }
+                    
+                    
+                )
+                print(self.Classmembers)
+                self.tableView.reloadData()
+            
+                self.handle2 = self.ref2?.child("KlassenMitglieder/\(self.myklasse2)").observe(.childRemoved, with: { (snapshot) in
+                    
+                    
+                    if let item2 = snapshot.value as? String{
+                        
+                        if let i = self.Classmembers.index(where: {$0 == (item2) }) {
+                            self.Classmembers.remove(at: i)
+                            self.tableView.reloadData()
+                        }
+                        
+                    }
+                })
+                
+                print(self.Classmembers)
+
+            
+            
+            
+            }
+        })
+        
+        
     }
    
     override func viewWillAppear(_ animated: Bool) {
