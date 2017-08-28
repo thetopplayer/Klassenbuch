@@ -21,11 +21,14 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
     var myName = String()
     var myKlasse = String()
     var myEmail = String()
+    var SemesterPicker = UIPickerView()
+    
+    
+    @IBOutlet weak var SaveButton: UIBarButtonItem!
     
     @IBOutlet weak var KlassenNamenTextLabel: UITextField!
-    @IBOutlet weak var SemesterLabel: UILabel!
+    @IBOutlet weak var SemesterTextField: UITextField!
    
-        @IBOutlet weak var SemesterPicker: UIPickerView!
     
     
     override func viewDidLoad() {
@@ -35,15 +38,17 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         
         print(myKlasse)
         KlassenNamenTextLabel.delegate = self
-        Klasse = "\(KlassenNamenTextLabel.text!)\(SemesterLabel.text!)"
+        Klasse = "\(KlassenNamenTextLabel.text!)\(SemesterTextField.text!)"
         
         // Picker Delegates & Datasource
         SemesterPicker.delegate = self
         SemesterPicker.dataSource = self
+        SemesterTextField.delegate = self
+        SemesterTextField.inputView = SemesterPicker
         //SchuljahrTextLabel.text = SchuljahrString
         
-        SemesterLabel.text  = ""
-        SemesterLabel?.numberOfLines = 0
+       // SemesterTextField.text  = ""
+        //SemesterLabel?.numberOfLines = 0
         
         // Left Swipe
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
@@ -55,13 +60,18 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         ref = FIRDatabase.database().reference()
         self.hideKeyboardWhenTappedAround()
         //self.dismissKeyboard()
-        
+        SaveButton.isEnabled = false
     
     
     
     
     }
 
+    
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -71,12 +81,12 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 2
     }
 
     let Semester = ["HS 17-18","FS18","HS 18-19","FS19","HS 19-20"]
@@ -99,7 +109,7 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         
         
             
-            SemesterLabel.text = Semester[row]
+            SemesterTextField.text = Semester[row]
         
     
         
@@ -182,7 +192,7 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
      
  
         
-       Klasse = "\(KlassenNamenTextLabel.text!)\(SemesterLabel.text!)"
+       Klasse = "\(KlassenNamenTextLabel.text!)\(SemesterTextField.text!)"
       
         
         
@@ -195,7 +205,8 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         
         self.ref?.child("users/Schüler").child(uid!).updateChildValues(["Klasse" : Klasse]) //setValue(["Klasse": Klasse])
        
-        
+        UserDefaults.standard.set(true, forKey: "StudenthasClass")
+        UserDefaults.standard.synchronize()
         
         
         ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -224,7 +235,15 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
     }
     
     
-   
+    // Save Button Enabled
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if (SemesterTextField.text?.isEmpty)! || (KlassenNamenTextLabel.text?.isEmpty)! {
+            SaveButton.isEnabled = false
+        } else {
+            SaveButton.isEnabled = true
+        }
+    }
 
 }
 

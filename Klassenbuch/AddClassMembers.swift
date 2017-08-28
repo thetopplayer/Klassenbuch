@@ -28,6 +28,7 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var ClassNameLabel: UILabel!
     @IBOutlet weak var VornameTextField: UITextField!
     @IBOutlet weak var NachnameTextField: UITextField!
+    @IBOutlet weak var hinzufügenButton: UIButton!
     
   
     
@@ -154,7 +155,82 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
+    @IBAction func CancelClassSetup(_ sender: Any) {
+        
+        //Check eb d Klass doppelt isch
+        
+        
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+       // let selectedClass = self.ClassList[indexPath.row]
+        
+        let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+        
+        let titleAttrString = NSMutableAttributedString(string: "Wollen Sie wirklich abbrechen und diese Klasse somit Löschen?", attributes: titleFont)
+        
+        
+        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+        
+        
+        
+        
+        let logoutAction = UIAlertAction(title: "Ja", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+            
+            self.ref2?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if let item = snapshot.value as? String{
+                    
+                    self.myClass = item
+                    
+                    UserDefaults.standard.set(false, forKey: "StudenthasClass")
+                    UserDefaults.standard.synchronize()
+                    // Delete in KlassenListe NED FERtIG!
+                   // self.ref2?.child("users").child("Klassen").removeValue()                  // Delete in KlassenmitgliederListe
+                    self.ref2?.child("KlassenMitglieder").child(self.myClass).removeValue()
+                    // Delete User Data
+                    self.ref2?.child("users").child("Schüler").child(uid!).child("Klasse").removeValue()
+                    
+                    self.ref2?.child("KlassenMitglieder/\(self.myClass)").removeValue()
+                }
+            })
 
+            
+            //  undwind to Klasseliste
+            self.performSegue(withIdentifier: "CancelClassCreation", sender: self)
+ 
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+            print("Cancel Pressed")
+        }
+        
+        actionSheet.addAction(logoutAction)
+        
+        actionSheet.addAction(cancelAction)
+        
+        self.present(actionSheet, animated: true, completion: nil)
+        
 
+        
+        
+        
+        
+        
+        
+    }
+
+    // Save Button Enabled
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if (VornameTextField.text?.isEmpty)! || (NachnameTextField.text?.isEmpty)! {
+            hinzufügenButton.isEnabled = false
+        } else {
+            hinzufügenButton.isEnabled = true
+        }
+    }
 
 }

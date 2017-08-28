@@ -20,6 +20,9 @@ class Select_Class: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UserDefaults.standard.set(false, forKey: "StudenthasClass")
+        UserDefaults.standard.synchronize()
 
         tableView.separatorStyle = .none
     ref = FIRDatabase.database().reference()
@@ -83,22 +86,56 @@ class Select_Class: UITableViewController {
         
         cell.textLabel?.text = ClassList[indexPath.row]
         cell.textLabel?.numberOfLines = 0
+        cell.accessoryType = .disclosureIndicator
        
         
         
         return cell
     }
-    
-   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        
-    }
-    
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-       
-    }
+ 
  
     @IBAction func cancelClassErsellen (_ segue:UIStoryboardSegue) {
+    
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        let selectedClass = self.ClassList[indexPath.row]
+        
+        let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+        
+        let titleAttrString = NSMutableAttributedString(string: "Sind Sie wirklich die Schüler der \(selectedClass) Klasse?", attributes: titleFont)
+        
+        
+        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+        
+        
+        
+        
+        let logoutAction = UIAlertAction(title: "Ja", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+      
+            self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["Klasse": selectedClass])
+            UserDefaults.standard.set(true, forKey: "StudenthasClass")
+            UserDefaults.standard.synchronize()
+            self.performSegue(withIdentifier: "ClassAddedStudent", sender: self)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+            print("Cancel Pressed")
+        }
+        
+        actionSheet.addAction(logoutAction)
+        
+        actionSheet.addAction(cancelAction)
+        
+        self.present(actionSheet, animated: true, completion: nil)
+
     }
     
 }

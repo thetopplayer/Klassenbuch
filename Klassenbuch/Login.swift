@@ -181,13 +181,37 @@ class Login: UIViewController, UITextFieldDelegate {
     
     
     func loggin(){
-    
+
         
         FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
             
             if authuser != nil {
                 if UserDefaults.standard.bool(forKey: "isStudent") == true {
+                    
+                    
+                    if UserDefaults.standard.bool(forKey: "StudenthasClass") == true {
+                    
                     self.performSegue(withIdentifier: "HomePageSegue", sender: self)
+                        print("Student has Class")
+                    }
+                    
+                    else if UserDefaults.standard.bool(forKey: "StudenthasClass") == false {
+                    
+                   
+                        // Perfrom Segue go to ClassSelection
+                    
+                        self.performSegue(withIdentifier: "GoToSelectClass", sender: self)
+                        print("Student has Class")
+                    }
+                    
+  
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 } else if UserDefaults.standard.bool(forKey: "isTeacher") == true {
                     self.performSegue(withIdentifier: "LehrerHP", sender: self)
                 }
