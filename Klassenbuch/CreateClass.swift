@@ -274,7 +274,7 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
     // Save Button Enabled
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        if (SemesterTextField.text?.isEmpty)! || (KlassenNamenTextLabel.text?.isEmpty)! {
+        if (SemesterTextField.text?.isEmpty)! || (KlassenNamenTextLabel.text?.isEmpty)! || (SemesterTextField.text == " ") || (KlassenNamenTextLabel.text == " ") {
             SaveButton.isEnabled = false
         } else {
             SaveButton.isEnabled = true

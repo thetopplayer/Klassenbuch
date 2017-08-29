@@ -320,7 +320,7 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
     // Save Button Enabled
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        if (VornameTextField.text?.isEmpty)! || (NachnameTextField.text?.isEmpty)! {
+        if (VornameTextField.text?.isEmpty)! || (NachnameTextField.text?.isEmpty)! || (VornameTextField.text == " ") || (NachnameTextField.text == " "){
             hinzufügenButton.isEnabled = false
         } else {
             hinzufügenButton.isEnabled = true
