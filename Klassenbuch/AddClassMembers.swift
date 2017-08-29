@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     
     //Variables
@@ -30,17 +30,36 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var VornameTextField: UITextField!
     @IBOutlet weak var NachnameTextField: UITextField!
     @IBOutlet weak var hinzufügenButton: UIButton!
+    @IBOutlet weak var SchülerAnzahlLabel: UILabel!
     
-  
+    override func viewWillAppear(_ animated: Bool) {
+        let BGimage = #imageLiteral(resourceName: "Background")
+        UINavigationBar.appearance().backgroundColor = UIColor(red:0.08, green:0.17, blue:0.41, alpha:1.0)
+        let backgroundImage = UIImageView(image: BGimage)
+        self.tableView.backgroundView = backgroundImage
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = backgroundImage.bounds
+        
+        backgroundImage.addSubview(blurView)}
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        view.backgroundColor = UIColor(white:0.0, alpha:0.0)
+//        view.isOpaque = false
+        
         ClassNameLabel.text = myClass
         self.hideKeyboardWhenTappedAround()
         
+        hinzufügenButton.layer.cornerRadius = 5
         tableView.delegate = self
         tableView.dataSource = self
+        VornameTextField.delegate = self
+        NachnameTextField.delegate = self
+        
+       //SchülerAnzahlLabel.text = "\(Classmembers.count) Schüler"
+        
         
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
@@ -51,14 +70,17 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             if let item = snapshot.value as? String{
                 self.myClass = item
+            
                 
 
         self.ref2?.child("KlassenMitglieder/\(self.myClass)").observe(.childAdded, with: { (snapshot2) in
             
             
             if let item2 = snapshot2.value as? String{
-                self.Classmembers.insert(item2, at: 0)   //.append(item2)
+                self.Classmembers.insert(item2, at: 0)
+               //.append(item2)
                 self.tableView.reloadData()
+                self.SchülerAnzahlLabel.text = "\(self.Classmembers.count) Schüler"
                 
             }
         }
@@ -78,13 +100,21 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
                 if let i = self.Classmembers.index(where: {$0 == (item2) }) {
                     self.Classmembers.remove(at: i)
                     self.tableView.reloadData()
+                       self.SchülerAnzahlLabel.text = "\(self.Classmembers.count) Schüler"
                 }
                 
             }
         })
     }
 
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == VornameTextField{
+          
+        NachnameTextField.becomeFirstResponder()
+          
+        }
+        return true
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -103,7 +133,7 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         if VornameTextField.text != "" || NachnameTextField.text != "" {
         
-            
+         VornameTextField.becomeFirstResponder()
             
         ref2?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
                 
@@ -145,6 +175,7 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         cell.textLabel?.text = Classmembers[indexPath.row]
+        cell.contentView.alpha = 0.8
         
 
         return cell
