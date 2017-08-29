@@ -142,11 +142,40 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
             
          // self.ref2?.child("KlassenMitglieder/\(self.myClass)").updateChildValues([self.Klasse : self.Klasse])
             
-         self.ref2?.child("KlassenMitglieder/\(self.myClass)").updateChildValues([self.Name.lowercased() : self.Name.lowercased()])
-            
-            
-           
-                    print("uploaded")
+         
+                    
+                    self.ref2 = FIRDatabase.database().reference()
+                    
+                    
+                    self.ref2?.child("KlassenMitglieder/\(self.myClass)").observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+                        if snapshot.hasChild(self.Name.lowercased()){
+                            
+                            print("true member exist")
+                            // Error Message
+                            
+                            let alertController = UIAlertController(title: "Klassenmitglied bereits hinzugefügt!", message: "Die Person die du hinzufügen wolltest ist bereits in deiner Klasse. Falls du die Person entfernen möchtest kannst du sie Löschen!", preferredStyle: .alert)
+                            
+                            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+                                
+                                self.VornameTextField.text = ""
+                                self.NachnameTextField.text = ""
+                                
+                            }))
+                            self.present(alertController, animated: true, completion: nil)
+                            
+                            
+                        }else{
+                            
+                            print("Member doesn't exist")
+                            // Add user
+                             self.ref2?.child("KlassenMitglieder/\(self.myClass)").updateChildValues([self.Name.lowercased() : self.Name.lowercased()])
+                        }
+                        
+                        
+                    })
+                    
+      
             
             self.VornameTextField.text = ""
             self.NachnameTextField.text = ""

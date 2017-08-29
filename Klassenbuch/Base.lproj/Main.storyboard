@@ -1706,7 +1706,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HeU-qd-8Qc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="aTw-he-nxR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3769.5652173913045" y="1995.6521739130437"/>
+            <point key="canvasLocation" x="3826" y="1996"/>
         </scene>
         <!--Add Class Members-->
         <scene sceneID="g0t-vQ-TZM">

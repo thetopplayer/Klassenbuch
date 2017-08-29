@@ -17,6 +17,7 @@ class Select_Class: UITableViewController {
     var ClassList : [String] = []
     var handle : FIRDatabaseHandle?
     var ref: FIRDatabaseReference?
+    var SchülerName = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,22 +121,78 @@ class Select_Class: UITableViewController {
         
         let logoutAction = UIAlertAction(title: "Ja", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
       
-            self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["Klasse": selectedClass])
-            UserDefaults.standard.set(true, forKey: "StudenthasClass")
-            UserDefaults.standard.synchronize()
-            self.performSegue(withIdentifier: "ClassAddedStudent", sender: self)
+           
+            // Check ischer Student vo de Klass???
+            
+            self.ref = FIRDatabase.database().reference()
+            
+   
+          self.ref?.child("users").child("Schüler").child(uid!).child("name").observe(.value, with: { (snapshot) in
+                
+                
+                if let item3 = snapshot.value as? String{
+                    
+                    
+                    self.SchülerName = item3
+                    
+      
+            
+
+            
+           self.ref?.child("KlassenMitglieder").child(selectedClass).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if snapshot.hasChild(self.SchülerName){
+                    
+                    print("Is a Class member")
+                    
+                    
+                    self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["Klasse": selectedClass])
+                    UserDefaults.standard.set(true, forKey: "StudenthasClass")
+                    UserDefaults.standard.synchronize()
+                    self.performSegue(withIdentifier: "ClassAddedStudent", sender: self)
+          
+                    
+                }else{
+                    
+                    print("Isn't a Class member")
+                    // error Message hey in verbindig trette mit dem und dem
+                    
+                    let alertController = UIAlertController(title: "Du bist nicht Mitglied dieser Klasse!", message: "Wie es aussieht bist du nicht Mitglied dieser Klasse. Melde dich bei einem deiner Kollegen, dass sie dich doch in die Klasse hinzufügen sollen!", preferredStyle: .alert)
+                    
+                    alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action: UIAlertAction!) in
+                      
+                        
+                        
+                    }))
+                    self.present(alertController, animated: true, completion: nil)
+
+                    
+                    
+                    
+                }
+                
+                
+            })
+     
+        }
+ 
+   
+            })
         }
         
+        
+    
+    
         let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
             print("Cancel Pressed")
         }
-        
         actionSheet.addAction(logoutAction)
         
         actionSheet.addAction(cancelAction)
         
         self.present(actionSheet, animated: true, completion: nil)
+    }
 
     }
-    
-}
+
+

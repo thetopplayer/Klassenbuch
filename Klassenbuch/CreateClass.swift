@@ -189,67 +189,84 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
     @IBAction func SaveClass(_ sender: Any) {
         
        
-     
+     // Check eb es d Klass scho git
  
-        
        Klasse = "\(KlassenNamenTextLabel.text!)\(SemesterTextField.text!)"
-      
-       self.ref?.child("users/Klassen").updateChildValues([self.Klasse : self.Klasse])
         
         
-        let user = FIRAuth.auth()?.currentUser
-        let uid = user?.uid
-
-        // Upload to Firebase
-        //self.ref?.child("users/Klassen").childByAutoId().setValue(Klasse)
-        
-//        ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
-//            
-//            if let item = snapshot.value as? String{
-//                self.myName = item
-//                
-//                
-//        self.ref?.child("users/Klassen").childByAutoId().setValue([self.Klasse : self.Klasse])
-//                
-//                
-//            }
-//        })
-        
-        
-        
-  
-        
-        self.ref?.child("users/Schüler").child(uid!).updateChildValues(["Klasse" : Klasse]) //setValue(["Klasse": Klasse])
-       
-        UserDefaults.standard.set(true, forKey: "StudenthasClass")
-        UserDefaults.standard.synchronize()
-        
-        
-        ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child("users/Klassen").observeSingleEvent(of: .value, with: { (snapshot) in
             
-            if let item = snapshot.value as? String{
-                self.myName = item
-           
-            self.ref?.child("KlassenMitglieder/\(self.Klasse)").updateChildValues([self.myName.lowercased() : self.myName.lowercased()])
-           
+            if snapshot.hasChild(self.Klasse){
                 
-              //  self.ref2?.child("KlassenMitglieder/\(self.myClass)")
+                print("true Klasse exist")
+                print(self.Klasse)
+                
+                // Alert Controller Hey gnag zrug und grad au no en Segue zrug zu de Liste mit Klasse
+                
+                let alertController = UIAlertController(title: "Klasse existiert bereits!", message: "Die Klasse die du erstellen wolltest existiert bereits bitte, wähle die bereits existente Klasse aus!", preferredStyle: .alert)
+                
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+                    
+                     // Segue zrug
+                    self.performSegue(withIdentifier: "GoBAcktoClassSelection", sender: self)
+                   
+                
+                }))
+                self.present(alertController, animated: true, completion: nil)
+     
+            }else{
+                
+                print("false Klasse doesn't exist")
+                print(self.Klasse)
+                
+                self.ref?.child("users/Klassen").updateChildValues([self.Klasse : self.Klasse])
+                
+                
+                let user = FIRAuth.auth()?.currentUser
+                let uid = user?.uid
+                
+                // Upload to Firebase
+                //self.ref?.child("users/Klassen").childByAutoId().setValue(Klasse)
+                
+                //        ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
+                //
+                //            if let item = snapshot.value as? String{
+                //                self.myName = item
+                //
+                //
+                //        self.ref?.child("users/Klassen").childByAutoId().setValue([self.Klasse : self.Klasse])
+                //
+                //
+                //            }
+                //        })
+                
+ 
+                self.ref?.child("users/Schüler").child(uid!).updateChildValues(["Klasse" : self.Klasse]) //setValue(["Klasse": Klasse])
+                
+                UserDefaults.standard.set(true, forKey: "StudenthasClass")
+                UserDefaults.standard.synchronize()
+                
+                
+                self.ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    if let item = snapshot.value as? String{
+                        self.myName = item
+                        
+                        self.ref?.child("KlassenMitglieder/\(self.Klasse)").updateChildValues([self.myName.lowercased() : self.myName.lowercased()])
+                        
+                        
+                        //  self.ref2?.child("KlassenMitglieder/\(self.myClass)")
+                    }
+                })
 
-            
+                // Name scho ineglodet in array für nechst view mit klassemitglieder
+                
+                
+                self.performSegue(withIdentifier: "NewClassMembers", sender: self)
+         
             }
+            
         })
-        
-        
-        
-        
-        
-        
-        
-        
-        // Name scho ineglodet in array für nechst view mit klassemitglieder
-        
-      
-        self.performSegue(withIdentifier: "NewClassMembers", sender: self)
         
     }
     
@@ -264,7 +281,13 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         }
     }
 
+    @IBAction func cancelAddUser (_ segue:UIStoryboardSegue) {
+        
+    }
 }
+
+
+
 
 struct MyVariables {
     static var myfuckingklass = "hhh"
