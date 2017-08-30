@@ -14,9 +14,14 @@ class LehrerKlassenauswahl: UITableViewController {
     var ClassList : [String] = []
     var handle : FIRDatabaseHandle?
     var ref: FIRDatabaseReference?
+    var LehrerName = String()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UserDefaults.standard.set(false, forKey: "TeacherhasClass")
+        UserDefaults.standard.synchronize()
         
         tableView.separatorStyle = .none
         ref = FIRDatabase.database().reference()
@@ -108,9 +113,94 @@ class LehrerKlassenauswahl: UITableViewController {
         let logoutAction = UIAlertAction(title: "Ja", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
            
 
-            self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["Klasse": selectedClass])
+            // Check het die gwünscht Klass überhaupt Lehrer Modus agstellt?
+   
             
-            self.performSegue(withIdentifier: "Classsynced", sender: self)
+            self.ref?.child("users").child("KlassenEinstellungen").child(selectedClass).child("HatKlassenLehrer").observe(.value, with: { (snapshot) in
+                
+                
+          
+                
+                    
+                    if snapshot.value as? Bool == true {
+                       
+                        print("Klasse hat einen Klassenlehrer Modus enabled")
+                        // Check hei isch es au mini Klass
+     
+                        // Get name of teacher
+                        self.ref?.child("users").child("Lehrer").child(uid!).child("name").observe(.value, with: { (snapshot) in
+                            
+                            
+                            if let item3 = snapshot.value as? String{
+                                
+                                
+                                self.LehrerName = item3
+                                
+        
+                        
+                        self.ref?.child("users").child("KlassenEinstellungen").child(selectedClass).child("KlassenLehrer").observe(.value, with: { (snapshot) in
+                            
+                            if snapshot.value as? String == item3{
+                            
+                                self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["Klasse": selectedClass])
+                                
+                                self.performSegue(withIdentifier: "Classsynced", sender: self)
+                                UserDefaults.standard.set(true, forKey: "TeacherhasClass")
+                                UserDefaults.standard.synchronize()
+                                print("Yes this is the teachers Class")
+                                
+                            }else{
+                                
+                                print("NO this isn't the Teachers Class")
+                                let alertController = UIAlertController(title: "Klasse hat keinen sie nicht als Lehrer ausgewählt!", message: "Die Klasse hat den Lehrermodus angeschaltet, aber sie nicht als Klassenlehrer ausgewählt. Falls Sie der Klassenlehrer sind gehen sie auf den Klassenadministrator zu!", preferredStyle: .alert)
+                                
+                                alertController.addAction(UIAlertAction(title: "OK", style: .default , handler: { (action: UIAlertAction!) in
+                                    
+                                }))
+                                self.present(alertController, animated: true, completion: nil)
+                            }
+                            
+                            
+                        })
+                            }
+                        }
+    
+                        )
+    
+                    
+                    } else  {
+                      print("Klasse hat keinen KlassenlehreModus enabled")
+                        
+                        let alertController = UIAlertController(title: "Klasse hat keinen LeherModus aktiviert!", message: "Die Klasse hat keine Lehrermodus angeschaltet, falls Sie der Klassenlehrer sind gehen sie auf den Klassenadministrator zu!", preferredStyle: .alert)
+                        
+                        alertController.addAction(UIAlertAction(title: "OK", style: .default , handler: { (action: UIAlertAction!) in
+    
+                        }))
+                        self.present(alertController, animated: true, completion: nil)
+
+                        
+                        
+                        
+                    }
+//                    snapshot.value = "true"
+                    
+                }
+                    
+//                }else{
+//                    
+//                  
+//                }
+                
+                
+            )
+            
+    
+            
+                // Check binich au die usgewählti Klasse Lehrperson
+            
+            
+            
+        
         }
         
         let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in

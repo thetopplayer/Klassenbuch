@@ -106,7 +106,7 @@
             )
             
             ref = FIRDatabase.database().reference()
-            handle = ref?.child("users").child("Schüler").child(uid!).child("name").observe(.value, with: { (snapshot) in
+            handle = ref?.child("users").child("Lehrer").child(uid!).child("name").observe(.value, with: { (snapshot) in
                 
                 
                 if let item3 = snapshot.value as? String{

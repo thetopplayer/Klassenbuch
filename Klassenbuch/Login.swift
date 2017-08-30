@@ -207,16 +207,23 @@ class Login: UIViewController, UITextFieldDelegate {
                         print("Student has Class")
                     }
                     
-  
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+   
                 } else if UserDefaults.standard.bool(forKey: "isTeacher") == true {
-                    self.performSegue(withIdentifier: "LehrerHP", sender: self)
+                    
+                    if UserDefaults.standard.bool(forKey: "TeacherhasClass") == true {
+                        
+                       self.performSegue(withIdentifier: "LehrerHP", sender: self)
+                        print("Teacher has Class")
+                    }
+                        
+                    else if UserDefaults.standard.bool(forKey: "TeacherhasClass") == false {
+                        
+                        
+                        // Perfrom Segue go to ClassSelection
+                        
+                        self.performSegue(withIdentifier: "TeacherNeedsClass", sender: self)
+                        print("Teacher has Class")
+                    }
                 }
        
             }else {
