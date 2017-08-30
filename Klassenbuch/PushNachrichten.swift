@@ -176,7 +176,9 @@ class PushNachrichten: UITableViewController {
             }}
     }
     @IBAction func fuenfteKlasse(_ sender: UISwitch) {
-         defaults.set(sender.isOn, forKey: fuenfteKlasse)
+        
+        defaults.set(sender.isOn, forKey: fuenfteKlasse)
+        
         if Switch5Klasse.isOn {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
              FIRMessaging.messaging().subscribe(toTopic: "/topics/Klasse5")

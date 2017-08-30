@@ -14,32 +14,68 @@ class KlassenUserInfo: UITableViewController {
     // Variables
     var handle : FIRDatabaseHandle?
     var ref: FIRDatabaseReference?
-
-    
+    var myKlasse = String()
+    let defaults = UserDefaults.standard
+    let allgemeineInfos =   "AllgemeineInfos"
     
     //Outlets
     @IBOutlet weak var KlassenLabel: UILabel!
     @IBOutlet weak var NameLabel: UILabel!
     @IBOutlet weak var EmailLabel: UILabel!
     @IBOutlet weak var KlassenlehrerLabel: UILabel!
-    
-    
+    @IBOutlet weak var KlassenLehrerCell: UITableViewCell!
+    @IBOutlet weak var KlassenMitgliederCell: UITableViewCell!
+    @IBOutlet weak var KlassenLehrerLabel: UILabel!
+    @IBOutlet weak var LehrerModusSwitch: UISwitch!
+    @IBOutlet weak var LehrerModusCell: UITableViewCell!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+       
+
+        self.checkforAdmin()
         self.getInfos()
         KlassenLabel.numberOfLines = 0
         NameLabel.numberOfLines = 0
         EmailLabel.numberOfLines = 0
+
+        if let fixallgemeininfos = defaults.value(forKey: allgemeineInfos){
+            LehrerModusSwitch.isOn = fixallgemeininfos as! Bool
+        }
+     
+        
+  
 
         // Left Swipe
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .left
         
         view.addGestureRecognizer(edgePan)
+        
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        
+        ref?.child("users").child("Schüler").child(uid!).child("Admin").observe(.value, with: { (snapshot) in
+            
+            if snapshot.value as? String == "true" {
+                
+                
+                //                UserDefaults.standard.set(true, forKey: "isAdmin")
+                //                UserDefaults.standard.synchronize()
+                print("is admin2")
+                self.KlassenLehrerCell.isUserInteractionEnabled = true
+                self.KlassenMitgliederCell.isUserInteractionEnabled = true
+                self.LehrerModusSwitch.isUserInteractionEnabled = true
+                
+                
+            }
+        })
+        
+    }
     
         
     override func didReceiveMemoryWarning() {
@@ -56,9 +92,10 @@ class KlassenUserInfo: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 6
     }
 
+    
     
     func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         
@@ -67,6 +104,73 @@ class KlassenUserInfo: UITableViewController {
             
         }
     }
+    
+    
+    
+    
+    @IBAction func LehrerSwitchChanged(_ sender: UISwitch) {
+        
+        defaults.set(sender.isOn, forKey: allgemeineInfos)
+        
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        if LehrerModusSwitch.isOn == true {
+        
+       KlassenLehrerCell.isUserInteractionEnabled = true
+           
+            self.ref?.child("users").child("Schüler").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
+                
+                
+                if let item3 = snapshot.value as? String{
+                    
+                    
+                    self.myKlasse = item3
+    
+                    self.ref?.child("users").child("KlassenEinstellungen").child(self.myKlasse).updateChildValues(["HatKlassenLehrer": true])
+                }})
+            
+        } else if LehrerModusSwitch.isOn == false {
+        
+      KlassenLehrerCell.isUserInteractionEnabled = false
+            
+            self.ref?.child("users").child("Schüler").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
+                
+                
+                if let item3 = snapshot.value as? String{
+                    
+                    
+                    self.myKlasse = item3
+                    
+                    self.ref?.child("users").child("KlassenEinstellungen").child(self.myKlasse).updateChildValues(["HatKlassenLehrer": false])
+                }})
+        
+        }
+        
+    }
+    
+    
+
+    func checkforAdmin(){
+        
+    
+        
+        
+        
+//        if UserDefaults.standard.bool(forKey: "isAdmin") == true {
+//        
+//            print("isadmin")
+//          
+//        
+//        } else if UserDefaults.standard.bool(forKey: "isAdmin") == false {
+//        
+//           
+//            print("isn'tadmin")
+//        }
+        
+    
+    }
+    
     
     
     func getInfos(){
@@ -78,11 +182,25 @@ class KlassenUserInfo: UITableViewController {
         handle = ref?.child("users").child("Schüler").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
             
             
-            if let item1 = snapshot.value as? String{
+            if let MeineKlasse = snapshot.value as? String{
                 
                 
-               self.KlassenLabel.text = item1
-                
+               self.KlassenLabel.text = MeineKlasse
+               
+           
+                self.ref?.child("users").child("KlassenEinstellungen").child(MeineKlasse).child("KlassenLehrer").observe(.value, with: { (snapshot) in
+                    
+                    
+                    if let item3 = snapshot.value as? String{
+                        
+                        
+                        self.KlassenLehrerLabel.text = item3
+                        
+                    }
+                }
+                    
+                    
+                )
             }
         }
             
@@ -104,6 +222,9 @@ class KlassenUserInfo: UITableViewController {
             
         )
         
+        
+
+        
         ref = FIRDatabase.database().reference()
         handle = ref?.child("users").child("Schüler").child(uid!).child("name").observe(.value, with: { (snapshot) in
             
@@ -118,7 +239,12 @@ class KlassenUserInfo: UITableViewController {
             
             
         )
+        
+      
     }
     
-  
+    @IBAction func backfromTeacherselection (_ segue:UIStoryboardSegue) {
+    }
+    @IBAction func backfromStudentselection (_ segue:UIStoryboardSegue) {
+    }
 }

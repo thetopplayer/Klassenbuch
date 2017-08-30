@@ -55,9 +55,15 @@ class Hausaufgaben: UIViewController, UITabBarDelegate, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
+           
+
+    
+    
+    
         //Setup EmtyState
-       // self.EmptyScreen()
-        
+        self.EmptyScreen()
+//        self.CheckIfUsesIsAdmin()
+    
         self.RateApp()
         
         //Setup Onboarding
@@ -489,7 +495,16 @@ class Hausaufgaben: UIViewController, UITabBarDelegate, UITableViewDelegate, UIT
     @IBAction func saveHausaufgaben (_ segue:UIStoryboardSegue) {
     }
     
+    func CheckIfUsesIsAdmin(){
     
-    
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        print("xyxcsdcadsfadsf")
+        UserDefaults.standard.set(false, forKey: "isAdmin")
+        UserDefaults.standard.synchronize()
+        print("not admin1")
 
+        
+        
+    }
 }

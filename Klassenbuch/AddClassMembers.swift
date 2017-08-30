@@ -41,7 +41,8 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.frame = backgroundImage.bounds
         
-        backgroundImage.addSubview(blurView)}
+        backgroundImage.addSubview(blurView)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

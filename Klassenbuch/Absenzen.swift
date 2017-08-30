@@ -22,6 +22,10 @@ struct AbsenzenStruct3 {
 class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBarDelegate{
     
     
+    // Outlets
+    @IBOutlet weak var AddAbsenzButton: UIBarButtonItem!
+    
+    
     // Variables
     
    var data = [Int: [AbsenzenStruct3]]() // Date: Homework Object
@@ -34,11 +38,12 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     var AbsenzDatumDate: String?
     
     var myName = String()
-    let myKlasse = String()
+    var myKlasse = String()
     let myEmail = String()
     
     override func viewDidLoad() {
        
+        self.checkIfTeacherModeisOff()
         // Set the EmptyState
         self.EmptyScreen()
         
@@ -59,6 +64,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         // Listen for added and removed
         self.databaseListener()
         
+        AddAbsenzButton.isEnabled = false
         
     }
     
@@ -450,6 +456,45 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         }
     }
 
+    
+    func checkIfTeacherModeisOff(){
+    
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        ref = FIRDatabase.database().reference()
+        ref?.child("users").child("Schüler").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
+            
+            
+            if let checkingClass = snapshot.value as? String{
+                
+                
+                self.myKlasse = checkingClass
+
+        self.ref?.child("users").child("KlassenEinstellungen").child(checkingClass).child("HatKlassenLehrer").observe(.value, with: { (snapshot) in
+
+            if snapshot.value as? Bool == true {
+                
+                
+            
+               self.AddAbsenzButton.isEnabled = false
+                
+            } else if snapshot.value as? Bool == false{
+            
+                self.AddAbsenzButton.isEnabled = true
+            
+            }
+        }
+        )
+        
+            }
+        }
+            
+            
+        )
+
+    
+    }
   
 }
 /* compare dates

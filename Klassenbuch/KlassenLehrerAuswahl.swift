@@ -106,7 +106,7 @@ class KlassenLehrerAuswahl: UITableViewController {
                     // Settich uploade d Email, de Name oder de Name us em Lehrer Name Array?
                     self.ref?.child("users").child("KlassenEinstellungen").child(self.myKlasse).updateChildValues(["KlassenLehrer": SelectedTeacher])
                     
-                    
+                    self.performSegue(withIdentifier: "backfromTeacherselectionSegue", sender: self)
                
                 
                 

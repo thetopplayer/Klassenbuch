@@ -225,21 +225,7 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
                 let user = FIRAuth.auth()?.currentUser
                 let uid = user?.uid
                 
-                // Upload to Firebase
-                //self.ref?.child("users/Klassen").childByAutoId().setValue(Klasse)
-                
-                //        ref?.child("users").child("Schüler").child(uid!).child("name").observeSingleEvent(of: .value, with: { (snapshot) in
-                //
-                //            if let item = snapshot.value as? String{
-                //                self.myName = item
-                //
-                //
-                //        self.ref?.child("users/Klassen").childByAutoId().setValue([self.Klasse : self.Klasse])
-                //
-                //
-                //            }
-                //        })
-                
+               self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["Admin": "true"])
  
                 self.ref?.child("users/Schüler").child(uid!).updateChildValues(["Klasse" : self.Klasse]) //setValue(["Klasse": Klasse])
                 
@@ -253,7 +239,7 @@ class CreateClass: UITableViewController, UIPickerViewDelegate, UIPickerViewData
                         self.myName = item
                         
                         self.ref?.child("KlassenMitglieder/\(self.Klasse)").updateChildValues([self.myName.lowercased() : self.myName.lowercased()])
-                        
+                        self.ref?.child("users").child("KlassenEinstellungen").child(self.Klasse).updateChildValues(["Admin": self.myName.lowercased()])
                         
                         //  self.ref2?.child("KlassenMitglieder/\(self.myClass)")
                     }
