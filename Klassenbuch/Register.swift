@@ -27,7 +27,7 @@ class Register: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var Form: UIImageView!
     @IBOutlet weak var EyeButton: UIButton!
     @IBOutlet weak var EyeButton2: UIButton!
-    
+    @IBOutlet weak var RegisterLabel: UILabel!
     
     // Variables    
     var effect: UIVisualEffect!
@@ -38,6 +38,7 @@ class Register: UIViewController, UITextFieldDelegate {
     var RegisterString2 = "@kslzh.ch"
     var RegisterString = String()
     var Namen = String()
+    var Funktion = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +77,31 @@ class Register: UIViewController, UITextFieldDelegate {
         ref = FIRDatabase.database().reference()
         
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if Funktion == "Schüler" {
+            
+            self.loadStudent()
+            
+        } else if Funktion == "Lehrer" {
+            
+            self.loadTeacher()
+        }
+        
+    }
+    
+    func loadStudent(){
+        print("Student")
+    
+        RegisterLabel.text = "Schüler Registration"
+    }
+    
+    func loadTeacher(){
+    print("Teacher")
+        RegisterLabel.text = "Lehrer Registration"
+    
     }
     
     // Next Button Klicked Textfield new First Responder
@@ -256,10 +282,10 @@ class Register: UIViewController, UITextFieldDelegate {
                         
                         let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
                       
-                            self.setupUserinDatabase()
-                         
-                           self.performSegue(withIdentifier: "SyncClass", sender: self)
-                            
+                           
+ 
+                            self.CheckWhotoSetup()
+         
 
                         }
                         alert.addAction(action)
@@ -327,13 +353,41 @@ class Register: UIViewController, UITextFieldDelegate {
     
     // Write Users to Database
     
-    func setupUserinDatabase(){
+    
+    func CheckWhotoSetup(){
+    
+        if Funktion == "Schüler"{
+        
+        setupStudentinDatabase()
+        self.performSegue(withIdentifier: "SyncClass", sender: self)
+        } else if Funktion == "Lehrer"{
+        
+        setupTeacherinDatabase()
+        self.performSegue(withIdentifier: "KlassenLehrereinrichten", sender: self)
+        }
+    
+    }
+    
+    func setupStudentinDatabase(){
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["email": RegisterString])
         self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["name": Namen.lowercased()])
-       // self.ref?.child("UID").child(uid!).updateChildValues(["funktion": "Schüler"])
+        self.ref?.child("users").child("UIDs").child(uid!).updateChildValues(["function": "Student"])
+        
         UserDefaults.standard.set(true, forKey: "isStudent")
+        UserDefaults.standard.synchronize()
+        
+    }
+    
+    func setupTeacherinDatabase(){
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["email": RegisterString])
+        self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["name": Namen.lowercased()])
+        self.ref?.child("users").child("UIDs").child(uid!).updateChildValues(["function": "Teacher"])
+        //self.ref?.child("UID").child(uid!).updateChildValues(["funktion": "Lehrer"])
+        UserDefaults.standard.set(true, forKey: "isTeacher")
         UserDefaults.standard.synchronize()
         
     }

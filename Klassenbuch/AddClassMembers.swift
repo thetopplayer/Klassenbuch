@@ -23,6 +23,7 @@ class AddClassMembers: UIViewController, UITableViewDelegate, UITableViewDataSou
     var Classlistt = ["asdsad","asasdsadd"]
     var handle2 : FIRDatabaseHandle?
     var ref2: FIRDatabaseReference?
+    var identifier = String()
     
     //Outlets
     @IBOutlet weak var tableView: UITableView!

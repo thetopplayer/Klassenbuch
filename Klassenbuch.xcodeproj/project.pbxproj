@@ -32,8 +32,6 @@
 		378465441E4F96EC0012CDBF /* Gif+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378465431E4F96EC0012CDBF /* Gif+Swift.swift */; };
 		3787ED9A1F51A3B400664523 /* KlassenUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3787ED991F51A3B400664523 /* KlassenUserInfo.swift */; };
 		3787ED9C1F53131800664523 /* LehrerAuswahl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3787ED9B1F53131800664523 /* LehrerAuswahl.swift */; };
-		3787ED9E1F53135700664523 /* LehrerLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3787ED9D1F53135700664523 /* LehrerLogin.swift */; };
-		3787EDA01F53136900664523 /* LehrerRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3787ED9F1F53136900664523 /* LehrerRegister.swift */; };
 		3787EDA21F5324DF00664523 /* LehrerKlassenauswahl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3787EDA11F5324DE00664523 /* LehrerKlassenauswahl.swift */; };
 		3787EDA41F533A1D00664523 /* LehrerKlassenundUserEinstellungen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3787EDA31F533A1D00664523 /* LehrerKlassenundUserEinstellungen.swift */; };
 		3787EDA61F533FF600664523 /* LehrerEinstellungen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3787EDA51F533FF600664523 /* LehrerEinstellungen.swift */; };
@@ -44,6 +42,7 @@
 		37AD16E01E2D4438002F41D9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16DF1E2D4438002F41D9 /* Login.swift */; };
 		37AD16E21E2D4448002F41D9 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16E11E2D4448002F41D9 /* Register.swift */; };
 		37BFF9911E09D14F00FDDFE6 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BFF9901E09D14F00FDDFE6 /* Tests.swift */; };
+		37D3C7F41F5897D200E1DA1E /* KlassenMitgliederadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3C7F31F5897D200E1DA1E /* KlassenMitgliederadding.swift */; };
 		37DC43381E3E3794009EAC4B /* Restore Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DC43371E3E3794009EAC4B /* Restore Password.swift */; };
 		37FB38261E227EBA0075C106 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB38251E227EBA0075C106 /* Extensions.swift */; };
 		37FCAE771DFD51C000789BFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FCAE761DFD51C000789BFF /* AppDelegate.swift */; };
@@ -120,8 +119,6 @@
 		378465431E4F96EC0012CDBF /* Gif+Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gif+Swift.swift"; sourceTree = "<group>"; };
 		3787ED991F51A3B400664523 /* KlassenUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KlassenUserInfo.swift; sourceTree = "<group>"; };
 		3787ED9B1F53131800664523 /* LehrerAuswahl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehrerAuswahl.swift; sourceTree = "<group>"; };
-		3787ED9D1F53135700664523 /* LehrerLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehrerLogin.swift; sourceTree = "<group>"; };
-		3787ED9F1F53136900664523 /* LehrerRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehrerRegister.swift; sourceTree = "<group>"; };
 		3787EDA11F5324DE00664523 /* LehrerKlassenauswahl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehrerKlassenauswahl.swift; sourceTree = "<group>"; };
 		3787EDA31F533A1D00664523 /* LehrerKlassenundUserEinstellungen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehrerKlassenundUserEinstellungen.swift; sourceTree = "<group>"; };
 		3787EDA51F533FF600664523 /* LehrerEinstellungen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehrerEinstellungen.swift; sourceTree = "<group>"; };
@@ -134,6 +131,7 @@
 		37AD16DF1E2D4438002F41D9 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		37AD16E11E2D4448002F41D9 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		37BFF9901E09D14F00FDDFE6 /* Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		37D3C7F31F5897D200E1DA1E /* KlassenMitgliederadding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KlassenMitgliederadding.swift; sourceTree = "<group>"; };
 		37DC43371E3E3794009EAC4B /* Restore Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Restore Password.swift"; sourceTree = "<group>"; };
 		37FB38251E227EBA0075C106 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		37FCAE731DFD51C000789BFF /* Klassenbuch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klassenbuch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,8 +192,6 @@
 				37578E2E1F504E3E00ACFA80 /* LehrerNewAbsenz.swift */,
 				37578E361F51548E00ACFA80 /* LehrerSchülerListe.swift */,
 				37578E381F516A1800ACFA80 /* StudentAbsenzen.swift */,
-				3787ED9D1F53135700664523 /* LehrerLogin.swift */,
-				3787ED9F1F53136900664523 /* LehrerRegister.swift */,
 				3787ED9B1F53131800664523 /* LehrerAuswahl.swift */,
 				3787EDA51F533FF600664523 /* LehrerEinstellungen.swift */,
 				3787EDA11F5324DE00664523 /* LehrerKlassenauswahl.swift */,
@@ -275,6 +271,7 @@
 				379B8C921EA4F87A00E27CBC /* PushNachrichten.swift */,
 				3787ED991F51A3B400664523 /* KlassenUserInfo.swift */,
 				371F8EF21F56A4D8003DF719 /* KlassenLehrerAuswahl.swift */,
+				37D3C7F31F5897D200E1DA1E /* KlassenMitgliederadding.swift */,
 			);
 			name = Informationen;
 			sourceTree = "<group>";
@@ -675,6 +672,7 @@
 				37FB38261E227EBA0075C106 /* Extensions.swift in Sources */,
 				37578E331F50877B00ACFA80 /* CreateClass.swift in Sources */,
 				3787EDA41F533A1D00664523 /* LehrerKlassenundUserEinstellungen.swift in Sources */,
+				37D3C7F41F5897D200E1DA1E /* KlassenMitgliederadding.swift in Sources */,
 				37AD16E21E2D4448002F41D9 /* Register.swift in Sources */,
 				37578E351F51415B00ACFA80 /* AddClassMembers.swift in Sources */,
 				375535011E084A4E000C0842 /* Add Absenzen.swift in Sources */,
@@ -683,7 +681,6 @@
 				376DDB3A1E44C0ED0064E2D2 /* Einstellungen.swift in Sources */,
 				376177971EFE6A080051B90C /* Reminder.swift in Sources */,
 				37FCAE771DFD51C000789BFF /* AppDelegate.swift in Sources */,
-				3787EDA01F53136900664523 /* LehrerRegister.swift in Sources */,
 				3787EDA21F5324DF00664523 /* LehrerKlassenauswahl.swift in Sources */,
 				3707B7681E44D70D00BD150D /* AppInfo.swift in Sources */,
 				37578E391F516A1800ACFA80 /* StudentAbsenzen.swift in Sources */,
@@ -696,7 +693,6 @@
 				37AD16E01E2D4438002F41D9 /* Login.swift in Sources */,
 				37FCAEA91DFD553900789BFF /* Hausaufgaben.swift in Sources */,
 				37578E2D1F504E1A00ACFA80 /* AbsenzenOverview.swift in Sources */,
-				3787ED9E1F53135700664523 /* LehrerLogin.swift in Sources */,
 				3761778F1EFD63650051B90C /* NewReminder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

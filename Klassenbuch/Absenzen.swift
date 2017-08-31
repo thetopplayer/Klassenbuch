@@ -407,7 +407,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     
     //UIBarButton Functions
     
-    @IBAction func cancelAbsenzen (_ segue:UIStoryboardSegue) {
+    @IBAction func cancelAbsenzen1 (_ segue:UIStoryboardSegue) {
     }
     @IBAction func saveAbsenzen (_ segue:UIStoryboardSegue) {
     }
@@ -419,7 +419,8 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
 
     }
     
-    
+    @IBAction func saveTheAbsenz (_ segue:UIStoryboardSegue) {
+    }
 
 
 

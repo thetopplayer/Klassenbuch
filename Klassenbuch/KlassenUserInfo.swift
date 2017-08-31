@@ -28,6 +28,7 @@ class KlassenUserInfo: UITableViewController {
     @IBOutlet weak var KlassenLehrerLabel: UILabel!
     @IBOutlet weak var LehrerModusSwitch: UISwitch!
     @IBOutlet weak var LehrerModusCell: UITableViewCell!
+    @IBOutlet weak var AdminLabel: UILabel!
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,7 +150,13 @@ class KlassenUserInfo: UITableViewController {
         
     }
     
-    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if  indexPath.row == 3 {
+//        
+//        self.performSegue(withIdentifier: "TheIdentifierSegue", sender: self)
+//        
+//        }
+//    }
 
     func checkforAdmin(){
         
@@ -240,7 +247,33 @@ class KlassenUserInfo: UITableViewController {
             
         )
         
+        ref = FIRDatabase.database().reference()
+        handle = ref?.child("users").child("Schüler").child(uid!).child("Admin").observe(.value, with: { (snapshot) in
+            
+            
+            if snapshot.value as? String == "true" {
+                
+                
+                self.AdminLabel.text = "Admin"
+                
+            }
+        }
+            
+            
+        )
+        
       
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+//    let DestViewController = segue.destination as! AddClassMembers
+//        
+//        if segue.identifier == ""{
+//        
+//            DestViewController.identifier = "AlreadyLoggedIn"
+//        
+//        }
     }
     
     @IBAction func backfromTeacherselection (_ segue:UIStoryboardSegue) {

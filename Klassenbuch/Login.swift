@@ -24,6 +24,7 @@ class Login: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var Form: UIImageView!
     @IBOutlet weak var Stack1: UIStackView!
     @IBOutlet weak var Stack2: UIStackView!
+    @IBOutlet weak var Stack3: UIStackView!
    
     // Variables
     var iconClick: Bool!
@@ -70,6 +71,7 @@ class Login: UIViewController, UITextFieldDelegate {
         self.Form.alpha = 0
         self.Stack1.alpha = 0
         self.Stack2.alpha = 0
+        self.Stack3.alpha = 0
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -85,6 +87,7 @@ class Login: UIViewController, UITextFieldDelegate {
         self.Form.alpha = 0.95
         self.Stack1.alpha = 1
         self.Stack2.alpha = 1
+        self.Stack3.alpha = 1
          })
     }
     
@@ -153,16 +156,16 @@ class Login: UIViewController, UITextFieldDelegate {
           
             if authuser != nil {
                 
-                self.ref?.child("UID").child(uid!).child("funktion").observeSingleEvent(of: .value, with: { (snapshot) in
+                self.ref?.child("UID").child(uid!).child("function").observeSingleEvent(of: .value, with: { (snapshot) in
                     
                     if let item = snapshot.value as? String{
                         self.funktion = item
                         
-                        if self.funktion == "Schüler"{
+                        if self.funktion == "Student"{
                             
                             print("schüllerererereerer")
                         
-                        } else if self.funktion == "Lehrer"
+                        } else if self.funktion == "Teacher"
                         {
                        
                         }
@@ -256,15 +259,16 @@ class Login: UIViewController, UITextFieldDelegate {
                 
                 if error == nil
                 {
-                    UserDefaults.standard.set(true, forKey: "isStudent")
-                    UserDefaults.standard.synchronize()
-                    self.performSegue(withIdentifier: "HomePageSegue", sender: self)
-                    self.LoginEmailTextField.text = ""
-                    self.LoginPasswordTextField.text = ""
-                    FIRAnalytics.logEvent(withName: "new Login", parameters: nil)
+                    
+                    // Hier Check wegen UID eb UID Schüler für value hat oder lehrer und dann jeweils jeder segue
+                   
+                    self.checkIfStudentOrTeacherLogin()
+
                 }
                 else
                 {
+   
+                    
                     let alertController = UIAlertController(title: "Oops!", message: error?.localizedDescription, preferredStyle: .alert)
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -316,16 +320,66 @@ class Login: UIViewController, UITextFieldDelegate {
    
     @IBAction func HierAnmelden(_ sender: Any) {
         // go to Lehrer Login
-        
-        
-        
-        
-        
+    
         
         
     }
+    
+    func checkIfStudentOrTeacherLogin() {
+    
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        
+        ref = FIRDatabase.database().reference()
+        ref?.child("users").child("UIDs").child(uid!).child("function").observe(.value, with: { (snapshot) in
+            
+            
+            if snapshot.value as? String == "Student" {
+              // Schüler Login
+                
+                UserDefaults.standard.set(true, forKey: "isStudent")
+                UserDefaults.standard.synchronize()
+                self.performSegue(withIdentifier: "HomePageSegue", sender: self)
+                self.LoginEmailTextField.text = ""
+                self.LoginPasswordTextField.text = ""
+       
+      
+            } else if snapshot.value as? String == "Teacher" {
+                // Teacher Login
+                
+                UserDefaults.standard.set(true, forKey: "isTeacher")
+                UserDefaults.standard.synchronize()
+                self.performSegue(withIdentifier: "LehrerHP", sender: self)
+                self.LoginEmailTextField.text = ""
+                self.LoginPasswordTextField.text = ""
+ 
+            }
+        }
+        )
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        if segue.identifier == "LehrerRegister"{
+           
+            let DestViewController = segue.destination as! Register
+            
+            DestViewController.Funktion = "Lehrer"
+        }
+       
+        else if segue.identifier == "SchülerRegister"{
+            
+            let DestViewController = segue.destination as! Register
+            
+            DestViewController.Funktion = "Schüler"
+        }
+    }
+    
     @IBAction func backLehrerLogin (_ segue:UIStoryboardSegue) {
     }
-
+    @IBAction func backLehrerRegister (_ segue:UIStoryboardSegue) {
+    }
     
 }
