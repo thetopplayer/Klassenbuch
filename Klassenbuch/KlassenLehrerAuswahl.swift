@@ -6,22 +6,38 @@
 //  Copyright © 2017 Hadorn Developing. All rights reserved.
 //
 
+struct Teacher {
+    var name = String()
+    
+}
+
 import UIKit
 import Firebase
 
-class KlassenLehrerAuswahl: UITableViewController {
+class KlassenLehrerAuswahl: UITableViewController, UISearchBarDelegate {
 
+    
+    @IBOutlet var searchBar: UISearchBar!
+    
+    
+
+    
+    var teachers = [Teacher(name: "martine vetterli"), Teacher(name: "joachim bruder"), Teacher(name: "Mein LehrerAccount")]
     // array sollte Downgelodet werden mit allen Lehrer Namen vlt.
-    var KlassenLehrerArray = ["martine vetterli", "Joachim bruder","Mein LehrerAccount"]
+    //var KlassenLehrerArray = ["martine vetterli", "Joachim bruder","Mein LehrerAccount"]
     var handle : FIRDatabaseHandle?
     var ref: FIRDatabaseReference?
     var myKlasse = String()
-    
+    var filteredData = [Teacher]()
+    var isSearching = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.done
+        filteredData = teachers
+        searchBar.becomeFirstResponder()
        
     }
     
@@ -46,28 +62,59 @@ class KlassenLehrerAuswahl: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
+        if isSearching {
+        
+        return filteredData.count
+        }
+        
         // #warning Incomplete implementation, return the number of rows
-        return KlassenLehrerArray.count
+        return teachers.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        cell.textLabel?.text = KlassenLehrerArray[indexPath.row]
+      
         cell.textLabel?.numberOfLines = 0
         cell.accessoryType = .disclosureIndicator
+        
+        if isSearching{
+          cell.textLabel?.text = self.filteredData[indexPath.row].name
+        
+        } else {
+          cell.textLabel?.text = self.teachers[indexPath.row].name
+        }
 
         return cell
     }
   
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+        
+            isSearching = false
+            view.endEditing(true)
+            tableView.reloadData()
+     
+        } else {
+        
+       isSearching = true
+//            {$0.name?.range(of: searchBar.text!) != nil
+            filteredData = teachers.filter({$0.name.lowercased().contains(searchBar.text!.lowercased())})            //($0.name?.range(of: searchBar.text!) != nil﻿)
+            
+            tableView.reloadData()
+        
+        }
+    }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     
     // Lehrer uf de Tippt wird wird KlasseLehrer, nach Firebase gschribe zum einte wer de Lehrer isch zum andere au das die Klass en Lehrer besitzt. Denn gits en Segue zrug und dete setts Label updatet werde.
         
-     let SelectedTeacher = self.KlassenLehrerArray[indexPath.row]
+     let SelectedTeacher = self.filteredData[indexPath.row].name
         
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
@@ -133,42 +180,7 @@ class KlassenLehrerAuswahl: UITableViewController {
     
     
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+  
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -176,6 +188,6 @@ class KlassenLehrerAuswahl: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+   
 
 }

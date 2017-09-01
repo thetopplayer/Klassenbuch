@@ -277,7 +277,7 @@ class Login: UIViewController, UITextFieldDelegate {
         }
         else
         {
-            FIRAuth.auth()?.signIn(withEmail: LoginString, password: self.LoginPasswordTextField.text!) { (user, error) in
+            FIRAuth.auth()?.signIn(withEmail: LoginEmailTextField.text!, password: self.LoginPasswordTextField.text!) { (user, error) in
                 
                 if error == nil
                 {

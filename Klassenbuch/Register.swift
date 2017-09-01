@@ -28,6 +28,7 @@ class Register: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var EyeButton: UIButton!
     @IBOutlet weak var EyeButton2: UIButton!
     @IBOutlet weak var RegisterLabel: UILabel!
+    @IBOutlet weak var KSLLabel: UILabel!
     
     // Variables    
     var effect: UIVisualEffect!
@@ -43,7 +44,7 @@ class Register: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        KSLLabel()
+        KSLLabelfunc()
         // Parallax Effect
         self.ApplyMotionEffectsforViewDidLoad()
         
@@ -81,7 +82,7 @@ class Register: UIViewController, UITextFieldDelegate {
     }
     
     
-    func KSLLabel(){
+    func KSLLabelfunc(){
     
         if Funktion == "Schüler"{
             
@@ -116,6 +117,7 @@ class Register: UIViewController, UITextFieldDelegate {
     func loadTeacher(){
     print("Teacher")
         RegisterLabel.text = "Lehrer Registration"
+        KSLLabel.isHidden = true
     
     }
     
@@ -142,7 +144,11 @@ class Register: UIViewController, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == RegisterEmailTextField {
         
-            //self.performSegue(withIdentifier: "LehrerAuswahl", sender: nil)
+            if Funktion == "Lehrer"{
+            self.performSegue(withIdentifier: "LehrerAuswahl", sender: nil)
+            }else{
+            }
+            //
         }
         
         if textField == RegisterPasswordTextField {
@@ -416,5 +422,9 @@ class Register: UIViewController, UITextFieldDelegate {
         
  
         
+    }
+    
+    
+    @IBAction func backfromTeacherselection2 (_ segue:UIStoryboardSegue) {
     }
     }
