@@ -35,7 +35,7 @@ class Register: UIViewController, UITextFieldDelegate {
     var iconClick2: Bool!
     var ref:FIRDatabaseReference?
     var RegisterString1 = String()
-    var RegisterString2 = "@kslzh.ch"
+    var RegisterString2 = "@stud.kslzh.ch"
     var RegisterString = String()
     var Namen = String()
     var Funktion = String()
@@ -43,6 +43,7 @@ class Register: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        KSLLabel()
         // Parallax Effect
         self.ApplyMotionEffectsforViewDidLoad()
         
@@ -77,6 +78,20 @@ class Register: UIViewController, UITextFieldDelegate {
         ref = FIRDatabase.database().reference()
         
         
+    }
+    
+    
+    func KSLLabel(){
+    
+        if Funktion == "Schüler"{
+            
+            RegisterString2 = "@stud.kslzh.ch"
+            
+        } else if Funktion == "Lehrer"{
+        
+//            RegisterString2 = "@kslzh.ch"
+            RegisterString2 = "@stud.kslzh.ch"
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -272,7 +287,7 @@ class Register: UIViewController, UITextFieldDelegate {
         {
             if self.RegisterPasswordTextField.text == self.RegisterPasswordTextField2.text {
             
-                FIRAuth.auth()?.createUser(withEmail: RegisterString, password: self.RegisterPasswordTextField.text!) { (user, error) in
+                FIRAuth.auth()?.createUser(withEmail: self.RegisterEmailTextField.text!, password: self.RegisterPasswordTextField.text!) { (user, error) in
                     
                     if error == nil
                         
@@ -283,9 +298,11 @@ class Register: UIViewController, UITextFieldDelegate {
                         let action = UIAlertAction(title: "OK", style: .default) { (action) -> Void in
                       
                            
- 
-                            self.CheckWhotoSetup()
-         
+                          
+                            
+                         FIRAuth.auth()?.currentUser?.sendEmailVerification()
+                        self.CheckWhotoSetup()
+                            
 
                         }
                         alert.addAction(action)
@@ -347,10 +364,13 @@ class Register: UIViewController, UITextFieldDelegate {
     
 
     @IBAction func cancelClassSetup (_ segue:UIStoryboardSegue) {
-    }
+        
+            }
     
     
     
+
+
     // Write Users to Database
     
     
@@ -360,6 +380,7 @@ class Register: UIViewController, UITextFieldDelegate {
         
         setupStudentinDatabase()
         self.performSegue(withIdentifier: "SyncClass", sender: self)
+        
         } else if Funktion == "Lehrer"{
         
         setupTeacherinDatabase()
@@ -378,17 +399,22 @@ class Register: UIViewController, UITextFieldDelegate {
         UserDefaults.standard.set(true, forKey: "isStudent")
         UserDefaults.standard.synchronize()
         
+       
+        
     }
     
     func setupTeacherinDatabase(){
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
-        self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["email": RegisterString])
+//        self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["email": RegisterString])
+        self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["email": RegisterEmailTextField.text!])
         self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["name": Namen.lowercased()])
         self.ref?.child("users").child("UIDs").child(uid!).updateChildValues(["function": "Teacher"])
         //self.ref?.child("UID").child(uid!).updateChildValues(["funktion": "Lehrer"])
         UserDefaults.standard.set(true, forKey: "isTeacher")
         UserDefaults.standard.synchronize()
+        
+ 
         
     }
     }

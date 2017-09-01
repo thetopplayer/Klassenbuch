@@ -12,7 +12,7 @@ import Firebase
 class KlassenLehrerAuswahl: UITableViewController {
 
     // array sollte Downgelodet werden mit allen Lehrer Namen vlt.
-    var KlassenLehrerArray = ["martine vetterli", "Joachim bruder"]
+    var KlassenLehrerArray = ["martine vetterli", "Joachim bruder","Mein LehrerAccount"]
     var handle : FIRDatabaseHandle?
     var ref: FIRDatabaseReference?
     var myKlasse = String()

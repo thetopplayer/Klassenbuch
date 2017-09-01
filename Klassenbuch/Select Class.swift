@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class Select_Class: UITableViewController {
 
@@ -22,6 +23,7 @@ class Select_Class: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         UserDefaults.standard.set(false, forKey: "StudenthasClass")
         UserDefaults.standard.synchronize()
 
@@ -77,7 +79,8 @@ class Select_Class: UITableViewController {
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.frame = backgroundImage.bounds
         
-        backgroundImage.addSubview(blurView)}
+        backgroundImage.addSubview(blurView)
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
@@ -192,6 +195,9 @@ class Select_Class: UITableViewController {
         
         self.present(actionSheet, animated: true, completion: nil)
     }
+   
+    
+
 
     }
 

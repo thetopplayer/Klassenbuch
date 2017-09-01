@@ -25,7 +25,10 @@ class Login: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var Stack1: UIStackView!
     @IBOutlet weak var Stack2: UIStackView!
     @IBOutlet weak var Stack3: UIStackView!
-   
+    @IBOutlet var TeacherStudentView: UIView!
+ 
+    @IBOutlet weak var SegmentedController: UISegmentedControl!
+    
     // Variables
     var iconClick: Bool!
     var funktion  = String()
@@ -34,9 +37,16 @@ class Login: UIViewController, UITextFieldDelegate {
     var LoginString1 = String()
     var LoginString2 = "@kslzh.ch"
     var LoginString = String()
+    var ToggleState = "1"
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
+        
+        // Cornerradius
+        TeacherStudentView.layer.cornerRadius = 5
         
         
         loggin()
@@ -76,7 +86,7 @@ class Login: UIViewController, UITextFieldDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         
-        UIView.animate(withDuration: 0.6 , animations: {
+        UIView.animate(withDuration: 0.4 , animations: {
         self.LoginEmailTextField.alpha = 1
         self.LoginPasswordTextField.alpha = 1
         self.ZüriBild.alpha = 1
@@ -238,6 +248,18 @@ class Login: UIViewController, UITextFieldDelegate {
     
     // Login Function
     @IBAction func LoginUser(_ sender: Any) {
+      
+        if ToggleState == "1"{
+        
+            ToggleState = "2"
+            animateIn()
+        
+        }else if ToggleState == "2"{
+        
+            ToggleState = "1"
+        
+        observeSegment()
+        
         
         LoginString1 = LoginEmailTextField.text!
         
@@ -275,7 +297,12 @@ class Login: UIViewController, UITextFieldDelegate {
                     alertController.addAction(defaultAction)
                     
                     self.present(alertController, animated: true, completion: nil)
-    }  } } }
+    
+                }
+            }
+            }
+        }
+    }
 
     @IBAction func ForgotPasswod(_ sender: Any) {
 
@@ -324,6 +351,9 @@ class Login: UIViewController, UITextFieldDelegate {
         
         
     }
+    
+
+    
     
     func checkIfStudentOrTeacherLogin() {
     
@@ -382,4 +412,88 @@ class Login: UIViewController, UITextFieldDelegate {
     @IBAction func backLehrerRegister (_ segue:UIStoryboardSegue) {
     }
     
+    
+    
+    func observeSegment(){
+    
+    
+    
+        if SegmentedController.selectedSegmentIndex == 0{
+        LoginString2 = "@stud.kslzh.ch"
+        
+        } else if SegmentedController.selectedSegmentIndex == 1 {
+        
+        LoginString2 = "@kslzh.ch"
+        }
+    }
+    
+    // Starting TeacherStudent Animation
+    
+    func animateIn() {
+        
+        UIView.animate(withDuration: 0.2 , animations: {
+        self.LoginEmailTextField.alpha = 0
+        self.LoginPasswordTextField.alpha = 0
+        self.ZüriBild.alpha = 0
+        self.EmailLabel.alpha = 0
+        self.PasswordLabel.alpha = 0
+        self.LoginButton.alpha = 0
+        self.EyeButton.alpha = 0
+        self.Form.alpha = 0
+        self.Stack1.alpha = 0
+        self.Stack2.alpha = 0
+        self.Stack3.alpha = 0
+        
+          })
+        
+        
+        self.view.addSubview(TeacherStudentView)
+        TeacherStudentView.center = self.view.center
+        
+        TeacherStudentView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        TeacherStudentView.alpha = 0
+        
+        UIView.animate(withDuration: 0.2) {
+          
+            self.TeacherStudentView.alpha = 1
+            self.TeacherStudentView.transform = CGAffineTransform.identity
+         
+        }
+    }
+    
+    // Ending Information Animation
+    
+    func animateOut () {
+       
+        UIView.animate(withDuration: 0.2 , animations: {
+            self.LoginEmailTextField.alpha = 1
+            self.LoginPasswordTextField.alpha = 1
+            self.ZüriBild.alpha = 1
+            self.EmailLabel.alpha = 1
+            self.PasswordLabel.alpha = 1
+            self.LoginButton.alpha = 1
+            self.EyeButton.alpha = 1
+            self.Form.alpha = 0.95
+            self.Stack1.alpha = 1
+            self.Stack2.alpha = 1
+            self.Stack3.alpha = 1
+        })
+        
+        ToggleState = "2"
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.TeacherStudentView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            self.TeacherStudentView.alpha = 0
+          
+          
+            
+        }) { (success:Bool) in
+            self.TeacherStudentView.removeFromSuperview()
+        }
+    }
+
+    @IBAction func OKAction(_ sender: Any) {
+         animateOut()
+    }
+
 }

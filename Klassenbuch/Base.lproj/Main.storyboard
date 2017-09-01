@@ -126,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vqc-IZ-hGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4540.579710144928" y="-807.06521739130437"/>
+            <point key="canvasLocation" x="4541" y="-796"/>
         </scene>
         <!--Add Hausaufgaben TC-->
         <scene sceneID="LUg-V7-wb8">
@@ -271,7 +271,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZG-dr-H79" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="mXI-xG-fya" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5357" y="-807"/>
+            <point key="canvasLocation" x="5357" y="-796"/>
         </scene>
         <!--Reminders-->
         <scene sceneID="zr7-cX-yjJ">
@@ -366,7 +366,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ate-Hd-Xn1">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="GYS-zj-LCv" kind="show" id="bO0-0a-Zb6"/>
+                                <segue destination="GYS-zj-LCv" kind="show" identifier="newabsent5" id="bO0-0a-Zb6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -984,7 +984,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BNT-1O-7mF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="uzW-6R-adi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7214" y="2768"/>
+            <point key="canvasLocation" x="8120.289855072464" y="2767.663043478261"/>
         </scene>
         <!--Wählt euren Klassenlehrer aus-->
         <scene sceneID="C4y-am-nUQ">
@@ -1036,7 +1036,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBy-rj-Uq8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="n5G-4Y-Cvx" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="8190" y="2768"/>
+            <point key="canvasLocation" x="9097.1014492753638" y="2767.663043478261"/>
         </scene>
         <!--Login VC-->
         <scene sceneID="TgO-lg-79e">
@@ -1250,17 +1250,46 @@
                         <outlet property="LoginEmailTextField" destination="RPR-mF-phq" id="Ky0-NF-k0Z"/>
                         <outlet property="LoginPasswordTextField" destination="TDw-Zt-KyG" id="LQ0-Wc-Mbc"/>
                         <outlet property="PasswordLabel" destination="KVi-3g-y5l" id="YWi-dU-EO6"/>
+                        <outlet property="SegmentedController" destination="gPe-i3-Jbl" id="U9n-Kd-aIX"/>
                         <outlet property="Stack1" destination="1Zp-dM-kAL" id="Chk-2Z-Qf2"/>
                         <outlet property="Stack2" destination="TqS-Kz-ZhX" id="pnO-4X-8Hu"/>
                         <outlet property="Stack3" destination="17o-FF-imx" id="Xrm-4S-Bd8"/>
+                        <outlet property="TeacherStudentView" destination="KyL-Bv-IfB" id="mYH-2k-eqQ"/>
                         <outlet property="ZüriBild" destination="ZKU-3k-cIO" id="uUG-yK-XmS"/>
                         <segue destination="ftF-5p-0bU" kind="presentation" identifier="HomePageSegue" id="Rys-rZ-nx5"/>
                         <segue destination="S1t-dr-KxB" kind="presentation" identifier="LehrerHP" id="j20-09-s25"/>
-                        <segue destination="SPe-BI-1IX" kind="presentation" identifier="GoToSelectClass" id="Rpe-gD-vY3"/>
-                        <segue destination="1it-aw-abM" kind="presentation" identifier="TeacherNeedsClass" id="iOp-56-qos"/>
+                        <segue destination="9sN-Ai-jNA" kind="presentation" identifier="GoToSelectClass" id="Ryv-fA-IV0"/>
+                        <segue destination="s1d-c3-LiZ" kind="presentation" identifier="TeacherNeedsClass" id="JtJ-Xf-Qgp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O95-iF-7Gu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="KyL-Bv-IfB">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gPe-i3-Jbl">
+                            <rect key="frame" x="60" y="50" width="121" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Schüler"/>
+                                <segment title="Lehrer"/>
+                            </segments>
+                            <color key="tintColor" red="0.1019607843" green="0.23137254900000001" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </segmentedControl>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqX-TZ-bvD">
+                            <rect key="frame" x="105" y="86" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.1019607843" green="0.23137254900000001" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="OK">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="OKAction:" destination="hvi-oh-JNg" eventType="touchUpInside" id="5Xn-dB-lRz"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="925" y="-108"/>
         </scene>
@@ -1593,8 +1622,8 @@
                         <outlet property="ZüriBild" destination="xa9-F7-CNh" id="LTl-tM-W7H"/>
                         <outlet property="background" destination="igd-Fd-vgl" id="V58-4S-AMH"/>
                         <segue destination="hvi-oh-JNg" kind="presentation" identifier="backtoLogin" modalPresentationStyle="overCurrentContext" id="f1a-3t-sd5"/>
-                        <segue destination="SPe-BI-1IX" kind="presentation" identifier="SyncClass" id="8aF-yF-JXU"/>
-                        <segue destination="1it-aw-abM" kind="presentation" identifier="KlassenLehrereinrichten" id="c9J-Ie-DG3"/>
+                        <segue destination="9sN-Ai-jNA" kind="presentation" identifier="SyncClass" id="8wU-Ll-DsQ"/>
+                        <segue destination="s1d-c3-LiZ" kind="presentation" identifier="KlassenLehrereinrichten" id="Obo-xf-11X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3a0-ei-Qbh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1695,7 +1724,6 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="BarButton" destination="qpA-80-6Z6" id="wsP-XM-BqR"/>
-                        <segue destination="xHa-uf-6fg" kind="show" id="jhP-7v-CkX"/>
                         <segue destination="ftF-5p-0bU" kind="presentation" identifier="ClassAddedStudent" id="uND-bn-IEO"/>
                     </connections>
                 </tableViewController>
@@ -1710,10 +1738,10 @@
             </objects>
             <point key="canvasLocation" x="2938" y="1996"/>
         </scene>
-        <!--View Controller-->
+        <!--Email Verification-->
         <scene sceneID="203-mg-N1K">
             <objects>
-                <viewController id="xHa-uf-6fg" sceneMemberID="viewController">
+                <viewController id="xHa-uf-6fg" customClass="EmailVerification" customModule="Klassenbuch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JgA-Ig-ex5"/>
                         <viewControllerLayoutGuide type="bottom" id="eSf-ww-6Ug"/>
@@ -1721,12 +1749,65 @@
                     <view key="view" contentMode="scaleToFill" id="fgb-Je-Rbb">
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="eLQ-Et-Mhx">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wE-j2-7iW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="egp-1x-Rtj">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6b9-x2-vqQ">
+                                <rect key="frame" x="20" y="275" width="374" height="122"/>
+                                <string key="text">Momentan sind sie noch nicht verifiziert bitte gehen sie zu ihrem Schul Email Account und klicken Sie auf den Link. Es kann einige Minuten dauern bis die Mail ankommt. Sobald Sie sich verifizieren werden sie weitergeleitet zum nächsten Schritt.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9wE-j2-7iW" firstAttribute="top" secondItem="JgA-Ig-ex5" secondAttribute="bottom" id="79T-60-LZT"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="6b9-x2-vqQ" secondAttribute="leading" id="Fjp-Wk-70m"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6b9-x2-vqQ" secondAttribute="trailing" id="LOu-9B-kUA"/>
+                            <constraint firstAttribute="trailing" secondItem="eLQ-Et-Mhx" secondAttribute="trailing" id="WTj-II-wzB"/>
+                            <constraint firstItem="eLQ-Et-Mhx" firstAttribute="top" secondItem="JgA-Ig-ex5" secondAttribute="bottom" id="dB8-Zi-qLI"/>
+                            <constraint firstAttribute="trailing" secondItem="9wE-j2-7iW" secondAttribute="trailing" id="dxX-rF-ZYn"/>
+                            <constraint firstItem="6b9-x2-vqQ" firstAttribute="centerY" secondItem="fgb-Je-Rbb" secondAttribute="centerY" id="fGq-uO-57v"/>
+                            <constraint firstItem="6b9-x2-vqQ" firstAttribute="centerX" secondItem="fgb-Je-Rbb" secondAttribute="centerX" id="lVw-gO-vcu"/>
+                            <constraint firstItem="9wE-j2-7iW" firstAttribute="leading" secondItem="fgb-Je-Rbb" secondAttribute="leading" id="p0f-E3-uFs"/>
+                            <constraint firstItem="eSf-ww-6Ug" firstAttribute="top" secondItem="eLQ-Et-Mhx" secondAttribute="bottom" id="t9X-Ny-VJy"/>
+                            <constraint firstItem="eLQ-Et-Mhx" firstAttribute="leading" secondItem="fgb-Je-Rbb" secondAttribute="leading" id="uoc-Mk-Dzy"/>
+                            <constraint firstItem="eSf-ww-6Ug" firstAttribute="top" secondItem="9wE-j2-7iW" secondAttribute="bottom" id="vxV-dN-7y1"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="DcC-b4-2eN">
+                        <barButtonItem key="leftBarButtonItem" image="Back Chevron" id="Vjk-Gi-ZEE">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="LogOut:" destination="xHa-uf-6fg" id="aSH-Gf-8AW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="SPe-BI-1IX" kind="show" identifier="emailverified" id="uHb-kR-zsS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hyY-iI-hnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hq5-WG-86c">
+                    <rect key="frame" x="0.0" y="0.0" width="374" height="122"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <string key="text">Momentan sind sie noch nicht verifiziert bitte gehen sie zu ihrem Schul Email Account und klicken Sie auf den Link. Es kann einige Minuten dauern bis die Mail ankommt. Sobald Sie sich verifizieren werden sie weitergeleitet zum nächsten Schritt.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </objects>
-            <point key="canvasLocation" x="2938" y="2687"/>
+            <point key="canvasLocation" x="924.63768115942037" y="1995.6521739130437"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tPE-VS-GQL">
@@ -1747,7 +1828,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ytH-Yh-npd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2200" y="1996"/>
+            <point key="canvasLocation" x="2199" y="1996"/>
         </scene>
         <!--Klasse erstellen-->
         <scene sceneID="Ua8-KZ-ZdY">
@@ -1863,29 +1944,29 @@
                         <viewControllerLayoutGuide type="bottom" id="aon-YR-Jsh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KQC-2y-hH5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vorname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s7n-d4-Zrj">
-                                <rect key="frame" x="20" y="108.33333333333334" width="78.666666666666671" height="30.000000000000028"/>
+                                <rect key="frame" x="20" y="44.333333333333329" width="78.666666666666671" height="29.999999999999986"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nachname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XRT-vg-H8B">
-                                <rect key="frame" x="303.66666666666674" y="108.33333333333334" width="90.333333333333314" height="30.000000000000028"/>
+                                <rect key="frame" x="303.66666666666674" y="44.333333333333329" width="90.333333333333314" height="29.999999999999986"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Klasse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVw-tC-kxG">
-                                <rect key="frame" x="182" y="72" width="50" height="20.333333333333329"/>
+                                <rect key="frame" x="182" y="7.9999999999999982" width="50" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dil-U8-pA5">
-                                <rect key="frame" x="0.0" y="205.33333333333331" width="414" height="530.66666666666674"/>
+                                <rect key="frame" x="0.0" y="141.33333333333331" width="414" height="530.66666666666674"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="CYT-Cv-p8F" style="IBUITableViewCellStyleDefault" id="i0I-UF-vtf">
@@ -1908,7 +1989,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elx-Te-zdC">
-                                <rect key="frame" x="168" y="146.33333333333334" width="79" height="30"/>
+                                <rect key="frame" x="168" y="82.333333333333329" width="79" height="30"/>
                                 <color key="backgroundColor" red="0.10138990730047226" green="0.23372039198875427" blue="0.48082637786865234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Hinzufügen"/>
@@ -1917,7 +1998,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0B-EM-gmA">
-                                <rect key="frame" x="361.33333333333326" y="163.33333333333334" width="41.666666666666686" height="21"/>
+                                <rect key="frame" x="361.33333333333326" y="99.333333333333329" width="41.666666666666686" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1968,7 +2049,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKp-Do-Gp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10633" y="2768"/>
+            <point key="canvasLocation" x="11539.13043478261" y="2767.663043478261"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xU8-ox-WFQ">
@@ -1981,7 +2062,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fdl-dm-5IR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4203" y="3053"/>
+            <point key="canvasLocation" x="5110.144927536232" y="3052.989130434783"/>
         </scene>
         <!--Manager-->
         <scene sceneID="EVZ-wr-yEQ">
@@ -2029,7 +2110,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pNx-1J-23c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3604" y="-807"/>
+            <point key="canvasLocation" x="3603" y="-796"/>
         </scene>
         <!--Tests NC-->
         <scene sceneID="mbs-eY-x8a">
@@ -2989,7 +3070,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2712" y="-1000"/>
+            <point key="canvasLocation" x="2614" y="-950"/>
         </scene>
         <!--Ihre Klasse auswählen-->
         <scene sceneID="jKI-hv-LeP">
@@ -3030,7 +3111,75 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5F2-tA-XhW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4203" y="-1789"/>
+            <point key="canvasLocation" x="5110.144927536232" y="-1789.4021739130437"/>
+        </scene>
+        <!--Lehrer Email Verification-->
+        <scene sceneID="NGY-6G-2Rr">
+            <objects>
+                <viewController id="CpJ-fh-LEf" customClass="LehrerEmailVerification" customModule="Klassenbuch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cJo-9o-yTz"/>
+                        <viewControllerLayoutGuide type="bottom" id="EBQ-Uk-Ep1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j3X-bn-eBc">
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="fNI-41-WiY">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="667"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90l-3Q-j7C">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="VNr-ev-NAW">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9WB-BE-8H5">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="nr6-Rw-b6J">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="light"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfv-Vv-dbq">
+                                <rect key="frame" x="20" y="274.66666666666669" width="374" height="122"/>
+                                <string key="text">Momentan sind sie noch nicht verifiziert bitte gehen sie zu ihrem Lehrer Email Account und klicken Sie auf den Link. Es kann einige Minuten dauern bis die Mail ankommt. Sobald Sie sich verifizieren werden sie weitergeleitet zum nächsten Schritt.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="90l-3Q-j7C" firstAttribute="leading" secondItem="j3X-bn-eBc" secondAttribute="leading" id="7WE-9L-CW5"/>
+                            <constraint firstAttribute="trailing" secondItem="fNI-41-WiY" secondAttribute="trailing" id="EXV-EW-0z2"/>
+                            <constraint firstItem="90l-3Q-j7C" firstAttribute="top" secondItem="cJo-9o-yTz" secondAttribute="bottom" id="Jgp-x6-1Tr"/>
+                            <constraint firstItem="fNI-41-WiY" firstAttribute="top" secondItem="cJo-9o-yTz" secondAttribute="bottom" id="Ll8-oU-HV1"/>
+                            <constraint firstAttribute="trailing" secondItem="90l-3Q-j7C" secondAttribute="trailing" id="SXF-Tp-Tvu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kfv-Vv-dbq" secondAttribute="trailing" id="UUx-k0-Oyp"/>
+                            <constraint firstItem="kfv-Vv-dbq" firstAttribute="centerY" secondItem="j3X-bn-eBc" secondAttribute="centerY" id="V7w-jP-gHc"/>
+                            <constraint firstItem="kfv-Vv-dbq" firstAttribute="centerX" secondItem="j3X-bn-eBc" secondAttribute="centerX" id="X2N-S6-LcR"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="kfv-Vv-dbq" secondAttribute="leading" id="ZJq-ev-EHu"/>
+                            <constraint firstItem="fNI-41-WiY" firstAttribute="leading" secondItem="j3X-bn-eBc" secondAttribute="leading" id="dZ5-eH-btb"/>
+                            <constraint firstItem="EBQ-Uk-Ep1" firstAttribute="top" secondItem="90l-3Q-j7C" secondAttribute="bottom" id="hFV-oM-p21"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Hcz-uo-BvU"/>
+                    <connections>
+                        <segue destination="1it-aw-abM" kind="show" identifier="TeacherEmailverified" id="xZe-qg-l3V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EPJ-Pu-KaM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3078" y="-1789"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RQu-Lg-WVY">
@@ -3050,7 +3199,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="beq-fK-6cw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3146" y="-1788"/>
+            <point key="canvasLocation" x="4052.1739130434785" y="-1788.5869565217392"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="g86-d1-1FW">
@@ -4212,7 +4361,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czr-Xh-XTe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="OrN-JB-ls0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="8978" y="2768"/>
+            <point key="canvasLocation" x="9884.0579710144939" y="2767.663043478261"/>
         </scene>
         <!--Schüler-->
         <scene sceneID="fab-C5-jGW">
@@ -4315,7 +4464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VJU-kP-cqI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9750.7246376811599" y="2767.663043478261"/>
+            <point key="canvasLocation" x="10657.971014492754" y="2767.663043478261"/>
         </scene>
         <!--Add Absenzen-->
         <scene sceneID="lsK-Oq-3rP">
@@ -4541,6 +4690,48 @@
             </objects>
             <point key="canvasLocation" x="4340.579710144928" y="1373.6413043478262"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7z5-Bj-Ngr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9sN-Ai-jNA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="tcN-PY-HQX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.1019607843" green="0.23137254900000001" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xHa-uf-6fg" kind="relationship" relationship="rootViewController" id="fwg-Pe-nLn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="33y-gB-vWs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-446" y="1996"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7x7-G2-Nmk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="s1d-c3-LiZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="5A9-r7-5si">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.1019607843" green="0.23137254900000001" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CpJ-fh-LEf" kind="relationship" relationship="rootViewController" id="SFA-3T-02t"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ROG-5m-Y84" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2159" y="-1789"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AppStore" width="24" height="24"/>
@@ -4571,11 +4762,13 @@
         <image name="statistics filled" width="25" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="521-fC-DvB"/>
-        <segue reference="psn-kp-ZY1"/>
         <segue reference="j20-09-s25"/>
         <segue reference="f1a-3t-sd5"/>
         <segue reference="Ojf-Ri-pQT"/>
-        <segue reference="c9J-Ie-DG3"/>
+        <segue reference="Obo-xf-11X"/>
+        <segue reference="xZe-qg-l3V"/>
+        <segue reference="Ryv-fA-IV0"/>
+        <segue reference="uHb-kR-zsS"/>
+        <segue reference="uND-bn-IEO"/>
     </inferredMetricsTieBreakers>
 </document>
