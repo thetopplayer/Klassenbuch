@@ -348,28 +348,24 @@ class Register: UIViewController, UITextFieldDelegate {
     
        //String zusammenführen
 
-        if Funktion == "Schüler" {
-        
+        if Funktion == "Schüler"{
+            
+            RegisterString2 = "@stud.kslzh.ch"
             RegisterString1 = RegisterEmailTextField.text!
             
-            RegisterString = "\(RegisterString1.lowercased())\(RegisterString2.lowercased())"
+        } else if Funktion == "Lehrer"{
             
-            Namen = RegisterString1.replacingOccurrences(of: ".", with: " ", options: .literal, range: nil)
-      
-        }else if Funktion == "Lehrer" {
-        
+            //            RegisterString2 = "@kslzh.ch"
+            RegisterString2 = "@stud.kslzh.ch"
             RegisterString1 = EmailLabel2.text!
-            
-            RegisterString = "\(RegisterString1.lowercased())\(RegisterString2.lowercased())"
-            
-            Namen = RegisterString1.replacingOccurrences(of: ".", with: " ", options: .literal, range: nil)
-        
         }
         
+        RegisterString = "\(RegisterString1.lowercased())\(RegisterString2.lowercased())"
         
+        Namen = RegisterString1.replacingOccurrences(of: ".", with: " ", options: .literal, range: nil)
         
 
-        if self.RegisterString == "" || self.RegisterPasswordTextField.text == ""
+        if self.RegisterEmailTextField.text == "" || self.RegisterPasswordTextField.text == ""
         {
             let alertController = UIAlertController(title: "Oops!", message: "Bitte gib eine korrekte Email an und ein Password mit mindestens 6 Zeichen.", preferredStyle: .alert)
             
@@ -382,7 +378,7 @@ class Register: UIViewController, UITextFieldDelegate {
         {
             if self.RegisterPasswordTextField.text == self.RegisterPasswordTextField2.text {
             
-                FIRAuth.auth()?.createUser(withEmail: self.RegisterEmailTextField.text!, password: self.RegisterPasswordTextField.text!) { (user, error) in
+                FIRAuth.auth()?.createUser(withEmail: self.RegisterString, password: self.RegisterPasswordTextField.text!) { (user, error) in
                     
                     if error == nil
                         

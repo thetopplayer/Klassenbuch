@@ -179,7 +179,7 @@
             
                 let DestViewController = segue.destination as! Register
 
-                DestViewController.LehrPerson = "\(SelectedTeacher)XXX"
+                DestViewController.LehrPerson = SelectedTeacher
                 DestViewController.FromLogin = false
                 DestViewController.Funktion = "Lehrer"
                 
