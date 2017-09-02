@@ -29,7 +29,8 @@ class Register: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var EyeButton2: UIButton!
     @IBOutlet weak var RegisterLabel: UILabel!
     @IBOutlet weak var KSLLabel: UILabel!
-    
+    @IBOutlet weak var EmailLabel2: UILabel!
+    @IBOutlet weak var GoToSelectionLabel: UIButton!
     // Variables    
     var effect: UIVisualEffect!
     var iconClick: Bool!
@@ -40,10 +41,15 @@ class Register: UIViewController, UITextFieldDelegate {
     var RegisterString = String()
     var Namen = String()
     var Funktion = String()
+    var LehrPerson  =   String()
+    var FromLogin : Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+//         RegisterEmailTextField.text = LehrPerson
+        AnimationCheck()
         KSLLabelfunc()
         // Parallax Effect
         self.ApplyMotionEffectsforViewDidLoad()
@@ -52,6 +58,7 @@ class Register: UIViewController, UITextFieldDelegate {
         RegisterEmailTextField.delegate = self
         RegisterPasswordTextField.delegate = self
         RegisterPasswordTextField2.delegate = self
+//        RegisterEmailTextField.isEnabled = false
         
         //Hide Navigation Bar Controller
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -67,10 +74,7 @@ class Register: UIViewController, UITextFieldDelegate {
         RegisterPasswordTextField.isSecureTextEntry = true
         RegisterPasswordTextField2.isSecureTextEntry = true
         
-        // Visual Effect
-        effect = VisualEffect.effect
-        VisualEffect.effect = nil
-        self.animateIn()
+   
         
         // Cornerradius
         InformationView.layer.cornerRadius = 5
@@ -79,6 +83,29 @@ class Register: UIViewController, UITextFieldDelegate {
         ref = FIRDatabase.database().reference()
         
         
+    }
+    
+    
+    func AnimationCheck(){
+    
+        if FromLogin == true {
+        
+        // Do Animations
+            // Visual Effect
+            effect = VisualEffect.effect
+            VisualEffect.effect = nil
+            self.animateIn()
+       
+            
+        } else if FromLogin == false {
+        
+        // Dont do any Animations1
+            EmailLabel2.text = LehrPerson
+            self.VisualEffect.isHidden = true
+            self.VisualEffect.isUserInteractionEnabled = false
+            self.VisualEffect.effect = nil
+        }
+    
     }
     
     
@@ -110,14 +137,62 @@ class Register: UIViewController, UITextFieldDelegate {
     
     func loadStudent(){
         print("Student")
-    
+        EmailLabel2.isHidden = true
+        self.RegisterEmailTextField.isEnabled = true
+           self.GoToSelectionLabel.isHidden = true
         RegisterLabel.text = "Schüler Registration"
     }
     
+    @IBAction func GoToTeacherSelection(_ sender: UIButton) {
+        
+        
+        
+        // Perfrom Segue
+        
+        self.performSegue(withIdentifier: "LehrerAuswahl", sender: nil)
+
+        
+    }
     func loadTeacher(){
     print("Teacher")
         RegisterLabel.text = "Lehrer Registration"
-        KSLLabel.isHidden = true
+        KSLLabel.isHidden = false
+        self.RegisterEmailTextField.isEnabled = false
+        self.GoToSelectionLabel.isHidden = false
+//        self.RegisterEmailTextField
+        EmailLabel2.text = LehrPerson
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
     }
     
@@ -273,11 +348,25 @@ class Register: UIViewController, UITextFieldDelegate {
     
        //String zusammenführen
 
-        RegisterString1 = RegisterEmailTextField.text!
+        if Funktion == "Schüler" {
         
-        RegisterString = "\(RegisterString1.lowercased())\(RegisterString2.lowercased())"
-
-        Namen = RegisterString1.replacingOccurrences(of: ".", with: " ", options: .literal, range: nil)
+            RegisterString1 = RegisterEmailTextField.text!
+            
+            RegisterString = "\(RegisterString1.lowercased())\(RegisterString2.lowercased())"
+            
+            Namen = RegisterString1.replacingOccurrences(of: ".", with: " ", options: .literal, range: nil)
+      
+        }else if Funktion == "Lehrer" {
+        
+            RegisterString1 = EmailLabel2.text!
+            
+            RegisterString = "\(RegisterString1.lowercased())\(RegisterString2.lowercased())"
+            
+            Namen = RegisterString1.replacingOccurrences(of: ".", with: " ", options: .literal, range: nil)
+        
+        }
+        
+        
         
 
         if self.RegisterString == "" || self.RegisterPasswordTextField.text == ""

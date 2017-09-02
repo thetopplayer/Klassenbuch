@@ -38,11 +38,13 @@ class Login: UIViewController, UITextFieldDelegate {
     var LoginString2 = "@kslzh.ch"
     var LoginString = String()
     var ToggleState = "1"
- 
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
         
         
         // Cornerradius
@@ -395,14 +397,14 @@ class Login: UIViewController, UITextFieldDelegate {
         if segue.identifier == "LehrerRegister"{
            
             let DestViewController = segue.destination as! Register
-            
+            DestViewController.FromLogin = true
             DestViewController.Funktion = "Lehrer"
         }
        
         else if segue.identifier == "SchülerRegister"{
             
             let DestViewController = segue.destination as! Register
-            
+            DestViewController.FromLogin = true
             DestViewController.Funktion = "Schüler"
         }
     }

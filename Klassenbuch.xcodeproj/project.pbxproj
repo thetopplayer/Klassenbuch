@@ -196,7 +196,6 @@
 				37578E2E1F504E3E00ACFA80 /* LehrerNewAbsenz.swift */,
 				37578E361F51548E00ACFA80 /* LehrerSchülerListe.swift */,
 				37578E381F516A1800ACFA80 /* StudentAbsenzen.swift */,
-				3787ED9B1F53131800664523 /* LehrerAuswahl.swift */,
 				3787EDA51F533FF600664523 /* LehrerEinstellungen.swift */,
 				3787EDA11F5324DE00664523 /* LehrerKlassenauswahl.swift */,
 				3787EDA31F533A1D00664523 /* LehrerKlassenundUserEinstellungen.swift */,
@@ -285,6 +284,7 @@
 			children = (
 				37AD16DF1E2D4438002F41D9 /* Login.swift */,
 				37AD16E11E2D4448002F41D9 /* Register.swift */,
+				3787ED9B1F53131800664523 /* LehrerAuswahl.swift */,
 				37DC43371E3E3794009EAC4B /* Restore Password.swift */,
 				37578E301F507BD900ACFA80 /* Select Class.swift */,
 				37D3C7F51F59892A00E1DA1E /* EmailVerification.swift */,

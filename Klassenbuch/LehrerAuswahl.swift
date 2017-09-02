@@ -14,6 +14,9 @@
     
     import UIKit
     import Firebase
+
+
+
     
     class LehrerAuswahl: UITableViewController, UISearchBarDelegate {
         
@@ -31,6 +34,7 @@
         var myKlasse = String()
         var filteredData = [Teacher2]()
         var isSearching = false
+        var SelectedTeacher = String()
         
         
         override func viewDidLoad() {
@@ -43,6 +47,7 @@
         }
         
         override func viewWillAppear(_ animated: Bool) {
+           
             let BGimage = #imageLiteral(resourceName: "Background")
             UINavigationBar.appearance().backgroundColor = UIColor(red:0.08, green:0.17, blue:0.41, alpha:1.0)
             let backgroundImage = UIImageView(image: BGimage)
@@ -51,7 +56,9 @@
             let blurView = UIVisualEffectView(effect: blurEffect)
             blurView.frame = backgroundImage.bounds
             
-            backgroundImage.addSubview(blurView)}
+            backgroundImage.addSubview(blurView)
+        
+        }
         
         
         
@@ -115,14 +122,14 @@
             
             // Lehrer uf de Tippt wird wird KlasseLehrer, nach Firebase gschribe zum einte wer de Lehrer isch zum andere au das die Klass en Lehrer besitzt. Denn gits en Segue zrug und dete setts Label updatet werde.
             
-            let SelectedTeacher = self.filteredData[indexPath.row].name
+            SelectedTeacher = self.filteredData[indexPath.row].name
             
            
             let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
             
             let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
             
-            let titleAttrString = NSMutableAttributedString(string: "Ist \(SelectedTeacher)  wirklich der KlassenLehrer ihrer Klasse?", attributes: titleFont)
+            let titleAttrString = NSMutableAttributedString(string: "Sind Sie wirklich \(SelectedTeacher)?", attributes: titleFont)
             
             
             actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
@@ -138,7 +145,7 @@
                 self.ref = FIRDatabase.database().reference()
                 
                 
-                self.performSegue(withIdentifier: "backfromTeacherselection2Segue", sender: self)
+                self.performSegue(withIdentifier: "backtoRegisterwithTeacher", sender: self)
                 
                 
                 
@@ -166,8 +173,17 @@
         
         // In a storyboard-based application, you will often want to do a little preparation before navigation
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            // Get the new view controller using segue.destinationViewController.
-            // Pass the selected object to the new view controller.
+
+            
+            if segue.identifier == "backtoRegisterwithTeacher"{
+            
+                let DestViewController = segue.destination as! Register
+
+                DestViewController.LehrPerson = "\(SelectedTeacher)XXX"
+                DestViewController.FromLogin = false
+                DestViewController.Funktion = "Lehrer"
+                
+            }
         }
         
         
