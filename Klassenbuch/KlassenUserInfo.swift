@@ -17,6 +17,7 @@ class KlassenUserInfo: UITableViewController {
     var myKlasse = String()
     let defaults = UserDefaults.standard
     let allgemeineInfos =   "AllgemeineInfos"
+    var myName = String()
     
     //Outlets
     @IBOutlet weak var KlassenLabel: UILabel!
@@ -32,7 +33,11 @@ class KlassenUserInfo: UITableViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+//        let name = getName(UID: uid!)
+//        print("\(name)akusdhahdfgjhasdgfjsaf")
 
         self.checkforAdmin()
         self.getInfos()
@@ -75,6 +80,9 @@ class KlassenUserInfo: UITableViewController {
                 
             }
         })
+        
+
+        
         
     }
     
@@ -193,7 +201,13 @@ class KlassenUserInfo: UITableViewController {
                 
                 
                self.KlassenLabel.text = MeineKlasse
+                self.myKlasse = MeineKlasse
                
+                
+                
+                
+                
+                
            
                 self.ref?.child("users").child("KlassenEinstellungen").child(MeineKlasse).child("KlassenLehrer").observe(.value, with: { (snapshot) in
                     
@@ -205,9 +219,10 @@ class KlassenUserInfo: UITableViewController {
                         
                     }
                 }
-                    
-                    
                 )
+               
+                
+                
             }
         }
             
@@ -222,6 +237,7 @@ class KlassenUserInfo: UITableViewController {
                 
                 
                 self.EmailLabel.text = item2
+              
                 
             }
         }
@@ -240,12 +256,36 @@ class KlassenUserInfo: UITableViewController {
                 
                 
                 self.NameLabel.text = item3
+                self.myName = item3
                 
-            }
-        }
-            
-            
-        )
+               self.ref?.child("users").child("Schüler").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
+                    
+                    
+                    if let MeineKlasse = snapshot.value as? String{
+                        
+                        
+                        self.KlassenLabel.text = MeineKlasse
+                        self.myKlasse = MeineKlasse
+                        
+                        
+                        
+                        self.ref?.child("users").child("KlassenEinstellungen").child(MeineKlasse).child("Admin").observe(.value, with: { (snapshot) in
+                            
+                            if snapshot.hasChild(self.myName){
+                       
+                                self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["Admin": "true"])
+                            }
+                            else {
+                            
+                            print("not admin !!!!!!!!!")
+                            
+                            
+                            }
+                        })
+                    }})
+                }
+                }
+            )
         
         ref = FIRDatabase.database().reference()
         handle = ref?.child("users").child("Schüler").child(uid!).child("Admin").observe(.value, with: { (snapshot) in
@@ -280,4 +320,43 @@ class KlassenUserInfo: UITableViewController {
     }
     @IBAction func backfromStudentselection (_ segue:UIStoryboardSegue) {
     }
-}
+    
+    
+    
+//    
+//    func getName(UID: String) -> String{
+// 
+//        ref = FIRDatabase.database().reference()
+//        handle = ref?.child("users").child("Schüler").child(UID).child("name").observe(.value, with: { (snapshot) in
+//      
+//           return snapshot.value as? String
+//         
+//        }
+//        )
+//      return
+//    }
+//    
+
+//    func getname (Klasse : inout String){
+//        let user = FIRAuth.auth()?.currentUser
+//        let uid = user?.uid
+//        
+//        ref = FIRDatabase.database().reference()
+//        handle = ref?.child("users").child("KlassenEinstellungen").child(Klasse).child("Admin").observe(.value, with: { (snapshot) in
+//            
+//            
+//            if let item3 = snapshot.value as? String{
+//                
+//                
+//                self.NameLabel.text = item3
+//                
+//            }
+//        }
+//            
+//            
+//        )
+//
+//    
+//    }
+    
+   }

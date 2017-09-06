@@ -74,6 +74,12 @@ class LehrerSchülerListe: UITableViewController {
         
         
     }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if tableView.bounds.contains(touch.location(in: tableView)) {
+            return false
+        }
+        return true
+    }
    
     override func viewWillAppear(_ animated: Bool) {
         

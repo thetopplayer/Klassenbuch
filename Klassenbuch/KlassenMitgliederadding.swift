@@ -25,7 +25,7 @@
         var handle2 : FIRDatabaseHandle?
         var ref2: FIRDatabaseReference?
         var identifier = String()
-        
+//        var PersonName = String()
         //Outlets
         @IBOutlet weak var tableView: UITableView!
         @IBOutlet weak var ClassNameLabel: UILabel!
@@ -55,7 +55,7 @@
             //        view.isOpaque = false
             
             ClassNameLabel.text = myClass
-            self.hideKeyboardWhenTappedAround()
+//            self.hideKeyboardWhenTappedAround()
             
             hinzufügenButton.layer.cornerRadius = 5
             tableView.delegate = self
@@ -77,7 +77,37 @@
                     self.myClass = item
                     
                     
-                    
+//                    //Check if it's really the User
+//                    self.ref2 = FIRDatabase.database().reference()
+//                    self.handle2 = self.ref2?.child("users").child("Schüler").child(uid!).child("name").observe(.value, with: { (snapshot) in
+//                        
+//                        
+//                        if let item3 = snapshot.value as? String{
+//                            
+//                            
+//                            self.myName = item3
+//                            
+//                            self.ref2 = FIRDatabase.database().reference()
+//                            self.handle2 = self.ref2?.child("users").child("Klasseneinstellungen").child(uid!).child("Admin").observe(.value, with: { (snapshot) in
+//                                
+//                                
+//                                if snapshot.value as? String == item3 {
+//                                    
+//                                    print("Yes you are an Admin")
+//                                    //                            self.AdminLabel.text = "Admin"
+//                                    
+//                                }
+//                            }
+//                                
+//                                
+//                            )
+//                        }
+//                    }
+//                        
+//                        
+//                    )
+//                    
+         
                     self.ref2?.child("KlassenMitglieder/\(self.myClass)").observe(.childAdded, with: { (snapshot2) in
                         
                         
@@ -116,6 +146,14 @@
             
       
         }
+        
+        
+        
+        func checkforAdmin(){
+            let user = FIRAuth.auth()?.currentUser
+            let uid = user?.uid
+            
+          }
         
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             if textField == VornameTextField{
@@ -214,7 +252,11 @@
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             
             cell.textLabel?.text = Classmembers[indexPath.row]
+            
+            // Check which person of the classmembers is an admin or not
+            
             cell.contentView.alpha = 0.8
+            cell.accessoryType = .disclosureIndicator
             
             
             return cell
@@ -250,6 +292,57 @@
             }
         }
         
+         func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+            if tableView.bounds.contains(touch.location(in: tableView)) {
+                return false
+            }
+            return true
+        }
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let user = FIRAuth.auth()?.currentUser
+            let uid = user?.uid
+            
+            
+            let PersonName = Classmembers[indexPath.row]
+            
+
+            let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            
+            let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+            
+            let titleAttrString = NSMutableAttributedString(string: "Willst du \(PersonName) auch zum Admin machen? Du kannst diese Entscheidungn nicht wieder rückgängig machen", attributes: titleFont)
+            
+            actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+            
+            let Action1 = UIAlertAction(title: "Zum Co-Admin machen", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+               
+                
+                self.ref2 = FIRDatabase.database().reference()
+                self.handle2 = self.ref2?.child("users").child("Schüler").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
+                    
+                    
+                    if let MeineKlasse = snapshot.value as? String{
+                        
+                        
+                        self.myClass = MeineKlasse
+                        
+
+                self.ref2?.child("users").child("KlassenEinstellungen").child(self.myClass).child("Admin").updateChildValues(["\(PersonName)": PersonName])
+                    }})
+            }
+            
+            let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+                
+            }
+            
+            actionSheet.addAction(Action1)
+            
+            actionSheet.addAction(cancelAction)
+            
+            self.present(actionSheet, animated: true, completion: nil)
+
+            }
       
         
         // Save Button Enabled
