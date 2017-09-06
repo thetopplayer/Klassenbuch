@@ -266,14 +266,12 @@
         
         // Override to support editing the table view.
         func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let DeletingPerson = Classmembers[indexPath.row]
+        
             if editingStyle == .delete {
-                
-                
-                
-                
                 let user = FIRAuth.auth()?.currentUser
                 let uid = user?.uid
-                
+           
                 
                 ref2?.child("users").child("Schüler").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
                     
@@ -283,7 +281,7 @@
                         
                         
                         self.ref2?.child("KlassenMitglieder/\(self.myClass)").child(self.Classmembers[indexPath.row]).removeValue()
-                        
+                        self.ref2?.child("users").child("KlassenEinstellungen").child(self.myClass).child("Admin").child(self.Classmembers[indexPath.row]).removeValue()
                         
                     }
                 })

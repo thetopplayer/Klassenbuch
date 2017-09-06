@@ -278,7 +278,7 @@ class KlassenUserInfo: UITableViewController {
                             else {
                             
                             print("not admin !!!!!!!!!")
-                            
+                            self.ref?.child("users").child("Schüler").child(uid!).updateChildValues(["Admin": "false"])
                             
                             }
                         })
