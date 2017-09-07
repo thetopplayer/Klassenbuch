@@ -112,12 +112,15 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
                     self.data[adatum]!.append(homeObject3)
                 }
 
-                // Here pass Data in Reminder Function
-            print(adatum)
-            print(aperson)
-            // Create a Reminder, check with UD if Notifications enabled
-            
-            self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus)
+     
+
+            // Check if Reminders are wished                       
+                if UserDefaults.standard.bool(forKey: "Reminders") == true {
+                    print("wants reminders")
+                    self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus)
+                } else if UserDefaults.standard.bool(forKey: "Reminders") == false {
+                    print("dont want's reminders")
+                }
             }
             
             self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
@@ -146,7 +149,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
             self.tableView.reloadData()
             self.EmptyScreen()
         })
-   
+             
             
             }
         }
@@ -332,49 +335,49 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
             print("Cancel Pressed")
                     }
       
-        // Reminder & Status Action
-        
-       let StatusAction = UIAlertAction(title: "Errinerung", style: UIAlertActionStyle.default) { (alert:UIAlertAction) -> Void in
-       
-        let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
-        if notificationType == [] {
-            
-            print("notifications are NOT enabled")
-            
-            let alertController2 = UIAlertController(title: "Ooops", message: "Benachrichtigungen für dieses App sind nicht eingeschaltet", preferredStyle: .alert)
-            
-            alertController2.addAction(UIAlertAction(title: "Einstellungen", style: .default, handler: { (action: UIAlertAction!) in
-                //Go to Settings
-                
-                self.gotoSettings()
-                
-            }))
-            
-            alertController2.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action: UIAlertAction!) in
-                
-            }))
-            
-            
-            
-            
-            self.present(alertController2, animated: true, completion: nil)
-            
-            
-        } else {
-            print("notifications are enabled")
-            
-            // User is registered for notification
-            self.AbsenzDatumDate = sectionHeaderView!.textLabel!.text
-            
-            self.Absenzdauer = self.sortedData[indexPath.section].1[indexPath.row].AStatus
-            
-            self.PersonenTitel = self.sortedData[indexPath.section].1[indexPath.row].APerson
-            
-            self.performSegue(withIdentifier: "ReminderEinrichten", sender: nil)
-            
-            
-            
-        }        }
+//        // Reminder & Status Action
+//        
+//       let StatusAction = UIAlertAction(title: "Errinerung", style: UIAlertActionStyle.default) { (alert:UIAlertAction) -> Void in
+//       
+//        let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
+//        if notificationType == [] {
+//            
+//            print("notifications are NOT enabled")
+//            
+//            let alertController2 = UIAlertController(title: "Ooops", message: "Benachrichtigungen für dieses App sind nicht eingeschaltet", preferredStyle: .alert)
+//            
+//            alertController2.addAction(UIAlertAction(title: "Einstellungen", style: .default, handler: { (action: UIAlertAction!) in
+//                //Go to Settings
+//                
+//                self.gotoSettings()
+//                
+//            }))
+//            
+//            alertController2.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action: UIAlertAction!) in
+//                
+//            }))
+//            
+//            
+//            
+//            
+//            self.present(alertController2, animated: true, completion: nil)
+//            
+//            
+//        } else {
+//            print("notifications are enabled")
+//            
+//            // User is registered for notification
+//            self.AbsenzDatumDate = sectionHeaderView!.textLabel!.text
+//            
+//            self.Absenzdauer = self.sortedData[indexPath.section].1[indexPath.row].AStatus
+//            
+//            self.PersonenTitel = self.sortedData[indexPath.section].1[indexPath.row].APerson
+//            
+//            self.performSegue(withIdentifier: "ReminderEinrichten", sender: nil)
+//            
+//            
+//            
+//        }        }
         
         // Delete Action
         let deleteaction = UIAlertAction(title: "Löschen", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
@@ -385,10 +388,20 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         }
         
         
-        AbsenzenSheet.addAction(StatusAction)
+//        AbsenzenSheet.addAction(StatusAction)
         
-        AbsenzenSheet.addAction(deleteaction)
+        // Check if Reminders are wished
+        if UserDefaults.standard.bool(forKey: "CanDelete") == true {
+            print("User can Delete")
+           AbsenzenSheet.addAction(deleteaction) 
+            
+        } else if UserDefaults.standard.bool(forKey: "CanDelete") == false {
+            print("User cant Delete")
+        }
+    
+    
         
+    
         AbsenzenSheet.addAction(cancelAction)
         
         self.present(AbsenzenSheet, animated: true, completion: nil)
@@ -433,22 +446,22 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "ReminderEinrichten"){
-        
-            let DestViewController = segue.destination as! NewReminderNC
-            let targetController = DestViewController.topViewController as! NewReminder
-       
-        //let targetController = segue.destination as! NewReminder
-        targetController.Person = PersonenTitel
-        targetController.DauerderAbsenz = Absenzdauer
-        targetController.Datum = AbsenzDatumDate
-        
-        
-        
-        
-        
-        
-        }
+//        if (segue.identifier == "ReminderEinrichten"){
+//        
+//            let DestViewController = segue.destination as! NewReminderNC
+//            let targetController = DestViewController.topViewController as! NewReminder
+//       
+//        //let targetController = segue.destination as! NewReminder
+//        targetController.Person = PersonenTitel
+//        targetController.DauerderAbsenz = Absenzdauer
+//        targetController.Datum = AbsenzDatumDate
+//        
+//        
+//        
+//        
+//        
+//        
+//        }
     }
 
     // Go to Acknowledgements Function in Settings
@@ -482,13 +495,15 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         self.ref?.child("users").child("KlassenEinstellungen").child(checkingClass).child("HatKlassenLehrer").observe(.value, with: { (snapshot) in
 
             if snapshot.value as? Bool == true {
-                
+                UserDefaults.standard.set(false, forKey: "CanDelete")
+                UserDefaults.standard.synchronize()
                 
             
                self.AddAbsenzButton.isEnabled = false
                 
             } else if snapshot.value as? Bool == false{
-            
+                UserDefaults.standard.set(true, forKey: "CanDelete")
+                UserDefaults.standard.synchronize()
                 self.AddAbsenzButton.isEnabled = true
             
             }
@@ -599,7 +614,10 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     }
     
 
-
+    func checkifUserwantsReminders(){
+    
+  
+    }
 
 
 

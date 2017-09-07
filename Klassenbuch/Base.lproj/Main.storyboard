@@ -372,7 +372,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="AddAbsenzButton" destination="Ate-Hd-Xn1" id="dlv-wh-sGk"/>
-                        <segue destination="cNk-hq-Yiq" kind="show" identifier="ReminderEinrichten" action="showDetailViewController:sender:" id="QXv-uI-lxB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FwN-0K-AcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2927,33 +2926,29 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder abschalten" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHX-PC-P2m">
-                                                    <rect key="frame" x="15" y="12" width="162" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Reminder erhalten" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHX-PC-P2m">
+                                                    <rect key="frame" x="15" y="12" width="205" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsM-wU-EvB">
-                                                    <rect key="frame" x="360" y="7" width="26" height="28"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="26" id="r5z-eR-2Zp"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button" image="Bell">
-                                                        <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                    </state>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kBK-Bh-DEC">
+                                                    <rect key="frame" x="357" y="6" width="51" height="31"/>
+                                                    <color key="onTintColor" red="0.1019607843" green="0.23137254900000001" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
-                                                        <action selector="StopAllReminders:" destination="SEu-nB-Cm0" eventType="touchUpInside" id="mNR-Q2-3fr"/>
+                                                        <action selector="ReminderSwitch:" destination="SEu-nB-Cm0" eventType="valueChanged" id="B87-jg-eTg"/>
                                                     </connections>
-                                                </button>
+                                                </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="hsM-wU-EvB" secondAttribute="trailing" constant="20" id="BpY-mB-1hs"/>
                                                 <constraint firstItem="fHX-PC-P2m" firstAttribute="leading" secondItem="peG-zM-7xN" secondAttribute="leadingMargin" constant="7" id="GKp-eE-FBG"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="hsM-wU-EvB" secondAttribute="bottom" constant="0.5" id="Kjr-Uf-fic"/>
-                                                <constraint firstItem="hsM-wU-EvB" firstAttribute="top" secondItem="peG-zM-7xN" secondAttribute="topMargin" constant="-1" id="gDM-OC-YTz"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="kBK-Bh-DEC" secondAttribute="trailing" id="b8Y-fu-ULM"/>
                                                 <constraint firstItem="fHX-PC-P2m" firstAttribute="top" secondItem="peG-zM-7xN" secondAttribute="topMargin" constant="4" id="hny-zh-OwK"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="kBK-Bh-DEC" firstAttribute="centerY" secondItem="ic3-zp-kIq" secondAttribute="centerY" id="J2F-Kt-Xob"/>
+                                        </constraints>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -2973,6 +2968,7 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="ReminderSwitch" destination="kBK-Bh-DEC" id="oEP-u2-db8"/>
                         <outlet property="Switch1Klasse" destination="eDI-9g-07s" id="YtN-NJ-gVR"/>
                         <outlet property="Switch2Klasse" destination="5SC-N1-U1r" id="Mt4-rO-r4h"/>
                         <outlet property="Switch3Klasse" destination="Z9d-q9-KuF" id="HP6-Pj-y6u"/>
@@ -2987,7 +2983,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Kb-4V-ezm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="QGw-rn-ASm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="8835" y="1996"/>
+            <point key="canvasLocation" x="8834.782608695652" y="1995.6521739130437"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a7A-Vk-ecw">
@@ -3049,7 +3045,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2fC-lA-VHB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6894.202898550725" y="636.68478260869574"/>
+            <point key="canvasLocation" x="6986" y="637"/>
         </scene>
         <!--Lehrer Auswahl-->
         <scene sceneID="cYJ-bd-IsF">
@@ -4864,7 +4860,6 @@
         <image name="Back Chevron" width="13" height="21"/>
         <image name="Background" width="375" height="667"/>
         <image name="Background2" width="375" height="667"/>
-        <image name="Bell" width="38" height="48"/>
         <image name="Combined Shape" width="250" height="241"/>
         <image name="Contacts" width="25" height="25"/>
         <image name="Contacts Filled" width="25" height="25"/>

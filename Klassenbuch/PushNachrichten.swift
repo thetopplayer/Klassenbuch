@@ -23,6 +23,7 @@ class PushNachrichten: UITableViewController {
     @IBOutlet weak var Switch5Klasse: UISwitch!
     @IBOutlet weak var Switch6Klasse: UISwitch!
     @IBOutlet weak var SwitchFreiwilligeAnlässe: UISwitch!
+    @IBOutlet weak var ReminderSwitch: UISwitch!
     
     // Variables
     let defaults = UserDefaults.standard
@@ -36,6 +37,7 @@ class PushNachrichten: UITableViewController {
    
     let allgemeineInfos =   "AllgemeineInfos"
     let freiwilligeAnlaesse = "freiwilligeAnlaesse"
+    let reminderString = "ReminderString"
     
     
     var RowSectionArray = [["1","1","1","1","1","1","1","1"],["1"]]
@@ -66,6 +68,9 @@ class PushNachrichten: UITableViewController {
         }
         if let fixfreiwilligeAnlaesse = defaults.value(forKey: freiwilligeAnlaesse){
             SwitchFreiwilligeAnlässe.isOn = fixfreiwilligeAnlaesse as! Bool
+        }
+        if let fixreminderString = defaults.value(forKey: reminderString){
+        ReminderSwitch.isOn = fixreminderString as! Bool
         }
         
         // Left Swipe
@@ -225,35 +230,89 @@ class PushNachrichten: UITableViewController {
         }
     }
 
-    @IBAction func StopAllReminders(_ sender: Any) {
+//    @IBAction func StopAllReminders(_ sender: Any) {
+//        
+//        
+//        let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+//        
+//        let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+//        
+//        let titleAttrString = NSMutableAttributedString(string: "Willst du wirklich deine Absenzen Errinerungen löschen?", attributes: titleFont)
+//        
+//        
+//        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+//        
+//        
+//        
+//        
+//        let logoutAction = UIAlertAction(title: "Reminders löschen", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+//           UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+//        }
+//        
+//        let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+//            print("Cancel Pressed")
+//        }
+//        
+//        actionSheet.addAction(logoutAction)
+//        
+//        actionSheet.addAction(cancelAction)
+//        
+//        self.present(actionSheet, animated: true, completion: nil)
+//    }
+    
+    
+    
+    
+    @IBAction func ReminderSwitch(_ sender: UISwitch) {
+
+       
+        if ReminderSwitch.isOn == true {
+           
+            UserDefaults.standard.set(true, forKey: "Reminders")
+            UserDefaults.standard.synchronize()
         
+        } else if ReminderSwitch.isOn == false {
         
-        let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let actionSheet = UIAlertController(title: "", message: "Alle deine bisherigen Reminders werden somit gelöscht!", preferredStyle: UIAlertControllerStyle.actionSheet)
+            
+            let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+            
+            let titleAttrString = NSMutableAttributedString(string: "Willst du dich wirklich keine Errinerungen erhalten?", attributes: titleFont)
+            
+            actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+            
+            let Action1 = UIAlertAction(title: "Ja", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+                
+                // UserDefaults für Button off
+                UserDefaults.standard.set(false, forKey: "Reminders")
+                UserDefaults.standard.synchronize()
+                UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+                
+            }
+            
+            let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+                self.ReminderSwitch.isOn = true
+                // UserDefaults
+                UserDefaults.standard.set(true, forKey: "Reminders")
+                UserDefaults.standard.synchronize()
+            }
+            
+            actionSheet.addAction(Action1)
+            
+            actionSheet.addAction(cancelAction)
+            
+            self.present(actionSheet, animated: true, completion: nil)
+
         
-        let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
-        
-        let titleAttrString = NSMutableAttributedString(string: "Willst du wirklich deine Absenzen Errinerungen löschen?", attributes: titleFont)
-        
-        
-        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
-        
-        
-        
-        
-        let logoutAction = UIAlertAction(title: "Reminders löschen", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
-           UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         }
         
-        let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
-            print("Cancel Pressed")
-        }
         
-        actionSheet.addAction(logoutAction)
-        
-        actionSheet.addAction(cancelAction)
-        
-        self.present(actionSheet, animated: true, completion: nil)
+                 defaults.set(sender.isOn, forKey: reminderString)
     }
+    
+    
+    
+    
     
     func noReminderinSettings(){
         
