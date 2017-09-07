@@ -25,7 +25,7 @@ class NewReminder: UITableViewController, UNUserNotificationCenterDelegate {
     
     // Variables
     
-    var reminder: Reminder?
+  var reminder: Reminder?
     
     var Person: String?
     var Datum: String?

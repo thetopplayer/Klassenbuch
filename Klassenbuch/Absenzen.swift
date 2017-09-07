@@ -40,6 +40,9 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     var myName = String()
     var myKlasse = String()
     let myEmail = String()
+    var MorningTime = 43200
+    //var FireTime: Date
+    var TodayTomorrow = "bis Morgen unterschrieben abgeben."
     
     override func viewDidLoad() {
        
@@ -109,8 +112,12 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
                     self.data[adatum]!.append(homeObject3)
                 }
 
-                
-
+                // Here pass Data in Reminder Function
+            print(adatum)
+            print(aperson)
+            // Create a Reminder, check with UD if Notifications enabled
+            
+            self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus)
             }
             
             self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
@@ -497,7 +504,121 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     
     }
   
+    
+    
+    func Reminder(Person: String, AbsenzDate: Int, Status: String){
+       
+        var triggerDate: Date = Date()
+    
+        let DateString = AbsenzDate.convertTimestampToDate
+       
+        //Date formatter
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "dd MMMM yyyy"
+        let DateinDate = dateformatter.date(from: DateString)
+        
+        let daysToAdd = 13
+        let daysToAdd2 = 14
+        var dateComponent = DateComponents()
+        dateComponent.day = daysToAdd
+        var dateComponent2 = DateComponents()
+        dateComponent2.day = daysToAdd2
+       
+        let PreReminderDate = Calendar.current.date(byAdding: dateComponent, to: DateinDate!)
+        let ReminderDate = Calendar.current.date(byAdding: dateComponent2, to: DateinDate!)
+        
+        print(PreReminderDate!)
+        print(ReminderDate!)
+        
+        // Content for PreReminder
+        let content = UNMutableNotificationContent()
+        content.title = "Absenz Errinerung"
+        content.body = "\(Person), du musst deine Absenz vom \(DateString) \(TodayTomorrow)"
+        content.sound = UNNotificationSound.default()
+        content.badge = 1
+        
+        // Content for Reminder
+        let content2 = UNMutableNotificationContent()
+        content2.title = "Absenz Errinerung"
+        content2.body = "\(Person), du musst deine Absenz vom \(DateString) heute abgeben."
+        content2.sound = UNNotificationSound.default()
+        content2.badge = 1
+        
+        print(content.body)
+        print(content.title)
+        print(content.title)
+        
+        
+        let triggerdate1 = PreReminderDate! - 43200
+        let TriggerDateComponents = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: triggerdate1)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: TriggerDateComponents, repeats: false)
+        // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier:  UUID().uuidString, content: content, trigger: trigger)
+        print(trigger)
+        
+        if ReminderDate! < Date() {
+            // error the trigger Date already happened
+            remindernotValid()
+        }else {
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
+                if let error = error{
+                    print("Could not create Local notification", error)
+                }else if let newdate = trigger.nextTriggerDate(){
+                    print("Next notification date:", newdate)
+                    print("Errinierung an")
+                }
+            }
+            )
+        }
+        
+        let triggerdate2 = PreReminderDate! - 43200
+        let TriggerDateComponents2 = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: triggerdate2)
+        let trigger2 = UNCalendarNotificationTrigger(dateMatching: TriggerDateComponents2, repeats: false)
+        // let trigger2 = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request2 = UNNotificationRequest(identifier:  UUID().uuidString, content: content2, trigger: trigger2)
+        print(trigger2)
+        
+        if PreReminderDate! < Date() {
+            // error the trigger Date already happened
+            remindernotValid()
+        }else {
+            UNUserNotificationCenter.current().add(request2, withCompletionHandler: { (error) in
+                if let error = error{
+                    print("Could not create Local notification", error)
+                }else if let newdate = trigger2.nextTriggerDate(){
+                    print("Next notification date:", newdate)
+                    print("Errinierung an")
+                }
+            }
+            )
+        }
+    
+    
+    
+    
+    }
+    
+
+
+
+
+
+
+
+
+func remindernotValid(){
+
+    let alertController = UIAlertController(title: "Oops!", message: "Du willst einen Reminder für eine Absenz einrichten die bereits abgelofen ist.", preferredStyle: .alert)
+    alertController.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: { (action: UIAlertAction!) in
+    }))
+    present(alertController, animated: true, completion: nil)
 }
+    
+    
+    
+    
+}
+
 /* compare dates
  switch adatum < Date().getDateFromZeroHour /*- 1209600 -86400*/ {
  

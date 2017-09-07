@@ -56,6 +56,7 @@
             StundeInt = 1
             
             StundenStepperLabel.text = "\(StundeInt) Lektion"
+            Absenzenstatus2 = "1 Lektion"
             AbsenzenDatum.becomeFirstResponder()
             
             name = AbsenzenPersonLabel.text!
