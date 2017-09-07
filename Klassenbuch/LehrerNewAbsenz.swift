@@ -432,8 +432,8 @@
                              self.ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
                                     
                                     
-                                    if let item1 = snapshot.value as? String{
-                                        
+                                if let item1 = snapshot.value as? String{
+                                    
                                         
                                         self.myklasse2 = item1
                                         
@@ -442,7 +442,7 @@
 
                             self.ref?.child("Statistiken").child(self.myklasse2!).observeSingleEvent(of: .value, with:                    { (snapshot) in
                                  
-                            if snapshot.hasChild(self.name){
+                                if snapshot.hasChild(self.name){
                              
                             // Ja Statisitke werden geführt Wert abelade und neu ufelade
                                 
@@ -454,35 +454,24 @@
                                      print(item3)
                                         let newInttoUpload = item3 + self.StundeInt//item3 + self.StundeInt
                                     print(newInttoUpload)
-                                    self.ref!.child("Statistiken").child(self.myklasse2!).child(self.name).updateChildValues(["AAnzahlStunden" : newInttoUpload])
+                                        self.ref!.child("Statistiken").child(self.myklasse2!).child(self.name).updateChildValues(["AAnzahlStunden" : newInttoUpload, "AAbsenzenOffen" : newInttoUpload])
                                     
                                     }})
                                 
-                                
-                                
-                                
-                            print("true, Statistiken werden bereits geführt")
-                      
+                                    print("true, Statistiken werden bereits geführt")
+                                    
+                                } else{
+                                    print("false, Statistiken werden bereits geführt")
+                                    // Wert sette
+                                    self.ref!.child("Statistiken").child(self.myklasse2!).child(self.name).updateChildValues(["AAnzahlStunden" : self.StundeInt, "APerson": self.AbsenzenPersons.text!,"AAbsenzenOffen" : self.StundeInt,"AAbsenzenentschuldigt" : 0, "AAbsenzenunentschuldigt" : 0])
                                 }
-                            }
-                                
-                                
-                                        )} else{
-                            print("false, Statistiken werden bereits geführt")
-                                 // Wert sette
-                                self.ref!.child("Statistiken").child(self.myklasse2!).child(self.name).updateChildValues(["AAnzahlStunden" : self.StundeInt, "APerson": self.AbsenzenPersons.text!])
-                                }
-                                 
-     
-                            }
-                        )
-                            }
-                        }
-                        )
-
-                   
+                                    
+                                    
+                                    
+                            })}})}})}
+                        
                         self.performSegue(withIdentifier: "canceltoOverView", sender: self)
-                    }
+        
     }
 
     
