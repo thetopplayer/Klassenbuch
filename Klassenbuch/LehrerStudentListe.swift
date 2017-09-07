@@ -87,9 +87,24 @@
             
         }
         
-        
+//        override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+//        {
+//            // This is where you would change section header content
+//            return tableView.dequeueReusableCell(withIdentifier: "header")
+//        }
+//        
+//        override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+//        {
+//            return 44
+//        }
 
-        
+        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+            if view.bounds.contains(touch.location(in: view)) {
+                return false
+            }
+            return true
+        }
+
         
       override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             

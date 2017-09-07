@@ -8,13 +8,23 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 
-class LehrerEinstellungen: UITableViewController {
+class LehrerEinstellungen: UITableViewController, UNUserNotificationCenterDelegate {
 
+    @IBOutlet weak var TeacherReminderSwitch: UISwitch!
+    
+    // Variables
+    let defaults = UserDefaults.standard
+    let LehrerReminderString = "ReminderString"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       
+        if let fixreminderString = defaults.value(forKey: LehrerReminderString){
+            TeacherReminderSwitch.isOn = fixreminderString as! Bool
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,7 +41,7 @@ class LehrerEinstellungen: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return 2
     }
 
     @IBAction func LogOut(_ sender: Any) {
@@ -72,6 +82,55 @@ class LehrerEinstellungen: UITableViewController {
         self.present(actionSheet, animated: true, completion: nil)
         
     }
+    
+    
+    @IBAction func ReminderSwitch(_ sender: UISwitch) {
+        
+        if TeacherReminderSwitch.isOn == true {
+            
+            UserDefaults.standard.set(true, forKey: "TeacherReminders")
+            UserDefaults.standard.synchronize()
+            
+        } else if TeacherReminderSwitch.isOn == false {
+            
+            let actionSheet = UIAlertController(title: "", message: "Alle Ihre bisherigen Reminders werden somit gelöscht!", preferredStyle: UIAlertControllerStyle.actionSheet)
+            
+            let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+            
+            let titleAttrString = NSMutableAttributedString(string: "Wollen Sie wirklich keine Errinerungen mehr erhalten?", attributes: titleFont)
+            
+            actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+            
+            let Action1 = UIAlertAction(title: "Ja", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+                
+                // UserDefaults für Button off
+                UserDefaults.standard.set(false, forKey: "TeacherReminders")
+                UserDefaults.standard.synchronize()
+                UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+                
+            }
+            
+            let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+                self.TeacherReminderSwitch.isOn = true
+                // UserDefaults
+                UserDefaults.standard.set(true, forKey: "TeacherReminders")
+                UserDefaults.standard.synchronize()
+            }
+            
+            actionSheet.addAction(Action1)
+            
+            actionSheet.addAction(cancelAction)
+            
+            self.present(actionSheet, animated: true, completion: nil)
+            
+            
+        }
+        
+        
+        defaults.set(sender.isOn, forKey: LehrerReminderString)
+
+    }
+
     @IBAction func cancelUserinfo (_ segue:UIStoryboardSegue) {
     }
     }

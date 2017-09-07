@@ -26,7 +26,7 @@
         
         
         
-        var teachers = [Teacher2(name: "martine vetterli"), Teacher2(name: "joachim bruder"), Teacher2(name: "Mein LehrerAccount")]
+        var teachers = [Teacher2(name: "martine vetterli"), Teacher2(name: "joachim bruder"), Teacher2(name: "klassenbuchteam@gmail.com")]
         // array sollte Downgelodet werden mit allen Lehrer Namen vlt.
         //var KlassenLehrerArray = ["martine vetterli", "Joachim bruder","Mein LehrerAccount"]
         var handle : FIRDatabaseHandle?

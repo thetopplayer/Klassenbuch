@@ -28,6 +28,9 @@ struct Homework2 {
     var HUid: String
 }
 
+
+
+
 class Hausaufgaben: UIViewController, UITabBarDelegate, UITableViewDelegate, UITableViewDataSource {
     
     //Outlets

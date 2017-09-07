@@ -49,7 +49,8 @@ class LehrerEmailVerification: UIViewController {
                 } else {
                     
                     print("It aint verified yet")
-                    
+                    // Only for Development
+                    self.performSegue(withIdentifier: "TeacherEmailverified", sender: self)
                 }
             } else {
                 

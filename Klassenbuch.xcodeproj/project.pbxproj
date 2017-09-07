@@ -42,6 +42,7 @@
 		379B8CAD1EA764E600E27CBC /* Delivery.png in Resources */ = {isa = PBXBuildFile; fileRef = 379B8CAC1EA764E600E27CBC /* Delivery.png */; };
 		37AD16E01E2D4438002F41D9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16DF1E2D4438002F41D9 /* Login.swift */; };
 		37AD16E21E2D4448002F41D9 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16E11E2D4448002F41D9 /* Register.swift */; };
+		37BF5D181F61D25F00B26C24 /* StatistikenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BF5D171F61D25F00B26C24 /* StatistikenCell.swift */; };
 		37BFF9911E09D14F00FDDFE6 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BFF9901E09D14F00FDDFE6 /* Tests.swift */; };
 		37D3C7F41F5897D200E1DA1E /* KlassenMitgliederadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3C7F31F5897D200E1DA1E /* KlassenMitgliederadding.swift */; };
 		37D3C7F61F59892A00E1DA1E /* EmailVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3C7F51F59892A00E1DA1E /* EmailVerification.swift */; };
@@ -134,6 +135,7 @@
 		379B8CAC1EA764E600E27CBC /* Delivery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Delivery.png; sourceTree = "<group>"; };
 		37AD16DF1E2D4438002F41D9 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		37AD16E11E2D4448002F41D9 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		37BF5D171F61D25F00B26C24 /* StatistikenCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatistikenCell.swift; sourceTree = "<group>"; };
 		37BFF9901E09D14F00FDDFE6 /* Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		37D3C7F31F5897D200E1DA1E /* KlassenMitgliederadding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KlassenMitgliederadding.swift; sourceTree = "<group>"; };
 		37D3C7F51F59892A00E1DA1E /* EmailVerification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailVerification.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			children = (
 				37578E2C1F504E1A00ACFA80 /* AbsenzenOverview.swift */,
 				371CC12E1F5EEBBA00E28E8D /* LehrerStatistiken.swift */,
+				37BF5D171F61D25F00B26C24 /* StatistikenCell.swift */,
 				37578E2E1F504E3E00ACFA80 /* LehrerNewAbsenz.swift */,
 				37578E361F51548E00ACFA80 /* LehrerSchülerListe.swift */,
 				37578E381F516A1800ACFA80 /* StudentAbsenzen.swift */,
@@ -702,6 +705,7 @@
 				3770835F1F06B94900B2C9FA /* Notes.swift in Sources */,
 				37578E311F507BD900ACFA80 /* Select Class.swift in Sources */,
 				37AD16E01E2D4438002F41D9 /* Login.swift in Sources */,
+				37BF5D181F61D25F00B26C24 /* StatistikenCell.swift in Sources */,
 				37FCAEA91DFD553900789BFF /* Hausaufgaben.swift in Sources */,
 				37D3C7F81F5999CD00E1DA1E /* LehrerEmailVerification.swift in Sources */,
 				37578E2D1F504E1A00ACFA80 /* AbsenzenOverview.swift in Sources */,

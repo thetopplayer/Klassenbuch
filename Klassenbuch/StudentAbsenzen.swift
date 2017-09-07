@@ -8,6 +8,7 @@ struct AbsenzenStruct16 {
     var ADatum: Int
     var AStatus: String
     var APerson: String
+    var AAbgabe : String
     var AUid: String
 }
 
@@ -54,7 +55,14 @@ class StudentAbsenzen: UITableViewController, UNUserNotificationCenterDelegate, 
         
         Header.title = StudentName
         
+        ref!.child("SchülerAbsenzen/\(StudentName)").observe(.value, with: { (snapshot) in
         
+        
+        
+        
+        
+        
+        })
     }
     
     @IBAction func cancelNewAbsenz (_ segue:UIStoryboardSegue) {
@@ -79,9 +87,11 @@ class StudentAbsenzen: UITableViewController, UNUserNotificationCenterDelegate, 
                 
                 let aperson = fdata16["APerson"] as! String
                 
+                let aabgabe = fdata16["AAbgabe"] as! String
+                
                 let aID = snapshot.key
                 
-                let homeObject3 = AbsenzenStruct16(ADatum: adatum, AStatus: astatus, APerson: aperson, AUid: aID)
+                let homeObject3 = AbsenzenStruct16(ADatum: adatum, AStatus: astatus, APerson: aperson, AAbgabe: aabgabe, AUid: aID)
                 
                 if self.data[adatum] == nil {
                     self.data[adatum] = [homeObject3]
@@ -222,6 +232,18 @@ class StudentAbsenzen: UITableViewController, UNUserNotificationCenterDelegate, 
         cell.accessoryType = .detailButton
         cell.tintColor = UIColor(red:0.17, green:0.22, blue:0.45, alpha:1.0)
         
+        if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "abgegeben"{
+            
+            cell.backgroundColor = UIColor.green
+        
+        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "offen"{
+        
+        
+        
+        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "offen"{
+        
+        }
+        
         return cell
     }
     
@@ -298,64 +320,46 @@ class StudentAbsenzen: UITableViewController, UNUserNotificationCenterDelegate, 
             print("Cancel Pressed")
         }
         
-        // Reminder & Status Action
-        
-        let StatusAction = UIAlertAction(title: "Errinerung", style: UIAlertActionStyle.default) { (alert:UIAlertAction) -> Void in
-            
-            let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
-            if notificationType == [] {
                 
-                print("notifications are NOT enabled")
-                
-                let alertController2 = UIAlertController(title: "Ooops", message: "Benachrichtigungen für dieses App sind nicht eingeschaltet", preferredStyle: .alert)
-                
-                alertController2.addAction(UIAlertAction(title: "Einstellungen", style: .default, handler: { (action: UIAlertAction!) in
-                    //Go to Settings
-                    
-                    
-                }))
-                
-                alertController2.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action: UIAlertAction!) in
-                    
-                }))
-                
-                
-                
-                
-                self.present(alertController2, animated: true, completion: nil)
-                
-                
-            } else {
-                print("notifications are enabled")
-                
-                // User is registered for notification
-                self.AbsenzDatumDate = sectionHeaderView!.textLabel!.text
-                
-                self.Absenzdauer = self.sortedData[indexPath.section].1[indexPath.row].AStatus
-                
-                self.PersonenTitel = self.sortedData[indexPath.section].1[indexPath.row].APerson
-                
-                self.performSegue(withIdentifier: "ReminderEinrichten", sender: nil)
-                
-                
-                
-            }        }
-        
         // Delete Action
         let deleteaction = UIAlertAction(title: "Löschen", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
             
             let user = FIRAuth.auth()?.currentUser
             let uid = user?.uid
             
+//            let absenz = self.sortedData[indexPath.section].1[indexPath.row]
+//            self.ref!.child("absenzen/\(uid!)/\(absenz.AUid)").removeValue()
+ 
             let absenz = self.sortedData[indexPath.section].1[indexPath.row]
-            self.ref!.child("absenzen/\(uid!)/\(absenz.AUid)").removeValue()
+            let myperson = self.sortedData[indexPath.section].1[indexPath.row].APerson
+            self.ref!.child("SchülerAbsenzen/\(myperson)/\(absenz.AUid)").removeValue()
             print("deleted pressed")
+        
         }
+       
+        // Delete Action
+        let deleteaction2 = UIAlertAction(title: "Abgegeben", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+            
+            let user = FIRAuth.auth()?.currentUser
+            let uid = user?.uid
+            
+            //            let absenz = self.sortedData[indexPath.section].1[indexPath.row]
+            //            self.ref!.child("absenzen/\(uid!)/\(absenz.AUid)").removeValue()
+            
+            let absenz = self.sortedData[indexPath.section].1[indexPath.row]
+            let myperson = self.sortedData[indexPath.section].1[indexPath.row].APerson
+            self.ref!.child("SchülerAbsenzen/\(myperson)/\(absenz.AUid)").updateChildValues(["AAbgabe": "abgegeben"])
+          
+            
+        }
+
         
         
-        AbsenzenSheet.addAction(StatusAction)
+      
         
         AbsenzenSheet.addAction(deleteaction)
+        
+          AbsenzenSheet.addAction(deleteaction2)
         
         AbsenzenSheet.addAction(cancelAction)
         

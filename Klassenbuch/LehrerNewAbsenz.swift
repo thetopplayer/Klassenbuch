@@ -404,8 +404,9 @@
                         self.ref!.child("SchülerAbsenzen").child(name).childByAutoId().setValue([
                             "APerson": name,
                             "AStatus": AbsenzInfo,
-                            "ADatum": self.selectedDateZeroHour!
-                            ])
+                            "ADatum": self.selectedDateZeroHour!,
+                            "AAbgabe": "offen",
+                            "AAnzahlStunden" : self.StundeInt])
                         
                         // here check für welli klass klasselehrerin denn child()ihir Klass wo jetzte uid isch
                         
@@ -418,6 +419,7 @@
                                     "APerson": self.AbsenzenPersons.text!,
                                     "AStatus": self.AbsenzInfo,
                                     "ADatum": self.selectedDateZeroHour!,
+                                    "AAbgabe": "offen",
                                     "AAnzahlStunden" : self.StundeInt])
                                 
                                 
@@ -426,7 +428,16 @@
                                 
                             // Zuerst mal Check gits überhaupt das Child. Wenn ja denn wert abelafe und denn wieder ufelade. Und
                             //    zwar de gesamt wert nur süscht denn bi de overview oder bi de Klass absenzstatus ändere.
-                          
+                                self.ref = FIRDatabase.database().reference()
+                             self.ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
+                                    
+                                    
+                                    if let item1 = snapshot.value as? String{
+                                        
+                                        
+                                        self.myklasse2 = item1
+                                        
+                            
                                 
 
                             self.ref?.child("Statistiken").child(self.myklasse2!).observeSingleEvent(of: .value, with:                    { (snapshot) in
@@ -436,13 +447,14 @@
                             // Ja Statisitke werden geführt Wert abelade und neu ufelade
                                 
                                 
-                                  self.ref?.child("Statistiken").child(self.myklasse2!).child(self.name).observeSingleEvent(of: .value, with:                    { (snapshot) in
+                                  self.ref?.child("Statistiken").child(self.myklasse2!).child(self.name).child("AAnzahlStunden").observeSingleEvent(of: .value, with:                    { (snapshot) in
                                 
                                     if let item3 = snapshot.value as? Int {
                                     
-                                     self.newInttoUpload = item3 + self.StundeInt
-                                    
-                                    self.ref!.child("Statistiken").child(self.myklasse2!).child(self.name).updateChildValues(["AAnzahlStunden" : self.newInttoUpload])
+                                     print(item3)
+                                        let newInttoUpload = item3 + self.StundeInt//item3 + self.StundeInt
+                                    print(newInttoUpload)
+                                    self.ref!.child("Statistiken").child(self.myklasse2!).child(self.name).updateChildValues(["AAnzahlStunden" : newInttoUpload])
                                     
                                     }})
                                 
@@ -451,7 +463,11 @@
                                 
                             print("true, Statistiken werden bereits geführt")
                       
-                            } else{
+                                }
+                            }
+                                
+                                
+                                        )} else{
                             print("false, Statistiken werden bereits geführt")
                                  // Wert sette
                                 self.ref!.child("Statistiken").child(self.myklasse2!).child(self.name).updateChildValues(["AAnzahlStunden" : self.StundeInt, "APerson": self.AbsenzenPersons.text!])

@@ -42,7 +42,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     let myEmail = String()
     var MorningTime = 43200
     //var FireTime: Date
-    var TodayTomorrow = "bis Morgen unterschrieben abgeben."
+        var TodayTomorrow = "bis Morgen unterschrieben abgeben."
     
     override func viewDidLoad() {
        
@@ -393,7 +393,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         // Check if Reminders are wished
         if UserDefaults.standard.bool(forKey: "CanDelete") == true {
             print("User can Delete")
-           AbsenzenSheet.addAction(deleteaction) 
+           AbsenzenSheet.addAction(deleteaction)
             
         } else if UserDefaults.standard.bool(forKey: "CanDelete") == false {
             print("User cant Delete")
@@ -548,7 +548,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         // Content for PreReminder
         let content = UNMutableNotificationContent()
         content.title = "Absenz Errinerung"
-        content.body = "\(Person), du musst deine Absenz vom \(DateString) \(TodayTomorrow)"
+        content.body = "\(Person), du musst deine Absenz vom \(DateString)\(TodayTomorrow)."
         content.sound = UNNotificationSound.default()
         content.badge = 1
         

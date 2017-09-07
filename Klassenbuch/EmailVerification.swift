@@ -42,12 +42,13 @@ class EmailVerification: UIViewController {
 
                     self.verificationTimer1.invalidate()     //Kill the timer
                    print("verified XXXXXXXXX")
-                    self.performSegue(withIdentifier: "emailverified", sender: self)
                     
                 } else {
                     
                     print("It aint verified yet")
-                    
+                // oNly for development
+                    self.performSegue(withIdentifier: "emailverified", sender: self)
+                    self.verificationTimer1.invalidate()
                 }
             } else {
                 

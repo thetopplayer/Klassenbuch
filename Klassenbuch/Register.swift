@@ -29,7 +29,7 @@ class Register: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var EyeButton2: UIButton!
     @IBOutlet weak var RegisterLabel: UILabel!
     @IBOutlet weak var KSLLabel: UILabel!
-    @IBOutlet weak var EmailLabel2: UILabel!
+//    @IBOutlet weak var EmailLabel2: UILabel!
     @IBOutlet weak var GoToSelectionLabel: UIButton!
     // Variables    
     var effect: UIVisualEffect!
@@ -100,7 +100,7 @@ class Register: UIViewController, UITextFieldDelegate {
         } else if FromLogin == false {
         
         // Dont do any Animations1
-            EmailLabel2.text = LehrPerson
+//            EmailLabel2.text = LehrPerson
             self.VisualEffect.isHidden = true
             self.VisualEffect.isUserInteractionEnabled = false
             self.VisualEffect.effect = nil
@@ -137,9 +137,9 @@ class Register: UIViewController, UITextFieldDelegate {
     
     func loadStudent(){
         print("Student")
-        EmailLabel2.isHidden = true
+//        EmailLabel2.isHidden = true
         self.RegisterEmailTextField.isEnabled = true
-           self.GoToSelectionLabel.isHidden = true
+//           self.GoToSelectionLabel.isHidden = true
         RegisterLabel.text = "Schüler Registration"
     }
     
@@ -149,7 +149,7 @@ class Register: UIViewController, UITextFieldDelegate {
         
         // Perfrom Segue
         
-        self.performSegue(withIdentifier: "LehrerAuswahl", sender: nil)
+   //     self.performSegue(withIdentifier: "LehrerAuswahl", sender: nil)
 
         
     }
@@ -157,43 +157,11 @@ class Register: UIViewController, UITextFieldDelegate {
     print("Teacher")
         RegisterLabel.text = "Lehrer Registration"
         KSLLabel.isHidden = false
-        self.RegisterEmailTextField.isEnabled = false
-        self.GoToSelectionLabel.isHidden = false
+        self.RegisterEmailTextField.isEnabled = true
+//        self.GoToSelectionLabel.isHidden = false
 //        self.RegisterEmailTextField
-        EmailLabel2.text = LehrPerson
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
+//        EmailLabel2.text = LehrPerson
+ 
     }
     
     // Next Button Klicked Textfield new First Responder
@@ -217,14 +185,14 @@ class Register: UIViewController, UITextFieldDelegate {
     //Showing and Hiding the Eye Button
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == RegisterEmailTextField {
-        
-            if Funktion == "Lehrer"{
-            self.performSegue(withIdentifier: "LehrerAuswahl", sender: nil)
-            }else{
-            }
-            //
-        }
+//        if textField == RegisterEmailTextField {
+//        
+//            if Funktion == "Lehrer"{
+//            self.performSegue(withIdentifier: "LehrerAuswahl", sender: nil)
+//            }else{
+//            }
+//            //
+//        }
         
         if textField == RegisterPasswordTextField {
             EyeButton.isHidden = false
@@ -356,8 +324,8 @@ class Register: UIViewController, UITextFieldDelegate {
         } else if Funktion == "Lehrer"{
             
             //            RegisterString2 = "@kslzh.ch"
-            RegisterString2 = "@stud.kslzh.ch"
-            RegisterString1 = EmailLabel2.text!
+            RegisterString2 = "@kslzh.ch"
+            RegisterString1 = RegisterEmailTextField.text!
         }
         
         RegisterString = "\(RegisterString1.lowercased())\(RegisterString2.lowercased())"
@@ -365,7 +333,7 @@ class Register: UIViewController, UITextFieldDelegate {
         Namen = RegisterString1.replacingOccurrences(of: ".", with: " ", options: .literal, range: nil)
         
 
-        if self.RegisterEmailTextField.text == "" || self.RegisterPasswordTextField.text == ""
+        if self.RegisterString1 == "" || self.RegisterPasswordTextField.text == ""
         {
             let alertController = UIAlertController(title: "Oops!", message: "Bitte gib eine korrekte Email an und ein Password mit mindestens 6 Zeichen.", preferredStyle: .alert)
             

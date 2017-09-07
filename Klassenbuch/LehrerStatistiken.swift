@@ -7,100 +7,194 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 struct AbsenzenStatistiken{
   
         var APerson: String
-        var AAbsenzengesamt: Int
+        var AAnzahlStunden: Int
         var AAbsenzenOffen: Int
         var AAbsenzenentschuldigt: Int
         var AAbsenzenunentschuldigt: Int
+        var AUid: String
 
 }
 
-
 class LehrerStatistiken: UITableViewController {
 
+    // Variables
+    var ref: FIRDatabaseReference?
+    var databaseHandle: FIRDatabaseHandle?
+    var data = [AbsenzenStatistiken]()
+    var myclass = String()
+    var classmembers = [String]()
+    // Outlets
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        
         // Check hey werdet statistike überhaupt gfüehrtet? Has Child test süscht empty State
-
+        // Set the Firebase refrence
+        ref = FIRDatabase.database().reference()
+        getData()
     }
 
  
 
+    func getData(){
+    
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+
+        print("asfasdfadsfsaf")
+//        ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+//            print("adfasdfasf")
+//            if let item = snapshot.value as? String{
+//                self.myclass = item
+//                print(self.myclass)
+//                
+        classmembers = ["jerome hadorn", "larina caspar"]
+        var index = 0
+        var newindex = 0
+        
+        repeat{
+            
+            ref!.child("Statistiken/N6aHS 17-18/\(classmembers[index])").observe(.value, with: { (snapshot) in
+                print("afasdfkbaskf")
+        
+      
+        
+//        // Added listener
+//                ref!.child("Statistiken/N6aHS 17-18").observe(.value, with: { (snapshot) in
+//                                        print("afasdfkbaskf")
+//                    
+//                    // putting all members here and then running those to get data
+//                    
+//                    
+                
+                    if let fdata = snapshot.value as? NSDictionary {
+                        
+                        let aperson = fdata["APerson"] as! String
+                        
+                        let aanzahlStunden = fdata["AAnzahlStunden"] as! Int
+                        
+                        let aabsenzenOffen = fdata["AAbsenzenOffen"] as! Int
+                        
+                        let aabsenzenentschuldigt = fdata["AAbsenzenentschuldigt"] as! Int
+                        
+                        let aabsenzenunentschuldigt = fdata["AAbsenzenunentschuldigt"] as! Int
+                        
+                        let aID = snapshot.key
+                        
+                        let homeobject = AbsenzenStatistiken(APerson: aperson, AAnzahlStunden: aanzahlStunden, AAbsenzenOffen: aabsenzenOffen, AAbsenzenentschuldigt: aabsenzenentschuldigt, AAbsenzenunentschuldigt: aabsenzenunentschuldigt, AUid: aID)
+                     
+                        self.data.append(homeobject)
+                        
+                        print(aperson)
+                        print(aanzahlStunden)
+                        
+                        
+                    }
+
+                    self.tableView.reloadData()
+                    
+                })
+//            }})
+        
+            index += 1
+        } while (index < classmembers.count)
+        
+        
+        
+        
+        repeat{
+            
+            ref!.child("Statistiken/N6aHS 17-18/\(classmembers[newindex])").observe(.childChanged, with: { (snapshot) in
+                print("afasdfkbaskf")
+                
+                
+                
+                //        // Added listener
+                //                ref!.child("Statistiken/N6aHS 17-18").observe(.value, with: { (snapshot) in
+                //                                        print("afasdfkbaskf")
+                //
+                //                    // putting all members here and then running those to get data
+                //
+                //
+                
+                if let fdata = snapshot.value as? NSDictionary {
+                    
+                    let aperson = fdata["APerson"] as! String
+                    
+                    let aanzahlStunden = fdata["AAnzahlStunden"] as! Int
+                    
+                    let aabsenzenOffen = fdata["AAbsenzenOffen"] as! Int
+                    
+                    let aabsenzenentschuldigt = fdata["AAbsenzenentschuldigt"] as! Int
+                    
+                    let aabsenzenunentschuldigt = fdata["AAbsenzenunentschuldigt"] as! Int
+                    
+                    let aID = snapshot.key
+                    
+                    let homeobject = AbsenzenStatistiken(APerson: aperson, AAnzahlStunden: aanzahlStunden, AAbsenzenOffen: aabsenzenOffen, AAbsenzenentschuldigt: aabsenzenentschuldigt, AAbsenzenunentschuldigt: aabsenzenunentschuldigt, AUid: aID)
+                  
+                    if let i = self.classmembers.index(where: {$0 == (aperson) }){
+      
+                    let absenz = self.data[i]
+                        self.ref!.child("Statistiken/N6aHS 17-18/\(self.classmembers[newindex])/\(absenz.AUid)").removeValue()
+                    }
+//                    self.ref!.child("HausaufgabenKlassen/\(self.myKlasse)/\(homework.HUid)").removeValue()
+                    self.data.append(homeobject)
+                    
+                    print(aperson)
+                    print(aanzahlStunden)
+                    
+                    
+                }
+                
+                self.tableView.reloadData()
+                
+            })
+            //            }})
+            
+            newindex += 1
+        } while (newindex < classmembers.count)
+        
+            }
+    
+    
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.data.count
     }
 
   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! StatistikenCell
 
         // Configure the cell with tag 1,2,3
 
         
-        
-        
+        cell.NameLabel?.text = self.data[indexPath.row].APerson
+        cell.EntschuldigtLabel?.text = String(self.data[indexPath.row].AAbsenzenentschuldigt)
+        cell.UnentschuldigtLabel?.text = String(self.data[indexPath.row].AAbsenzenunentschuldigt)
+        cell.GesamtLabel?.text = String(self.data[indexPath.row].AAnzahlStunden)
+        cell.OffenLabel?.text = String(self.data[indexPath.row].AAbsenzenOffen)
         
         return cell
     }
 
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
