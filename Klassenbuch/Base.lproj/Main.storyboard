@@ -3565,7 +3565,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dcc-cK-05N" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="cbW-bA-oMu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6215" y="-5299"/>
+            <point key="canvasLocation" x="6154" y="-5299"/>
         </scene>
         <!--Lehrer New Absenz-->
         <scene sceneID="bkH-ev-ybO">
@@ -3783,7 +3783,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0PC-jQ-hdL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="As7-gE-81x" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7752.1739130434789" y="-5207.608695652174"/>
+            <point key="canvasLocation" x="6150" y="-4543"/>
         </scene>
         <!--Absenzen-->
         <scene sceneID="iXg-4L-1hq">

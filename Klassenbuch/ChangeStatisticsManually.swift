@@ -118,7 +118,7 @@ class ChangeStatisticsManually: UITableViewController, UITextFieldDelegate {
         if segue.identifier == "DetailStatisikSegue"{
             let DestViewController = segue.destination as! LehrerTabBar
             
-                DestViewController.fromDetail = true
+                DestViewController.Counter = 2
             
         }
 

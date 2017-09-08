@@ -102,6 +102,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                 }else {
                     self.data[adatum]!.append(homeObject3)
                 }
+//                print(aID)
                 
                 // Check if Reminders are wished
                 if UserDefaults.standard.bool(forKey: "TeacherReminders") == true {

@@ -11,7 +11,12 @@
     import FirebaseDatabase
     import FirebaseAuth
     import Firebase
-    
+
+struct UIDStruct{
+  
+    var myUID : String
+
+}
     
  class LehrerNewAbsenz: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
         
@@ -41,6 +46,7 @@
         var myklasse = String()
         var myklasse2 : String?
         var newInttoUpload = Int()
+        var data = [UIDStruct]()
     
     var Classmembers : [String] = []
     //var Classlistt = ["asdsad","asasdsadd"]
@@ -380,84 +386,128 @@
     @IBAction func saveAbsenz(_ sender: Any) {
         
         
+        firebaseWriting()
+        
+        
+        self.performSegue(withIdentifier: "canceltoOverView", sender: self)
+
+        
+           }
+
+    
+    func firebasegetUID(SchülerName: String, Absenzstatus: String, AbsenzDatum: Int,  AnzahlStunden: Int){
+    
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        
+        ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String{
+                self.myklasse = item
+                
+                // Added listener
+                self.ref!.child("AbsenzenKlassen/\(self.myklasse)").observe(.childAdded, with: { (snapshot) in
+                    
+                    if (snapshot.value as? NSDictionary) != nil {
+                        
+    
+                        
+                        let aID = snapshot.key
+                        print(aID)
+                        // New way to ride to the class
+                        
+    self.ref!.child("SchülerAbsenzen").child(SchülerName).child(aID).setValue([ "APerson": SchülerName,"AStatus": Absenzstatus,"ADatum": AbsenzDatum,  "AAbgabe": "offen","AAnzahlStunden" : AnzahlStunden])
+                        
+                        
+                        
+                    }
+                    
+                    
+                })}})
+    
+    }
+    
+    func firebaseWriting(){
+        
+        
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         
         
         name = AbsenzenPersons.text!
-
-                    if (AbsenzenPersons.text?.isEmpty)! || (AbsenzenDatum.text?.isEmpty)!
         
-                    {
-                        let alertController = UIAlertController(title: "Oops!", message: "Du hast nicht alle Angaben ausgefüllt.", preferredStyle: .alert)
-        
-                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                        alertController.addAction(defaultAction)
-        
-                        self.present(alertController, animated: true, completion: nil)
-        
-        
-                    }else {
-                        AbsenzInfo = "\(Absenzstatus)  \(Absenzenstatus2)"
-        
+        if (AbsenzenPersons.text?.isEmpty)! || (AbsenzenDatum.text?.isEmpty)!
+            
+        {
+            let alertController = UIAlertController(title: "Oops!", message: "Du hast nicht alle Angaben ausgefüllt.", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+            
+        }else {
+            AbsenzInfo = "\(Absenzstatus)  \(Absenzenstatus2)"
+            
+            
+            
+            
+            
+            
+            
+            
+            // here check für welli klass klasselehrerin denn child()ihir Klass wo jetzte uid isch
+            
+            self.ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if let item = snapshot.value as? String{
+                    
+                    self.myklasse2 = item
+                    self.ref!.child("AbsenzenKlassen").child(self.myklasse2!).childByAutoId().setValue([
+                        "APerson": self.AbsenzenPersons.text!,
+                        "AStatus": self.AbsenzInfo,
+                        "ADatum": self.selectedDateZeroHour!,
+                        "AAbgabe": "offen",
+                        "AAnzahlStunden" : self.StundeInt])
+                    
+                    
+                    // Hier Statistiken Upload.
+                    
+                    
+                    // Zuerst mal Check gits überhaupt das Child. Wenn ja denn wert abelafe und denn wieder ufelade. Und
+                    //    zwar de gesamt wert nur süscht denn bi de overview oder bi de Klass absenzstatus ändere.
+                    self.ref = FIRDatabase.database().reference()
+                    self.ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
                         
-                        self.ref!.child("SchülerAbsenzen").child(name).childByAutoId().setValue([
-                            "APerson": name,
-                            "AStatus": AbsenzInfo,
-                            "ADatum": self.selectedDateZeroHour!,
-                            "AAbgabe": "offen",
-                            "AAnzahlStunden" : self.StundeInt])
                         
-                        // here check für welli klass klasselehrerin denn child()ihir Klass wo jetzte uid isch
-                        
-                        self.ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+                        if let item1 = snapshot.value as? String{
                             
-                            if let item = snapshot.value as? String{
-                                
-                                self.myklasse2 = item
-                                self.ref!.child("AbsenzenKlassen").child(self.myklasse2!).childByAutoId().setValue([
-                                    "APerson": self.AbsenzenPersons.text!,
-                                    "AStatus": self.AbsenzInfo,
-                                    "ADatum": self.selectedDateZeroHour!,
-                                    "AAbgabe": "offen",
-                                    "AAnzahlStunden" : self.StundeInt])
-                                
-                                
-                          // Hier Statistiken Upload.
-                                
-                                
-                            // Zuerst mal Check gits überhaupt das Child. Wenn ja denn wert abelafe und denn wieder ufelade. Und
-                            //    zwar de gesamt wert nur süscht denn bi de overview oder bi de Klass absenzstatus ändere.
-                                self.ref = FIRDatabase.database().reference()
-                             self.ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
-                                    
-                                    
-                                if let item1 = snapshot.value as? String{
-                                    
-                                        
-                                        self.myklasse2 = item1
-                                        
                             
-                                
-
+                            self.myklasse2 = item1
+                            
+                            
+                            
+                            
                             self.ref?.child("Statistiken").child(self.myklasse2!).observeSingleEvent(of: .value, with:                    { (snapshot) in
-                                 
+                                
                                 if snapshot.hasChild(self.name){
-                             
-                            // Ja Statisitke werden geführt Wert abelade und neu ufelade
-                                
-                                
-                                  self.ref?.child("Statistiken").child(self.myklasse2!).child(self.name).child("AAnzahlStunden").observeSingleEvent(of: .value, with:                    { (snapshot) in
-                                
-                                    if let item3 = snapshot.value as? Int {
                                     
-                                     print(item3)
-                                        let newInttoUpload = item3 + self.StundeInt//item3 + self.StundeInt
-                                    print(newInttoUpload)
-                                        self.ref!.child("Statistiken").child(self.myklasse2!).child(self.name).updateChildValues(["AAnzahlStunden" : newInttoUpload, "AAbsenzenOffen" : newInttoUpload])
+                                    // Ja Statisitke werden geführt Wert abelade und neu ufelade
                                     
-                                    }})
-                                
+                                    
+                                    self.ref?.child("Statistiken").child(self.myklasse2!).child(self.name).child("AAnzahlStunden").observeSingleEvent(of: .value, with:                    { (snapshot) in
+                                        
+                                        if let item3 = snapshot.value as? Int {
+                                            
+                                            print(item3)
+                                            let newInttoUpload = item3 + self.StundeInt//item3 + self.StundeInt
+                                            print(newInttoUpload)
+                                            self.ref!.child("Statistiken").child(self.myklasse2!).child(self.name).updateChildValues(["AAnzahlStunden" : newInttoUpload, "AAbsenzenOffen" : newInttoUpload])
+                                            
+                                        }})
+                                    
                                     print("true, Statistiken werden bereits geführt")
                                     
                                 } else{
@@ -465,20 +515,21 @@
                                     // Wert sette
                                     self.ref!.child("Statistiken").child(self.myklasse2!).child(self.name).updateChildValues(["AAnzahlStunden" : self.StundeInt, "APerson": self.AbsenzenPersons.text!,"AAbsenzenOffen" : self.StundeInt,"AAbsenzenentschuldigt" : 0, "AAbsenzenunentschuldigt" : 0])
                                 }
-                                    
-                                    
-                                    
-                            })}})}})}
-                        
-                        self.performSegue(withIdentifier: "canceltoOverView", sender: self)
+                                
+                                
+                                
+                            })}})}})
         
-    }
-
-    
-    
         
+        
+        firebasegetUID(SchülerName: self.AbsenzenPersons.text!, Absenzstatus: AbsenzInfo, AbsenzDatum: self.selectedDateZeroHour!, AnzahlStunden: self.StundeInt)
+        }
+        
+        
+}
+    
         //Fund for Left Swipe
-        
+    
         func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
             
             if recognizer.state == .recognized {

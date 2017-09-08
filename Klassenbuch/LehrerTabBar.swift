@@ -11,7 +11,8 @@ import UIKit
 class LehrerTabBar: UITabBarController {
 
     
-    var fromDetail = Bool() == false
+//    var fromDetail = Bool() == false
+    var Counter = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +22,35 @@ class LehrerTabBar: UITabBarController {
 
     override func viewWillAppear(_ animated: Bool) {
         
-        if fromDetail == true{
+//        if fromDetail == true{
+//          Counter = 2
+//            
+//            selectedIndex = 2
+//        } else{
+//            selectedIndex = 0
+//        }
+//        
+//        
+//        selectedIndex = Counter
+//        
+//        
+//        if Counter == 22 {
+//        
+//        Counter = 0
+//        }
+        
+        
+        
+        if Counter == 0{
+            
+            selectedIndex = 0
+            Counter = 0
+        
+        }else if Counter == 2{
           
             selectedIndex = 2
-        } else{
-            selectedIndex = 0
+            Counter = 0
+        
         }
     }
     
