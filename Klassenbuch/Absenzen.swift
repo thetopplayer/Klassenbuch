@@ -16,6 +16,8 @@ struct AbsenzenStruct3 {
     var ADatum: Int
     var AStatus: String
     var APerson: String
+    var AAbgabe : String
+    var AAnzahlStunden : Int
     var AUid: String
 }
 
@@ -36,13 +38,23 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     var PersonenTitel: String?
     var Absenzdauer: String?
     var AbsenzDatumDate: String?
-    
+     var getdataTimer3 : Timer = Timer()
     var myName = String()
     var myKlasse = String()
     let myEmail = String()
     var MorningTime = 43200
     //var FireTime: Date
         var TodayTomorrow = "bis Morgen unterschrieben abgeben."
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.getdataTimer3.invalidate()
+        print("timer killed")
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        self.getdataTimer3.invalidate()
+        print("timer killed")
+    }
+    
     
     override func viewDidLoad() {
        
@@ -65,10 +77,10 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         ref = FIRDatabase.database().reference()
         
         // Listen for added and removed
-        self.databaseListener()
+//        self.databaseListener()
         
         AddAbsenzButton.isEnabled = false
-        
+        self.getdataTimer3 = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(Absenzen.databaseListener) , userInfo: nil, repeats: true)
     }
     
     
@@ -79,7 +91,11 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         
-        
+        if self.data.isEmpty == false {
+            
+            self.sortedData.removeAll()
+            self.data.removeAll()
+        }
         
         ref = FIRDatabase.database().reference()
         
@@ -102,16 +118,20 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
                 
                 let aperson = fdata["APerson"] as! String
                 
+                let aanzahlStunden = fdata["AAnzahlStunden"] as! Int
+                
+                let aabgabe = fdata["AAbgabe"] as! String
+
                 let aID = snapshot.key
                 
-                let homeObject3 = AbsenzenStruct3(ADatum: adatum, AStatus: astatus, APerson: aperson, AUid: aID)
-                
+                let homeObject3 = AbsenzenStruct3(ADatum: adatum, AStatus: astatus, APerson: aperson, AAbgabe: aabgabe, AAnzahlStunden: aanzahlStunden, AUid: aID)
                 if self.data[adatum] == nil {
                     self.data[adatum] = [homeObject3]
                 }else {
                     self.data[adatum]!.append(homeObject3)
                 }
 
+                print(fdata)
      
 
             // Check if Reminders are wished                       
@@ -259,6 +279,21 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         cell.accessoryType = .detailButton
         cell.tintColor = UIColor(red:0.17, green:0.22, blue:0.45, alpha:1.0)
 
+        if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Entschuldigt"{
+            
+            cell.backgroundColor = UIColor.green
+            
+        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "Unentschuldigt"{
+            
+            cell.backgroundColor = UIColor.red
+            
+        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "offen"{
+            
+            
+        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "ForceOffen"{
+            
+        }
+        
         return cell
     }
     

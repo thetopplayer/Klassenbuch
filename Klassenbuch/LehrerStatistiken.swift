@@ -58,6 +58,8 @@ class LehrerStatistiken: UITableViewController {
 //    self.getData()
     }
     
+    
+    
     override func viewWillDisappear(_ animated: Bool) {
          self.getdataTimer1.invalidate()
         print("timer killed")

@@ -38,7 +38,7 @@ class EmailVerification: UIViewController {
             if err == nil{
                 
                 if FIRAuth.auth()!.currentUser!.isEmailVerified{
-                    
+                             self.performSegue(withIdentifier: "emailverified", sender: self)
 
                     self.verificationTimer1.invalidate()     //Kill the timer
                    print("verified XXXXXXXXX")

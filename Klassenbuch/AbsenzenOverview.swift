@@ -30,7 +30,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
     var sortedData = [(Int, [AbsenzenStruct4])]()
     var ref: FIRDatabaseReference?
     var databaseHandle: FIRDatabaseHandle?
-//    var getdataTimer2 : Timer = Timer()
+    var getdataTimer2 : Timer = Timer()
     var PersonenTitel: String?
     var Absenzdauer: String?
     var AbsenzDatumDate: String?
@@ -38,6 +38,18 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
     var TodayTomorrow = "bis Morgen unterschrieben abgeben."
     var myPerson = String()
     var NewStatus = String()
+    
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.getdataTimer2.invalidate()
+        print("timer killed")
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        self.getdataTimer2.invalidate()
+        print("timer killed")
+    }
+    
     override func viewDidLoad() {
         
         // Set the EmptyState
@@ -57,9 +69,8 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         ref = FIRDatabase.database().reference()
         
         // Listen for added and removed
-      
-        
-        self.databaseListener()
+    self.getdataTimer2 = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AbsenzenOverview.databaseListener) , userInfo: nil, repeats: true)
+//        self.databaseListener()
         
         
     }
@@ -75,6 +86,11 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         
+        if self.data.isEmpty == false {
+            
+            self.sortedData.removeAll()
+            self.data.removeAll()
+        }
         
         ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -250,17 +266,25 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         cell.accessoryType = .detailButton
         cell.tintColor = UIColor(red:0.17, green:0.22, blue:0.45, alpha:1.0)
         
-        if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "abgegeben"{
+        if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Entschuldigt"{
             
             cell.backgroundColor = UIColor.green
             
+        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "Unentschuldigt"{
+            
+            cell.backgroundColor = UIColor.red
+            
         } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "offen"{
             
-            
-            
-        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "offen"{
+       
+        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "ForceOffen"{
             
         }
+        
+        
+        
+        
+        
 
         return cell
     }
@@ -408,7 +432,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                 
                 actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
                 
-                let Action1 = UIAlertAction(title: "", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+                let Action1 = UIAlertAction(title: "Entschuldigen", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
                     self.changeAStatus(AbsenzID: PostUID, Person: myperson, Neuerstatus: self.NewStatus)
                 }
                 
@@ -422,6 +446,32 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                 
                 self.present(actionSheet, animated: true, completion: nil)
 
+            }
+            else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "ForceOffen"{
+                
+                // Pop up die Absenz ist abgelofen und wurde auch als soolche gespeichert, sie können güte zeigen und sie trozdem als abgelaufen im nachihnein erklären.
+                let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                
+                let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+                
+                let titleAttrString = NSMutableAttributedString(string: "Diese Absenz wurde als Passiv eingestuft, Sie könne Sie aber nun entschuldigen!", attributes: titleFont)
+                
+                actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+                
+                let Action1 = UIAlertAction(title: "Entschuldigen", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+                    self.changeAStatus(AbsenzID: PostUID, Person: myperson, Neuerstatus: self.NewStatus)
+                }
+                
+                let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+                    
+                }
+                
+                actionSheet.addAction(Action1)
+                
+                actionSheet.addAction(cancelAction)
+                
+                self.present(actionSheet, animated: true, completion: nil)
+                
             }
             
             
@@ -499,7 +549,33 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                 
                 self.present(actionSheet, animated: true, completion: nil)
 
+            } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "ForceOffen"{
+                
+                // Pop up die Absenz ist abgelofen und wurde auch als soolche gespeichert, sie können güte zeigen und sie trozdem als abgelaufen im nachihnein erklären.
+                let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                
+                let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+                
+                let titleAttrString = NSMutableAttributedString(string: "Diese Absenz wurde als Passiv eingestuft, Sie könne Sie aber nun definitv nicht entschuldigen!", attributes: titleFont)
+                
+                actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+                
+                let Action1 = UIAlertAction(title: "Unentschuldigen", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+                    self.changeAStatus(AbsenzID: PostUID, Person: myperson, Neuerstatus: self.NewStatus)
+                }
+                
+                let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+                    
+                }
+                
+                actionSheet.addAction(Action1)
+                
+                actionSheet.addAction(cancelAction)
+                
+                self.present(actionSheet, animated: true, completion: nil)
+                
             }
+
             
 
         }
@@ -534,7 +610,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
             
 
                 
-            } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "offen"{
+            } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "offen" ||  self.sortedData[indexPath.section].1[indexPath.row].AAbgabe ==  "ForceOffen" {
                 
                 // Ist immer noch offen
                 // Hey die Absenz wurde schon abgegeben
@@ -570,7 +646,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                 let titleAttrString = NSMutableAttributedString(string: "Die Absenz wurde bereits als unentschuldigt gespeichert! Sie können sie manuell in einen passiven Status setzen. Sie ist weder unentschuldigt noch entschuldigt. Sie müssen sie aber wieder manuell entschuldigen/unentschuldigen!", attributes: titleFont)
                 
                 actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
-                let Action1 = UIAlertAction(title: "", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+                let Action1 = UIAlertAction(title: "Passiver Status", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
                     self.changeAStatus(AbsenzID: PostUID, Person: myperson, Neuerstatus: self.NewStatus)
                 }
 
