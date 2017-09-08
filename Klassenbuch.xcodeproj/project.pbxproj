@@ -42,6 +42,8 @@
 		379B8CAD1EA764E600E27CBC /* Delivery.png in Resources */ = {isa = PBXBuildFile; fileRef = 379B8CAC1EA764E600E27CBC /* Delivery.png */; };
 		37AD16E01E2D4438002F41D9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16DF1E2D4438002F41D9 /* Login.swift */; };
 		37AD16E21E2D4448002F41D9 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AD16E11E2D4448002F41D9 /* Register.swift */; };
+		37B3AAAD1F62B675005731DE /* ChangeStatisticsManually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B3AAAC1F62B675005731DE /* ChangeStatisticsManually.swift */; };
+		37B3AAAF1F62CB10005731DE /* LehrerTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B3AAAE1F62CB10005731DE /* LehrerTabBar.swift */; };
 		37BF5D181F61D25F00B26C24 /* StatistikenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BF5D171F61D25F00B26C24 /* StatistikenCell.swift */; };
 		37BFF9911E09D14F00FDDFE6 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BFF9901E09D14F00FDDFE6 /* Tests.swift */; };
 		37D3C7F41F5897D200E1DA1E /* KlassenMitgliederadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3C7F31F5897D200E1DA1E /* KlassenMitgliederadding.swift */; };
@@ -135,6 +137,8 @@
 		379B8CAC1EA764E600E27CBC /* Delivery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Delivery.png; sourceTree = "<group>"; };
 		37AD16DF1E2D4438002F41D9 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		37AD16E11E2D4448002F41D9 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		37B3AAAC1F62B675005731DE /* ChangeStatisticsManually.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeStatisticsManually.swift; sourceTree = "<group>"; };
+		37B3AAAE1F62CB10005731DE /* LehrerTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehrerTabBar.swift; sourceTree = "<group>"; };
 		37BF5D171F61D25F00B26C24 /* StatistikenCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatistikenCell.swift; sourceTree = "<group>"; };
 		37BFF9901E09D14F00FDDFE6 /* Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		37D3C7F31F5897D200E1DA1E /* KlassenMitgliederadding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KlassenMitgliederadding.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 				37578E2E1F504E3E00ACFA80 /* LehrerNewAbsenz.swift */,
 				37578E361F51548E00ACFA80 /* LehrerSchülerListe.swift */,
 				37578E381F516A1800ACFA80 /* StudentAbsenzen.swift */,
+				37B3AAAC1F62B675005731DE /* ChangeStatisticsManually.swift */,
 				3787EDA51F533FF600664523 /* LehrerEinstellungen.swift */,
 				3787EDA11F5324DE00664523 /* LehrerKlassenauswahl.swift */,
 				3787EDA31F533A1D00664523 /* LehrerKlassenundUserEinstellungen.swift */,
@@ -225,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				37FCAE761DFD51C000789BFF /* AppDelegate.swift */,
+				37B3AAAE1F62CB10005731DE /* LehrerTabBar.swift */,
 				37FCAEB01DFD55D900789BFF /* Manager.swift */,
 				37FB38251E227EBA0075C106 /* Extensions.swift */,
 				372B20911E2E8C62004BF666 /* AuthTextField.swift */,
@@ -699,9 +705,11 @@
 				3707B7681E44D70D00BD150D /* AppInfo.swift in Sources */,
 				37578E391F516A1800ACFA80 /* StudentAbsenzen.swift in Sources */,
 				376177911EFD63750051B90C /* ReminderTableViewController.swift in Sources */,
+				37B3AAAD1F62B675005731DE /* ChangeStatisticsManually.swift in Sources */,
 				375534FB1E08490C000C0842 /* Absenzen.swift in Sources */,
 				376177951EFE63050051B90C /* NewReminderNC.swift in Sources */,
 				37578E2F1F504E3E00ACFA80 /* LehrerNewAbsenz.swift in Sources */,
+				37B3AAAF1F62CB10005731DE /* LehrerTabBar.swift in Sources */,
 				3770835F1F06B94900B2C9FA /* Notes.swift in Sources */,
 				37578E311F507BD900ACFA80 /* Select Class.swift in Sources */,
 				37AD16E01E2D4438002F41D9 /* Login.swift in Sources */,

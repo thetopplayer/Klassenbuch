@@ -30,6 +30,13 @@ class LehrerStatistiken: UITableViewController {
     var myclass = String()
     var classmembers = [String]()
     var getdataTimer1 : Timer = Timer()
+    
+    var selectedPerson = String()
+    var selectedOffen = String()
+    var selectedEnt = String()
+    var selectedUnent = String()
+    var selectedGesamt = String()
+ 
     // Outlets
     
     
@@ -38,8 +45,10 @@ class LehrerStatistiken: UITableViewController {
         
         // Check hey werdet statistike überhaupt gfüehrtet? Has Child test süscht empty State
         // Set the Firebase refrence
+        
+        
         ref = FIRDatabase.database().reference()
-    
+        self.dismissKeyboard()
         self.getdataTimer1 = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(LehrerStatistiken.getData) , userInfo: nil, repeats: true)
 //        getData()
     }
@@ -220,6 +229,19 @@ class LehrerStatistiken: UITableViewController {
         return self.data.count
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedPerson = self.data[indexPath.row].APerson
+        selectedEnt = String(self.data[indexPath.row].AAbsenzenentschuldigt)
+        selectedUnent = String(self.data[indexPath.row].AAbsenzenunentschuldigt)
+        selectedGesamt = String(self.data[indexPath.row].AAnzahlStunden)
+        selectedOffen = String(self.data[indexPath.row].AAbsenzenOffen)
+        
+        self.performSegue(withIdentifier: "changeStatistics", sender: nil)
+        
+    }
+    
+    @IBAction func DetailStatisik (_ segue:UIStoryboardSegue) {
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! StatistikenCell
@@ -235,7 +257,23 @@ class LehrerStatistiken: UITableViewController {
         return cell
     }
     
+
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        if segue.identifier == "changeStatistics"{
+            let DestViewController = segue.destination as! ChangeStatisticsManually
+            
+            DestViewController.Name = selectedPerson
+            DestViewController.Unentschudigt = selectedUnent
+            DestViewController.Gesamt = selectedGesamt
+            DestViewController.Offen = selectedOffen
+            DestViewController.Entschudigt = selectedEnt
+
+        }
+    }
     
+
     
 }
