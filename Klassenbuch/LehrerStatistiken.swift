@@ -48,19 +48,19 @@ class LehrerStatistiken: UITableViewController {
         let uid = user?.uid
         
         print("asfasdfadsfsaf")
-        //        ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
-        //            print("adfasdfasf")
-        //            if let item = snapshot.value as? String{
-        //                self.myclass = item
-        //                print(self.myclass)
-        //
-        classmembers = ["jerome hadorn", "larina caspar"]
+                ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+                    print("adfasdfasf")
+                    if let item = snapshot.value as? String{
+                        self.myclass = item
+                        print(self.myclass)
+        
+        self.classmembers = ["jerome hadorn", "larina caspar"]
         var index = 0
         var newindex = 0
         
         repeat{
             
-            ref!.child("Statistiken/N6aHS 17-18/\(classmembers[index])").observe(.value, with: { (snapshot) in
+            self.ref!.child("Statistiken/\(self.myclass)/\(self.classmembers[index])").observe(.value, with: { (snapshot) in
                 print("afasdfkbaskf")
                 
                 
@@ -103,14 +103,14 @@ class LehrerStatistiken: UITableViewController {
             //            }})
             
             index += 1
-        } while (index < classmembers.count)
+        } while (index < self.classmembers.count)
         
         
         
         
         repeat{
             
-            ref!.child("Statistiken/N6aHS 17-18/\(classmembers[newindex])").observe(.childChanged, with: { (snapshot) in
+            self.ref!.child("Statistiken/\(self.myclass)/\(self.classmembers[newindex])").observe(.childChanged, with: { (snapshot) in
                 print("afasdfkbaskf")
                 
                 
@@ -159,8 +159,8 @@ class LehrerStatistiken: UITableViewController {
             //            }})
             
             newindex += 1
-        } while (newindex < classmembers.count)
-        
+        } while (newindex < self.classmembers.count)
+                    }})
     }
     
     
