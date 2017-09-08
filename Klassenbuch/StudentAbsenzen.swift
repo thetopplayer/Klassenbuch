@@ -350,20 +350,13 @@ class StudentAbsenzen: UITableViewController, UNUserNotificationCenterDelegate, 
             let absenz = self.sortedData[indexPath.section].1[indexPath.row]
             let myperson = self.sortedData[indexPath.section].1[indexPath.row].APerson
             self.ref!.child("SchülerAbsenzen/\(myperson)/\(absenz.AUid)").updateChildValues(["AAbgabe": "abgegeben"])
-            
-            
+
             self.ref = FIRDatabase.database().reference()
             self.ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
-                
-                
                 if let item1 = snapshot.value as? String{
-                    
-                    
-                    self.myklasse = item1
+             self.myklasse = item1
                         self.ref!.child("AbsenzenKlassen/\(self.myklasse)/\(absenz.AUid)").updateChildValues(["AAbgabe": "abgegeben"])
                 }})
-        
-            
         }
 
         

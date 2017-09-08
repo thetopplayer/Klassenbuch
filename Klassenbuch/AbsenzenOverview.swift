@@ -30,13 +30,14 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
     var sortedData = [(Int, [AbsenzenStruct4])]()
     var ref: FIRDatabaseReference?
     var databaseHandle: FIRDatabaseHandle?
-    
+//    var getdataTimer2 : Timer = Timer()
     var PersonenTitel: String?
     var Absenzdauer: String?
     var AbsenzDatumDate: String?
     var myKlasse = String()
     var TodayTomorrow = "bis Morgen unterschrieben abgeben."
     var myPerson = String()
+    var NewStatus = String()
     override func viewDidLoad() {
         
         // Set the EmptyState
@@ -56,7 +57,9 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         ref = FIRDatabase.database().reference()
         
         // Listen for added and removed
-       self.databaseListener()
+      
+        
+        self.databaseListener()
         
         
     }
@@ -247,6 +250,18 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         cell.accessoryType = .detailButton
         cell.tintColor = UIColor(red:0.17, green:0.22, blue:0.45, alpha:1.0)
         
+        if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "abgegeben"{
+            
+            cell.backgroundColor = UIColor.green
+            
+        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "offen"{
+            
+            
+            
+        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "offen"{
+            
+        }
+
         return cell
     }
     
@@ -262,7 +277,8 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         let sectionTitle = sectionHeaderView!.textLabel!.text
         
         // let absenzstat = self.sortedData[indexPath.section].1[indexPath.row].AStatus
-        
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
         
         
         // Get the cell and the Persontitle from the Cell
@@ -313,8 +329,9 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         AbsenzenSheet.view.tintColor = UIColor.black
         AbsenzenSheet.setValue(titleAttrString, forKey: "attributedTitle")
         
-        
-        
+ 
+        let PostUID = self.sortedData[indexPath.section].1[indexPath.row].AUid
+        let myperson = self.sortedData[indexPath.section].1[indexPath.row].APerson
         
         
         
@@ -345,16 +362,268 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
             print("deleted pressed")
         }
         
+        // Abegegeben Action
+        let AbegegebenAction = UIAlertAction(title: "Entschuldigt", style: UIAlertActionStyle.default) { (alert:UIAlertAction) -> Void in
+            
+            let user = FIRAuth.auth()?.currentUser
+            let uid = user?.uid
+            self.NewStatus = "Entschuldigt"
+            
+//            self.changeAStatus(AbsenzID: PostUID, Person: myperson, Neuerstatus: "banane")
+            
+            if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Entschuldigt"{
+                
+                // Hey die Absenz wurde schon abgegeben
+                let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                
+                let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+                
+                let titleAttrString = NSMutableAttributedString(string: "Die Absenz wurde bereits als entschuldigt gespeichert!", attributes: titleFont)
+                
+                actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+                
+                
+                let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+                    
+                }
+                actionSheet.addAction(cancelAction)
+                
+                self.present(actionSheet, animated: true, completion: nil)
+                
+            } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "offen"{
+                
+                // write int from offen to abgegeben und INT zu entschuldigz
+           
+                self.changeAStatus(AbsenzID: PostUID, Person: myperson, Neuerstatus: self.NewStatus)
+             
+                
+            } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Unentschuldigt"{
+                
+                // Pop up die Absenz ist abgelofen und wurde auch als soolche gespeichert, sie können güte zeigen und sie trozdem als abgelaufen im nachihnein erklären.
+                let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                
+                let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+                
+                let titleAttrString = NSMutableAttributedString(string: "Diese Absenz wurde als Unentschuldigt eingestuft, Sie könne Sie aber nun entschuldigen!", attributes: titleFont)
+                
+                actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+                
+                let Action1 = UIAlertAction(title: "", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+                    self.changeAStatus(AbsenzID: PostUID, Person: myperson, Neuerstatus: self.NewStatus)
+                }
+                
+                let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+                    
+                }
+                
+                actionSheet.addAction(Action1)
+                
+                actionSheet.addAction(cancelAction)
+                
+                self.present(actionSheet, animated: true, completion: nil)
+
+            }
+            
+            
+        }
         
-            AbsenzenSheet.addAction(deleteaction)
+        // Abgelofen Action
+        let AbgelofenAction = UIAlertAction(title: "Unentschuldigt", style: UIAlertActionStyle.default) { (alert:UIAlertAction) -> Void in
+            
+            let user = FIRAuth.auth()?.currentUser
+            let uid = user?.uid
+            self.NewStatus = "Unentschuldigt"
+            
+            if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Entschuldigt"{
+                
+             // Absenz wurde als abgegeben gespiechet sind sie icher dass sie abgelofen ist Pop up
+                let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                
+                let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+                
+                let titleAttrString = NSMutableAttributedString(string: "Diese Absenz wurde als Entschuldigt eingestuft! Wollen Sie die Absenz nun nicht mehr entschuldigen?", attributes: titleFont)
+                
+                actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+                
+                let Action1 = UIAlertAction(title: "Unentschuldigen", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+                    self.changeAStatus(AbsenzID: PostUID, Person: myperson, Neuerstatus: self.NewStatus)
+                }
+                
+                let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+                    
+                }
+                
+                actionSheet.addAction(Action1)
+                
+                actionSheet.addAction(cancelAction)
+                
+                self.present(actionSheet, animated: true, completion: nil)
+            } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "offen"{
+                
+                // Person hat noch zeit
+                // Hey die Absenz wurde schon abgegeben
+                let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                
+                let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+                
+                let titleAttrString = NSMutableAttributedString(string: "SchülerIn hat noch Zeit diese Absenz abzugeben!", attributes: titleFont)
+                
+                actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+                
+                
+                let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+                    
+                }
+                actionSheet.addAction(cancelAction)
+                
+                self.present(actionSheet, animated: true, completion: nil)
+                
+            } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Unentschuldigt"{
+                
+              
+                  // Hey die Absenz wurde schon als abeglofen markiert
+                // Hey die Absenz wurde schon abgegeben
+                let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                
+                let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+                
+                let titleAttrString = NSMutableAttributedString(string: "Die Absenz wurde bereits als unentschuldigt gespeichert!", attributes: titleFont)
+                
+                actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+                
+                
+                let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+                    
+                }
+                actionSheet.addAction(cancelAction)
+                
+                self.present(actionSheet, animated: true, completion: nil)
+
+            }
+            
+
+        }
         
+        // Offen Action
+        let OffenAction = UIAlertAction(title: "Offen", style: UIAlertActionStyle.default) { (alert:UIAlertAction) -> Void in
+            
+            let user = FIRAuth.auth()?.currentUser
+            let uid = user?.uid
+            self.NewStatus = "ForceOffen"
+            
+            if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Entschuldigt"{
+                
+                // super absenz abgegeben
+                // Hey die Absenz wurde schon abgegeben
+                let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                
+                let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+                
+                let titleAttrString = NSMutableAttributedString(string: "Die Absenz wurde bereits als entschuldigt gespeichert", attributes: titleFont)
+                
+                actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+                
+                
+                let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+                    
+                }
+                actionSheet.addAction(cancelAction)
+                
+                self.present(actionSheet, animated: true, completion: nil)
+                
+            
+
+                
+            } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "offen"{
+                
+                // Ist immer noch offen
+                // Hey die Absenz wurde schon abgegeben
+                // Hey die Absenz wurde schon abgegeben
+                let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                
+                let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+                
+                let titleAttrString = NSMutableAttributedString(string: "Die Absenz ist momentan immer noch Offen!", attributes: titleFont)
+                
+                actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+                
+                
+                let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+                    
+                }
+                actionSheet.addAction(cancelAction)
+                
+                self.present(actionSheet, animated: true, completion: nil)
+                
+            
+
+                
+            } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Unentschuldigt"{
+                
+                
+                // Force making offen die absenz bleibt solange offen bis sie dis manuell ändern.
+                // Hey die Absenz wurde schon abgegeben
+                let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                
+                let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+                
+                let titleAttrString = NSMutableAttributedString(string: "Die Absenz wurde bereits als unentschuldigt gespeichert! Sie können sie manuell in einen passiven Status setzen. Sie ist weder unentschuldigt noch entschuldigt. Sie müssen sie aber wieder manuell entschuldigen/unentschuldigen!", attributes: titleFont)
+                
+                actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+                let Action1 = UIAlertAction(title: "", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+                    self.changeAStatus(AbsenzID: PostUID, Person: myperson, Neuerstatus: self.NewStatus)
+                }
+
+                
+                let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+                    
+                }
+                actionSheet.addAction(Action1)
+                actionSheet.addAction(cancelAction)
+                
+                self.present(actionSheet, animated: true, completion: nil)
+                
+          
+
+            }
+
+            
+        }
+
+        
+        
+        
+        
+        AbsenzenSheet.addAction(AbegegebenAction)
+        AbsenzenSheet.addAction(AbgelofenAction)
+        AbsenzenSheet.addAction(OffenAction)
+        AbsenzenSheet.addAction(deleteaction)
         AbsenzenSheet.addAction(cancelAction)
         
         self.present(AbsenzenSheet, animated: true, completion: nil)
         
     }
     
+    func changeAStatus(AbsenzID: String, Person: String, Neuerstatus: String){
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
     
+        self.ref!.child("SchülerAbsenzen/\(Person)/\(AbsenzID)").updateChildValues(["AAbgabe": Neuerstatus])
+        print(AbsenzID)
+        print(Person)
+        print(Neuerstatus)
+        
+        self.ref = FIRDatabase.database().reference()
+        self.ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
+            if let item1 = snapshot.value as? String{
+                self.myKlasse = item1
+                self.ref!.child("AbsenzenKlassen/\(self.myKlasse)/\(AbsenzID)").updateChildValues(["AAbgabe": Neuerstatus])
+            }})
+    
+    
+    }
+
+
     func domath(StundenzumAbziehen: Int, SchülerName: String) {
        
         let user = FIRAuth.auth()?.currentUser
@@ -537,10 +806,49 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         present(alertController, animated: true, completion: nil)
     }
     
+
+
+func AbsenzBereitsEntschuldigt(){
+
+
+    // Hey die Absenz wurde schon abgegeben
+    let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+    
+    let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+    
+    let titleAttrString = NSMutableAttributedString(string: "Die Absenz wurde bereits als entschuldigt gespeichert!", attributes: titleFont)
+    
+    actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+    
+    
+    let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+        
+    }
+    actionSheet.addAction(cancelAction)
+    
+    present(actionSheet, animated: true, completion: nil)
 }
 
+func AbsenzschonOffen(){
+    let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+    
+    let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+    
+    let titleAttrString = NSMutableAttributedString(string: "Die Absenz ist immer noch als offen gespeichert!", attributes: titleFont)
+    
+    actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+    
+    
+    let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+        
+    }
+    actionSheet.addAction(cancelAction)
+    
+   present(actionSheet, animated: true, completion: nil)
 
 
+}
+}
 /* compare dates
  switch adatum < Date().getDateFromZeroHour /*- 1209600 -86400*/ {
  

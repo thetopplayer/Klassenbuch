@@ -55,7 +55,7 @@ class LehrerStatistiken: UITableViewController {
     
 
     override func viewWillAppear(_ animated: Bool){
-    self.getData()
+//    self.getData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
