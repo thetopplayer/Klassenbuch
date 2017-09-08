@@ -373,9 +373,31 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                     if let gesamtanzahl = snapshot.value as? Int {
                     
                   let newgesamtzahl = gesamtanzahl - StundenzumAbziehen
-            self.ref!.child("Statistiken").child(self.myKlasse).child(SchülerName).updateChildValues(["AAnzahlStunden" : newgesamtzahl])
+                
+            
+                        self.ref!.child("Statistiken").child(self.myKlasse).child(SchülerName).updateChildValues(["AAnzahlStunden" : newgesamtzahl])
+                        
                     
-                    }})}})}
+                    }})
+                
+                self.ref?.child("Statistiken").child(self.myKlasse).child(SchülerName).child("AAbsenzenOffen").observeSingleEvent(of: .value, with:                    { (snapshot) in
+                    
+                    if let gesamtanzahl = snapshot.value as? Int {
+                        
+                        let newgesamtzahl = gesamtanzahl - StundenzumAbziehen
+                        
+                        
+                        self.ref!.child("Statistiken").child(self.myKlasse).child(SchülerName).updateChildValues(["AAbsenzenOffen" : newgesamtzahl])
+                        
+                        
+                    }})
+
+                
+                
+//            self.ref?.child("Statistiken").child(self.myKlasse).child(SchülerName).child("")
+            }})
+    
+    }
     
 //    // Func for EmptyState
 //    
