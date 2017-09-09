@@ -49,13 +49,19 @@ class LehrerStatistiken: UITableViewController {
         
         ref = FIRDatabase.database().reference()
         self.dismissKeyboard()
-        self.getdataTimer1 = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(LehrerStatistiken.getData) , userInfo: nil, repeats: true)
-//        getData()
+        self.getdataTimer1 = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(LehrerStatistiken.getData) , userInfo: nil, repeats: true)
+//     getData()
     }
     
 
     override func viewWillAppear(_ animated: Bool){
-//    self.getData()
+   
+        
+        DispatchQueue.main.async {
+            
+       
+
+            self.getData()}
     }
     
     
@@ -250,7 +256,7 @@ class LehrerStatistiken: UITableViewController {
         
         // Configure the cell with tag 1,2,3
         
-        cell.NameLabel?.text = self.data[indexPath.row].APerson
+        cell.NameLabel?.text = String(self.data[indexPath.row].APerson)
         cell.EntschuldigtLabel?.text = String(self.data[indexPath.row].AAbsenzenentschuldigt)
         cell.UnentschuldigtLabel?.text = String(self.data[indexPath.row].AAbsenzenunentschuldigt)
         cell.GesamtLabel?.text = String(self.data[indexPath.row].AAnzahlStunden)

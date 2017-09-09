@@ -492,7 +492,7 @@ struct UIDStruct{
                             
                             self.ref?.child("Statistiken").child(self.myklasse2!).observeSingleEvent(of: .value, with:                    { (snapshot) in
                                 
-                                if snapshot.hasChild(self.name){
+                                if snapshot.hasChild(self.name) == true{
                                     
                                     // Ja Statisitke werden geführt Wert abelade und neu ufelade
                                     
@@ -504,9 +504,24 @@ struct UIDStruct{
                                             print(item3)
                                             let newInttoUpload = item3 + self.StundeInt//item3 + self.StundeInt
                                             print(newInttoUpload)
-                                            self.ref!.child("Statistiken").child(self.myklasse2!).child(self.name).updateChildValues(["AAnzahlStunden" : newInttoUpload, "AAbsenzenOffen" : newInttoUpload])
+                                            self.ref!.child("Statistiken").child(self.myklasse2!).child(self.name).updateChildValues(["AAnzahlStunden" : newInttoUpload])
                                             
                                         }})
+                                    
+                                    self.ref?.child("Statistiken").child(self.myklasse2!).child(self.name).child("AAbsenzenOffen").observeSingleEvent(of: .value, with:                    { (snapshot) in
+                                        
+                                        if let item3 = snapshot.value as? Int {
+                                            
+                                            print(item3)
+                                            let newInttoUpload = item3 + self.StundeInt//item3 + self.StundeInt
+                                            print(newInttoUpload)
+                                            self.ref!.child("Statistiken").child(self.myklasse2!).child(self.name).updateChildValues(["AAbsenzenOffen" : newInttoUpload])
+                                            
+                                        }})
+                                    
+                                    
+                                    
+                                    
                                     
                                     print("true, Statistiken werden bereits geführt")
                                     
@@ -537,7 +552,18 @@ struct UIDStruct{
             }
         }
         
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        
+        if segue.identifier == "canceltoOverView"{
+            let DestViewController = segue.destination as! LehrerTabBar
+            
+            DestViewController.Counter = 0
+ 
+            
+        }
+    }
 }
 
 
