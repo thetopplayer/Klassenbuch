@@ -270,22 +270,16 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
             
             cell.backgroundColor = UIColor.green
             
-        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "Unentschuldigt"{
+        } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Unentschuldigt"{
             
             cell.backgroundColor = UIColor.red
             
-        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "offen"{
+        } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "offen"{
             
        
-        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "ForceOffen"{
+        } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "ForceOffen"{
             
         }
-        
-        
-        
-        
-        
-
         return cell
     }
     
@@ -398,6 +392,8 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
             if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Entschuldigt"{
                 
                 // Hey die Absenz wurde schon abgegeben
+                // Keine Statistikänderung
+                
                 let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.alert)
                 
                 let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
@@ -419,6 +415,10 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                 // write int from offen to abgegeben und INT zu entschuldigz
            
                 self.changeAStatus(AbsenzID: PostUID, Person: myperson, Neuerstatus: self.NewStatus)
+                // Statistikänderung, von Offen Subtrahieren und dann Absenzenzahl.azahl in entshculdigt writen
+                
+                
+                
              
                 
             } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Unentschuldigt"{
@@ -436,7 +436,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                     self.changeAStatus(AbsenzID: PostUID, Person: myperson, Neuerstatus: self.NewStatus)
                 }
                 
-                let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+                let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
                     
                 }
                 
@@ -595,14 +595,17 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                 
                 let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
                 
-                let titleAttrString = NSMutableAttributedString(string: "Die Absenz wurde bereits als entschuldigt gespeichert", attributes: titleFont)
+                let titleAttrString = NSMutableAttributedString(string: "Die Absenz wurde bereits als entschuldigt gespeichert. Sie können Sie aber auch in einem passiven Offenen Status speichern.", attributes: titleFont)
                 
                 actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
                 
-                
+                let Action1 = UIAlertAction(title: "Passiver Status", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+                    self.changeAStatus(AbsenzID: PostUID, Person: myperson, Neuerstatus: self.NewStatus)
+                }
                 let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
                     
                 }
+                actionSheet.addAction(Action1)
                 actionSheet.addAction(cancelAction)
                 
                 self.present(actionSheet, animated: true, completion: nil)
@@ -743,6 +746,74 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
 //            self.ref?.child("Statistiken").child(self.myKlasse).child(SchülerName).child("")
             }})
     
+    }
+    
+    func doStatistcs(AStatus: String, ANeuerStatus: String, AnzahlStunden: Int, ASchülerName : String){
+    
+        if AStatus == "Entschuldigt"{
+        
+            if ANeuerStatus == "Unentschuldigt"{
+            
+                
+            }else if ANeuerStatus == "ForceOffen" || ANeuerStatus == "offen"{
+            
+                
+            }
+        
+        } else if AStatus == "Unentschuldigt"{
+        
+            if ANeuerStatus == "Entschuldigt"{
+                
+                
+            }else if ANeuerStatus == "ForceOffen" || ANeuerStatus == "offen"{
+                
+                
+            }
+        
+        } else if AStatus == "offen" || AStatus == "ForceOffen"{
+        
+            if ANeuerStatus == "Unentschuldigt"{
+                
+                
+            }else if ANeuerStatus == "Entschuldigt"{
+                
+                
+            }
+        
+        }
+    
+    
+    
+    }
+    
+    func doStatisticMath(Status: String, NeuerStatus: String, AnzahlStunden: Int, Schülername: String){
+    
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        ref = FIRDatabase.database().reference()
+        ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
+            
+            
+            if let meineklasse = snapshot.value as? String{
+                
+                
+                self.myKlasse = meineklasse
+                
+                self.ref?.child("Statistiken").child(self.myKlasse).child(Schülername).child(Status).observeSingleEvent(of: .value, with:                    { (snapshot) in
+                    
+                    if let gesamtanzahl = snapshot.value as? Int {
+                        
+                        let newgesamtzahl = gesamtanzahl - AnzahlStunden
+                        
+                        
+                        self.ref!.child("Statistiken").child(self.myKlasse).child(Schülername).updateChildValues([Status : newgesamtzahl])
+                        self.ref!.child("Statistiken").child(self.myKlasse).child(Schülername).updateChildValues([NeuerStatus : AnzahlStunden])
+                        
+                        
+                    }})
+                
+                }})
     }
     
 //    // Func for EmptyState
