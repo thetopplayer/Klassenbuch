@@ -279,20 +279,20 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         cell.accessoryType = .detailButton
         cell.tintColor = UIColor(red:0.17, green:0.22, blue:0.45, alpha:1.0)
 
-        if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Entschuldigt"{
-            
-            cell.backgroundColor = UIColor.green
-            
-        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "Unentschuldigt"{
-            
-            cell.backgroundColor = UIColor.red
-            
-        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "offen"{
-            
-            
-        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "ForceOffen"{
-            
-        }
+//        if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Entschuldigt"{
+//            
+//            cell.backgroundColor = UIColor.green
+//            
+//        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "Unentschuldigt"{
+//            
+//            cell.backgroundColor = UIColor.red
+//            
+//        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "offen"{
+//            
+//            
+//        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "ForceOffen"{
+//            
+//        }
         
         return cell
     }

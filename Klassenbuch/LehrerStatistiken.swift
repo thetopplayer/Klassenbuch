@@ -49,7 +49,7 @@ class LehrerStatistiken: UITableViewController {
         
         ref = FIRDatabase.database().reference()
         self.dismissKeyboard()
-        self.getdataTimer1 = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(LehrerStatistiken.getData) , userInfo: nil, repeats: true)
+//        self.getdataTimer1 = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(LehrerStatistiken.getData) , userInfo: nil, repeats: true)
 //     getData()
     }
     
@@ -248,6 +248,36 @@ class LehrerStatistiken: UITableViewController {
         
     }
     
+    @IBAction func Print(_ sender: Any) {
+        
+        
+      pdfDataWithTableView(tableView: tableView)
+        
+    }
+   
+    func pdfDataWithTableView(tableView: UITableView) {
+        let priorBounds = tableView.bounds
+        let fittedSize = tableView.sizeThatFits(CGSize(width:priorBounds.size.width, height:tableView.contentSize.height))
+        tableView.bounds = CGRect(x:0, y:0, width:fittedSize.width, height:fittedSize.height)
+        let pdfPageBounds = CGRect(x:0, y:0, width:tableView.frame.width, height:self.view.frame.height)
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, pdfPageBounds,nil)
+        var pageOriginY: CGFloat = 0
+        while pageOriginY < fittedSize.height {
+            UIGraphicsBeginPDFPageWithInfo(pdfPageBounds, nil)
+            UIGraphicsGetCurrentContext()!.saveGState()
+            UIGraphicsGetCurrentContext()!.translateBy(x: 0, y: -pageOriginY)
+            tableView.layer.render(in: UIGraphicsGetCurrentContext()!)
+            UIGraphicsGetCurrentContext()!.restoreGState()
+            pageOriginY += pdfPageBounds.size.height
+        }
+        UIGraphicsEndPDFContext()
+        tableView.bounds = priorBounds
+        var docURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
+        docURL = docURL.appendingPathComponent("myDocument.pdf")
+        pdfData.write(to: docURL as URL, atomically: true)
+    }
+    
     @IBAction func DetailStatisik (_ segue:UIStoryboardSegue) {
     }
     
@@ -255,12 +285,17 @@ class LehrerStatistiken: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! StatistikenCell
         
         // Configure the cell with tag 1,2,3
+        if self.data.isEmpty == false {
+            
+            cell.NameLabel?.text = String(self.data[indexPath.row].APerson)
+            cell.EntschuldigtLabel?.text = String(self.data[indexPath.row].AAbsenzenentschuldigt)
+            cell.UnentschuldigtLabel?.text = String(self.data[indexPath.row].AAbsenzenunentschuldigt)
+            cell.GesamtLabel?.text = String(self.data[indexPath.row].AAnzahlStunden)
+            cell.OffenLabel?.text = String(self.data[indexPath.row].AAbsenzenOffen)
+            
+        }
         
-        cell.NameLabel?.text = String(self.data[indexPath.row].APerson)
-        cell.EntschuldigtLabel?.text = String(self.data[indexPath.row].AAbsenzenentschuldigt)
-        cell.UnentschuldigtLabel?.text = String(self.data[indexPath.row].AAbsenzenunentschuldigt)
-        cell.GesamtLabel?.text = String(self.data[indexPath.row].AAnzahlStunden)
-        cell.OffenLabel?.text = String(self.data[indexPath.row].AAbsenzenOffen)
+       
         
         return cell
     }

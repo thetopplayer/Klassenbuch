@@ -52,18 +52,19 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
     }
     override func viewWillAppear(_ animated: Bool) {
         databaseListener()
+        getClass()
     }
 //    override func vi
     override func viewDidLoad() {
         
         // Set the EmptyState
         // Remove listener
+  
+        super.viewDidLoad()
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
-        
+        getClass()
         tableView.reloadData()
-        super.viewDidLoad()
-        
         UNUserNotificationCenter.current().delegate = self
         
         tableView.allowsMultipleSelectionDuringEditing = true
@@ -76,11 +77,13 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         ref = FIRDatabase.database().reference()
         
         // Listen for added and removed
-    self.getdataTimer2 = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AbsenzenOverview.databaseListener) , userInfo: nil, repeats: true)
+//    self.getdataTimer2 = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AbsenzenOverview.databaseListener) , userInfo: nil, repeats: true)
+//    self.getdataTimer2 = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AbsenzenOverview.getClass) , userInfo: nil, repeats: true)
 //        self.databaseListener()
         
         
     }
+    
     
     @IBAction func cancelNewAbsenz (_ segue:UIStoryboardSegue) {
     }
@@ -90,6 +93,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
     
     func databaseListener() {
         
+//        getClass()
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         
@@ -128,15 +132,16 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                 }else {
                     self.data[adatum]!.append(homeObject3)
                 }
+//                self.childaddedReminder()
 //                print(aID)
                 
-                // Check if Reminders are wished
-                if UserDefaults.standard.bool(forKey: "TeacherReminders") == true {
-                    print("wants reminders")
-                    self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus)
-                } else if UserDefaults.standard.bool(forKey: "TeacherReminders") == false {
-                    print("dont want's reminders")
-                }
+//                // Check if Reminders are wished
+//                if UserDefaults.standard.bool(forKey: "TeacherReminders") == true {
+//                    print("wants reminders")
+//                    self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus)
+//                } else if UserDefaults.standard.bool(forKey: "TeacherReminders") == false {
+//                    print("dont want's reminders")
+//                }
                 
             }
             
@@ -146,11 +151,74 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         })
         
 
+       // CHild added, add Reminder
                 
-                
+            
+            
+            
+            
+            
+            
             }
         })
 //        removed()
+    }
+    
+    func getClass(){
+       
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
+            
+            
+            if let item = snapshot.value as? String{
+                
+                self.myKlasse = item
+                self.childaddedReminder(Meineklasse: item)
+            }})
+    }
+    
+    func childaddedReminder(Meineklasse: String){
+    
+        print("\(Meineklasse)XYXYXYXYXYXYXYX")
+//        self.Reminder(Person: "asd", AbsenzDate: 1232134251, Status: "adasfasf")
+        
+        ref = FIRDatabase.database().reference()
+        
+  
+                // Added listener
+               self.ref!.child("AbsenzenKlassen/\(Meineklasse)").queryLimited(toLast: 1).observe(.childAdded, with: { (snapshot) in
+                    if let fdata = snapshot.value as? NSDictionary {
+                        
+                        let adatum = fdata["ADatum"] as! Int
+                        
+                        let astatus = fdata["AStatus"] as! String
+                        
+                        let aperson = fdata["APerson"] as! String
+                        
+
+                        
+                 self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus)
+
+                        
+//                         Check if Reminders are wished
+//                                        if UserDefaults.standard.bool(forKey: "TeacherReminders") == true {
+//                                            print("wants reminders")
+//                                           self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus)
+//                                        } else if UserDefaults.standard.bool(forKey: "TeacherReminders") == false {
+//                                            print("dont want's reminders")
+////                                             self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus)
+//                                        }
+                }
+//                    self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
+//                    self.tableView.reloadData()
+//                    self.EmptyScreen()
+                })
+        
+    
+    
+    
+    
     }
     
     
@@ -938,6 +1006,9 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
     
     func Reminder(Person: String, AbsenzDate: Int, Status: String){
         
+        // CHeck if AUID is already in Array if true then kein reminder vlt chenti au neues child mache sobalds serste mal downgloadet wirt AbsenzenReminder == truem denn da check hei isches scho oder ned!
+        
+        
         var triggerDate: Date = Date()
         
         let DateString = AbsenzDate.convertTimestampToDate
@@ -988,7 +1059,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         
         if ReminderDate! < Date() {
             // error the trigger Date already happened
-            remindernotValid()
+//            remindernotValid()
         }else {
             UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
                 if let error = error{
@@ -1010,7 +1081,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         
         if PreReminderDate! < Date() {
             // error the trigger Date already happened
-            remindernotValid()
+//            remindernotValid()
         }else {
             UNUserNotificationCenter.current().add(request2, withCompletionHandler: { (error) in
                 if let error = error{
