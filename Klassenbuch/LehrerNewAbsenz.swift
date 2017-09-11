@@ -417,7 +417,7 @@ struct UIDStruct{
                         print(aID)
                         // New way to ride to the class
                         
-    self.ref!.child("SchülerAbsenzen").child(SchülerName).child(aID).setValue([ "APerson": SchülerName,"AStatus": Absenzstatus,"ADatum": AbsenzDatum,  "AAbgabe": "offen","AAnzahlStunden" : AnzahlStunden])
+    self.ref!.child("SchülerAbsenzen").child(SchülerName).child(aID).setValue([ "APerson": SchülerName,"AStatus": Absenzstatus,"ADatum": AbsenzDatum,  "AAbgabe": "offen","AAnzahlStunden" : AnzahlStunden,"AReminderStatus": false])
                         
                         
                         
@@ -470,7 +470,7 @@ struct UIDStruct{
                         "AStatus": self.AbsenzInfo,
                         "ADatum": self.selectedDateZeroHour!,
                         "AAbgabe": "offen",
-                        "AAnzahlStunden" : self.StundeInt])
+                        "AAnzahlStunden" : self.StundeInt,"AReminderStatus": false])
                     
                     
                     // Hier Statistiken Upload.

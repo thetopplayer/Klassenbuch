@@ -19,6 +19,14 @@ struct AbsenzenStruct4 {
     var AAnzahlStunden : Int
     var AUid: String
 }
+struct ReminderStruct{
+
+    var ADatum: Int
+    var AStatus: String
+    var APerson: String
+    var AUid: String
+
+}
 
 class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate, UITabBarDelegate{
     
@@ -196,9 +204,11 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                         
                         let aperson = fdata["APerson"] as! String
                         
-
+                        let ReminderID = snapshot.key
                         
-                 self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus)
+                        let ReminderState = fdata["AReminderStatus"] as! Bool
+                 
+                        self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus, ReminderStatus: ReminderState, ReminderID: ReminderID)
 
                         
 //                         Check if Reminders are wished
@@ -1004,10 +1014,13 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
     
 
     
-    func Reminder(Person: String, AbsenzDate: Int, Status: String){
+    func Reminder(Person: String, AbsenzDate: Int, Status: String, ReminderStatus: Bool, ReminderID: String){
         
         // CHeck if AUID is already in Array if true then kein reminder vlt chenti au neues child mache sobalds serste mal downgloadet wirt AbsenzenReminder == truem denn da check hei isches scho oder ned!
+        if ReminderStatus == true{
         
+            print("already set Reminder for this Absenz")
+        } else if ReminderStatus == false{
         
         var triggerDate: Date = Date()
         
@@ -1092,11 +1105,20 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                 }
             }
             )
-        }
-        
-        
-        
-        
+            }
+            let user = FIRAuth.auth()?.currentUser
+            let uid = user?.uid
+          self.ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observe(.value, with: { (snapshot) in
+                
+                
+                if let item1 = snapshot.value as? String{
+                    
+                    
+                    self.ref!.child("AbsenzenKlassen").child(item1).child(ReminderID).updateChildValues([
+                        "AReminderStatus": true,])
+                    
+                }
+            })}
     }
    
     func remindernotValid(){
