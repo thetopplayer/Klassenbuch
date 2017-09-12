@@ -392,13 +392,8 @@
             }else {
                 AbsenzInfo = "\(Absenzstatus)  \(Absenzenstatus2)"
                 
-                
-                self.ref!.child("SchülerAbsenzen").child(name).childByAutoId().setValue([
-                    "APerson": name,
-                    "AStatus": AbsenzInfo,
-                    "ADatum": self.selectedDateZeroHour!
-                    ])
-                
+                self.ref!.child("SchülerAbsenzen").child(name).childByAutoId().setValue([ "APerson": name,"AStatus": AbsenzInfo,"ADatum": self.selectedDateZeroHour!,  "AAbgabe": "offen","AAnzahlStunden" : 0,"AReminderStatus": false])
+
  
                 
              self.performSegue(withIdentifier: "ultimateSegue", sender: self)

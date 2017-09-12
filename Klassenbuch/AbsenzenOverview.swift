@@ -50,17 +50,15 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
 //    var AnzahlStundenSchüler = Int()
     var theStatus   =   String()
     var theNewStatus   =   String()
-    override func viewWillDisappear(_ animated: Bool) {
-        self.getdataTimer2.invalidate()
-        print("timer killed")
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-        self.getdataTimer2.invalidate()
-        print("timer killed")
-    }
+
+    
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         databaseListener()
         getClass()
+        
     }
 //    override func vi
     override func viewDidLoad() {
@@ -83,11 +81,8 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         
         // Set the Firebase refrence
         ref = FIRDatabase.database().reference()
-        
-        // Listen for added and removed
-//    self.getdataTimer2 = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AbsenzenOverview.databaseListener) , userInfo: nil, repeats: true)
-//    self.getdataTimer2 = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AbsenzenOverview.getClass) , userInfo: nil, repeats: true)
-//        self.databaseListener()
+//        removed()
+
         
         
     }
@@ -263,12 +258,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                 })}})
 
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-    
+
     
     // MARK: - Table view data source
     

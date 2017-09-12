@@ -21,6 +21,15 @@ struct AbsenzenStruct3 {
     var AUid: String
 }
 
+struct ReminderStructSchüler{
+    
+    var ADatum: Int
+    var AStatus: String
+    var APerson: String
+    var AUid: String
+    
+}
+
 class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBarDelegate{
     
     
@@ -43,18 +52,28 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     var myKlasse = String()
     let myEmail = String()
     var MorningTime = 43200
+    
+//    var ArrayofNotifs = [Notification]()
     //var FireTime: Date
         var TodayTomorrow = "bis Morgen unterschrieben abgeben."
+    let center = UNUserNotificationCenter.current()
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.getdataTimer3.invalidate()
-        print("timer killed")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        center.getPendingNotificationRequests { (notifications) in
+            print("Count: \(notifications.count)XYXYXYXYXYXYXYXYXYXYXYXY")
+            for item in notifications {
+//                print(item.content)
+                
+                
+            }
+        }
+        databaseListener()
+        getClass()
+        
     }
-    override func viewDidDisappear(_ animated: Bool) {
-        self.getdataTimer3.invalidate()
-        print("timer killed")
-    }
-    
+
+
     
     override func viewDidLoad() {
        
@@ -80,7 +99,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
 //        self.databaseListener()
         
         AddAbsenzButton.isEnabled = false
-        self.getdataTimer3 = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(Absenzen.databaseListener) , userInfo: nil, repeats: true)
+//        self.getdataTimer3 = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(Absenzen.databaseListener) , userInfo: nil, repeats: true)
     }
     
     
@@ -111,7 +130,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         self.ref!.child("SchülerAbsenzen/\(self.myName)").observe(.childAdded, with: { (snapshot) in
             
             if let fdata = snapshot.value as? NSDictionary {
-                
+                 
                 let adatum = fdata["ADatum"] as! Int
                 
                 let astatus = fdata["AStatus"] as! String
@@ -131,16 +150,16 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
                     self.data[adatum]!.append(homeObject3)
                 }
 
-                print(fdata)
+//                print(fdata)
      
 
-            // Check if Reminders are wished                       
-                if UserDefaults.standard.bool(forKey: "Reminders") == true {
-                    print("wants reminders")
-                    self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus)
-                } else if UserDefaults.standard.bool(forKey: "Reminders") == false {
-                    print("dont want's reminders")
-                }
+//            // Check if Reminders are wished                       
+//                if UserDefaults.standard.bool(forKey: "Reminders") == true {
+//                    print("wants reminders")
+//                    self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus)
+//                } else if UserDefaults.standard.bool(forKey: "Reminders") == false {
+//                    print("dont want's reminders")
+//                }
             }
             
             self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
@@ -148,27 +167,27 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
             self.EmptyScreen()
         })
         
-        // Remove listener
-        self.ref!.child("SchülerAbsenzen/\(self.myName)").observe(.childRemoved, with: { (snapshot) in
-            
-            if let fdata = snapshot.value as? NSDictionary {
-                
-                let adatum = fdata["ADatum"] as! Int
-                let aID = snapshot.key
-                
-                let filterdArr = self.data[adatum]!.filter({$0.AUid != aID})
-                
-               if filterdArr.count > 0 {
-                    self.data[adatum] = filterdArr
-                }else {
-                self.data.removeValue(forKey: adatum)
-                }
-            }
-            
-            self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
-            self.tableView.reloadData()
-            self.EmptyScreen()
-        })
+//        // Remove listener
+//        self.ref!.child("SchülerAbsenzen/\(self.myName)").observe(.childRemoved, with: { (snapshot) in
+//            
+//            if let fdata = snapshot.value as? NSDictionary {
+//                
+//                let adatum = fdata["ADatum"] as! Int
+//                let aID = snapshot.key
+//                
+//                let filterdArr = self.data[adatum]!.filter({$0.AUid != aID})
+//                
+//               if filterdArr.count > 0 {
+//                    self.data[adatum] = filterdArr
+//                }else {
+//                self.data.removeValue(forKey: adatum)
+//                }
+//            }
+//            
+//            self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
+//            self.tableView.reloadData()
+//            self.EmptyScreen()
+//        })
              
             
             }
@@ -179,13 +198,76 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     }
 
     
+    func getClass(){
+        
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        ref?.child("users").child("Schüler").child(uid!).child("name").observe(.value, with: { (snapshot) in
+            
+            
+            if let item = snapshot.value as? String{
+                
+                self.myKlasse = item
+                self.childaddedReminder(SchülerName: item)
+            }})
+    }
 
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func childaddedReminder(SchülerName: String){
+        
+        print("\(SchülerName)XYXYXYXYXYXYXYX")
+        //        self.Reminder(Person: "asd", AbsenzDate: 1232134251, Status: "adasfasf")
+        
+        ref = FIRDatabase.database().reference()
+        
+        
+        // Added listener
+        self.ref!.child("SchülerAbsenzen/\(SchülerName)").observe(.childAdded, with: { (snapshot) in
+            if let fdata2 = snapshot.value as? NSDictionary {
+                
+                let adatum = fdata2["ADatum"] as! Int
+                
+                let astatus = fdata2["AStatus"] as! String
+                
+                let aperson = fdata2["APerson"] as! String
+                
+                let ReminderID = snapshot.key
+                
+                let ReminderState = fdata2["AReminderStatus"] as! Bool
+                
+                
+                if ReminderState == true{
+                
+                
+                } else if ReminderState == false{
+                
+                    self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus, ReminderStatus: ReminderState, ReminderID: ReminderID)
+
+                }
+                
+                
+                
+                //                         Check if Reminders are wished
+                //                                        if UserDefaults.standard.bool(forKey: "TeacherReminders") == true {
+                //                                            print("wants reminders")
+                //                                           self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus)
+                //                                        } else if UserDefaults.standard.bool(forKey: "TeacherReminders") == false {
+                //                                            print("dont want's reminders")
+                ////                                             self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus)
+                //                                        }
+            }
+            //                    self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
+            //                    self.tableView.reloadData()
+            //                    self.EmptyScreen()
+        })
+        
+        
+        
+        
         
     }
+
     
+
     
     // MARK: - Table view data source
     
@@ -279,21 +361,20 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         cell.accessoryType = .detailButton
         cell.tintColor = UIColor(red:0.17, green:0.22, blue:0.45, alpha:1.0)
 
-//        if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Entschuldigt"{
-//            
-//            cell.backgroundColor = UIColor.green
-//            
-//        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "Unentschuldigt"{
-//            
-//            cell.backgroundColor = UIColor.red
-//            
-//        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "offen"{
-//            
-//            
-//        } else if self.sortedData[indexPath.section].1[indexPath.row].APerson == "ForceOffen"{
-//            
-//        }
-        
+        if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Entschuldigt"{
+            
+            cell.backgroundColor = UIColor.green
+            
+        } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Unentschuldigt"{
+            
+            cell.backgroundColor = UIColor.red
+            
+        } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "offen"{
+            
+            
+        } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "ForceOffen"{
+            
+        }
         return cell
     }
     
@@ -556,143 +637,171 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
   
     
     
-    func Reminder(Person: String, AbsenzDate: Int, Status: String){
-       
-        var triggerDate: Date = Date()
-    
-        let DateString = AbsenzDate.convertTimestampToDate
-       
-        //Date formatter
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "dd MMMM yyyy"
-        let DateinDate = dateformatter.date(from: DateString)
-        
-        let daysToAdd = 13
-        let daysToAdd2 = 14
-        var dateComponent = DateComponents()
-        dateComponent.day = daysToAdd
-        var dateComponent2 = DateComponents()
-        dateComponent2.day = daysToAdd2
-       
-        let PreReminderDate = Calendar.current.date(byAdding: dateComponent, to: DateinDate!)
-        let ReminderDate = Calendar.current.date(byAdding: dateComponent2, to: DateinDate!)
-        
-        print(PreReminderDate!)
-        print(ReminderDate!)
-        
-        // Content for PreReminder
-        let content = UNMutableNotificationContent()
-        content.title = "Absenz Errinerung"
-        content.body = "\(Person), du musst deine Absenz vom \(DateString)\(TodayTomorrow)."
-        content.sound = UNNotificationSound.default()
-        content.badge = 1
-        
-        // Content for Reminder
-        let content2 = UNMutableNotificationContent()
-        content2.title = "Absenz Errinerung"
-        content2.body = "\(Person), du musst deine Absenz vom \(DateString) heute abgeben."
-        content2.sound = UNNotificationSound.default()
-        content2.badge = 1
-        
-        print(content.body)
-        print(content.title)
-        print(content.title)
-        
-        
-        let triggerdate1 = PreReminderDate! - 43200
-        let TriggerDateComponents = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: triggerdate1)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: TriggerDateComponents, repeats: false)
-        // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier:  UUID().uuidString, content: content, trigger: trigger)
-        print(trigger)
-        
-        if ReminderDate! < Date() {
-            // error the trigger Date already happened
-            remindernotValid()
-        }else {
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
-                if let error = error{
-                    print("Could not create Local notification", error)
-                }else if let newdate = trigger.nextTriggerDate(){
-                    print("Next notification date:", newdate)
-                    print("Errinierung an")
+
+        func Reminder(Person: String, AbsenzDate: Int, Status: String, ReminderStatus: Bool, ReminderID: String){
+            
+            // CHeck if AUID is already in Array if true then kein reminder vlt chenti au neues child mache sobalds serste mal downgloadet wirt AbsenzenReminder == truem denn da check hei isches scho oder ned!
+            if ReminderStatus == true{
+                
+                print("already set Reminder for this Absenz")
+            } else if ReminderStatus == false{
+                
+//                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [ReminderID])
+                
+                let user = FIRAuth.auth()?.currentUser
+                let uid = user?.uid
+                self.ref?.child("users").child("Schüler").child(uid!).child("name").observe(.value, with: { (snapshot) in
+                    
+                    
+                    if let item1 = snapshot.value as? String{
+                        
+                        
+                        self.ref!.child("SchülerAbsenzen").child(item1).child(ReminderID).updateChildValues([
+                            "AReminderStatus": true,])
+                        
+                    }
+                })
+
+                
+                
+                
+                var triggerDate: Date = Date()
+                
+                        let DateString = AbsenzDate.convertTimestampToDate
+                
+                        //Date formatter
+                        let dateformatter = DateFormatter()
+                        dateformatter.dateFormat = "dd MMMM yyyy"
+                        let DateinDate = dateformatter.date(from: DateString)
+                
+                        let daysToAdd = 13
+                        let daysToAdd2 = 14
+                        var dateComponent = DateComponents()
+                        dateComponent.day = daysToAdd
+                        var dateComponent2 = DateComponents()
+                        dateComponent2.day = daysToAdd2
+                
+                        let PreReminderDate = Calendar.current.date(byAdding: dateComponent, to: DateinDate!)
+                        let ReminderDate = Calendar.current.date(byAdding: dateComponent2, to: DateinDate!)
+                
+                        print(PreReminderDate!)
+                        print(ReminderDate!)
+                
+                        // Content for PreReminder
+                        let content = UNMutableNotificationContent()
+                        content.title = "Absenz Errinerung"
+                        content.body = "\(Person), du musst deine Absenz vom \(DateString)\(TodayTomorrow)."
+                        content.sound = UNNotificationSound.default()
+                        content.badge = 1
+                
+                
+                        // Content for Reminder
+                        let content2 = UNMutableNotificationContent()
+                        content2.title = "Absenz Errinerung"
+                        content2.body = "\(Person), du musst deine Absenz vom \(DateString) heute abgeben."
+                        content2.sound = UNNotificationSound.default()
+                        content2.badge = 1
+                
+                        print(content.body)
+                        print(content.title)
+                        print(content.title)
+                
+                
+                        let triggerdate1 = PreReminderDate! - 43200
+                        let TriggerDateComponents = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: triggerdate1)
+                        let trigger = UNCalendarNotificationTrigger(dateMatching: TriggerDateComponents, repeats: false)
+                        // let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                        let request = UNNotificationRequest(identifier:  "\(ReminderID)1", content: content, trigger: trigger)
+                        print(trigger)
+                
+                UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
+                    var identifiers: [String] = []
+                    
+                    for notification:UNNotificationRequest in notificationRequests {
+                        
+                        identifiers.append(notification.identifier)
+                        print(identifiers)
+                        if identifiers.contains(request.identifier){
+                            
+                            // Yes there is already reminder with this Identfier, dont create new Reminder!
+                            
+                            print("Reminder already existis, not going to create a new one")
+                            
+                            
+                            
+                        }else if 1 + 1 == 2{
+                            //No there isn't a reminder with this Idntifier, create a new one!
+                            
+                            print("Reminder deosn't existis, going to create a new one")
+                            if PreReminderDate! < Date() {
+                                // error the trigger Date already happened
+                                //                            remindernotValid()
+                            }else {
+                                UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
+                                    if let error = error{
+                                        print("Could not create Local notification", error)
+                                    }else if let newdate = trigger.nextTriggerDate(){
+                                        print("Next notification date:", newdate)
+                                        print("Errinierung an")
+                                    }
+                                }
+                                )
+                            }}}}
+                
+                
+                
+                        let triggerdate2 = PreReminderDate! - 43200
+                        let TriggerDateComponents2 = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: triggerdate2)
+                        let trigger2 = UNCalendarNotificationTrigger(dateMatching: TriggerDateComponents2, repeats: false)
+                        // let trigger2 = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+                        let request2 = UNNotificationRequest(identifier: "\(ReminderID)2", content: content2, trigger: trigger2)
+                        print(trigger2)
+                
+                if request2.identifier == ""{
+                
                 }
+                
+                
+                UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
+                    var identifiers: [String] = []
+                    
+                    for notification:UNNotificationRequest in notificationRequests {
+                        
+                        identifiers.append(notification.identifier)
+                        
+                        if identifiers.contains(request2.identifier){
+                            
+                            // Yes there is already reminder with this Identfier, dont create new Reminder!
+                        
+                        print("Reminder already existis, not going to create a new one")
+                        
+                        
+                        
+                        }else{
+                        //No there isn't a reminder with this Idntifier, create a new one!
+                            
+                         print("Reminder deosn't existis, going to create a new one")
+                            if PreReminderDate! < Date() {
+                                // error the trigger Date already happened
+                                //                            remindernotValid()
+                            }else {
+                                UNUserNotificationCenter.current().add(request2, withCompletionHandler: { (error) in
+                                    if let error = error{
+                                        print("Could not create Local notification", error)
+                                    }else if let newdate = trigger2.nextTriggerDate(){
+                                        print("Next notification date:", newdate)
+                                        print("Errinierung an")
+                                    }
+                                }
+                                )
+                            }}}}
+            
+            
             }
-            )
-        }
-        
-        let triggerdate2 = PreReminderDate! - 43200
-        let TriggerDateComponents2 = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: triggerdate2)
-        let trigger2 = UNCalendarNotificationTrigger(dateMatching: TriggerDateComponents2, repeats: false)
-        // let trigger2 = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request2 = UNNotificationRequest(identifier:  UUID().uuidString, content: content2, trigger: trigger2)
-        print(trigger2)
-        
-        if PreReminderDate! < Date() {
-            // error the trigger Date already happened
-            remindernotValid()
-        }else {
-            UNUserNotificationCenter.current().add(request2, withCompletionHandler: { (error) in
-                if let error = error{
-                    print("Could not create Local notification", error)
-                }else if let newdate = trigger2.nextTriggerDate(){
-                    print("Next notification date:", newdate)
-                    print("Errinierung an")
-                }
-            }
-            )
-        }
-    
-    
-    
-    
     }
-    
-
-    func checkifUserwantsReminders(){
-    
-  
-    }
+         }
+   
 
 
 
 
-
-
-func remindernotValid(){
-
-    let alertController = UIAlertController(title: "Oops!", message: "Du willst einen Reminder für eine Absenz einrichten die bereits abgelofen ist.", preferredStyle: .alert)
-    alertController.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: { (action: UIAlertAction!) in
-    }))
-    present(alertController, animated: true, completion: nil)
-}
-    
-    
-    
-    
-}
-
-/* compare dates
- switch adatum < Date().getDateFromZeroHour /*- 1209600 -86400*/ {
- 
- case true:
- // delete earlier dates data from database
- //self.ref!.child("absenzen/\(user!.uid)/\(snapshot.key)").removeValue()
- //cell.backgroundColor = UICOLor red
- 
- if self.data[adatum] == nil {
- self.data[adatum] = [homeObject3]
- }else {
- self.data[adatum]!.append(homeObject3)
- }
- 
- 
- case false:
- // save data in dictionary
- if self.data[adatum] == nil {
- self.data[adatum] = [homeObject3]
- }else {
- self.data[adatum]!.append(homeObject3)
- }
- 
- }*/

@@ -407,17 +407,17 @@ struct UIDStruct{
                 self.myklasse = item
                 
                 // Added listener
-                self.ref!.child("AbsenzenKlassen/\(self.myklasse)").observe(.childAdded, with: { (snapshot) in
+                self.ref!.child("AbsenzenKlassen/\(self.myklasse)").queryLimited(toLast: 1).observe(.childAdded, with: { (snapshot) in
                     
-                    if (snapshot.value as? NSDictionary) != nil {
+                   if let fdata = snapshot.value as? NSDictionary {
                         
-    
+                        let adatum = fdata["ADatum"] as! Int
                         
                         let aID = snapshot.key
                         print(aID)
                         // New way to ride to the class
                         
-    self.ref!.child("SchülerAbsenzen").child(SchülerName).child(aID).setValue([ "APerson": SchülerName,"AStatus": Absenzstatus,"ADatum": AbsenzDatum,  "AAbgabe": "offen","AAnzahlStunden" : AnzahlStunden,"AReminderStatus": false])
+    self.ref!.child("SchülerAbsenzen").child(SchülerName).child(aID).updateChildValues([ "APerson": SchülerName,"AStatus": Absenzstatus,"ADatum": AbsenzDatum,  "AAbgabe": "offen","AAnzahlStunden" : AnzahlStunden,"AReminderStatus": false])
                         
                         
                         
