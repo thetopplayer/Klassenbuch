@@ -366,18 +366,9 @@ class LehrerStatistiken: UITableViewController {
                 if let item = snapshot.value as? String{
 
             
-            self.ref?.child("Statistiken").child(item).removeValue()
+                self.ref?.child("Statistiken").child(item).removeValue()
                     
-            // Klasenabsenzen bewegen Tree bewegen in Archiv.
-//            ref?.child("AbsenzenKlassen").child(item).
-             
-                   
-//                 self.ref?.child("AbsenzenKlassen").child(item).observe(.value, with: { (snapshot) in
-//                    if let data = snapshot.value as! [String :AnyObject]? {
-//                            self.ref?.child("Archiv").child(item).setValue(data)
-//                    }
-//                    })
-//                
+
                 self.ref?.child("AbsenzenKlassen").child(item).removeValue()
                 
                 

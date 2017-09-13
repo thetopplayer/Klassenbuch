@@ -363,6 +363,11 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Absenzen" id="vsd-p5-WNv">
+                        <barButtonItem key="leftBarButtonItem" systemItem="redo" id="Bat-6p-fNM">
+                            <connections>
+                                <action selector="NewSemester:" destination="5hX-yP-0l5" id="9cm-ie-AOi"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ate-Hd-Xn1">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
