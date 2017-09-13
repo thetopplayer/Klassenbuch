@@ -9,6 +9,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
+
 struct AbsenzenStatistiken{
     
     var APerson: String
@@ -333,34 +334,35 @@ class LehrerStatistiken: UITableViewController {
     
     @IBAction func Print(_ sender: Any) {
         
-        
-      pdfDataWithTableView(tableView: tableView)
+//        generatePDF()
         
     }
    
-    func pdfDataWithTableView(tableView: UITableView) {
-        let priorBounds = tableView.bounds
-        let fittedSize = tableView.sizeThatFits(CGSize(width:priorBounds.size.width, height:tableView.contentSize.height))
-        tableView.bounds = CGRect(x:0, y:0, width:fittedSize.width, height:fittedSize.height)
-        let pdfPageBounds = CGRect(x:0, y:0, width:tableView.frame.width, height:self.view.frame.height)
-        let pdfData = NSMutableData()
-        UIGraphicsBeginPDFContextToData(pdfData, pdfPageBounds,nil)
-        var pageOriginY: CGFloat = 0
-        while pageOriginY < fittedSize.height {
-            UIGraphicsBeginPDFPageWithInfo(pdfPageBounds, nil)
-            UIGraphicsGetCurrentContext()!.saveGState()
-            UIGraphicsGetCurrentContext()!.translateBy(x: 0, y: -pageOriginY)
-            tableView.layer.render(in: UIGraphicsGetCurrentContext()!)
-            UIGraphicsGetCurrentContext()!.restoreGState()
-            pageOriginY += pdfPageBounds.size.height
-        }
-        UIGraphicsEndPDFContext()
-        tableView.bounds = priorBounds
-        var docURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
-        docURL = docURL.appendingPathComponent("myDocument.pdf")
-        pdfData.write(to: docURL as URL, atomically: true)
-    }
-    
+//    func generatePDF() {
+//    let v1 = UIScrollView(frame: CGRect(x: 0.0,y: 0, width: 100.0, height: 100.0))
+//    let v2 = UIView(frame: CGRect(x: 0.0,y: 0, width: 100.0, height: 200.0))
+//    let v3 = UIView(frame: CGRect(x: 0.0,y: 0, width: 100.0, height: 200.0))
+//    v1.backgroundColor = .red
+//    v1.contentSize = CGSize(width: 100.0, height: 200.0)
+//    v2.backgroundColor = .green
+//    v3.backgroundColor = .blue
+//    
+//    let dst = URL(fileURLWithPath: NSTemporaryDirectory().appending("sample1.pdf"))
+//    // outputs as Data
+//    do {
+//    let data = try PDFGenerator.generated(by: [v1, v2, v3])
+//    data.write(to: dst, options: .atomic)
+//    } catch (let error) {
+//    print(error)
+//    }
+//    
+//    // writes to Disk directly.
+//    do {
+//    try PDFGenerator.generate([v1, v2, v3], to: dst)
+//    } catch (let error) {
+//    print(error)
+//    }
+//    }
     @IBAction func DetailStatisik (_ segue:UIStoryboardSegue) {
     }
     

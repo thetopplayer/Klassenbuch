@@ -100,7 +100,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         //        getClass()
       
         AddAbsenzButton.isEnabled = false
-        //        self.getdataTimer3 = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(Absenzen.databaseListener) , userInfo: nil, repeats: true)
+              self.getdataTimer3 = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(Absenzen.databaseListener) , userInfo: nil, repeats: true)
     }
     
     
@@ -438,9 +438,9 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
             
         } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "offen"{
             
-            
+            cell.backgroundColor = UIColor.clear
         } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "ForceOffen"{
-            
+            cell.backgroundColor = UIColor.clear
         }
         return cell
     }
@@ -607,6 +607,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
             let absenz = self.sortedData[indexPath.section].1[indexPath.row]
             self.ref!.child("SchülerAbsenzen/\(self.myName)/\(absenz.AUid)").removeValue()
             print("deleted pressed")
+            self.databaseListener()
         }
         
         
@@ -626,11 +627,11 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         if self.sortedData[indexPath.section].1[indexPath.row].ReminderStatus == true{
            
 //            Check if Reminders are wished
-        if UserDefaults.standard.bool(forKey: "TeacherReminders") == true {
+        if UserDefaults.standard.bool(forKey: "Reminders") == true {
          print("wants reminders")
          AbsenzenSheet.addAction(StatusActionEntfernen)
          
-        } else if UserDefaults.standard.bool(forKey: "TeacherReminders") == false {
+        } else if UserDefaults.standard.bool(forKey: "Reminders") == false {
            print("dont want's reminders")
                                                                                    }
 
@@ -641,11 +642,11 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         } else{
             
             //            Check if Reminders are wished
-            if UserDefaults.standard.bool(forKey: "TeacherReminders") == true {
+            if UserDefaults.standard.bool(forKey: "Reminders") == true {
                 print("wants reminders")
                  AbsenzenSheet.addAction(StatusAction)
                 
-            } else if UserDefaults.standard.bool(forKey: "TeacherReminders") == false {
+            } else if UserDefaults.standard.bool(forKey: "Reminders") == false {
                 print("dont want's reminders")
             }
 

@@ -56,6 +56,14 @@ struct UIDStruct{
         override func viewDidLoad() {
             super.viewDidLoad()
             
+            let datepickerView = UIDatePicker()
+            datepickerView.minimumDate = Date() - 31536000 //set minimum date of today
+            datepickerView.datePickerMode = UIDatePickerMode.date
+            
+            AbsenzenDatum.inputView = datepickerView
+            
+            datepickerView.addTarget(self, action: #selector(Add_Hausaufgaben.datePickerValueChanged), for: UIControlEvents.valueChanged)
+            
             // Setting up TextFielddelegates and Pickerdelegates
             StundeInt = 1
             
@@ -232,13 +240,7 @@ struct UIDStruct{
         
         @IBAction func ADTextField(_ sender: UITextField) {
             
-            let datepickerView = UIDatePicker()
-            datepickerView.minimumDate = Date() - 31536000 //set minimum date of today
-            datepickerView.datePickerMode = UIDatePickerMode.date
-            
-            sender.inputView = datepickerView
-            
-            datepickerView.addTarget(self, action: #selector(Add_Hausaufgaben.datePickerValueChanged), for: UIControlEvents.valueChanged)
+    
             
         }
         func datePickerValueChanged(_ sender: UIDatePicker) {

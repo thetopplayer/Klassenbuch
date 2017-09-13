@@ -169,7 +169,33 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
        // CHild added, add Reminder
                 
             
-            
+                self.ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    if let item = snapshot.value as? String{
+                        self.myKlasse = item
+                        self.ref!.child("AbsenzenKlassen/\(self.myKlasse)").observe(.childRemoved, with: { (snapshot) in
+                            
+                            if let fdata = snapshot.value as? NSDictionary {
+                                
+                                let adatum = fdata["ADatum"] as! Int
+                                let aID = snapshot.key
+                                
+                                let filterdArr = self.data[adatum]?.filter({$0.AUid != aID})
+                                
+                                if (filterdArr?.count)! > 0 {
+                                    self.data[adatum] = filterdArr
+                                }else {
+                                    self.data.removeValue(forKey: adatum)
+                                }
+                            }
+                            
+                            self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
+                            self.tableView.reloadData()
+                            
+                        })}})
+                
+
+                
             
             
             
@@ -244,32 +270,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         
-        ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let item = snapshot.value as? String{
-                self.myKlasse = item
-                self.ref!.child("AbsenzenKlassen/\(self.myKlasse)").observe(.childRemoved, with: { (snapshot) in
-                    
-                    if let fdata = snapshot.value as? NSDictionary {
-                        
-                        let adatum = fdata["ADatum"] as! Int
-                        let aID = snapshot.key
-                        
-                        let filterdArr = self.data[adatum]?.filter({$0.AUid != aID})
-                        
-                        if (filterdArr?.count)! > 0 {
-                            self.data[adatum] = filterdArr
-                        }else {
-                            self.data.removeValue(forKey: adatum)
-                        }
-                    }
-                    
-                    self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
-                    self.tableView.reloadData()
-                    
-                })}})
-
-    }
+           }
 
     
     // MARK: - Table view data source
@@ -382,7 +383,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         let adatum = self.sortedData[indexPath.section].1[indexPath.row].ADatum
         let aperson = self.sortedData[indexPath.section].1[indexPath.row].APerson
         let auid = self.sortedData[indexPath.section].1[indexPath.row].AUid
-        //        let aabgabe = self.sortedData[indexPath.section].1[indexPath.row].AAbgabe
+        let aabgabe = self.sortedData[indexPath.section].1[indexPath.row].AAbgabe
         //        let aanzahlstunden = self.sortedData[indexPath.section].1[indexPath.row].AAnzahlStunden
         let astatus = self.sortedData[indexPath.section].1[indexPath.row].AStatus
       
@@ -404,6 +405,36 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         
         
         
+//        
+//        let dateformatter = DateFormatter()
+//        dateformatter.dateFormat = "dd MMM yyyy"
+////      
+//        
+//        let newdate = adatum.convertTimestampToDate
+//        let SectionDateinDate = dateformatter.date(from: newdate)
+////        let PostUID = self.sortedData[indexPath.section].1[indexPath.row].AUid
+////        let myperson = self.sortedData[indexPath.section].1[indexPath.row].APerson
+//        let AnzahlStundenSchüler = self.sortedData[indexPath.section].1[indexPath.row].AAnzahlStunden
+//        
+//       let Ablaufdatum = SectionDateinDate! + 1209600
+//       
+//        if aabgabe == "Unentschuldigt" {
+//        
+//        }else if aabgabe == "ForceOffen" {
+//        
+//        
+//        } else if aabgabe == "offen"{
+//        
+//        if Ablaufdatum > Date() {
+//        
+//            print("hhi")
+// 
+//        self.changeAStatus(AbsenzID: auid, Person: aperson, Neuerstatus: "Unentschuldigt")
+//        self.doStatisticMath(Status: self.sortedData[indexPath.section].1[indexPath.row].AAbgabe, NeuerStatus: "Unentschuldigt", AnzahlStunden: AnzahlStundenSchüler, Schülername: aperson)
+////        self.databaseListener()
+//  
+//            
+//            }}
 
         return cell
     }

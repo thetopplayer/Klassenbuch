@@ -73,6 +73,7 @@ class KlassenUserInfo: UITableViewController {
                 //                UserDefaults.standard.set(true, forKey: "isAdmin")
                 //                UserDefaults.standard.synchronize()
                 print("is admin2")
+                self.NameLabel.textColor = UIColor.green
                 self.KlassenLehrerCell.isUserInteractionEnabled = true
                 self.KlassenMitgliederCell.isUserInteractionEnabled = true
                 self.LehrerModusSwitch.isUserInteractionEnabled = true
@@ -294,7 +295,7 @@ class KlassenUserInfo: UITableViewController {
             if snapshot.value as? String == "true" {
                 
                 
-                self.AdminLabel.text = "Admin"
+                self.NameLabel.textColor = UIColor.green
                 
             }
         }
