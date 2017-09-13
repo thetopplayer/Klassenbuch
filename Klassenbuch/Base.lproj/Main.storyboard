@@ -335,30 +335,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AbsenzenCell" editingAccessoryType="detailButton" textLabel="3K3-Cv-4le" detailTextLabel="idG-Xu-7fv" style="IBUITableViewCellStyleSubtitle" id="UyS-Mf-FyE">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AbsenzenCell" editingAccessoryType="detailButton" id="UyS-Mf-FyE" customClass="AbsenzenCellStatus" customModule="Klassenbuch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UyS-Mf-FyE" id="pef-ET-Kmj">
                                     <rect key="frame" x="0.0" y="0.0" width="328" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3K3-Cv-4le">
-                                            <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4I7-L8-hHu">
+                                            <rect key="frame" x="8" y="0.0" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="idG-Xu-7fv">
-                                            <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRk-i2-FTJ">
+                                            <rect key="frame" x="8" y="22" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bellstatuts" translatesAutoresizingMaskIntoConstraints="NO" id="Qn0-ig-KKy">
+                                            <rect key="frame" x="309" y="11" width="19" height="22"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="tintColor" red="0.08235294118" green="0.16862745100000001" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Qn0-ig-KKy" secondAttribute="trailing" constant="47" id="aBy-Dy-87u"/>
+                                    <constraint firstItem="Qn0-ig-KKy" firstAttribute="centerY" secondItem="UyS-Mf-FyE" secondAttribute="centerY" id="eCp-kH-ozg"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imagebell" destination="Qn0-ig-KKy" id="Xdf-6b-LKs"/>
+                                    <outlet property="subtitlelabel" destination="uRk-i2-FTJ" id="gK3-c8-W6r"/>
+                                    <outlet property="titleLabel" destination="4I7-L8-hHu" id="uUj-vj-XrR"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -378,11 +390,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="AddAbsenzButton" destination="Ate-Hd-Xn1" id="dlv-wh-sGk"/>
+                        <segue destination="0a8-2c-nwb" kind="presentation" identifier="away" animates="NO" id="saA-ft-hT2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FwN-0K-AcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6155.072463768116" y="636.68478260869574"/>
+            <point key="canvasLocation" x="6149.6000000000004" y="635.53223388305855"/>
         </scene>
         <!--Information TC-->
         <scene sceneID="jK0-VN-v9E">
@@ -1765,22 +1778,22 @@
                         <viewControllerLayoutGuide type="bottom" id="eSf-ww-6Ug"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fgb-Je-Rbb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="eLQ-Et-Mhx">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wE-j2-7iW">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="egp-1x-Rtj">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6b9-x2-vqQ">
-                                <rect key="frame" x="16" y="262.5" width="343" height="142.5"/>
+                                <rect key="frame" x="16" y="230.5" width="343" height="142.5"/>
                                 <string key="text">Momentan sind sie noch nicht verifiziert bitte gehen sie zu ihrem Schul Email Account und klicken Sie auf den Link. Es kann einige Minuten dauern bis die Mail ankommt. Sobald Sie sich verifizieren werden sie weitergeleitet zum nächsten Schritt.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -2342,6 +2355,27 @@
                 <exit id="xRC-y7-O52" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5357" y="-123"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ejw-ea-Nvh">
+            <objects>
+                <viewController id="0a8-2c-nwb" customClass="ViewController" customModule="Klassenbuch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jiZ-Gr-dpj"/>
+                        <viewControllerLayoutGuide type="bottom" id="hQJ-yv-veF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XCb-ay-3Lw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="5hX-yP-0l5" kind="presentation" identifier="back" animates="NO" id="NKr-so-Xel"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sJz-Eo-hEC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7386" y="-737"/>
         </scene>
         <!--Reminder einrichten-->
         <scene sceneID="XoT-Jn-cdl">
@@ -5105,6 +5139,7 @@
         <image name="Settings" width="25" height="25"/>
         <image name="Settings Filled" width="25" height="26"/>
         <image name="ZüriLogo" width="49" height="57"/>
+        <image name="bellstatuts" width="19" height="22"/>
         <image name="newShape" width="271" height="341"/>
         <image name="statistics" width="25" height="25"/>
         <image name="statistics filled" width="25" height="26"/>
@@ -5119,5 +5154,6 @@
         <segue reference="fVZ-rb-nYB"/>
         <segue reference="lVm-GA-94x"/>
         <segue reference="DfO-jf-HaQ"/>
+        <segue reference="NKr-so-Xel"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -28,6 +28,8 @@
 		376177911EFD63750051B90C /* ReminderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376177901EFD63750051B90C /* ReminderTableViewController.swift */; };
 		376177951EFE63050051B90C /* NewReminderNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376177941EFE63050051B90C /* NewReminderNC.swift */; };
 		376177971EFE6A080051B90C /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376177961EFE6A080051B90C /* Reminder.swift */; };
+		376B61401F69AD47000D55FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B613F1F69AD47000D55FD /* ViewController.swift */; };
+		376B61421F69B03B000D55FD /* AbsenzenCellStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B61411F69B03B000D55FD /* AbsenzenCellStatus.swift */; };
 		376DDB3A1E44C0ED0064E2D2 /* Einstellungen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */; };
 		3770835F1F06B94900B2C9FA /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3770835E1F06B94900B2C9FA /* Notes.swift */; };
 		378465441E4F96EC0012CDBF /* Gif+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378465431E4F96EC0012CDBF /* Gif+Swift.swift */; };
@@ -122,6 +124,8 @@
 		376177901EFD63750051B90C /* ReminderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderTableViewController.swift; sourceTree = "<group>"; };
 		376177941EFE63050051B90C /* NewReminderNC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewReminderNC.swift; sourceTree = "<group>"; };
 		376177961EFE6A080051B90C /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
+		376B613F1F69AD47000D55FD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		376B61411F69B03B000D55FD /* AbsenzenCellStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbsenzenCellStatus.swift; sourceTree = "<group>"; };
 		376DDB391E44C0ED0064E2D2 /* Einstellungen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Einstellungen.swift; sourceTree = "<group>"; };
 		3770835E1F06B94900B2C9FA /* Notes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		378465431E4F96EC0012CDBF /* Gif+Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gif+Swift.swift"; sourceTree = "<group>"; };
@@ -232,6 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				37FCAE761DFD51C000789BFF /* AppDelegate.swift */,
+				376B61411F69B03B000D55FD /* AbsenzenCellStatus.swift */,
+				376B613F1F69AD47000D55FD /* ViewController.swift */,
 				37FB1B8D1F6927BF00EE2E3B /* CustomHeaderCell.swift */,
 				37B3AAAE1F62CB10005731DE /* LehrerTabBar.swift */,
 				37FCAEB01DFD55D900789BFF /* Manager.swift */,
@@ -707,6 +713,7 @@
 				371CC12F1F5EEBBA00E28E8D /* LehrerStatistiken.swift in Sources */,
 				3787EDA21F5324DF00664523 /* LehrerKlassenauswahl.swift in Sources */,
 				3707B7681E44D70D00BD150D /* AppInfo.swift in Sources */,
+				376B61401F69AD47000D55FD /* ViewController.swift in Sources */,
 				37578E391F516A1800ACFA80 /* StudentAbsenzen.swift in Sources */,
 				376177911EFD63750051B90C /* ReminderTableViewController.swift in Sources */,
 				37B3AAAD1F62B675005731DE /* ChangeStatisticsManually.swift in Sources */,
@@ -715,6 +722,7 @@
 				37578E2F1F504E3E00ACFA80 /* LehrerNewAbsenz.swift in Sources */,
 				37B3AAAF1F62CB10005731DE /* LehrerTabBar.swift in Sources */,
 				3770835F1F06B94900B2C9FA /* Notes.swift in Sources */,
+				376B61421F69B03B000D55FD /* AbsenzenCellStatus.swift in Sources */,
 				37578E311F507BD900ACFA80 /* Select Class.swift in Sources */,
 				37AD16E01E2D4438002F41D9 /* Login.swift in Sources */,
 				37BF5D181F61D25F00B26C24 /* StatistikenCell.swift in Sources */,
