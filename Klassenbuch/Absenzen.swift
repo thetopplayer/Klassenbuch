@@ -624,12 +624,33 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         
         
         if self.sortedData[indexPath.section].1[indexPath.row].ReminderStatus == true{
+           
+//            Check if Reminders are wished
+        if UserDefaults.standard.bool(forKey: "TeacherReminders") == true {
+         print("wants reminders")
+         AbsenzenSheet.addAction(StatusActionEntfernen)
+         
+        } else if UserDefaults.standard.bool(forKey: "TeacherReminders") == false {
+           print("dont want's reminders")
+                                                                                   }
+
             
-            AbsenzenSheet.addAction(StatusActionEntfernen)
+            
          
             
         } else{
-                   AbsenzenSheet.addAction(StatusAction)
+            
+            //            Check if Reminders are wished
+            if UserDefaults.standard.bool(forKey: "TeacherReminders") == true {
+                print("wants reminders")
+                 AbsenzenSheet.addAction(StatusAction)
+                
+            } else if UserDefaults.standard.bool(forKey: "TeacherReminders") == false {
+                print("dont want's reminders")
+            }
+
+            
+            
         
         }
         AbsenzenSheet.addAction(cancelAction)
