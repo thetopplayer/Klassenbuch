@@ -31,6 +31,8 @@ class ChangeStatisticsManually: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presentAlertController()
 
         EntschuldigtTextField.delegate = self
         UnentschuldigtTextField.delegate = self
@@ -50,8 +52,46 @@ class ChangeStatisticsManually: UITableViewController, UITextFieldDelegate {
         GesamtTextField.text = Gesamt
        
         self.ref = FIRDatabase.database().reference()
+        // Left Swipe
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        
+        view.addGestureRecognizer(edgePan)
+        
     }
+    //Fund for Left Swipe
+    
+    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        
+        if recognizer.state == .recognized {
+            self.performSegue(withIdentifier: "DetailStatisikSegue", sender: self)
+        }
+    }
+    
+    func presentAlertController(){
+    
+        let actionSheet = UIAlertController(title: "", message: "Es wird nicht empfohlen manuell die Statistiken zu verändern. Es könnte zu Problemen führen und auch die Daten verfälschen.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+        
+        let titleAttrString = NSMutableAttributedString(string: "Achtung!", attributes: titleFont)
+        
+        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+        
+        
+        let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+            
+        }
+        actionSheet.addAction(cancelAction)
+        
+        self.present(actionSheet, animated: true, completion: nil)
 
+        
+    
+    
+    }
+    
+    
     @IBAction func Speichern(_ sender: Any) {
         
         checkforEmptyTF()
@@ -60,7 +100,7 @@ class ChangeStatisticsManually: UITableViewController, UITextFieldDelegate {
         
         
         posttoFirebase()
-      performSegue(withIdentifier: "DetailStatisikSegue", sender: nil)
+      performSegue(withIdentifier: "DetailStatisikSegueTabBar", sender: nil)
 //       getdataTimer1 = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(LehrerStatistiken.getData) , userInfo: nil, repeats: true) 
         
     }
@@ -115,7 +155,7 @@ class ChangeStatisticsManually: UITableViewController, UITextFieldDelegate {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "DetailStatisikSegue"{
+        if segue.identifier == "DetailStatisikSegueTabBar"{
             let DestViewController = segue.destination as! LehrerTabBar
             
                 DestViewController.Counter = 2

@@ -50,7 +50,7 @@ class LehrerEinstellungen: UITableViewController, UNUserNotificationCenterDelega
         
         let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
         
-        let titleAttrString = NSMutableAttributedString(string: "Willst du dich wirklich abmelden?", attributes: titleFont)
+        let titleAttrString = NSMutableAttributedString(string: "Wollen Sie sich wirklich abmelden?", attributes: titleFont)
         
         
         actionSheet.setValue(titleAttrString, forKey: "attributedTitle")

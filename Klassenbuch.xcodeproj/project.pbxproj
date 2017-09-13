@@ -50,6 +50,7 @@
 		37D3C7F61F59892A00E1DA1E /* EmailVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3C7F51F59892A00E1DA1E /* EmailVerification.swift */; };
 		37D3C7F81F5999CD00E1DA1E /* LehrerEmailVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3C7F71F5999CD00E1DA1E /* LehrerEmailVerification.swift */; };
 		37DC43381E3E3794009EAC4B /* Restore Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DC43371E3E3794009EAC4B /* Restore Password.swift */; };
+		37FB1B8E1F6927BF00EE2E3B /* CustomHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB1B8D1F6927BF00EE2E3B /* CustomHeaderCell.swift */; };
 		37FB38261E227EBA0075C106 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FB38251E227EBA0075C106 /* Extensions.swift */; };
 		37FCAE771DFD51C000789BFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FCAE761DFD51C000789BFF /* AppDelegate.swift */; };
 		37FCAE7C1DFD51C000789BFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37FCAE7A1DFD51C000789BFF /* Main.storyboard */; };
@@ -145,6 +146,7 @@
 		37D3C7F51F59892A00E1DA1E /* EmailVerification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailVerification.swift; sourceTree = "<group>"; };
 		37D3C7F71F5999CD00E1DA1E /* LehrerEmailVerification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehrerEmailVerification.swift; sourceTree = "<group>"; };
 		37DC43371E3E3794009EAC4B /* Restore Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Restore Password.swift"; sourceTree = "<group>"; };
+		37FB1B8D1F6927BF00EE2E3B /* CustomHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomHeaderCell.swift; sourceTree = "<group>"; };
 		37FB38251E227EBA0075C106 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		37FCAE731DFD51C000789BFF /* Klassenbuch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klassenbuch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37FCAE761DFD51C000789BFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				37FCAE761DFD51C000789BFF /* AppDelegate.swift */,
+				37FB1B8D1F6927BF00EE2E3B /* CustomHeaderCell.swift */,
 				37B3AAAE1F62CB10005731DE /* LehrerTabBar.swift */,
 				37FCAEB01DFD55D900789BFF /* Manager.swift */,
 				37FB38251E227EBA0075C106 /* Extensions.swift */,
@@ -684,6 +687,7 @@
 				3787ED9A1F51A3B400664523 /* KlassenUserInfo.swift in Sources */,
 				3787ED9C1F53131800664523 /* LehrerAuswahl.swift in Sources */,
 				375534FF1E084A3C000C0842 /* Add Tests.swift in Sources */,
+				37FB1B8E1F6927BF00EE2E3B /* CustomHeaderCell.swift in Sources */,
 				37FCAEB11DFD55D900789BFF /* Manager.swift in Sources */,
 				375534FD1E0849F5000C0842 /* Add Hausaufgaben.swift in Sources */,
 				37DC43381E3E3794009EAC4B /* Restore Password.swift in Sources */,

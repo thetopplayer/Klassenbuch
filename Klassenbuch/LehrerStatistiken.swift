@@ -282,6 +282,8 @@ class LehrerStatistiken: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! StatistikenCell
         
         // Configure the cell with tag 1,2,3
@@ -300,8 +302,100 @@ class LehrerStatistiken: UITableViewController {
         return cell
     }
     
-
+   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     
+    let  headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as! CustomHeaderCell
+        headerCell.backgroundColor = UIColor.cyan
+        
+        switch (section) {
+        case 0:
+             headerCell.Label.text = "Semester 3000"
+        //return sectionHeaderView
+        case 1:
+              headerCell.Label.text = "Semester 4000"
+        //return sectionHeaderView
+        case 2:
+             headerCell.Label.text = "Semester 5000"
+        //return sectionHeaderView
+        default:
+              headerCell.Label.text = "Semester 2000"
+        }
+    
+        return headerCell
+    }
+    
+//    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let footerView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
+//        
+//        footerView.backgroundColor = UIColor.blackColor()
+//        
+//        return footerView
+//    }
+    
+//    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 40.0
+//    }
+//
+    
+    
+    
+    
+    
+    @IBAction func NewSemester(_ sender: Any) {
+    
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        let actionSheet = UIAlertController(title: "", message: "Ist das Semester zu Ende können sie Hier ihre alten Daten löschen. Bitte exportieren sie ihre alten Daten in ein PDF Dokument, da beim Neustart alle alten Daten gelöscht werden.", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+        
+        let titleAttrString = NSMutableAttributedString(string: "Achtung!", attributes: titleFont)
+        
+        
+        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+        
+        
+        
+        
+        let logoutAction = UIAlertAction(title: "Neues Semester starten", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
+           
+            // Statistiken löschen
+            self.ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
+                print("adfasdfasf")
+                if let item = snapshot.value as? String{
+
+            
+            self.ref?.child("Statistiken").child(item).removeValue()
+                    
+            // Klasenabsenzen bewegen Tree bewegen in Archiv.
+//            ref?.child("AbsenzenKlassen").child(item).
+             
+                   
+//                 self.ref?.child("AbsenzenKlassen").child(item).observe(.value, with: { (snapshot) in
+//                    if let data = snapshot.value as! [String :AnyObject]? {
+//                            self.ref?.child("Archiv").child(item).setValue(data)
+//                    }
+//                    })
+//                
+                self.ref?.child("AbsenzenKlassen").child(item).removeValue()
+                
+                
+                self.getData()
+                
+                }})
+        }
+        
+        let cancelAction = UIAlertAction(title: "Abbrechen", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in
+            print("Cancel Pressed")
+        }
+        
+        actionSheet.addAction(logoutAction)
+        
+        actionSheet.addAction(cancelAction)
+        
+        self.present(actionSheet, animated: true, completion: nil)
+}
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         
@@ -319,4 +413,8 @@ class LehrerStatistiken: UITableViewController {
     
 
     
+   override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
 }

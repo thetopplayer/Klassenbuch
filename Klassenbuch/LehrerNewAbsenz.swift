@@ -548,7 +548,7 @@ struct UIDStruct{
         func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
             
             if recognizer.state == .recognized {
-                self.performSegue(withIdentifier: "UnwindToOverview", sender: self)
+                self.performSegue(withIdentifier: "cancelNewAbsenzSegue", sender: self)
             }
         }
         

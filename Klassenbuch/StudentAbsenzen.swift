@@ -49,7 +49,10 @@ class StudentAbsenzen: UITableViewController, UITabBarDelegate{
         
 //        UNUserNotificationCenter.current().delegate = self
         
-
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        
+        view.addGestureRecognizer(edgePan)
         
         //TableViewCell Auto resizing
         tableView.estimatedRowHeight = 44
@@ -307,7 +310,7 @@ class StudentAbsenzen: UITableViewController, UITabBarDelegate{
     
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-//        
+//
 //        // Taking Sectionheader Title and putting it in a variable
 //        let sectionHeaderView = tableView.headerView(forSection: indexPath.section)
 //        
@@ -1045,7 +1048,13 @@ class StudentAbsenzen: UITableViewController, UITabBarDelegate{
     
     
     
-    
+    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        
+        if recognizer.state == .recognized {
+            self.performSegue(withIdentifier: "backfromStudentAbsenzSegue", sender: self)
+            
+        }
+    }
     
     
     
