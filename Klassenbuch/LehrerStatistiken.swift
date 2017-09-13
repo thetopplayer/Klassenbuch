@@ -36,6 +36,7 @@ class LehrerStatistiken: UITableViewController {
     var selectedEnt = String()
     var selectedUnent = String()
     var selectedGesamt = String()
+    var uniqueclassmembers = [String]()
  
     // Outlets
     
@@ -43,26 +44,82 @@ class LehrerStatistiken: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       self.ref = FIRDatabase.database().reference()
+        
+        self.ref?.child("KlassenMitglieder/N6aHS 17-18").observe(.value, with: { (snapshot2) in
+            
+            let count = snapshot2.childrenCount
+            print(count, "this is the count")
+               self.concurrentQueues(count: Int(count))
+        })
+   }
+    
+    
+    func concurrentQueues(count: Int){
+//        let anotherQueue = DispatchQueue(label: "asdasd", qos: .utility)
+        
+        var index1 = 0
+
+//        anotherQueue.async {
+        
+            print("hit")
+     
+            repeat{
+            
+            self.ref?.child("KlassenMitglieder/N6aHS 17-18").observe(.childAdded, with: { (snapshot2) in
+                
+                
+                if let item2 = snapshot2.value as? String{
+                    self.classmembers.append(item2)
+                    
+                    
+                    print("This are all the Classmembers\(self.classmembers)")
+
+                    
+                }
+            })
+            index1 += 1
+                
+                if index1 == count{
+                    
+                    self.getData()
+                    print("CALLLLLED")
+                }
+
+            } while (index1 < count)
+        
+//        }
+        
+    
+        
+    
+    }
+
+    func uniq<S : Sequence, T : Hashable>(source: S) -> [T] where S.Iterator.Element == T {
+        var buffer = [T]()
+        var added = Set<T>()
+        for elem in source {
+            if !added.contains(elem) {
+                buffer.append(elem)
+                added.insert(elem)
+            }
+        }
+        return buffer
+    }
+    
+    override func viewWillAppear(_ animated: Bool){
         // Check hey werdet statistike überhaupt gfüehrtet? Has Child test süscht empty State
         // Set the Firebase refrence
         
         
-        ref = FIRDatabase.database().reference()
-        self.dismissKeyboard()
-//        self.getdataTimer1 = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(LehrerStatistiken.getData) , userInfo: nil, repeats: true)
-//     getData()
-    }
-    
-
-    override func viewWillAppear(_ animated: Bool){
-   
         
-        DispatchQueue.main.async {
-            
-       
 
-            self.getData()}
-    }
+        
+        
+        self.dismissKeyboard()
+        //        self.getdataTimer1 = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(LehrerStatistiken.getData) , userInfo: nil, repeats: true)
+        //     getData()
+         }
     
     
     
@@ -98,13 +155,39 @@ class LehrerStatistiken: UITableViewController {
                         self.myclass = item
                         print(self.myclass)
         
-        self.classmembers = ["jerome hadorn", "larina caspar"]
+//        self.classmembers = ["jerome hadorn", "larina caspar"]
         var index = 0
 //        var newindex = 0
         
-        repeat{
+        
+            self.uniqueclassmembers = self.uniq(source: self.classmembers)
+                        
+                        
+              print(self.uniqueclassmembers)
+                        
+                        
+                        
+                        repeat{
             
-            self.ref!.child("Statistiken/\(self.myclass)/\(self.classmembers[index])").observe(.value, with: { (snapshot) in
+//            self.ref?.child("KlassenMitglieder/\(self.myclass)").observe(.value, with: { (snapshot2) in
+//                
+//                
+//                if let item2 = snapshot2.value as? String{
+//                    self.classmembers.append(item2)
+//                    
+//                    
+//                    print("This are all the Classmembers 2.0\(self.classmembers)")
+//                    //.append(item2)
+////                    self.tableView.reloadData()
+////                    self.SchülerAnzahlLabel.text = "\(self.Classmembers.count) Schüler"
+//                    
+//                }
+//            })
+            
+            
+            
+            
+            self.ref!.child("Statistiken/\(self.myclass)/\(self.uniqueclassmembers[index])").observe(.value, with: { (snapshot) in
                 print("afasdfkbaskf")
                 
                 
@@ -131,7 +214,7 @@ class LehrerStatistiken: UITableViewController {
                     
                     let aID = snapshot.key
                     
-                    var homeobject = AbsenzenStatistiken(APerson: aperson, AAnzahlStunden: aanzahlStunden, AAbsenzenOffen: aabsenzenOffen, AAbsenzenentschuldigt: aabsenzenentschuldigt, AAbsenzenunentschuldigt: aabsenzenunentschuldigt, AUid: aID)
+                    let homeobject = AbsenzenStatistiken(APerson: aperson, AAnzahlStunden: aanzahlStunden, AAbsenzenOffen: aabsenzenOffen, AAbsenzenentschuldigt: aabsenzenentschuldigt, AAbsenzenunentschuldigt: aabsenzenunentschuldigt, AUid: aID)
                    
             
                     
@@ -166,7 +249,7 @@ class LehrerStatistiken: UITableViewController {
             //            }})
             
             index += 1
-        } while (index < self.classmembers.count)
+        } while (index < self.uniqueclassmembers.count)
         
         
         
