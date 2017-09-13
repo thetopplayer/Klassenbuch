@@ -95,8 +95,51 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
 
         
         
+        
+        
+        
     }
+    func gotoSettings() {
+        
+        print("Send to Settings")
+        
+        // THIS IS WHERE THE MAGIC HAPPENS!!!!
+        
+        if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+            UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+        }
+    }
+
+    func checkforRiights(){
     
+        let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
+        if notificationType == [] {
+            
+            UserDefaults.standard.set(false, forKey: "TeacherReminders")
+            UserDefaults.standard.synchronize()
+            
+            print("notifications are NOT enabled")
+            
+            let alertController2 = UIAlertController(title: "Ooops", message: "Benachrichtigungen für dieses App sind nicht eingeschaltet", preferredStyle: .alert)
+            
+            alertController2.addAction(UIAlertAction(title: "Einstellungen", style: .default, handler: { (action: UIAlertAction!) in
+                //Go to Settings
+                
+                self.gotoSettings()
+                
+            }))
+            
+            alertController2.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action: UIAlertAction!) in
+                
+            }))
+            
+            self.present(alertController2, animated: true, completion: nil)
+        }else{
+        
+            UserDefaults.standard.set(true, forKey: "TeacherReminders")
+            UserDefaults.standard.synchronize()
+        }
+    }
     
     @IBAction func cancelNewAbsenz (_ segue:UIStoryboardSegue) {
     }
@@ -394,6 +437,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                         if UserDefaults.standard.bool(forKey: "TeacherReminders") == true {
                             print("wants reminders")
 //                            self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus)
+                            checkforRiights()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) {
                                 self.Reminder(Person: aperson, AbsenzDate: adatum, Status: astatus, ReminderStatus: reminderStatus, ReminderID: auid)
                             }

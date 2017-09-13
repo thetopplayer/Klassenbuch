@@ -22,7 +22,7 @@ class KlassenLehrerAuswahl: UITableViewController, UISearchBarDelegate {
     
 
     
-    var teachers = [Teacher(name: "martine vetterli"), Teacher(name: "joachim bruder"), Teacher(name: "Mein LehrerAccount")]
+    var teachers = [Teacher]()
     // array sollte Downgelodet werden mit allen Lehrer Namen vlt.
     //var KlassenLehrerArray = ["martine vetterli", "Joachim bruder","Mein LehrerAccount"]
     var handle : FIRDatabaseHandle?
@@ -34,12 +34,52 @@ class KlassenLehrerAuswahl: UITableViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getTeachers()
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
         filteredData = teachers
         searchBar.becomeFirstResponder()
-       
+           // Left Swipe
+        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
+        edgePan.edges = .left
+        
+        view.addGestureRecognizer(edgePan)
     }
+    
+    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        
+        if recognizer.state == .recognized {
+            self.performSegue(withIdentifier: "backfromTeacherselectionSegue", sender: self)
+            
+        }
+    }
+    
+    func getTeachers(){
+    
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        
+        ref = FIRDatabase.database().reference()
+        
+
+                // Added listener
+                self.ref!.child("users/Alle Lehrer").observe(.childAdded, with: { (snapshot) in
+                    
+                    if let item = snapshot.value as? String{
+                    
+                    
+                    let homeObject3 = Teacher(name: item)
+                    self.teachers.append(homeObject3)
+                    
+                    
+                    }})
+                    
+                    
+
+                    
+                    self.tableView.reloadData()
+        }
     
     override func viewWillAppear(_ animated: Bool) {
         let BGimage = #imageLiteral(resourceName: "Background")

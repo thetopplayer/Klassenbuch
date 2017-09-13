@@ -430,11 +430,11 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         
                if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Entschuldigt"{
             
-            cell.backgroundColor = UIColor.green
+            cell.backgroundColor = UIColor(red:0.53, green:0.80, blue:0.55, alpha:1.0)
             
         } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Unentschuldigt"{
             
-            cell.backgroundColor = UIColor.red
+            cell.backgroundColor = UIColor(red:0.99, green:0.43, blue:0.43, alpha:1.0)
             
         } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "offen"{
             

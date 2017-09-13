@@ -469,6 +469,7 @@ class Register: UIViewController, UITextFieldDelegate {
         self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["email": RegisterEmailTextField.text!])
         self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["name": Namen.lowercased()])
         self.ref?.child("users").child("UIDs").child(uid!).updateChildValues(["function": "Teacher"])
+        self.ref?.child("users").child("Alle Lehrer").updateChildValues([Namen.lowercased(): Namen.lowercased()])
         //self.ref?.child("UID").child(uid!).updateChildValues(["funktion": "Lehrer"])
         UserDefaults.standard.set(true, forKey: "isTeacher")
         UserDefaults.standard.synchronize()

@@ -808,7 +808,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWo-ex-Ndg">
-                                                    <rect key="frame" x="148" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="108" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -826,7 +826,7 @@
                                                 <constraint firstItem="GlK-1T-mvj" firstAttribute="centerY" secondItem="f9y-WT-sbf" secondAttribute="centerY" id="GRs-bh-E5z"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="GlK-1T-mvj" secondAttribute="leading" id="LgY-BF-9M3"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="y4f-H6-WkA" secondAttribute="trailing" constant="92" id="eHU-K7-sV9"/>
-                                                <constraint firstItem="jWo-ex-Ndg" firstAttribute="leading" secondItem="f9y-WT-sbf" secondAttribute="leadingMargin" constant="140" id="tkc-tH-ohT"/>
+                                                <constraint firstItem="jWo-ex-Ndg" firstAttribute="leading" secondItem="f9y-WT-sbf" secondAttribute="leadingMargin" constant="100" id="tkc-tH-ohT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -844,15 +844,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPt-I6-7NT">
-                                                    <rect key="frame" x="148" y="11" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="108" y="14" width="33.5" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="095-hz-oQj" firstAttribute="centerY" secondItem="2U4-Mo-DWm" secondAttribute="centerY" id="GAc-Nz-mvG"/>
-                                                <constraint firstItem="IPt-I6-7NT" firstAttribute="leading" secondItem="2U4-Mo-DWm" secondAttribute="leadingMargin" constant="140" id="QXD-6Z-thO"/>
+                                                <constraint firstItem="IPt-I6-7NT" firstAttribute="leading" secondItem="2U4-Mo-DWm" secondAttribute="leadingMargin" constant="100" id="QXD-6Z-thO"/>
                                                 <constraint firstItem="IPt-I6-7NT" firstAttribute="centerY" secondItem="2U4-Mo-DWm" secondAttribute="centerY" id="Rd2-mG-XVL"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="095-hz-oQj" secondAttribute="leading" id="x5K-Gv-sKS"/>
                                             </constraints>
@@ -872,7 +872,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWO-8b-vWq">
-                                                    <rect key="frame" x="148" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="108" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -882,7 +882,7 @@
                                                 <constraint firstItem="dCE-MT-mgo" firstAttribute="centerY" secondItem="mO6-Jo-1AA" secondAttribute="centerY" id="Dit-RV-IpK"/>
                                                 <constraint firstItem="eWO-8b-vWq" firstAttribute="centerY" secondItem="mO6-Jo-1AA" secondAttribute="centerY" id="XNy-se-0FR"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="dCE-MT-mgo" secondAttribute="leading" id="nCP-xH-2nU"/>
-                                                <constraint firstItem="eWO-8b-vWq" firstAttribute="leading" secondItem="mO6-Jo-1AA" secondAttribute="leadingMargin" constant="140" id="tVc-gd-kzR"/>
+                                                <constraint firstItem="eWO-8b-vWq" firstAttribute="leading" secondItem="mO6-Jo-1AA" secondAttribute="leadingMargin" constant="100" id="tVc-gd-kzR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -2938,7 +2938,7 @@
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Absenzen Errinerungen" id="rnd-vs-X66">
-                                <string key="footerTitle">Im falle, dass du deine geplanten Absenzen Errinerungen nicht mehr erhalten willst, drücke auf den Button um alle ausgehenden Reminders zu löschen.</string>
+                                <string key="footerTitle">Im falle, dass du keine geplanten Absenzen Errinerungen mehr erhalten willst, drücke auf den Button um alle ausgehenden Reminders zu löschen.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ic3-zp-kIq">
                                         <rect key="frame" x="0.0" y="515" width="375" height="44"/>
@@ -2947,7 +2947,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Reminder erhalten" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHX-PC-P2m">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Reminder Funktion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHX-PC-P2m">
                                                     <rect key="frame" x="15" y="12" width="205" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
