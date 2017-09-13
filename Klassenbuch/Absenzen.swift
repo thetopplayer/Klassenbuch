@@ -714,41 +714,59 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
                         let request = UNNotificationRequest(identifier:  "\(ReminderID)1", content: content, trigger: trigger)
                         print(trigger)
                 
-                UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
-                    var identifiers: [String] = []
-                    
-                    for notification:UNNotificationRequest in notificationRequests {
-                        
-                        identifiers.append(notification.identifier)
-                        print(identifiers)
-                        if identifiers.contains(request.identifier){
-                            
-                            // Yes there is already reminder with this Identfier, dont create new Reminder!
-                            
-                            print("Reminder already existis, not going to create a new one")
-                            
-                            
-                            
-                        }else if 1 + 1 == 2{
-                            //No there isn't a reminder with this Idntifier, create a new one!
-                            
-                            print("Reminder deosn't existis, going to create a new one")
-                            if PreReminderDate! < Date() {
+//                UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
+//                    var identifiers: [String] = []
+//                    
+//                    for notification:UNNotificationRequest in notificationRequests {
+//                        
+//                        identifiers.append(notification.identifier)
+//                        print(identifiers)
+//                        if identifiers.contains(request.identifier){
+//                            
+//                            // Yes there is already reminder with this Identfier, dont create new Reminder!
+//                            
+//                            print("Reminder already existis, not going to create a new one")
+//                            
+//                            
+//                            
+//                        }else if 1 + 1 == 2{
+//                            //No there isn't a reminder with this Idntifier, create a new one!
+//                            
+//                            print("Reminder deosn't existis, going to create a new one")
+//                            if PreReminderDate! < Date() {
+//                                // error the trigger Date already happened
+//                                //                            remindernotValid()
+////                            }else {
+//                UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
+//                    
+//                    
+//                    
+//                    
+//                            if let error = error{
+//                                        print("Could not create Local notification", error)
+//                                    }else if let newdate = trigger.nextTriggerDate(){
+//                                        print("Next notification date:", newdate)
+//                                        print("Errinierung an")
+//                                }
+//                })
+////                                )
+//                            }}}}
+//                
+                if ReminderDate! < Date() {
                                 // error the trigger Date already happened
-                                //                            remindernotValid()
+                                 print("reminder not fucking valid")
+                    //                    remindernotValid()
                             }else {
-                                UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
-                                    if let error = error{
-                                        print("Could not create Local notification", error)
-                                    }else if let newdate = trigger.nextTriggerDate(){
-                                        print("Next notification date:", newdate)
-                                        print("Errinierung an")
+                            UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
+                                        if let error = error{
+                                            print("Could not create Local notification", error)
+                                        }else if let newdate = trigger.nextTriggerDate(){
+                                            print("Next notification date:", newdate)
+                                            print("Errinierung an")
+                                        }
                                     }
-                                }
-                                )
-                            }}}}
-                
-                
+                                    )
+                           }
                 
                         let triggerdate2 = PreReminderDate! - 43200
                         let TriggerDateComponents2 = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: triggerdate2)
