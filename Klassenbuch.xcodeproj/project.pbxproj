@@ -841,6 +841,7 @@
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -893,6 +894,7 @@
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -964,7 +966,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Maturaarbeit.KlassenbuchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Klassenbuch.app/Klassenbuch";
 			};
 			name = Debug;
@@ -980,7 +982,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Maturaarbeit.KlassenbuchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Klassenbuch.app/Klassenbuch";
 			};
 			name = Release;
@@ -995,7 +997,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Maturaarbeit.KlassenbuchUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Klassenbuch;
 			};
 			name = Debug;
@@ -1010,7 +1012,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Maturaarbeit.KlassenbuchUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Klassenbuch;
 			};
 			name = Release;

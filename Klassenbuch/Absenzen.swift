@@ -387,6 +387,14 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.getdataTimer3.invalidate()
+        print("timer killed")
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        self.getdataTimer3.invalidate()
+        print("timer killed")
+    }
     
     
     

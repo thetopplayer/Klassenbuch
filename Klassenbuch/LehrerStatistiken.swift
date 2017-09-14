@@ -443,27 +443,27 @@ class LehrerStatistiken: UITableViewController, MFMailComposeViewControllerDeleg
         return cell
     }
     
-   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    
-    let  headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as! CustomHeaderCell
-        headerCell.backgroundColor = UIColor.cyan
-        
-        switch (section) {
-        case 0:
-             headerCell.Label.text = "Semester 3000"
-        //return sectionHeaderView
-        case 1:
-              headerCell.Label.text = "Semester 4000"
-        //return sectionHeaderView
-        case 2:
-             headerCell.Label.text = "Semester 5000"
-        //return sectionHeaderView
-        default:
-              headerCell.Label.text = "Semester 2000"
-        }
-    
-        return headerCell
-    }
+//   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+////
+////    let  headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as! CustomHeaderCell
+////        headerCell.backgroundColor = UIColor.cyan
+////
+////        switch (section) {
+////        case 0:
+////             headerCell.Label.text = "Semester 3000"
+////        //return sectionHeaderView
+////        case 1:
+////              headerCell.Label.text = "Semester 4000"
+////        //return sectionHeaderView
+////        case 2:
+////             headerCell.Label.text = "Semester 5000"
+////        //return sectionHeaderView
+////        default:
+////              headerCell.Label.text = "Semester 2000"
+////        }
+////
+////        return headerCell
+//    }
     
 //    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 //        let footerView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
