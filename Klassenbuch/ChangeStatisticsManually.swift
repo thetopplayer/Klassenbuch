@@ -61,7 +61,7 @@ class ChangeStatisticsManually: UITableViewController, UITextFieldDelegate {
     }
     //Fund for Left Swipe
     
-    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+    @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         
         if recognizer.state == .recognized {
             self.performSegue(withIdentifier: "DetailStatisikSegue", sender: self)
@@ -70,13 +70,13 @@ class ChangeStatisticsManually: UITableViewController, UITextFieldDelegate {
     
     func presentAlertController(){
     
-        let actionSheet = UIAlertController(title: "", message: "Es wird nicht empfohlen manuell die Statistiken zu verändern. Es könnte zu Problemen führen und auch die Daten verfälschen.", preferredStyle: UIAlertControllerStyle.alert)
+        let actionSheet = UIAlertController(title: "Achtung!", message: "Es wird nicht empfohlen manuell die Statistiken zu verändern. Es könnte zu Problemen führen und auch die Daten verfälschen.", preferredStyle: UIAlertControllerStyle.alert)
         
-        let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+//        let titleFont = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
         
-        let titleAttrString = NSMutableAttributedString(string: "Achtung!", attributes: titleFont)
+//        let titleAttrString = NSMutableAttributedString(string: "", attributes: titleFont)
         
-        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+//        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
         
         
         let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (alert:UIAlertAction) -> Void in

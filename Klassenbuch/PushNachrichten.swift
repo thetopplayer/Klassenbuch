@@ -223,7 +223,7 @@ class PushNachrichten: UITableViewController {
     }
     //Fund for Left Swipe
     
-    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+    @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         
         if recognizer.state == .recognized {
             self.performSegue(withIdentifier: "unwindPushes", sender: self)
@@ -273,13 +273,13 @@ class PushNachrichten: UITableViewController {
         
         } else if ReminderSwitch.isOn == false {
         
-            let actionSheet = UIAlertController(title: "", message: "Alle deine bisherigen Reminders werden somit gelöscht!", preferredStyle: UIAlertControllerStyle.actionSheet)
+            let actionSheet = UIAlertController(title: "Willst du dich wirklich keine Errinerungen erhalten?", message: "Alle deine bisherigen Reminders werden somit gelöscht!", preferredStyle: UIAlertControllerStyle.actionSheet)
             
-            let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+//            let titleFont = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
             
-            let titleAttrString = NSMutableAttributedString(string: "Willst du dich wirklich keine Errinerungen erhalten?", attributes: titleFont)
+//            let titleAttrString = NSMutableAttributedString(string: "", attributes: titleFont)
             
-            actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+//            actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
             
             let Action1 = UIAlertAction(title: "Ja", style: UIAlertActionStyle.destructive) { (alert:UIAlertAction) -> Void in
                 

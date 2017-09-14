@@ -218,7 +218,7 @@ class Add_Tests: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     //Fund for Left Swipe
     
-    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+    @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         
         if recognizer.state == .recognized {
             self.performSegue(withIdentifier: "unwindtoTests", sender: self)

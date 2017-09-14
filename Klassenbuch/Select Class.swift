@@ -72,7 +72,7 @@ class Select_Class: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         let BGimage = #imageLiteral(resourceName: "Background")
-        UINavigationBar.appearance().backgroundColor = UIColor(red:0.08, green:0.17, blue:0.41, alpha:1.0)
+//        UIAppearance.appearance().backgroundColor = UIColor(red:0.08, green:0.17, blue:0.41, alpha:1.0)
         let backgroundImage = UIImageView(image: BGimage)
         self.tableView.backgroundView = backgroundImage
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
@@ -110,14 +110,14 @@ class Select_Class: UITableViewController {
         
         let selectedClass = self.ClassList[indexPath.row]
         
-        let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionSheet = UIAlertController(title: "Sind Sie wirklich die Schüler der \(selectedClass) Klasse?", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         
-        let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+//        let titleFont = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
         
-        let titleAttrString = NSMutableAttributedString(string: "Sind Sie wirklich die Schüler der \(selectedClass) Klasse?", attributes: titleFont)
+//        let titleAttrString = NSMutableAttributedString(string: "", attributes: titleFont)
         
         
-        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+//        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
         
         
         

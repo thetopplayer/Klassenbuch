@@ -61,7 +61,7 @@
         }
         
         
-        func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
             
             if recognizer.state == .recognized {
                 self.performSegue(withIdentifier: "cancelUserinfoSegue", sender: self)

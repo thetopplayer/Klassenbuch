@@ -34,7 +34,7 @@ class LehrerEmailVerification: UIViewController {
     
     
     
-    func checkIfTheEmailIsVerified2(){
+    @objc func checkIfTheEmailIsVerified2(){
         
         FIRAuth.auth()?.currentUser?.reload(completion: { (err) in
             if err == nil{

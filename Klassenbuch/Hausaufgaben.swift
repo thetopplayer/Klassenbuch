@@ -168,7 +168,7 @@ class Hausaufgaben: UIViewController, UITabBarDelegate, UITableViewDelegate, UIT
                         }
                     }
                     
-                    self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
+                    self.sortedData = self.data.sorted(by: { $0.key < $1.key})
                     self.tableView.reloadData()
                     self.EmptyScreen()
                 })
@@ -190,7 +190,7 @@ class Hausaufgaben: UIViewController, UITabBarDelegate, UITableViewDelegate, UIT
                         }
                     }
                     
-                    self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
+                    self.sortedData = self.data.sorted(by: { $0.key < $1.key})
                     self.tableView.reloadData()
                     self.EmptyScreen()
                 })
@@ -252,7 +252,7 @@ class Hausaufgaben: UIViewController, UITabBarDelegate, UITableViewDelegate, UIT
                         }
                     }
                     
-                    self.sortedData2 = self.data2.sorted(by: { $0.0.key < $0.1.key})
+                    self.sortedData2 = self.data2.sorted(by: { $0.key < $1.key})
                     self.tableView2.reloadData()
                     self.EmptyScreen()
                 })
@@ -274,7 +274,7 @@ class Hausaufgaben: UIViewController, UITabBarDelegate, UITableViewDelegate, UIT
                         }
                     }
                     
-                    self.sortedData2 = self.data2.sorted(by: { $0.0.key < $0.1.key})
+                    self.sortedData2 = self.data2.sorted(by: { $0.key < $1.key})
                     self.tableView2.reloadData()
                     self.EmptyScreen()
                 })

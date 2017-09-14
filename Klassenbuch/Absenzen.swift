@@ -110,14 +110,14 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         
-        let actionSheet = UIAlertController(title: "", message: "Ist das Semester zu Ende kannst du hier deine alten Absenzen löschen und für Ordnung sorgen. Nach dem Löschen sind deine Absenzen endgültig gelöscht!", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionSheet = UIAlertController(title: "Achtung!", message: "Ist das Semester zu Ende kannst du hier deine alten Absenzen löschen und für Ordnung sorgen. Nach dem Löschen sind deine Absenzen endgültig gelöscht!", preferredStyle: UIAlertControllerStyle.actionSheet)
         
-        let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+//        let titleFont = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
         
-        let titleAttrString = NSMutableAttributedString(string: "Achtung!", attributes: titleFont)
+//        let titleAttrString = NSMutableAttributedString(string: "", attributes: titleFont)
         
         
-        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+//        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
         
         
         
@@ -159,7 +159,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     
     
     
-    func databaseListener() {
+    @objc func databaseListener() {
         
         
         
@@ -219,7 +219,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
                         
                     }
                     
-                    self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
+                    self.sortedData = self.data.sorted(by: { $0.key < $1.key})
                     self.tableView.reloadData()
                     self.EmptyScreen()
                 })
@@ -496,17 +496,17 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
         
         // Creating an ActivitySheet with the Options to Delete and set an Reminder
         
-        let AbsenzenSheet = UIAlertController(title: "", message: "\(String(describing: PersonTitle)) du musst deine Absenz vom \(String(describing: sectionTitle!)) bis am \(futureDateinString) unterschreiben lassen und abgeben.", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let AbsenzenSheet = UIAlertController(title: "Absenz Information", message: "\(String(describing: PersonTitle)) du musst deine Absenz vom \(String(describing: sectionTitle!)) bis am \(futureDateinString) unterschreiben lassen und abgeben.", preferredStyle: UIAlertControllerStyle.actionSheet)
         
-        let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+//        let titleFont = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
         
-        let titleAttrString = NSMutableAttributedString(string: "Absenz Information", attributes: titleFont)
+//        let titleAttrString = NSMutableAttributedString(string: "", attributes: titleFont)
         
         
         
         
         AbsenzenSheet.view.tintColor = UIColor.black
-        AbsenzenSheet.setValue(titleAttrString, forKey: "attributedTitle")
+//        AbsenzenSheet.setValue(titleAttrString, forKey: "attributedTitle")
         
         
         

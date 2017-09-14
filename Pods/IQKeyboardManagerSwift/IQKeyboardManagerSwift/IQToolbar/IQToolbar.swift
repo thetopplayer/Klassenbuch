@@ -228,7 +228,7 @@ open class IQToolbar: UIToolbar , UIInputViewAudioFeedback {
             {
                 isTitleBarButtonFound = true
             }
-            else if ((InternalClass.IQUIToolbarTextButtonClass != nil && barButtonItemView.isKind(of: InternalClass.IQUIToolbarTextButtonClass!) == true) || (InternalClass.IQUIToolbarButtonClass != nil && barButtonItemView.isKind(of: InternalClass.IQUIToolbarButtonClass!) == true))
+            else if ((InternalClass.IQUIToolbarTextButtonClass != nil && NSObject.isKind(of: InternalClass.IQUIToolbarTextButtonClass!) == true) || (InternalClass.IQUIToolbarButtonClass != nil && NSObject.isKind(of: InternalClass.IQUIToolbarButtonClass!) == true))
             {
                 leftRect = barButtonItemView.frame
             }

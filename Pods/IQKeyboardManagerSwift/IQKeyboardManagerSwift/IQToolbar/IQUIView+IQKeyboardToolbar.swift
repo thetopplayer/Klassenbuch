@@ -84,7 +84,7 @@ public extension UIView {
             objc_setAssociatedObject(self, &kIQShouldHidePlaceholderText, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
             if let toolbar = self.inputAccessoryView as? IQToolbar {
-                if self.responds(to: #selector(getter: UITextField.placeholder)) {
+                if NSObject.responds(to: #selector(getter: UITextField.placeholder)) {
                     toolbar.title = self.drawingPlaceholderText
                 }
             }
@@ -104,7 +104,7 @@ public extension UIView {
             objc_setAssociatedObject(self, &kIQPlaceholderText, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
             if let toolbar = self.inputAccessoryView as? IQToolbar {
-                if self.responds(to: #selector(getter: UITextField.placeholder)) {
+                if NSObject.responds(to: #selector(getter: UITextField.placeholder)) {
                     toolbar.title = self.drawingPlaceholderText
                 }
             }
@@ -123,7 +123,7 @@ public extension UIView {
         else if (self.placeholderText?.isEmpty == false) {
             return self.placeholderText
         }
-        else if self.responds(to: #selector(getter: UITextField.placeholder)) {
+        else if NSObject.responds(to: #selector(getter: UITextField.placeholder)) {
             
             if let textField = self as? UITextField {
                 return textField.placeholder
@@ -320,7 +320,7 @@ public extension UIView {
     public func addDoneOnKeyboardWithTarget (_ target : AnyObject?, action : Selector, titleText: String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
+        if NSObject.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
             
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
@@ -399,7 +399,7 @@ public extension UIView {
     public func addRightButtonOnKeyboardWithImage (_ image : UIImage, target : AnyObject?, action : Selector, titleText: String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
+        if NSObject.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
             
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
@@ -488,7 +488,7 @@ public extension UIView {
     public func addRightButtonOnKeyboardWithText (_ text : String, target : AnyObject?, action : Selector, titleText: String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
+        if NSObject.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
 
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
@@ -581,7 +581,7 @@ public extension UIView {
     public func addCancelDoneOnKeyboardWithTarget (_ target : AnyObject?, cancelAction : Selector, doneAction : Selector, titleText: String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
+        if NSObject.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
             
@@ -683,7 +683,7 @@ public extension UIView {
     public func addRightLeftOnKeyboardWithTarget( _ target : AnyObject?, leftButtonTitle : String, rightButtonTitle : String, rightButtonAction : Selector, leftButtonAction : Selector, titleText: String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
+        if NSObject.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
             toolbar.doneTitle = rightButtonTitle
@@ -786,7 +786,7 @@ public extension UIView {
     public func addPreviousNextDoneOnKeyboardWithTarget ( _ target : AnyObject?, previousAction : Selector, nextAction : Selector, doneAction : Selector,  titleText: String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
+        if NSObject.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
             
@@ -920,7 +920,7 @@ public extension UIView {
     public func addPreviousNextRightOnKeyboardWithTarget( _ target : AnyObject?, rightButtonImage : UIImage, previousAction : Selector, nextAction : Selector, rightButtonAction : Selector, titleText : String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
+        if NSObject.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
             toolbar.doneImage = rightButtonImage
@@ -1068,7 +1068,7 @@ public extension UIView {
     public func addPreviousNextRightOnKeyboardWithTarget( _ target : AnyObject?, rightButtonTitle : String, previousAction : Selector, nextAction : Selector, rightButtonAction : Selector, titleText : String?) {
         
         //If can't set InputAccessoryView. Then return
-        if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
+        if NSObject.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = IQToolbar()
             toolbar.doneTitle = rightButtonTitle

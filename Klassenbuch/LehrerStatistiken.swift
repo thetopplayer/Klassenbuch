@@ -300,7 +300,7 @@ class LehrerStatistiken: UITableViewController, MFMailComposeViewControllerDeleg
         print(uniqueclassmembers, "this are the unique classmembers")
         print(data, "all the data")
         
-        let fileName = "Absenzen Statistik.csv"
+        let fileName = "AbsenzenStatistik.csv"
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         let pathPDF = "\(NSTemporaryDirectory())\(fileName)"
 
@@ -325,39 +325,35 @@ class LehrerStatistiken: UITableViewController, MFMailComposeViewControllerDeleg
             do {
                 try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
                 
-                if MFMailComposeViewController.canSendMail() {
-                    let emailController = MFMailComposeViewController()
-                    emailController.mailComposeDelegate = self
-                    emailController.setToRecipients([])
-                    emailController.setSubject("Absenzen Statistiken export")
-                    emailController.setMessageBody("Hi,\n\nThe .csv data export is attached\n\n\nSent from the MPG app: http://www.justindoan.com/mpg-fuel-tracker", isHTML: false)
-                }
+             //   if MFMailComposeViewController.canSendMail() {
+              //      let emailController = MFMailComposeViewController()
+                //    emailController.mailComposeDelegate = self
+                  //  emailController.setToRecipients([])
+                 //   emailController.setSubject("Absenzen Statistiken export")
+                  //  emailController.setMessageBody("Hi,\n\nThe .csv data export is attached\n\n\nSent from the MPG app: http://www.justindoan.com/mpg-fuel-tracker", isHTML: false)
+              //  }
                  //   emailController.addAttachmentData(Data(contentsOf: path!) , mimeType: "text/csv", fileName: "Absenzen Statistik.csv")
-                
-                
-                
-                let mailComposeViewController = configuredMailComposeViewController()
-                  
-   
-                    if MFMailComposeViewController.canSendMail() {
-                    
+                                     let mailComposeViewController = self.configuredMailComposeViewController()
                         
-                        if let fileData = NSData(contentsOfFile: pathPDF)
-                        {
-                            print("File data loaded.")
+                        if MFMailComposeViewController.canSendMail() {
+                            if let fileData = NSData(contentsOfFile: pathPDF)
+                            {
+                                print("File data loaded.")
+                                
+                                mailComposeViewController.addAttachmentData(fileData as Data, mimeType: "text/csv", fileName: "AbsenzenStatistik.csv")
+                            }
                             
+                            self.present(mailComposeViewController, animated: true, completion: nil)
                             
-                    mailComposeViewController.addAttachmentData(fileData as Data, mimeType: "text/csv", fileName: "asd.csv")
+                        } else {
+                            self.showSendMailErrorAlert()
                         }
-                        
-                        self.present(mailComposeViewController, animated: true, completion: nil)
-                   
+  
                     
-                    
-                    } else {
-                        self.showSendMailErrorAlert()
-                    }
-                    
+                
+                
+          
+
                    // present(emailController, animated: true, completion: nil)
                 
                 
@@ -398,9 +394,9 @@ class LehrerStatistiken: UITableViewController, MFMailComposeViewControllerDeleg
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         
-        mailComposerVC.setToRecipients(["klassenbuchteam@gmail.com"])
-        mailComposerVC.setSubject("Klassenbuch App Feedback")
-        mailComposerVC.setMessageBody("Hi Jérôme!\n\nHier ist mein Feedback für die Klassenbuch App..\n", isHTML: false)
+        //mailComposerVC.setToRecipients(["klassenbuchteam@gmail.com"])
+        mailComposerVC.setSubject("Absenzen Statistiken")
+        mailComposerVC.setMessageBody("Absenzen Statistiken!", isHTML: false)
         
         return mailComposerVC
     }
@@ -491,14 +487,14 @@ class LehrerStatistiken: UITableViewController, MFMailComposeViewControllerDeleg
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         
-        let actionSheet = UIAlertController(title: "", message: "Ist das Semester zu Ende können sie Hier ihre alten Daten löschen. Bitte exportieren sie ihre alten Daten in ein PDF Dokument, da beim Neustart alle alten Daten gelöscht werden.", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionSheet = UIAlertController(title: "Achtung!", message: "Ist das Semester zu Ende können sie Hier ihre alten Daten löschen. Bitte exportieren sie ihre alten Daten in ein PDF Dokument, da beim Neustart alle alten Daten gelöscht werden.", preferredStyle: UIAlertControllerStyle.actionSheet)
         
-        let titleFont = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
+//        let titleFont = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Medium", size: 20.0)!]
         
-        let titleAttrString = NSMutableAttributedString(string: "Achtung!", attributes: titleFont)
+//        let titleAttrString = NSMutableAttributedString(string: "", attributes: titleFont)
         
         
-        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
+//        actionSheet.setValue(titleAttrString, forKey: "attributedTitle")
         
         
         
@@ -508,6 +504,15 @@ class LehrerStatistiken: UITableViewController, MFMailComposeViewControllerDeleg
             // Statistiken löschen
             self.ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
                 print("adfasdfasf")
+             
+                
+                
+               self.generateCVSFile()
+                
+                
+                
+                
+                
                 if let item = snapshot.value as? String{
 
             

@@ -87,7 +87,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                 //If viewController is kind of enable viewController class, then assuming it's enabled.
                 for enabledClass in enabledDistanceHandlingClasses {
                     
-                    if textFieldViewController.isKind(of: enabledClass) {
+                    if NSObject.isKind(of: enabledClass) {
                         isEnabled = true
                         break
                     }
@@ -99,7 +99,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                 //If viewController is kind of disabled viewController class, then assuming it's disabled.
                 for disabledClass in disabledDistanceHandlingClasses {
                     
-                    if textFieldViewController.isKind(of: disabledClass) {
+                    if NSObject.isKind(of: disabledClass) {
                         isEnabled = false
                         break
                     }
@@ -193,7 +193,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                 //If found any toolbar enabled classes then return.
                 for enabledClass in enabledToolbarClasses {
                     
-                    if textFieldViewController.isKind(of: enabledClass) {
+                    if NSObject.isKind(of: enabledClass) {
                         enableToolbar = true
                         break
                     }
@@ -205,7 +205,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                 //If found any toolbar disabled classes then return.
                 for disabledClass in disabledToolbarClasses {
                     
-                    if textFieldViewController.isKind(of: disabledClass) {
+                    if NSObject.isKind(of: disabledClass) {
                         enableToolbar = false
                         break
                     }
@@ -336,7 +336,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                 //If viewController is kind of enable viewController class, then assuming shouldResignOnTouchOutside is enabled.
                 for enabledClass in enabledTouchResignedClasses {
                     
-                    if textFieldViewController.isKind(of: enabledClass) {
+                    if NSObject.isKind(of: enabledClass) {
                         shouldResign = true
                         break
                     }
@@ -348,7 +348,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                 //If viewController is kind of disable viewController class, then assuming shouldResignOnTouchOutside is disable.
                 for disabledClass in disabledTouchResignedClasses {
                     
-                    if textFieldViewController.isKind(of: disabledClass) {
+                    if NSObject.isKind(of: disabledClass) {
                         shouldResign = false
                         break
                     }
@@ -494,8 +494,8 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
         return false
     }
     
-    /**	previousAction. */
-    internal func previousAction (_ barButton : UIBarButtonItem?) {
+    /**    previousAction. */
+    @objc internal func previousAction (_ barButton : UIBarButtonItem?) {
         
         //If user wants to play input Click sound.
         if shouldPlayInputClicks == true {
@@ -518,8 +518,8 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
         }
     }
     
-    /**	nextAction. */
-    internal func nextAction (_ barButton : UIBarButtonItem?) {
+    /**    nextAction. */
+    @objc internal func nextAction (_ barButton : UIBarButtonItem?) {
         
         //If user wants to play input Click sound.
         if shouldPlayInputClicks == true {
@@ -542,8 +542,8 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
         }
     }
     
-    /**	doneAction. Resigning current textField. */
-    internal func doneAction (_ barButton : IQBarButtonItem?) {
+    /**    doneAction. Resigning current textField. */
+    @objc internal func doneAction (_ barButton : IQBarButtonItem?) {
         
         //If user wants to play input Click sound.
         if shouldPlayInputClicks == true {
@@ -565,7 +565,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
     }
     
     /** Resigning on tap gesture.   (Enhancement ID: #14)*/
-    internal func tapRecognized(_ gesture: UITapGestureRecognizer) {
+    @objc internal func tapRecognized(_ gesture: UITapGestureRecognizer) {
         
         if gesture.state == UIGestureRecognizerState.ended {
 
@@ -1336,7 +1336,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
     ///-------------------------------
 
     /*  UIKeyboardWillShowNotification. */
-    internal func keyboardWillShow(_ notification : Notification?) -> Void {
+    @objc internal func keyboardWillShow(_ notification : Notification?) -> Void {
         
         _kbShowNotification = notification
 
@@ -1452,7 +1452,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
     }
 
     /*  UIKeyboardDidShowNotification. */
-    internal func keyboardDidShow(_ notification : Notification?) -> Void {
+    @objc internal func keyboardDidShow(_ notification : Notification?) -> Void {
         
         if privateIsEnabled() == false {
             return
@@ -1483,7 +1483,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
     }
 
     /*  UIKeyboardWillHideNotification. So setting rootViewController to it's default frame. */
-    internal func keyboardWillHide(_ notification : Notification?) -> Void {
+    @objc internal func keyboardWillHide(_ notification : Notification?) -> Void {
         
         //If it's not a fake notification generated by [self setEnable:NO].
         if notification != nil {
@@ -1612,7 +1612,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
         showLog("****** \(#function) ended: \(elapsedTime) seconds ******")
     }
 
-    internal func keyboardDidHide(_ notification:Notification) {
+    @objc internal func keyboardDidHide(_ notification:Notification) {
 
         let startTime = CACurrentMediaTime()
         showLog("****** \(#function) started ******")
@@ -1628,7 +1628,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
     ///-------------------------------------------
 
     /**  UITextFieldTextDidBeginEditingNotification, UITextViewTextDidBeginEditingNotification. Fetching UITextFieldView object. */
-    internal func textFieldViewDidBeginEditing(_ notification:Notification) {
+    @objc internal func textFieldViewDidBeginEditing(_ notification:Notification) {
 
         let startTime = CACurrentMediaTime()
         showLog("****** \(#function) started ******")
@@ -1731,7 +1731,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
     }
     
     /**  UITextFieldTextDidEndEditingNotification, UITextViewTextDidEndEditingNotification. Removing fetched object. */
-    internal func textFieldViewDidEndEditing(_ notification:Notification) {
+    @objc internal func textFieldViewDidEndEditing(_ notification:Notification) {
         
         let startTime = CACurrentMediaTime()
         showLog("****** \(#function) started ******")
@@ -1771,7 +1771,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
     ///------------------------------------------
     
     /**  UIApplicationWillChangeStatusBarOrientationNotification. Need to set the textView to it's original position. If any frame changes made. (Bug ID: #92)*/
-    internal func willChangeStatusBarOrientation(_ notification:Notification) {
+    @objc internal func willChangeStatusBarOrientation(_ notification:Notification) {
         
         let startTime = CACurrentMediaTime()
         showLog("****** \(#function) started ******")
@@ -1800,7 +1800,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
     }
     
     /**  UIApplicationDidChangeStatusBarFrameNotification. Need to refresh view position and update _topViewBeginRect. (Bug ID: #446)*/
-    internal func didChangeStatusBarFrame(_ notification : Notification?) -> Void {
+    @objc internal func didChangeStatusBarFrame(_ notification : Notification?) -> Void {
         
         let oldStatusBarFrame = _statusBarFrame;
         
@@ -1860,7 +1860,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
     /// MARK: AutoToolbar
     ///------------------
     
-    /**	Get all UITextField/UITextView siblings of textFieldView. */
+    /**    Get all UITextField/UITextView siblings of textFieldView. */
     fileprivate func responderViews()-> [UIView]? {
         
         var superConsideredView : UIView?
@@ -1905,12 +1905,12 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
         let startTime = CACurrentMediaTime()
         showLog("****** \(#function) started ******")
 
-        //	Getting all the sibling textFields.
+        //    Getting all the sibling textFields.
         if let siblings = responderViews() {
             
             showLog("Found \(siblings.count) responder sibling(s)")
 
-            //	If only one object is found, then adding only Done button.
+            //    If only one object is found, then adding only Done button.
             if (siblings.count == 1 && previousNextDisplayMode == .Default) || previousNextDisplayMode == .alwaysHide {
                 
                 if let textField = _textFieldView {
@@ -1919,7 +1919,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
 
                     //Either there is no inputAccessoryView or if accessoryView is not appropriate for current situation(There is Previous/Next/Done toolbar).
                     //setInputAccessoryView: check   (Bug ID: #307)
-                    if textField.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
+                    if NSObject.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
                         
                         if textField.inputAccessoryView == nil ||
                             textField.inputAccessoryView?.tag == IQKeyboardManager.kIQPreviousNextButtonToolbarTag {
@@ -1947,7 +1947,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                                 if textField.inputAccessoryView?.tag == IQKeyboardManager.kIQDoneButtonToolbarTag {
                                     
                                     if let doneBarButtonItemImage = toolbarDoneBarButtonItemImage {
-                                        if toolbar.doneImage?.isEqual(doneBarButtonItemImage) == false {
+                                        if NSObject.isEqual(doneBarButtonItemImage) == false {
                                             textField.addRightButtonOnKeyboardWithImage(doneBarButtonItemImage, target: self, action: #selector(self.doneAction(_:)), shouldShowPlaceholder: shouldShowTextFieldPlaceholder)
                                             needReload = true
                                         }
@@ -2043,14 +2043,14 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                 }
             } else if (siblings.count > 1 && previousNextDisplayMode == .Default) || previousNextDisplayMode == .alwaysShow {
                 
-                //	If more than 1 textField is found. then adding previous/next/done buttons on it.
+                //    If more than 1 textField is found. then adding previous/next/done buttons on it.
                 for textField in siblings {
                     
                     var needReload = false;
 
                     //Either there is no inputAccessoryView or if accessoryView is not appropriate for current situation(There is Done toolbar).
                     //setInputAccessoryView: check   (Bug ID: #307)
-                    if textField.responds(to: #selector(setter: UITextField.inputAccessoryView)) &&
+                    if NSObject.responds(to: #selector(setter: UITextField.inputAccessoryView)) &&
                         (textField.inputAccessoryView == nil || textField.inputAccessoryView?.tag == IQKeyboardManager.kIQDoneButtonToolbarTag) {
                         
                         if textField.inputAccessoryView == nil ||
@@ -2076,7 +2076,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                             
                             if textField.inputAccessoryView?.tag == IQKeyboardManager.kIQPreviousNextButtonToolbarTag {
                                 if let doneBarButtonItemImage = toolbarDoneBarButtonItemImage {
-                                    if toolbar.doneImage?.isEqual(doneBarButtonItemImage) == false {
+                                    if NSObject.isEqual(doneBarButtonItemImage) == false {
                                         textField.addPreviousNextRightOnKeyboardWithTarget(self, rightButtonImage: toolbarDoneBarButtonItemImage!, previousAction: #selector(self.previousAction(_:)), nextAction: #selector(self.nextAction(_:)), rightButtonAction: #selector(self.doneAction(_:)), shouldShowPlaceholder: shouldShowTextFieldPlaceholder)
                                         needReload = true
                                     }
@@ -2166,14 +2166,14 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                         }
 
                         //In case of UITableView (Special), the next/previous buttons has to be refreshed everytime.    (Bug ID: #56)
-                        //	If firstTextField, then previous should not be enabled.
+                        //    If firstTextField, then previous should not be enabled.
                         if siblings[0] == textField {
                             if (siblings.count == 1) {
                                 textField.setEnablePrevious(false, isNextEnabled: false)
                             } else {
                                 textField.setEnablePrevious(false, isNextEnabled: true)
                             }
-                        } else if siblings.last  == textField {   //	If lastTextField then next should not be enaled.
+                        } else if siblings.last  == textField {   //    If lastTextField then next should not be enaled.
                             textField.setEnablePrevious(true, isNextEnabled: false)
                         } else {
                             textField.setEnablePrevious(true, isNextEnabled: true)
@@ -2197,7 +2197,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
         let startTime = CACurrentMediaTime()
         showLog("****** \(#function) started ******")
 
-        //	Getting all the sibling textFields.
+        //    Getting all the sibling textFields.
         if let siblings = responderViews() {
             
             showLog("Found \(siblings.count) responder sibling(s)")
@@ -2207,7 +2207,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                 if let toolbar = view.inputAccessoryView as? IQToolbar {
 
                     //setInputAccessoryView: check   (Bug ID: #307)
-                    if view.responds(to: #selector(setter: UITextField.inputAccessoryView)) &&
+                    if NSObject.responds(to: #selector(setter: UITextField.inputAccessoryView)) &&
                         (toolbar.tag == IQKeyboardManager.kIQDoneButtonToolbarTag || toolbar.tag == IQKeyboardManager.kIQPreviousNextButtonToolbarTag) {
                         
                         if let textField = view as? UITextField {
@@ -2224,7 +2224,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
         showLog("****** \(#function) ended: \(elapsedTime) seconds ******")
     }
     
-    /**	reloadInputViews to reload toolbar buttons enable/disable state on the fly Enhancement ID #434. */
+    /**    reloadInputViews to reload toolbar buttons enable/disable state on the fly Enhancement ID #434. */
     open func reloadInputViews() {
         
         //If enabled then adding toolbar.

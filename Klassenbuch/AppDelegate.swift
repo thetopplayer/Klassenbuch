@@ -94,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     // [START refresh_token]
-    func tokenRefreshNotification(_ notification: Notification) {
+    @objc func tokenRefreshNotification(_ notification: Notification) {
         if let refreshedToken = FIRInstanceID.instanceID().token() {
             print("InstanceID token: \(refreshedToken)")
         }

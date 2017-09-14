@@ -160,6 +160,9 @@
                 
                 NachnameTextField.becomeFirstResponder()
                 
+            } else if textField == NachnameTextField{
+            
+            VornameTextField.becomeFirstResponder()
             }
             return true
         }

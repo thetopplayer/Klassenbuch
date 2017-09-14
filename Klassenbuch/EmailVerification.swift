@@ -32,7 +32,7 @@ class EmailVerification: UIViewController {
 
     
     
-    func checkIfTheEmailIsVerified(){
+    @objc func checkIfTheEmailIsVerified(){
         
         FIRAuth.auth()?.currentUser?.reload(completion: { (err) in
             if err == nil{

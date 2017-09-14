@@ -7,7 +7,8 @@
 
 
 import UIKit
-import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 
 class Login: UIViewController, UITextFieldDelegate {
@@ -30,30 +31,27 @@ class Login: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var SegmentedController: UISegmentedControl!
     
     // Variables
-    var iconClick: Bool!
+    var iconClick = Bool()
     var funktion  = String()
     var ref: FIRDatabaseReference?
-    var databaseHandle: FIRDatabaseHandle?
+
     var LoginString1 = String()
-    var LoginString2 = "@kslzh.ch"
+    var LoginString2 = String()
     var LoginString = String()
-    var ToggleState = "1"
+    var ToggleState = String()
   
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ToggleState = "1"
+        LoginString2 = "@kslzh.ch"
+         ref = FIRDatabase.database().reference()
         
-        
-        
-        
+            LoginEmailTextField.becomeFirstResponder()
         // Cornerradius
         TeacherStudentView.layer.cornerRadius = 5
-        
-        
         loggin()
-            // Keep User Logged In
-            //self.KeepUserSigndIn()
 
             //Motion Setup
             self.ApplyMotionEffectsforViewDidLoad()
@@ -63,7 +61,7 @@ class Login: UIViewController, UITextFieldDelegate {
             LoginPasswordTextField.delegate = self
         
             // Hide Navigation Bar
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
+           self.navigationController?.setNavigationBarHidden(true, animated: true)
         
             //Hide Keyboard
             self.hideKeyboardWhenTappedAround()
@@ -76,6 +74,7 @@ class Login: UIViewController, UITextFieldDelegate {
         self.LoginPasswordTextField.alpha = 0
         //self.BackgroundImage.alpha = 1
         self.ZüriBild.alpha = 0
+    
         self.EmailLabel.alpha = 0
         self.PasswordLabel.alpha = 0
         self.LoginButton.alpha = 0
@@ -109,7 +108,7 @@ class Login: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == LoginEmailTextField{
         LoginPasswordTextField.becomeFirstResponder()
-        } else {
+        } else if textField == LoginPasswordTextField{
 
         LoginPasswordTextField.resignFirstResponder()
         LoginPasswordTextField.isSecureTextEntry = true
@@ -131,7 +130,56 @@ class Login: UIViewController, UITextFieldDelegate {
         LoginPasswordTextField.isSecureTextEntry = true
         }
     }
+    func loggin(){
+        
+        
+        FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
+            
+            if authuser != nil {
+                if UserDefaults.standard.bool(forKey: "isStudent") == true {
+                    
+                    
+                    if UserDefaults.standard.bool(forKey: "StudenthasClass") == true {
+                        
+                        self.performSegue(withIdentifier: "HomePageSegue", sender: self)
+                        print("Student has Class")
+                    }
+                        
+                    else if UserDefaults.standard.bool(forKey: "StudenthasClass") == false {
+                        
+                        
+                        // Perfrom Segue go to ClassSelection
+                        
+                        self.performSegue(withIdentifier: "GoToSelectClass", sender: self)
+                        print("Student has Class")
+                    }
+                    
+                    
+                } else if UserDefaults.standard.bool(forKey: "isTeacher") == true {
+                    
+                    if UserDefaults.standard.bool(forKey: "TeacherhasClass") == true {
+                        
+                        self.performSegue(withIdentifier: "LehrerHP", sender: self)
+                        print("Teacher has Class")
+                    }
+                        
+                    else if UserDefaults.standard.bool(forKey: "TeacherhasClass") == false {
+                        
+                        
+                        // Perfrom Segue go to ClassSelection
+                        
+                        self.performSegue(withIdentifier: "TeacherNeedsClass", sender: self)
+                        print("Teacher has Class")
+                    }
+                }
+                
+            }else {
+                
+                print("notloggedin")
+            }}
+    }
     
+
     
     // PasswordEyeButton Tapped Once
     @IBAction func EyeTapped(_ sender: Any) {
@@ -158,95 +206,8 @@ class Login: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // Keeped Users logged in
-    func KeepUserSigndIn(){
-        
-        let user = FIRAuth.auth()?.currentUser
-        let uid = user?.uid
-        
-        FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
-          
-            if authuser != nil {
-                
-                self.ref?.child("UID").child(uid!).child("function").observeSingleEvent(of: .value, with: { (snapshot) in
-                    
-                    if let item = snapshot.value as? String{
-                        self.funktion = item
-                        
-                        if self.funktion == "Student"{
-                            
-                            print("schüllerererereerer")
-                        
-                        } else if self.funktion == "Teacher"
-                        {
-                       
-                        }
-                        
-                    }}
-            )
-            
-                
-                
-                
-                // No User is signed in. Show user the login screen
-            }}
     
-    
-    // Userdefaults test
-        
-        
-    }
-    
-    
-    func loggin(){
 
-        
-        FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
-            
-            if authuser != nil {
-                if UserDefaults.standard.bool(forKey: "isStudent") == true {
-                    
-                    
-                    if UserDefaults.standard.bool(forKey: "StudenthasClass") == true {
-                    
-                    self.performSegue(withIdentifier: "HomePageSegue", sender: self)
-                        print("Student has Class")
-                    }
-                    
-                    else if UserDefaults.standard.bool(forKey: "StudenthasClass") == false {
-                    
-                   
-                        // Perfrom Segue go to ClassSelection
-                    
-                        self.performSegue(withIdentifier: "GoToSelectClass", sender: self)
-                        print("Student has Class")
-                    }
-                    
-   
-                } else if UserDefaults.standard.bool(forKey: "isTeacher") == true {
-                    
-                    if UserDefaults.standard.bool(forKey: "TeacherhasClass") == true {
-                        
-                       self.performSegue(withIdentifier: "LehrerHP", sender: self)
-                        print("Teacher has Class")
-                    }
-                        
-                    else if UserDefaults.standard.bool(forKey: "TeacherhasClass") == false {
-                        
-                        
-                        // Perfrom Segue go to ClassSelection
-                        
-                        self.performSegue(withIdentifier: "TeacherNeedsClass", sender: self)
-                        print("Teacher has Class")
-                    }
-                }
-       
-            }else {
-            
-            print("notloggedin")
-            }}
-        }
-    
     
     // Login Function
     @IBAction func LoginUser(_ sender: Any) {
@@ -306,9 +267,7 @@ class Login: UIViewController, UITextFieldDelegate {
         }
     }
 
-    @IBAction func ForgotPasswod(_ sender: Any) {
 
-    }
     
     // Register Button pressed, Text is empty
     @IBAction func RegisteredPressed(_ sender: UIButton) {
@@ -347,12 +306,7 @@ class Login: UIViewController, UITextFieldDelegate {
     
     
    
-    @IBAction func HierAnmelden(_ sender: Any) {
-        // go to Lehrer Login
-    
-        
-        
-    }
+
     
 
     
@@ -361,10 +315,12 @@ class Login: UIViewController, UITextFieldDelegate {
     
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
+        FIRAuth.auth()?.addStateDidChangeListener { auth, authuser in
+            
+            if authuser != nil {
         
-        
-        ref = FIRDatabase.database().reference()
-        ref?.child("users").child("UIDs").child(uid!).child("function").observe(.value, with: { (snapshot) in
+        //ref = FIRDatabase.database().reference()
+        self.ref?.child("users").child("UIDs").child(uid!).child("function").observe(.value, with: { (snapshot) in
             
             
             if snapshot.value as? String == "Student" {
@@ -388,7 +344,8 @@ class Login: UIViewController, UITextFieldDelegate {
  
             }
         }
-        )
+                )}
+    }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -107,7 +107,7 @@ class KlassenUserInfo: UITableViewController {
 
     
     
-    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+    @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         
         if recognizer.state == .recognized {
             self.performSegue(withIdentifier: "backtotonfo", sender: self)

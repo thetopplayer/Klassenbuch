@@ -125,10 +125,10 @@ public extension UIView {
         
         while let unwrappedSuperView = superView {
             
-            if unwrappedSuperView.isKind(of: classType) &&
-                ((InternalClass.UITableViewCellScrollViewClass == nil || unwrappedSuperView.isKind(of: InternalClass.UITableViewCellScrollViewClass!) == false) &&
-                    (InternalClass.UITableViewWrapperViewClass == nil || unwrappedSuperView.isKind(of: InternalClass.UITableViewWrapperViewClass!) == false) &&
-                    (InternalClass.UIQueuingScrollViewClass == nil || unwrappedSuperView.isKind(of: InternalClass.UIQueuingScrollViewClass!) == false)) {
+            if NSObject.isKind(of: classType) &&
+                ((InternalClass.UITableViewCellScrollViewClass == nil || NSObject.isKind(of: InternalClass.UITableViewCellScrollViewClass!) == false) &&
+                    (InternalClass.UITableViewWrapperViewClass == nil || NSObject.isKind(of: InternalClass.UITableViewWrapperViewClass!) == false) &&
+                    (InternalClass.UIQueuingScrollViewClass == nil || NSObject.isKind(of: InternalClass.UIQueuingScrollViewClass!) == false)) {
                         return superView
             } else {
                 
@@ -147,7 +147,7 @@ public extension UIView {
         //Array of (UITextField/UITextView's).
         var tempTextFields = [UIView]()
 
-        //	Getting all siblings
+        //    Getting all siblings
         if let siblings = superview?.subviews {
             
             for textField in siblings {
@@ -237,7 +237,7 @@ public extension UIView {
             static var UISearchBarTextFieldClass: UITextField.Type?        =   NSClassFromString("UISearchBarTextField") as? UITextField.Type//UISearchBar
         }
 
-        return  (InternalClass.UISearchBarTextFieldClass != nil && isKind(of: InternalClass.UISearchBarTextFieldClass!)) || self is UISearchBar
+        return  (InternalClass.UISearchBarTextFieldClass != nil && NSObject.isKind(of: InternalClass.UISearchBarTextFieldClass!)) || self is UISearchBar
     }
     
     /**
@@ -251,8 +251,8 @@ public extension UIView {
             static var UIAlertSheetTextFieldClass_iOS8: UITextField.Type?  =   NSClassFromString("_UIAlertControllerTextField") as? UITextField.Type //UIAlertView
         }
         
-        return (InternalClass.UIAlertSheetTextFieldClass != nil && isKind(of: InternalClass.UIAlertSheetTextFieldClass!)) ||
-            (InternalClass.UIAlertSheetTextFieldClass_iOS8 != nil && isKind(of: InternalClass.UIAlertSheetTextFieldClass_iOS8!))
+        return (InternalClass.UIAlertSheetTextFieldClass != nil && NSObject.isKind(of: InternalClass.UIAlertSheetTextFieldClass!)) ||
+            (InternalClass.UIAlertSheetTextFieldClass_iOS8 != nil && NSObject.isKind(of: InternalClass.UIAlertSheetTextFieldClass_iOS8!))
     }
     
 

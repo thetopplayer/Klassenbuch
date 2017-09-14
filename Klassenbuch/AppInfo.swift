@@ -48,7 +48,7 @@ class AppInfo: UIViewController {
    
        //Fund for Left Swipe
     
-    func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+   func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         
         if recognizer.state == .recognized {
             self.performSegue(withIdentifier: "unwindtoSettings", sender: self)

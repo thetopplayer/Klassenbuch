@@ -85,10 +85,10 @@ class Add_Hausaufgaben: UITableViewController, UIPickerViewDataSource, UIPickerV
     
     func Savebuttonfont() {
     
-        SaveButton.setTitleTextAttributes([
-            NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 17)!,
-            NSForegroundColorAttributeName : UIColor.white],
-                                          for: UIControlState.normal)
+//        SaveButton.setTitleTextAttributes([
+//            NSAttributedStringKey.font : UIFont(name: "Helvetica-Bold", size: 17)!,
+//            NSAttributedStringKey.foregroundColor : UIColor.white],
+//                                          for: UIControlState.normal)
 
         SaveButton.isEnabled = false
     }
