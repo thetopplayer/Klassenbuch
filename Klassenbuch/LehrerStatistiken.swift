@@ -45,15 +45,21 @@ class LehrerStatistiken: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       self.ref = FIRDatabase.database().reference()
+      
+   }
+    override func viewDidAppear(_ animated: Bool) {
+       
+        self.ref = FIRDatabase.database().reference()
         
         self.ref?.child("KlassenMitglieder/N6aHS 17-18").observe(.value, with: { (snapshot2) in
             
             let count = snapshot2.childrenCount
             print(count, "this is the count")
-               self.concurrentQueues(count: Int(count))
+             self.concurrentQueues(count: Int(count))
         })
-   }
+        
+       
+    }
     
     
     func concurrentQueues(count: Int){

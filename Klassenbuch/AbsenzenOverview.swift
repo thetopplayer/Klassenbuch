@@ -218,19 +218,35 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                         self.myKlasse = item
                         self.ref!.child("AbsenzenKlassen/\(self.myKlasse)").observe(.childRemoved, with: { (snapshot) in
                             
-                            if let fdata = snapshot.value as? NSDictionary {
-                                
-                                let adatum = fdata["ADatum"] as! Int
-                                let aID = snapshot.key
-                                
-                                let filterdArr = self.data[adatum]?.filter({$0.AUid != aID})
-                                
-                                if (filterdArr?.count)! > 0 {
-                                    self.data[adatum] = filterdArr
-                                }else {
-                                    self.data.removeValue(forKey: adatum)
-                                }
+                       if let fdata = snapshot.value as? NSDictionary {
+                            
+//                            let adatum = fdata["ADatum"] as! Int
+                        
+//                            let astatus = fdata["AStatus"] as! String
+                        
+                            let aperson = fdata["APerson"] as! String
+                            
+                            let aanzahlStunden = fdata["AAnzahlStunden"] as! Int
+                            
+                            let aabgabe = fdata["AAbgabe"] as! String
+                            
+//                            let areminderStatus = fdata["AReminderStatus"] as! Bool
+                        
+//                            let aID = snapshot.key
+                  
+//                        self.domath(StundenzumAbziehen: aanzahlStunden, SchülerName: aperson, Status: aabgabe)
+//                                let filterdArr = self.data[adatum]?.filter({$0.AUid != aID})
+//                                
+//                                if (filterdArr?.count)! > 0 {
+//                                    self.data[adatum] = filterdArr
+//                                }else {
+//                                    self.data.removeValue(forKey: adatum)
+//                                }
+//                            }
+                            
+                
                             }
+                            self.databaseListener()
                             
                             self.sortedData = self.data.sorted(by: { $0.0.key < $0.1.key})
                             self.tableView.reloadData()
