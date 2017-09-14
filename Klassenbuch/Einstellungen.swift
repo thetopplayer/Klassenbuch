@@ -96,13 +96,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
         
         if indexPath.section == 0 && indexPath.row == 1 {
             
-            let mailComposeViewController = configuredMailComposeViewController()
-            
-            if MFMailComposeViewController.canSendMail() {
-                self.present(mailComposeViewController, animated: true, completion: nil)
-            } else {
-                self.showSendMailErrorAlert()
-            }
+
         }
         if indexPath.section == 0 && indexPath.row == 2 {
 

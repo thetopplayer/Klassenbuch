@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import MessageUI
 
 
 struct AbsenzenStatistiken{
@@ -21,7 +22,7 @@ struct AbsenzenStatistiken{
     
 }
 
-class LehrerStatistiken: UITableViewController {
+class LehrerStatistiken: UITableViewController, MFMailComposeViewControllerDelegate {
     
     // Variables
     var ref: FIRDatabaseReference?
@@ -44,7 +45,7 @@ class LehrerStatistiken: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      //self.navigationController.presentViewController(e, animated: true, completion: nil)
       
    }
     override func viewDidAppear(_ animated: Bool) {
@@ -80,7 +81,7 @@ class LehrerStatistiken: UITableViewController {
                     self.classmembers.append(item2)
                     
                     
-                    print("This are all the Classmembers\(self.classmembers)")
+                    //print("This are all the Classmembers\(self.classmembers)")
 
                     
                 }
@@ -261,58 +262,7 @@ class LehrerStatistiken: UITableViewController {
         
         
         
-//        repeat{
-//            
-//            self.ref!.child("Statistiken/\(self.myclass)/\(self.classmembers[newindex])").observe(.childAdded, with: { (snapshot) in
-//                print("afasdfkbaskf")
-//     
-//                
-//                
-//                //        // Added listener
-//                //                ref!.child("Statistiken/N6aHS 17-18").observe(.value, with: { (snapshot) in
-//                //                                        print("afasdfkbaskf")
-//                //
-//                //                    // putting all members here and then running those to get data
-//                //
-//                //
-//                
-//                if let fdata = snapshot.value as? NSDictionary {
-//                    
-//                    let aperson = fdata["APerson"] as! String
-//                    
-//                    let aanzahlStunden = fdata["AAnzahlStunden"] as! Int
-//                    
-//                    let aabsenzenOffen = fdata["AAbsenzenOffen"] as! Int
-//                    
-//                    let aabsenzenentschuldigt = fdata["AAbsenzenentschuldigt"] as! Int
-//                    
-//                    let aabsenzenunentschuldigt = fdata["AAbsenzenunentschuldigt"] as! Int
-//                    
-//                    let aID = snapshot.key
-//                    
-//                    let homeobject = AbsenzenStatistiken(APerson: aperson, AAnzahlStunden: aanzahlStunden, AAbsenzenOffen: aabsenzenOffen, AAbsenzenentschuldigt: aabsenzenentschuldigt, AAbsenzenunentschuldigt: aabsenzenunentschuldigt, AUid: aID)
-//                    
-//                    if let i = self.classmembers.index(where: {$0 == (aperson) }){
-//                        
-//                        let absenz = self.data[i]
-//                        self.ref!.child("Statistiken/N6aHS 17-18/\(self.classmembers[newindex])/\(absenz.AUid)").removeValue()
-//                    }
-//                    //                    self.ref!.child("HausaufgabenKlassen/\(self.myKlasse)/\(homework.HUid)").removeValue()
-//                    self.data.append(homeobject)
-//                    
-//                    print(aperson)
-//                    print(aanzahlStunden)
-//                    
-//                    
-//                }
-//                
-//                self.tableView.reloadData()
-//                
-//            })
-//            //            }})
-//            
-//            newindex += 1
-//        } while (newindex < self.classmembers.count)
+
                     }})
     }
     
@@ -339,36 +289,140 @@ class LehrerStatistiken: UITableViewController {
     }
     
     @IBAction func Print(_ sender: Any) {
+    
+      
         
-//        generatePDF()
+   generateCVSFile()
+}
+    
+    func generateCVSFile(){
+        //        generatePDF()
+        print(uniqueclassmembers, "this are the unique classmembers")
+        print(data, "all the data")
         
+        let fileName = "Absenzen Statistik.csv"
+        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        let pathPDF = "\(NSTemporaryDirectory())\(fileName)"
+
+        
+        var csvText = "Absenzen\n\nSchülerIn,Entschuldigt,Unentschuldigt,Offen,Geamt\n"
+        
+       // currentCar.fillups.sortInPlace({ $0.date.compare($1.date) == .OrderedDescending })
+        
+        let count = data.count
+        
+        if count > 0 {
+            
+            for xx in data {
+                
+         
+                
+                let newLine = "\(xx.APerson),\(xx.AAbsenzenentschuldigt),\(xx.AAbsenzenunentschuldigt),\(xx.AAbsenzenOffen),\(xx.AAnzahlStunden)\n"
+                print(newLine)
+                csvText.append(newLine)
+            }
+            
+            do {
+                try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+                
+                if MFMailComposeViewController.canSendMail() {
+                    let emailController = MFMailComposeViewController()
+                    emailController.mailComposeDelegate = self
+                    emailController.setToRecipients([])
+                    emailController.setSubject("Absenzen Statistiken export")
+                    emailController.setMessageBody("Hi,\n\nThe .csv data export is attached\n\n\nSent from the MPG app: http://www.justindoan.com/mpg-fuel-tracker", isHTML: false)
+                }
+                 //   emailController.addAttachmentData(Data(contentsOf: path!) , mimeType: "text/csv", fileName: "Absenzen Statistik.csv")
+                
+                
+                
+                let mailComposeViewController = configuredMailComposeViewController()
+                  
+   
+                    if MFMailComposeViewController.canSendMail() {
+                    
+                        
+                        if let fileData = NSData(contentsOfFile: pathPDF)
+                        {
+                            print("File data loaded.")
+                            
+                            
+                    mailComposeViewController.addAttachmentData(fileData as Data, mimeType: "text/csv", fileName: "asd.csv")
+                        }
+                        
+                        self.present(mailComposeViewController, animated: true, completion: nil)
+                   
+                    
+                    
+                    } else {
+                        self.showSendMailErrorAlert()
+                    }
+                    
+                   // present(emailController, animated: true, completion: nil)
+                
+                
+            } catch {
+                
+                print("Failed to create file")
+                print("\(error)")
+            }
+            
+        } else {
+           // showErrorAlert("Error", msg: "There is no data to export")
+        }
+    
+    }
+    
+
+    func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result.rawValue {
+        case MFMailComposeResult.cancelled.rawValue:
+            print("Mail cancelled")
+        case MFMailComposeResult.saved.rawValue:
+            print("Mail saved")
+        case MFMailComposeResult.sent.rawValue:
+            print("Mail sent")
+        case MFMailComposeResult.failed.rawValue:
+            print("Mail sent failure: %@", [error!.localizedDescription])
+        default:
+            break
+        }
+        
+        // Dismiss the mail compose view controller.
+        controller.dismiss(animated: true, completion: nil)
+    }
+
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        
+        mailComposerVC.setToRecipients(["klassenbuchteam@gmail.com"])
+        mailComposerVC.setSubject("Klassenbuch App Feedback")
+        mailComposerVC.setMessageBody("Hi Jérôme!\n\nHier ist mein Feedback für die Klassenbuch App..\n", isHTML: false)
+        
+        return mailComposerVC
     }
    
-//    func generatePDF() {
-//    let v1 = UIScrollView(frame: CGRect(x: 0.0,y: 0, width: 100.0, height: 100.0))
-//    let v2 = UIView(frame: CGRect(x: 0.0,y: 0, width: 100.0, height: 200.0))
-//    let v3 = UIView(frame: CGRect(x: 0.0,y: 0, width: 100.0, height: 200.0))
-//    v1.backgroundColor = .red
-//    v1.contentSize = CGSize(width: 100.0, height: 200.0)
-//    v2.backgroundColor = .green
-//    v3.backgroundColor = .blue
-//    
-//    let dst = URL(fileURLWithPath: NSTemporaryDirectory().appending("sample1.pdf"))
-//    // outputs as Data
-//    do {
-//    let data = try PDFGenerator.generated(by: [v1, v2, v3])
-//    data.write(to: dst, options: .atomic)
-//    } catch (let error) {
-//    print(error)
-//    }
-//    
-//    // writes to Disk directly.
-//    do {
-//    try PDFGenerator.generate([v1, v2, v3], to: dst)
-//    } catch (let error) {
-//    print(error)
-//    }
-//    }
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+   
+    
+    func showSendMailErrorAlert() {
+        
+        let sendMailErrorAlert = UIAlertController(title: "Die Email konnte nicht gesendet werden", message: "Aus unerklärlichen Gründen konnte die Email nicht gesendet werden. Überprüfe deine Email Einstellungen und versuche es nochmals.", preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        sendMailErrorAlert.addAction(defaultAction)
+        
+        self.present(sendMailErrorAlert, animated: true, completion: nil)
+        
+        
+    }
+
     @IBAction func DetailStatisik (_ segue:UIStoryboardSegue) {
     }
     
