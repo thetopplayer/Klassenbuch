@@ -62,7 +62,6 @@
 		37FCAEA91DFD553900789BFF /* Hausaufgaben.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FCAEA81DFD553900789BFF /* Hausaufgaben.swift */; };
 		37FCAEAF1DFD556F00789BFF /* Informationen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FCAEAE1DFD556F00789BFF /* Informationen.swift */; };
 		37FCAEB11DFD55D900789BFF /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FCAEB01DFD55D900789BFF /* Manager.swift */; };
-		37FE769F1E4723250056A196 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37FE769E1E4723250056A196 /* Settings.bundle */; };
 		3E5C6F2EB73F2ECDEA81F287 /* Pods_Klassenbuch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38845EA0770DFA88801FE1C /* Pods_Klassenbuch.framework */; };
 		A8E95E34E55DDC3187E8EA48 /* Pods_KlassenbuchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F074CF7F67BDDC616A8F03C /* Pods_KlassenbuchTests.framework */; };
 		C51F2184F5F4A9305D98D996 /* Pods_KlassenbuchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A43E3B1147EC6AB62AA1BE /* Pods_KlassenbuchUITests.framework */; };
@@ -166,7 +165,6 @@
 		37FCAEA81DFD553900789BFF /* Hausaufgaben.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hausaufgaben.swift; sourceTree = "<group>"; };
 		37FCAEAE1DFD556F00789BFF /* Informationen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Informationen.swift; sourceTree = "<group>"; };
 		37FCAEB01DFD55D900789BFF /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
-		37FE769E1E4723250056A196 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = ../Settings.bundle; sourceTree = "<group>"; };
 		6823AD90D222C0DE261EA86A /* Pods-KlassenbuchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KlassenbuchUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KlassenbuchUITests/Pods-KlassenbuchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6F074CF7F67BDDC616A8F03C /* Pods_KlassenbuchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KlassenbuchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9A43E3B1147EC6AB62AA1BE /* Pods_KlassenbuchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KlassenbuchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -351,7 +349,6 @@
 				377FFC071E2FFF7D008EE114 /* Helpers */,
 				37FCAE7F1DFD51C000789BFF /* LaunchScreen.storyboard */,
 				37075C4D1E36A38200187480 /* Media.xcassets */,
-				37FE769E1E4723250056A196 /* Settings.bundle */,
 				379B8C941EA6857300E27CBC /* GoogleService-Info.plist */,
 				37FCAE821DFD51C000789BFF /* Info.plist */,
 				379B8C961EA6884600E27CBC /* Klassenbuch.entitlements */,
@@ -531,7 +528,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				37FCAE811DFD51C000789BFF /* LaunchScreen.storyboard in Resources */,
-				37FE769F1E4723250056A196 /* Settings.bundle in Resources */,
 				379B8C951EA6857300E27CBC /* GoogleService-Info.plist in Resources */,
 				379B8CAD1EA764E600E27CBC /* Delivery.png in Resources */,
 				37FCAE7C1DFD51C000789BFF /* Main.storyboard in Resources */,

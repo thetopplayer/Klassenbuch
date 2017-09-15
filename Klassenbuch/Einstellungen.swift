@@ -42,7 +42,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
 
     
@@ -100,7 +100,7 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
         }
         if indexPath.section == 0 && indexPath.row == 2 {
 
-           self.gotoSettings()
+//           self.gotoSettings()
         }
         /*
         if indexPath.section == 0 && indexPath.row == 4 {
@@ -172,18 +172,18 @@ class Einstellungen: UITableViewController, MFMailComposeViewControllerDelegate 
 
     
     
-    // Go to Acknowledgements Function in Settings
-    
-    func gotoSettings() {
-        
-        print("Send to Settings")
-            
-        // THIS IS WHERE THE MAGIC HAPPENS!!!!
-            
-        if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
-                UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
-            }
-        }
+//    // Go to Acknowledgements Function in Settings
+//
+//    func gotoSettings() {
+//
+//        print("Send to Settings")
+//
+//        // THIS IS WHERE THE MAGIC HAPPENS!!!!
+//
+//        if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+//                UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+//            }
+//        }
     
     
     //Fund for Left Swipe

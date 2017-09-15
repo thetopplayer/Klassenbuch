@@ -37,7 +37,7 @@ class StudentAbsenzen: UITableViewController, UITabBarDelegate{
     var AAStatus = String()
     var theStatus   =   String()
     var theNewStatus   =   String()
-    
+    var getdataTimer1 : Timer = Timer()
     @IBOutlet weak var Header: UINavigationItem!
     
     override func viewDidLoad() {
@@ -63,9 +63,13 @@ class StudentAbsenzen: UITableViewController, UITabBarDelegate{
         ref = FIRDatabase.database().reference()
         
         // Listen for added and removed
-        self.databaseListener()
+    
 //        removed()
         Header.title = StudentName
+        
+        self.getdataTimer1 = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(StudentAbsenzen.databaseListener) , userInfo: nil, repeats: true)
+//             getData()
+        
         
         ref!.child("SchülerAbsenzen/\(StudentName)").observe(.value, with: { (snapshot) in
         
@@ -77,6 +81,22 @@ class StudentAbsenzen: UITableViewController, UITabBarDelegate{
         })
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       
+   
+        self.databaseListener()
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.getdataTimer1.invalidate()
+        print("timer killed")
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        self.getdataTimer1.invalidate()
+        print("timer killed")
+    }
     @IBAction func cancelNewAbsenz (_ segue:UIStoryboardSegue) {
     }
     
@@ -84,7 +104,7 @@ class StudentAbsenzen: UITableViewController, UITabBarDelegate{
     }
     
    
-    func databaseListener() {
+    @objc func databaseListener() {
         
         
         
@@ -147,6 +167,7 @@ class StudentAbsenzen: UITableViewController, UITabBarDelegate{
 //            self.tableView.reloadData()
 //            
 //        })
+        tableView.reloadData()
     }
     
     
@@ -288,11 +309,11 @@ class StudentAbsenzen: UITableViewController, UITabBarDelegate{
         
         if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Entschuldigt"{
             
-            cell.backgroundColor = UIColor.green
+            cell.backgroundColor = UIColor(red:0.53, green:0.80, blue:0.55, alpha:1.0)
             
         } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "Unentschuldigt"{
             
-            cell.backgroundColor = UIColor.red
+            cell.backgroundColor = UIColor(red:0.99, green:0.43, blue:0.43, alpha:1.0)
             
         } else if self.sortedData[indexPath.section].1[indexPath.row].AAbgabe == "offen"{
             

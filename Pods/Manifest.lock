@@ -49,7 +49,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.8)
-  - IQKeyboardManagerSwift (4.0.8)
+  - IQKeyboardManagerSwift (4.0.11)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -70,7 +70,7 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
-  IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
+  IQKeyboardManagerSwift: 10f0a6b8ea2904c8943c0e1a116c99f5b8ad83af
 
 PODFILE CHECKSUM: fdfac2ce679e241d6d9e68359fb8e3feac6d3424
 

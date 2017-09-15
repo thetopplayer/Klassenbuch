@@ -55,7 +55,7 @@ struct UIDStruct{
     
         override func viewDidLoad() {
             super.viewDidLoad()
-            
+            Absenzenstatus2 = "1 Lektion"
             let datepickerView = UIDatePicker()
             datepickerView.minimumDate = Date() - 31536000 //set minimum date of today
             datepickerView.datePickerMode = UIDatePickerMode.date
@@ -353,7 +353,7 @@ struct UIDStruct{
             }
             if pickerView.tag == 3 {
             
-            AbsenzenPersons.text = Classmembers[row]
+            AbsenzenPersons.text = Classmembers.sorted()[row]
             //AbsenzenPersons.text = name
             name = "\(AbsenzenPersons.text!)"
             print(name)
@@ -375,7 +375,7 @@ struct UIDStruct{
             }
             if pickerView.tag == 3{
             
-            return Classmembers[row]
+            return Classmembers.sorted()[row]
             }
             
             return nil

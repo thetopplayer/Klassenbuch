@@ -22,6 +22,7 @@
 // THE SOFTWARE.
 
 
+import Foundation
 import UIKit
 
 /**
@@ -37,7 +38,8 @@ open class IQKeyboardReturnKeyHandler: NSObject , UITextFieldDelegate, UITextVie
     /**
     Delegate of textField/textView.
     */
-    open weak var delegate: (UITextFieldDelegate & UITextViewDelegate)?    
+    open weak var delegate: (UITextFieldDelegate & UITextViewDelegate)?
+    
     /**
     Set the last textfield return key type. Default is UIReturnKeyDefault.
     */
@@ -339,7 +341,7 @@ open class IQKeyboardReturnKeyHandler: NSObject , UITextFieldDelegate, UITextVie
         }
         
         if let unwrapDelegate = aDelegate {
-            if NSObject.responds(to: #selector(UITextFieldDelegate.textFieldShouldBeginEditing(_:))) {
+            if unwrapDelegate.responds(to: #selector(UITextFieldDelegate.textFieldShouldBeginEditing(_:))) {
                 return unwrapDelegate.textFieldShouldBeginEditing?(textField) == true
             }
         }
@@ -359,7 +361,7 @@ open class IQKeyboardReturnKeyHandler: NSObject , UITextFieldDelegate, UITextVie
         }
         
         if let unwrapDelegate = aDelegate {
-            if NSObject.responds(to: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:))) {
+            if unwrapDelegate.responds(to: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:))) {
                 return unwrapDelegate.textFieldShouldEndEditing?(textField) == true
             }
         }
@@ -423,7 +425,7 @@ open class IQKeyboardReturnKeyHandler: NSObject , UITextFieldDelegate, UITextVie
         }
         
         if let unwrapDelegate = aDelegate {
-            if NSObject.responds(to: #selector(UITextFieldDelegate.textField(_:shouldChangeCharactersIn:replacementString:))) {
+            if unwrapDelegate.responds(to: #selector(UITextFieldDelegate.textField(_:shouldChangeCharactersIn:replacementString:))) {
                 return unwrapDelegate.textField?(textField, shouldChangeCharactersIn: range, replacementString: string) == true
             }
         }
@@ -443,7 +445,7 @@ open class IQKeyboardReturnKeyHandler: NSObject , UITextFieldDelegate, UITextVie
         }
         
         if let unwrapDelegate = aDelegate {
-            if NSObject.responds(to: #selector(UITextFieldDelegate.textFieldShouldClear(_:))) {
+            if unwrapDelegate.responds(to: #selector(UITextFieldDelegate.textFieldShouldClear(_:))) {
                 return unwrapDelegate.textFieldShouldClear?(textField) == true
             }
         }
@@ -466,7 +468,7 @@ open class IQKeyboardReturnKeyHandler: NSObject , UITextFieldDelegate, UITextVie
         var shouldReturn = true;
         
         if let unwrapDelegate = aDelegate {
-            if NSObject.responds(to: #selector(UITextFieldDelegate.textFieldShouldReturn(_:))) {
+            if unwrapDelegate.responds(to: #selector(UITextFieldDelegate.textFieldShouldReturn(_:))) {
                 shouldReturn = unwrapDelegate.textFieldShouldReturn?(textField) == true
             }
         }
@@ -492,7 +494,7 @@ open class IQKeyboardReturnKeyHandler: NSObject , UITextFieldDelegate, UITextVie
         }
         
         if let unwrapDelegate = aDelegate {
-            if NSObject.responds(to: #selector(UITextViewDelegate.textViewShouldBeginEditing(_:))) {
+            if unwrapDelegate.responds(to: #selector(UITextViewDelegate.textViewShouldBeginEditing(_:))) {
                 return unwrapDelegate.textViewShouldBeginEditing?(textView) == true
             }
         }
@@ -512,7 +514,7 @@ open class IQKeyboardReturnKeyHandler: NSObject , UITextFieldDelegate, UITextVie
         }
         
         if let unwrapDelegate = aDelegate {
-            if NSObject.responds(to: #selector(UITextViewDelegate.textViewShouldEndEditing(_:))) {
+            if unwrapDelegate.responds(to: #selector(UITextViewDelegate.textViewShouldEndEditing(_:))) {
                 return unwrapDelegate.textViewShouldEndEditing?(textView) == true
             }
         }
@@ -563,7 +565,7 @@ open class IQKeyboardReturnKeyHandler: NSObject , UITextFieldDelegate, UITextVie
         var shouldReturn = true
         
         if let unwrapDelegate = aDelegate {
-            if NSObject.responds(to: #selector(UITextViewDelegate.textView(_:shouldChangeTextIn:replacementText:))) {
+            if unwrapDelegate.responds(to: #selector(UITextViewDelegate.textView(_:shouldChangeTextIn:replacementText:))) {
                 shouldReturn = (unwrapDelegate.textView?(textView, shouldChangeTextIn: range, replacementText: text)) == true
             }
         }
@@ -616,7 +618,7 @@ open class IQKeyboardReturnKeyHandler: NSObject , UITextFieldDelegate, UITextVie
         }
         
         if let unwrapDelegate = aDelegate {
-            if NSObject.responds(to: #selector(textView as (UITextView, URL, NSRange, UITextItemInteraction) -> Bool)) {
+            if unwrapDelegate.responds(to: #selector(textView as (UITextView, URL, NSRange, UITextItemInteraction) -> Bool)) {
                 return unwrapDelegate.textView?(aTextView, shouldInteractWith: URL, in: characterRange, interaction: interaction) == true
             }
         }
@@ -637,7 +639,7 @@ open class IQKeyboardReturnKeyHandler: NSObject , UITextFieldDelegate, UITextVie
         }
         
         if let unwrapDelegate = aDelegate {
-            if NSObject.responds(to: #selector(textView as (UITextView, NSTextAttachment, NSRange, UITextItemInteraction) -> Bool)) {
+            if unwrapDelegate.responds(to: #selector(textView as (UITextView, NSTextAttachment, NSRange, UITextItemInteraction) -> Bool)) {
                 return unwrapDelegate.textView?(aTextView, shouldInteractWith: textAttachment, in: characterRange, interaction: interaction) == true
             }
         }
@@ -645,6 +647,7 @@ open class IQKeyboardReturnKeyHandler: NSObject , UITextFieldDelegate, UITextVie
         return true
     }
     
+    @available(iOS, deprecated: 10.0)
     open func textView(_ aTextView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         
         var aDelegate : UITextViewDelegate? = delegate;
@@ -657,7 +660,7 @@ open class IQKeyboardReturnKeyHandler: NSObject , UITextFieldDelegate, UITextVie
         }
         
         if let unwrapDelegate = aDelegate {
-            if NSObject.responds(to: #selector(textView as (UITextView, URL, NSRange) -> Bool)) {
+            if unwrapDelegate.responds(to: #selector(textView as (UITextView, URL, NSRange) -> Bool)) {
                 return unwrapDelegate.textView?(aTextView, shouldInteractWith: URL, in: characterRange) == true
             }
         }
@@ -665,6 +668,7 @@ open class IQKeyboardReturnKeyHandler: NSObject , UITextFieldDelegate, UITextVie
         return true
     }
     
+    @available(iOS, deprecated: 10.0)
     open func textView(_ aTextView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
         
         var aDelegate : UITextViewDelegate? = delegate;
@@ -677,7 +681,7 @@ open class IQKeyboardReturnKeyHandler: NSObject , UITextFieldDelegate, UITextVie
         }
         
         if let unwrapDelegate = aDelegate {
-            if NSObject.responds(to: #selector(textView as (UITextView, NSTextAttachment, NSRange) -> Bool)) {
+            if unwrapDelegate.responds(to: #selector(textView as (UITextView, NSTextAttachment, NSRange) -> Bool)) {
                 return unwrapDelegate.textView?(aTextView, shouldInteractWith: textAttachment, in: characterRange) == true
             }
         }

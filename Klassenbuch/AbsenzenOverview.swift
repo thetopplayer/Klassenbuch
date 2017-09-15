@@ -10,6 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 import UserNotifications
+import MessageUI
 
 struct AbsenzenStruct4 {
     var ADatum: Int
@@ -29,7 +30,7 @@ struct ReminderStruct{
 
 }
 
-class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate, UITabBarDelegate{
+class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate, UITabBarDelegate, MFMailComposeViewControllerDelegate{
     
  
     
@@ -38,8 +39,9 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
     var data = [Int: [AbsenzenStruct4]]() // Date: Homework Object
     var sortedData = [(Int, [AbsenzenStruct4])]()
     var ref: FIRDatabaseReference?
+    var data2 = [AbsenzenStruct4]()
     var databaseHandle: FIRDatabaseHandle?
-    var getdataTimer2 : Timer = Timer()
+//    var getdataTimer2 : Timer = Timer()
     var PersonenTitel: String?
     var Absenzdauer: String?
     var AbsenzDatumDate: String?
@@ -157,6 +159,7 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
             
             self.sortedData.removeAll()
             self.data.removeAll()
+            self.data2.removeAll()
         }
         
         ref?.child("users").child("Lehrer").child(uid!).child("Klasse").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -190,6 +193,8 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
                 }else {
                     self.data[adatum]!.append(homeObject3)
                 }
+                
+                self.data2.append(homeObject3)
 //                self.childaddedReminder()
 //                print(aID)
                 
@@ -1474,7 +1479,137 @@ func AbsenzschonOffen(){
 
 
 }
+    
+    @IBAction func Print(_ sender: Any) {
+        generateCVSFile()
+    }
+    
+    func generateCVSFile(){
+        //        generatePDF()
+      //  print(uniqueclassmembers, "this are the unique classmembers")
+        print(data2, "all the data")
+        
+        let fileName = "AbsenzenStatistik.csv"
+        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        let pathPDF = "\(NSTemporaryDirectory())\(fileName)"
+        
+        
+        var csvText = "Absenzen\n\nSchülerIn,Datum,AbsenztStatus,Status,Anzahl Stunden\n"
+        
+        // currentCar.fillups.sortInPlace({ $0.date.compare($1.date) == .OrderedDescending })
+        
+        let count = data2.count
+        
+        if count > 0 {
+            
+            for xx in data2 {
+                
+              let datestring = xx.ADatum.convertTimestampToDate
+                
+                let newLine =  "\(xx.APerson),\(datestring),\(xx.AAbgabe),\(xx.AStatus),\(xx.AAnzahlStunden)\n"
+                print(newLine)
+                csvText.append(newLine)
+            }
+            
+            do {
+                try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+                
+                //   if MFMailComposeViewController.canSendMail() {
+                //      let emailController = MFMailComposeViewController()
+                //    emailController.mailComposeDelegate = self
+                //  emailController.setToRecipients([])
+                //   emailController.setSubject("Absenzen Statistiken export")
+                //  emailController.setMessageBody("Hi,\n\nThe .csv data export is attached\n\n\nSent from the MPG app: http://www.justindoan.com/mpg-fuel-tracker", isHTML: false)
+                //  }
+                //   emailController.addAttachmentData(Data(contentsOf: path!) , mimeType: "text/csv", fileName: "Absenzen Statistik.csv")
+                let mailComposeViewController = self.configuredMailComposeViewController()
+                
+                if MFMailComposeViewController.canSendMail() {
+                    if let fileData = NSData(contentsOfFile: pathPDF)
+                    {
+                        print("File data loaded.")
+                        
+                        mailComposeViewController.addAttachmentData(fileData as Data, mimeType: "text/csv", fileName: "AbsenzenStatistik.csv")
+                    }
+                    
+                    self.present(mailComposeViewController, animated: true, completion: nil)
+                    
+                } else {
+                    self.showSendMailErrorAlert()
+                }
+                
+                
+                
+                
+                
+                
+                // present(emailController, animated: true, completion: nil)
+                
+                
+            } catch {
+                
+                print("Failed to create file")
+                print("\(error)")
+            }
+            
+        } else {
+            // showErrorAlert("Error", msg: "There is no data to export")
+        }
+        
+    }
+    func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result.rawValue {
+        case MFMailComposeResult.cancelled.rawValue:
+            print("Mail cancelled")
+        case MFMailComposeResult.saved.rawValue:
+            print("Mail saved")
+        case MFMailComposeResult.sent.rawValue:
+            print("Mail sent")
+        case MFMailComposeResult.failed.rawValue:
+            print("Mail sent failure: %@", [error!.localizedDescription])
+        default:
+            break
+        }
+        
+        // Dismiss the mail compose view controller.
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        
+        //mailComposerVC.setToRecipients(["klassenbuchteam@gmail.com"])
+        mailComposerVC.setSubject("Absenzen Statistiken")
+        mailComposerVC.setMessageBody("Absenzen Statistiken!", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func showSendMailErrorAlert() {
+        
+        let sendMailErrorAlert = UIAlertController(title: "Die Email konnte nicht gesendet werden", message: "Aus unerklärlichen Gründen konnte die Email nicht gesendet werden. Überprüfe deine Email Einstellungen und versuche es nochmals.", preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        sendMailErrorAlert.addAction(defaultAction)
+        
+        self.present(sendMailErrorAlert, animated: true, completion: nil)
+        
+        
+    }
+
+
 }
+
+
 /* compare dates
  switch adatum < Date().getDateFromZeroHour /*- 1209600 -86400*/ {
  
