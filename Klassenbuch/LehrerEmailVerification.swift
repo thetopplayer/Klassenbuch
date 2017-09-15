@@ -47,7 +47,10 @@ class LehrerEmailVerification: UIViewController {
                     self.performSegue(withIdentifier: "TeacherEmailverified", sender: self)
                     
                 } else {
-                    
+                    self.verificationTimer1.invalidate()     //Kill the timer
+                   
+                    self.performSegue(withIdentifier: "TeacherEmailverified", sender: self)
+
                     print("It aint verified yet")
                     // Only for Development
                    // self.performSegue(withIdentifier: "TeacherEmailverified", sender: self)

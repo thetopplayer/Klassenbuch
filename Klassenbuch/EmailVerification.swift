@@ -47,7 +47,7 @@ class EmailVerification: UIViewController {
                     
                     print("It aint verified yet")
                 // oNly for development
-                    self.performSegue(withIdentifier: "emailverified", sender: self)
+                                       self.performSegue(withIdentifier: "emailverified", sender: self)
                     self.verificationTimer1.invalidate()
                 }
             } else {

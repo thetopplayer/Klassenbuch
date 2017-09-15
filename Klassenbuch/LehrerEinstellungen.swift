@@ -65,6 +65,9 @@ class LehrerEinstellungen: UITableViewController, UNUserNotificationCenterDelega
                 UserDefaults.standard.set(false, forKey: "isTeacher")
                 UserDefaults.standard.synchronize()
                 
+                
+             
+                
                 let vc = storyboard.instantiateViewController(withIdentifier: "LoginNavigationVC") as! UINavigationController
                 self.present(vc, animated: false, completion: nil)
                 
