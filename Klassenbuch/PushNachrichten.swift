@@ -40,7 +40,7 @@ class PushNachrichten: UITableViewController {
     let reminderString = "ReminderString"
     
     
-    var RowSectionArray = [["1","1","1","1","1","1","1","1"],["1"]]
+    var RowSectionArray = [["1"],["1","1","1","1","1","1","1","1"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -637,7 +637,14 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
 //            Check if Reminders are wished
         if UserDefaults.standard.bool(forKey: "Reminders") == true {
          print("wants reminders")
-         AbsenzenSheet.addAction(StatusActionEntfernen)
+            let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
+            if notificationType == [] {
+                print("notifications are NOT enabled")
+            } else {
+                print("notifications are enabled")
+            
+            // CHeck if user wants norifications
+                AbsenzenSheet.addAction(StatusActionEntfernen)}
          
         } else if UserDefaults.standard.bool(forKey: "Reminders") == false {
            print("dont want's reminders")
@@ -652,8 +659,14 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
             //            Check if Reminders are wished
             if UserDefaults.standard.bool(forKey: "Reminders") == true {
                 print("wants reminders")
-                 AbsenzenSheet.addAction(StatusAction)
+                let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
+                if notificationType == [] {
+                    print("notifications are NOT enabled")
+                } else {
+                    print("notifications are enabled")
                 
+                 AbsenzenSheet.addAction(StatusAction)
+                }
             } else if UserDefaults.standard.bool(forKey: "Reminders") == false {
                 print("dont want's reminders")
             }

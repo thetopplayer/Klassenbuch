@@ -1489,7 +1489,7 @@ func AbsenzschonOffen(){
       //  print(uniqueclassmembers, "this are the unique classmembers")
         print(data2, "all the data")
         
-        let fileName = "AbsenzenStatistik.csv"
+        let fileName = "AbsenzenÜbersicht.csv"
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         let pathPDF = "\(NSTemporaryDirectory())\(fileName)"
         
@@ -1529,7 +1529,7 @@ func AbsenzschonOffen(){
                     {
                         print("File data loaded.")
                         
-                        mailComposeViewController.addAttachmentData(fileData as Data, mimeType: "text/csv", fileName: "AbsenzenStatistik.csv")
+                        mailComposeViewController.addAttachmentData(fileData as Data, mimeType: "text/csv", fileName: "AbsenzenÜbersicht.csv")
                     }
                     
                     self.present(mailComposeViewController, animated: true, completion: nil)
@@ -1582,8 +1582,8 @@ func AbsenzschonOffen(){
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         
         //mailComposerVC.setToRecipients(["klassenbuchteam@gmail.com"])
-        mailComposerVC.setSubject("Absenzen Statistiken")
-        mailComposerVC.setMessageBody("Absenzen Statistiken!", isHTML: false)
+        mailComposerVC.setSubject("Absenzen Übersicht")
+        mailComposerVC.setMessageBody("Absenzen Übersicht!", isHTML: false)
         
         return mailComposerVC
     }

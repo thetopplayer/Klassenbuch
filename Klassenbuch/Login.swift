@@ -48,7 +48,7 @@ class Login: UIViewController, UITextFieldDelegate {
         LoginString2 = "@kslzh.ch"
          ref = FIRDatabase.database().reference()
         
-            LoginEmailTextField.becomeFirstResponder()
+          //  LoginEmailTextField.becomeFirstResponder()
         // Cornerradius
         TeacherStudentView.layer.cornerRadius = 5
         loggin()
