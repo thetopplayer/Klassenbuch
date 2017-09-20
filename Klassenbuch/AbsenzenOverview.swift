@@ -947,7 +947,13 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
     
-        self.ref!.child("SchülerAbsenzen/\(Person)/\(AbsenzID)").updateChildValues(["AAbgabe": Neuerstatus])
+        
+        
+ 
+      
+      checkIfStudenthasAbsenz(Status: Neuerstatus, AbsenzID: AbsenzID, Person: Person)
+        
+        
         print(AbsenzID)
         print(Person)
         print(Neuerstatus)
@@ -962,6 +968,24 @@ class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate,
     
     }
 
+    func checkIfStudenthasAbsenz(Status: String, AbsenzID : String, Person: String){
+        
+        
+        self.ref?.child("SchülerAbsenzen/\(Person)").observe(.value, with: {(snapshot) in
+    
+            print(snapshot,"THIS IS THE FUCKING SNAPSHOT" )
+            if snapshot.hasChild(AbsenzID){
+        print("has child")
+     self.ref!.child("SchülerAbsenzen/\(Person)/\(AbsenzID)").updateChildValues(["AAbgabe": Status])
+            }else{
+                
+                
+                print("adfsdfasf")
+                
+            }}
+        )
+        
+    }
 
     func domath(StundenzumAbziehen: Int, SchülerName: String, Status: String) {
        

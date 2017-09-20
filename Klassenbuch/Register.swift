@@ -2,7 +2,7 @@
 //  Register.swift
 //  Klassenbuch
 //
-//  Created by Developing on 16.01.17.
+//  Created by DeveLloping on 16.01.17.
 //  Copyright © 2017 Hadorn Developing. All rights reserved.
 //
 
@@ -466,7 +466,7 @@ class Register: UIViewController, UITextFieldDelegate {
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
 //        self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["email": RegisterString])
-        self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["email": RegisterEmailTextField.text!])
+        self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["email": RegisterString])
         self.ref?.child("users").child("Lehrer").child(uid!).updateChildValues(["name": Namen.lowercased()])
         self.ref?.child("users").child("UIDs").child(uid!).updateChildValues(["function": "Teacher"])
         self.ref?.child("users").child("Alle Lehrer").updateChildValues([Namen.lowercased(): Namen.lowercased()])

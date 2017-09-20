@@ -44,7 +44,7 @@ class LehrerEinstellungen: UITableViewController, UNUserNotificationCenterDelega
         return 2
     }
 
-    @IBAction func LogOut(_ sender: Any) {
+    @IBAction func LogOut(_ sender: UIBarButtonItem) {
        
         let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         
@@ -81,7 +81,7 @@ class LehrerEinstellungen: UITableViewController, UNUserNotificationCenterDelega
         actionSheet.addAction(logoutAction)
         
         actionSheet.addAction(cancelAction)
-        
+ 
         self.present(actionSheet, animated: true, completion: nil)
         
     }
