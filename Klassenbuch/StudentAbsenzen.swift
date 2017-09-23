@@ -16,11 +16,7 @@ struct AbsenzenStruct16 {
 
 class StudentAbsenzen: UITableViewController, UITabBarDelegate{
     
-    
-    
-    // Variables
-    
-   // var Schüler Info vo voher
+//    var Schüler Info vo voher
     
     var data = [Int: [AbsenzenStruct16]]() // Date: Homework Object
     var sortedData = [(Int, [AbsenzenStruct16])]()

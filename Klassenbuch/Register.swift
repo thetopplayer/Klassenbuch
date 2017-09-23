@@ -4,7 +4,7 @@
 //
 //  Created by DeveLloping on 16.01.17.
 //  Copyright © 2017 Hadorn Developing. All rights reserved.
-//  Random Text
+//  Random Text 2.0
 
 import UIKit
 import FirebaseAuth
