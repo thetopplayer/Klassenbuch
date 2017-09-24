@@ -85,6 +85,33 @@ extension Date {
     
 }
 
+class weekday{
+    class func getDayOfWeek(_ today:String) -> String? {
+        
+        let wochentag = String()
+        let formatter  = DateFormatter()
+        formatter.dateFormat = "dd MMM yyyy"
+        guard let todayDate = formatter.date(from: today) else { return nil }
+        let myCalendar = Calendar(identifier: .gregorian)
+        let weekDay = myCalendar.component(.weekday, from: todayDate)
+        
+        if weekDay == 2 {
+            return "Mo"
+        } else  if weekDay == 3 {
+            return "DI"
+        }else  if weekDay == 4 {
+            return "MI"
+        }else  if weekDay == 5 {
+            return "DO"
+        }else  if weekDay == 6 {
+            return "FR"
+        }else  if weekDay == 7 {
+            return "SA"
+        }else  if weekDay == 1 {
+            return "SO"
+        }
+        return wochentag
+    }}
 
 // [START ios_10_message_handling]
 @available(iOS 10, *)

@@ -267,17 +267,26 @@ class Tests: UIViewController, UITableViewDelegate, UITableViewDataSource {
      func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         var name:String?
-        
         if tableView == self.tableView {
-            name = self.sortedData[section].0.convertTimestampToDate
-
+            
+            if let weekday = weekday.getDayOfWeek(self.sortedData[section].0.convertTimestampToDate) {
+                print(weekday)
+                name = "\(weekday) \(self.sortedData[section].0.convertTimestampToDate)"
+            } else {
+                print("bad input")
+                name = "\(self.sortedData[section].0.convertTimestampToDate)"
+            }
+            
         }else if tableView == self.tableView2 {
-            name = self.sortedData2[section].0.convertTimestampToDate
-
+            if let weekday = weekday.getDayOfWeek(self.sortedData[section].0.convertTimestampToDate) {
+                print(weekday)
+                name = "\(weekday) \(self.sortedData[section].0.convertTimestampToDate)"
+            } else {
+                print("bad input")
+                name = "\(self.sortedData[section].0.convertTimestampToDate)"
+            }
         }
-       
-        
-        return name// self.sortedData[section].0.convertTimestampToDate
+        return name
     }
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -329,62 +329,62 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
-        //view.tintColor = UIColor.red
-        let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = UIColor.white
-        
-        let sectionTitle = header.textLabel!.text
-        
-        
-        
-        // Taking the SectionheaderTitle and saving it and changig it from a String to Date
-        
-        let SectiondateInString = sectionTitle
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "dd MMM yyyy"
-        let SectionDateinDate = dateformatter.date(from: (SectiondateInString)!)
-        // print(SectionDateinDate as Any)
-        let AbsenzDatum = SectionDateinDate
-        
-        
-        
-        // Declaring Dates
-        let Ablaufdatum = SectionDateinDate! + 1209600  // 2 Wochen Vorbei Abgelaufen!
-        
-        
-        
-        if Ablaufdatum > Date(){
-            
-            if AbsenzDatum! + 604800 > Date(){
-                
-                
-                if AbsenzDatum! + 302400 > Date(){
-                    // Default Values, noch im OK Bereich
-                    header.backgroundView?.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
-                    header.textLabel?.textColor = UIColor.black
-                    
-                    
-                }else{
-                    // 3 Tage sind bereits vorbei
-                    header.backgroundView?.backgroundColor = UIColor(red:0.92, green:0.51, blue:0.51, alpha:1.0)
-                    
-                    
-                }
-            }else{
-                // Eine Woche bereits vorbei
-                
-                header.backgroundView?.backgroundColor = UIColor(red:0.98, green:0.34, blue:0.34, alpha:1.0)
-                
-            }
-            
-        }else{
-            
-            // Definitiv Abgelaufen
-            header.backgroundView?.backgroundColor = UIColor(red:0.96, green:0.24, blue:0.24, alpha:1.0)
-            
-            
-        }
-        
+//        //view.tintColor = UIColor.red
+//        let header = view as! UITableViewHeaderFooterView
+//        header.textLabel?.textColor = UIColor.white
+//
+//        var sectionTitle = header.textLabel!.text
+//
+////        let removedWeekday = String(describing: sectionTitle?.removeFirst(2))
+//
+//        // Taking the SectionheaderTitle and saving it and changig it from a String to Date
+//
+//        let SectiondateInString = sectionTitle
+//        let dateformatter = DateFormatter()
+//        dateformatter.dateFormat = "dd MMM yyyy"
+//        let SectionDateinDate = dateformatter.date(from: (SectiondateInString)!)
+//        // print(SectionDateinDate as Any)
+//        let AbsenzDatum = SectionDateinDate
+//
+//
+//
+//        // Declaring Dates
+//        let Ablaufdatum = SectionDateinDate! + 1209600  // 2 Wochen Vorbei Abgelaufen!
+//        
+//
+//
+//        if Ablaufdatum > Date(){
+//
+//            if AbsenzDatum! + 604800 > Date(){
+//
+//
+//                if AbsenzDatum! + 302400 > Date(){
+//                    // Default Values, noch im OK Bereich
+//                    header.backgroundView?.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+//                    header.textLabel?.textColor = UIColor.black
+//
+//
+//                }else{
+//                    // 3 Tage sind bereits vorbei
+//                    header.backgroundView?.backgroundColor = UIColor(red:0.92, green:0.51, blue:0.51, alpha:1.0)
+//
+//
+//                }
+//            }else{
+//                // Eine Woche bereits vorbei
+//
+//                header.backgroundView?.backgroundColor = UIColor(red:0.98, green:0.34, blue:0.34, alpha:1.0)
+//
+//            }
+//
+//        }else{
+//
+//            // Definitiv Abgelaufen
+//            header.backgroundView?.backgroundColor = UIColor(red:0.96, green:0.24, blue:0.24, alpha:1.0)
+//
+//
+//        }
+//
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -411,8 +411,20 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
+        var name:String?
+      
+            
+            if let weekday = weekday.getDayOfWeek(self.sortedData[section].0.convertTimestampToDate) {
+                print(weekday)
+                name = "\(weekday) \(self.sortedData[section].0.convertTimestampToDate)"
+            } else {
+                print("bad input")
+                name = "\(self.sortedData[section].0.convertTimestampToDate)"
+        }
+            
+       
+        return name
         
-        return self.sortedData[section].0.convertTimestampToDate
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
