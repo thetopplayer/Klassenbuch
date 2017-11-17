@@ -11,16 +11,7 @@ import FirebaseAuth
 import MessageUI
 
 
-struct AbsenzenStatistiken{
-    
-    var APerson: String
-    var AAnzahlStunden: Int
-    var AAbsenzenOffen: Int
-    var AAbsenzenentschuldigt: Int
-    var AAbsenzenunentschuldigt: Int
-    var AUid: String
-    
-}
+
 
 class LehrerStatistiken: UITableViewController, MFMailComposeViewControllerDelegate {
     

@@ -4,15 +4,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import UserNotifications
 
-struct AbsenzenStruct16 {
-    var ADatum: Int
-    var AStatus: String
-    var APerson: String
-    var AAbgabe : String
-    var AAnzahlStunden : Int
-    var AUid: String
 
-}
 
 class StudentAbsenzen: UITableViewController, UITabBarDelegate{
     

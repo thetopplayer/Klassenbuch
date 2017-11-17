@@ -11,24 +11,7 @@ import FirebaseAuth
 import UserNotifications
 
 
-struct AbsenzenStruct3 {
-    var ADatum: Int
-    var AStatus: String
-    var APerson: String
-    var AAbgabe : String
-    var AAnzahlStunden : Int
-    var AUid: String
-    var ReminderStatus : Bool
-}
 
-struct ReminderStructSchüler{
-    
-    var ADatum: Int
-    var AStatus: String
-    var APerson: String
-    var AUid: String
-    
-}
 
 class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBarDelegate{
     
@@ -350,7 +333,7 @@ class Absenzen: UITableViewController, UNUserNotificationCenterDelegate, UITabBa
 //
 //        // Declaring Dates
 //        let Ablaufdatum = SectionDateinDate! + 1209600  // 2 Wochen Vorbei Abgelaufen!
-//        
+//        12
 //
 //
 //        if Ablaufdatum > Date(){

@@ -13,20 +13,6 @@ import FirebaseAuth
 import StoreKit
 
 
-struct Homework {
-    var HDatum: Int
-    var HFach: String
-    var HText: String
-    var HUid: String
-}
-
-
-struct Homework2 {
-    var HDatum: Int
-    var HFach: String
-    var HText: String
-    var HUid: String
-}
 
 
 

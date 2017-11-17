@@ -12,19 +12,6 @@ import FirebaseDatabase
 import Firebase
 
 
-struct TestsStruct {
-    var TDatum: Int
-    var TFach: String
-    var TText: String
-    var TUid: String
-}
-
-struct TestsStruct2 {
-    var TDatum: Int
-    var TFach: String
-    var TText: String
-    var TUid: String
-}
 
 
 class Tests: UIViewController, UITableViewDelegate, UITableViewDataSource {

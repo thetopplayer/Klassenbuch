@@ -7,10 +7,7 @@
     //  Copyright © 2017 Hadorn Developing. All rights reserved.
     //
     
-    struct Teacher2 {
-        var name = String()
-        
-    }
+  
     
     import UIKit
     import Firebase

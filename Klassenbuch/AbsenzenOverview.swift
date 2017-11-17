@@ -12,23 +12,7 @@ import FirebaseAuth
 import UserNotifications
 import MessageUI
 
-struct AbsenzenStruct4 {
-    var ADatum: Int
-    var AStatus: String
-    var APerson: String
-    var AAbgabe : String
-    var AAnzahlStunden : Int
-    var AUid: String
-    var ReminderStatus: Bool
-}
-struct ReminderStruct{
 
-    var ADatum: Int
-    var AStatus: String
-    var APerson: String
-    var AUid: String
-
-}
 
 class AbsenzenOverview: UITableViewController, UNUserNotificationCenterDelegate, UITabBarDelegate, MFMailComposeViewControllerDelegate{
     

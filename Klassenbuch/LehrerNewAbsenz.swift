@@ -12,11 +12,7 @@
     import FirebaseAuth
     import Firebase
 
-struct UIDStruct{
-  
-    var myUID : String
 
-}
     
  class LehrerNewAbsenz: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
         
